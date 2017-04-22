@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from '../Header/Header';
+import MainSection from '../MainSection/MainSection';
+import ColorDisplay from '../ColorDisplay/ColorDisplay';
+import ColorControls from '../ColorControls/ColorControls';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Header />
-        <p className="Header-title">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <MainSection>
+          <ColorDisplay />
+          <ColorControls />
+        </MainSection>
       </div>
     );
   }
