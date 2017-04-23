@@ -1,0 +1,10 @@
+.ColorViz__container {
+  border: 1px solid black;
+  margin: 0;
+}
+
+.ColorViz__canvas {
+  border: 1px solid red;
+  margin: 0rem;
+
+}

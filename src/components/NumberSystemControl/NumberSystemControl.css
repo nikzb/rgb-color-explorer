@@ -1,8 +1,15 @@
 .NumberSystemControl__container {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  width: 15rem;
 }
 
 .NumberSystemControl__label {
-  padding: 1rem;
+  padding: .2rem;
+  font-size: 1rem;
+}
+
+.NumberSystemControl__button {
+  width: 5rem;
 }

@@ -10,8 +10,8 @@ class BitsPerComponentControl extends Component {
       <div className='BitsPerComponentControl__container'>
         <label className='BitsPerComponentControl__label'>Bits Per Component</label>
         <ButtonGroupMenu>
-          <Button color={Colors.PRIMARY}>4</Button>
-          <Button>8</Button>
+          <Button className='BitsPerComponentControl__button' color={Colors.PRIMARY}>4</Button>
+          <Button className='BitsPerComponentControl__button'>8</Button>
         </ButtonGroupMenu>
       </div>
     );

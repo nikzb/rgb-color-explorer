@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 import ColorComponentSlider from '../ColorComponentSlider/ColorComponentSlider';
-// import './ColorComponentsControls.css';
+import './ColorComponentsControls.css';
 
 class ColorComponentsControls extends Component {
   render() {
     return (
-      <div>
+      <div className='ColorComponentsControls__container'>
         <ColorComponentSlider colorComp='Red'/>
         <ColorComponentSlider colorComp='Green'/>
         <ColorComponentSlider colorComp='Blue'/>
