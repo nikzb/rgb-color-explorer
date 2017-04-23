@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import ButtonGroupMenu from '../ButtonGroupMenu/ButtonGroupMenu';
+import { Colors, Button} from 'react-foundation';
 
-import ButtonGroup from '../ButtonGroup/ButtonGroup';
+require('foundation-sites/dist/css/foundation.min.css');
+// import ButtonGroup from '../ButtonGroup/ButtonGroup';
 // import './NumberSystemControl.css';
 
 class NumberSystemControl extends Component {
@@ -8,7 +11,10 @@ class NumberSystemControl extends Component {
     return (
       <div>
         <label>Number System</label>
-        <ButtonGroup />
+        <ButtonGroupMenu>
+          <Button color={Colors.PRIMARY}>Binary</Button>
+          <Button>Hex</Button>
+        </ButtonGroupMenu>
       </div>
     );
   }

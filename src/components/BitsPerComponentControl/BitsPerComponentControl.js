@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import ButtonGroup from '../ButtonGroup/ButtonGroup';
+import ButtonGroupMenu from '../ButtonGroupMenu/ButtonGroupMenu';
+import { Colors, Button} from 'react-foundation';
 // import './NumberSystemControl.css';
 
 class BitsPerComponentControl extends Component {
@@ -8,7 +9,10 @@ class BitsPerComponentControl extends Component {
     return (
       <div>
         <label>Bits Per Component</label>
-        <ButtonGroup />
+        <ButtonGroupMenu>
+          <Button color={Colors.PRIMARY}>4</Button>
+          <Button>8</Button>
+        </ButtonGroupMenu>
       </div>
     );
   }
