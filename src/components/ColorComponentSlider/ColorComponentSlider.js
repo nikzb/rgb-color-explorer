@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-// import './ColorComponentSlider.css';
+import './ColorComponentSlider.css';
 
 class ColorComponentSlider extends Component {
   render() {
     return (
-      <div>
-        <label>Red</label>
-        <input type='range'/>
+      <div className='ColorComponentSlider__container'>
+        <label className='ColorComponentSlider__label'>{this.props.colorComp}</label>
+        <input className='ColorComponentSlider__slider' type='range'/>
       </div>
     );
   }

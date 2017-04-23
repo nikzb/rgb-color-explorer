@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-// import './ColorCode.css';
+import './ColorCodeControl.css';
 
 class ColorCodeControl extends Component {
   render() {
     return (
-      <input type='text'></input>
+      <input className='ColorCodeControl__input' type='text'></input>
     );
   }
 }

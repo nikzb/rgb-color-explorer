@@ -1,0 +1,8 @@
+.BitsPerComponentControl__container {
+  display: flex;
+  align-items: center;
+}
+
+.BitsPerComponentControl__label {
+  padding: 1rem;
+}

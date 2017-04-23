@@ -1,0 +1,8 @@
+.NumberSystemControl__container {
+  display: flex;
+  align-items: center;
+}
+
+.NumberSystemControl__label {
+  padding: 1rem;
+}

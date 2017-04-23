@@ -7,9 +7,9 @@ class ColorComponentsControls extends Component {
   render() {
     return (
       <div>
-        <ColorComponentSlider />
-        <ColorComponentSlider />
-        <ColorComponentSlider />
+        <ColorComponentSlider colorComp='Red'/>
+        <ColorComponentSlider colorComp='Green'/>
+        <ColorComponentSlider colorComp='Blue'/>
       </div>
     );
   }

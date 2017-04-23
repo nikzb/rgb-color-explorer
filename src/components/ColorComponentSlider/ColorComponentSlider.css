@@ -1,0 +1,11 @@
+.ColorComponentSlider__container {
+  display: flex;
+}
+
+.ColorComponentSlider__label {
+  width: 5rem;
+}
+
+.ColorComponentSlider__slider {
+  width: 20rem;
+}
