@@ -8,8 +8,8 @@ class NumberSettingsControls extends Component {
   render() {
     return (
       <div className='NumberSettingsControls__container'>
-        <NumberSystemControl />
-        <BitsPerComponentControl />
+        <NumberSystemControl base={16}/>
+        <BitsPerComponentControl base={16} bitsPerComponent={8}/>
       </div>
     );
   }

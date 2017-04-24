@@ -4,8 +4,24 @@
 
 .ColorComponentSlider__label {
   width: 5rem;
+  margin: .1rem .5rem;
 }
 
 .ColorComponentSlider__slider {
   width: 20rem;
+}
+
+.ColorComponentSlider__label-red {
+  color: red;
+  border: 1px solid red;
+}
+
+.ColorComponentSlider__label-green {
+  color: green;
+  border: 1px solid green;
+}
+
+.ColorComponentSlider__label-blue {
+  color: blue;
+  border: 1px solid blue;
 }

@@ -10,6 +10,10 @@
   font-size: 1rem;
 }
 
-.BitsPerComponentControl__button {
+.BitsPerComponentControl__button-2 {
   width: 5rem;
+}
+
+.BitsPerComponentControl__button-3 {
+  width: 3.333rem;
 }

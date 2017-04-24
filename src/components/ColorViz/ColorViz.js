@@ -16,7 +16,7 @@ class ColorViz extends Component {
   render() {
     return (
       <div className='ColorViz__container'>
-        <canvas ref='vizCanvas' className='ColorViz__canvas' width='300' height='300'/>
+        <canvas ref='vizCanvas' className='ColorViz__canvas' width='400' height='400'/>
       </div>
     );
   }
