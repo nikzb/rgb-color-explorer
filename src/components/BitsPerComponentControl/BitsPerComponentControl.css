@@ -12,8 +12,10 @@
 
 .BitsPerComponentControl__button-2 {
   width: 5rem;
+  margin: 0;
 }
 
 .BitsPerComponentControl__button-3 {
   width: 3.333rem;
+  margin: 0;
 }
