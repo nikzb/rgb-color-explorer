@@ -3,12 +3,13 @@
 }
 
 .ColorComponentSlider__label {
-  width: 5rem;
-  margin: .1rem .5rem;
+  width: 4.4rem;
+  height: 1.8rem;
+  margin: .1rem .7rem;
 }
 
 .ColorComponentSlider__slider {
-  width: 20rem;
+  width: 18rem;
 }
 
 .ColorComponentSlider__label-red {

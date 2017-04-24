@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import UpDownControl from '../UpDownControl/UpDownControl';
 
 import './ColorComponentSlider.css';
 
@@ -11,6 +12,7 @@ class ColorComponentSlider extends Component {
       <div className='ColorComponentSlider__container'>
         <label className={labelClassNames}>{this.props.colorComp}</label>
         <input className='ColorComponentSlider__slider' type='range'/>
+        <UpDownControl />
       </div>
     );
   }

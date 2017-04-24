@@ -5,6 +5,15 @@ import { Colors, Button} from 'react-foundation';
 import './NumberSystemControl.css';
 
 class NumberSystemControl extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    // Call the function passed down from parent that updates the code correctly
+  }
+
   render() {
     let binaryButtonClasses;
     let hexButtonClasses;
@@ -20,8 +29,8 @@ class NumberSystemControl extends Component {
       <div className='NumberSystemControl__container'>
         <label className="NumberSystemControl__label">Number System</label>
         <ButtonGroupMenu>
-          <Button className={binaryButtonClasses} color={Colors.SECONDARY}>Binary</Button>
-          <Button className={hexButtonClasses} color={Colors.SECONDARY}>Hex</Button>
+          <Button className={binaryButtonClasses} onClick={this.handleClick} color={Colors.SECONDARY}>Binary</Button>
+          <Button className={hexButtonClasses} onClick={this.handleClick} color={Colors.SECONDARY}>Hex</Button>
         </ButtonGroupMenu>
       </div>
     );

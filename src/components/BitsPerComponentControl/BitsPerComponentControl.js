@@ -5,6 +5,15 @@ import { Colors, Button} from 'react-foundation';
 import './BitsPerComponentControl.css';
 
 class BitsPerComponentControl extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    // Call the function passed down from parent that updates the code correctly
+  }
+
   render() {
     if (this.props.base === 2) {
       let button1classes;
@@ -27,9 +36,9 @@ class BitsPerComponentControl extends Component {
         <div className='BitsPerComponentControl__container'>
           <label className='BitsPerComponentControl__label'>Bits Per Component</label>
           <ButtonGroupMenu>
-            <Button className={button1classes} color={Colors.SECONDARY}>1</Button>
-            <Button className={button2classes} color={Colors.SECONDARY}>2</Button>
-            <Button className={button3classes} color={Colors.SECONDARY}>3</Button>
+            <Button className={button1classes} onClick={this.handleClick} color={Colors.SECONDARY}>1</Button>
+            <Button className={button2classes} onClick={this.handleClick} color={Colors.SECONDARY}>2</Button>
+            <Button className={button3classes} onClick={this.handleClick} color={Colors.SECONDARY}>3</Button>
           </ButtonGroupMenu>
         </div>
       );
@@ -48,8 +57,8 @@ class BitsPerComponentControl extends Component {
         <div className='BitsPerComponentControl__container'>
           <label className='BitsPerComponentControl__label'>Bits Per Component</label>
           <ButtonGroupMenu>
-            <Button className={button1classes} color={Colors.SECONDARY}>4</Button>
-            <Button className={button2classes} color={Colors.SECONDARY}>8</Button>
+            <Button className={button1classes} onClick={this.handleClick} color={Colors.SECONDARY}>4</Button>
+            <Button className={button2classes} onClick={this.handleClick} color={Colors.SECONDARY}>8</Button>
           </ButtonGroupMenu>
         </div>
       );
