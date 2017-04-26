@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ButtonGroupMenu from '../ButtonGroupMenu/ButtonGroupMenu';
-import { Colors, Button, Sizes} from 'react-foundation';
 
 import './UpDownControl.css';
 
@@ -15,7 +14,6 @@ class UpDownControl extends Component {
   }
 
   render() {
-    // let buttons = [{label: '▼', classNames: 'UpDownControl__button'}, {label: '▲', classNames: 'UpDownControl__button'}];
     let buttons = [{label: '−', classNames: 'UpDownControl__button'}, {label: '+', classNames: 'UpDownControl__button'}];
     return (
       <div className='UpDownControl__container'>

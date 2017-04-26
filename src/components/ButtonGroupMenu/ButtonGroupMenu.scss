@@ -24,6 +24,12 @@ $button-group-menu-margin-bottom: 0; // $global-margin;
       border-left: 1px solid $button-group-menu-color;
     }
 
+    &:hover, &:focus {
+      background: #eee;
+      color: $button-group-menu-color;
+      outline: 0;
+    }
+
     &.is-active {
       background: $button-group-menu-color;
       color: white;
@@ -48,9 +54,17 @@ $button-group-menu-margin-bottom: 0; // $global-margin;
     font-size: 1.0rem;
     padding: .25rem;
 
-    // &:nth-child(n+1) {
-    //   border-left: 1px solid $button-group-menu-color;
-    // }
+    &:hover, &:focus {
+      background: #eee;
+      color: $button-group-menu-color;
+      outline: 0;
+    }
+
+    &:active {
+      background: #ccc;
+      color: $button-group-menu-color;
+      outline: 0;
+    }
 
     &.is-active {
       background: $button-group-menu-color;
