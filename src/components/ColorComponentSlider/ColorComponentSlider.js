@@ -6,10 +6,10 @@ import './ColorComponentSlider.css';
 class ColorComponentSlider extends Component {
 
   render() {
-    const labelClassNames = `ColorComponentSlider__label ColorComponentSlider__label-${this.props.colorComp.toLowerCase()}`;
-
+    const labelClassNames = `ColorComponentSlider__label ColorComponentSlider__label--${this.props.colorComp.toLowerCase()}`;
+    const containerClassNames = `ColorComponentSlider__container ColorComponentSlider__container--${this.props.colorComp.toLowerCase()}`;
     return (
-      <div className='ColorComponentSlider__container'>
+      <div className={containerClassNames}>
         <label className={labelClassNames}>{this.props.colorComp}</label>
         <input className='ColorComponentSlider__slider' type='range'/>
         <UpDownControl />
