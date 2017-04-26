@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import ButtonGroupMenu from '../ButtonGroupMenu/ButtonGroupMenu';
-import { Colors, Button} from 'react-foundation';
+// import { Colors, Button} from 'react-foundation';
 import './BitsPerComponentControl.css';
 
 class BitsPerComponentControl extends Component {
@@ -15,51 +15,46 @@ class BitsPerComponentControl extends Component {
   }
 
   render() {
+    let binaryButtons = [{label: '1'}, {label: '2'}, {label: '3'}];
+    let hexButtons = [{label: '4'}, {label: '8'}];
+
     if (this.props.base === 2) {
-      let button1classes;
-      let button2classes;
-      let button3classes;
       if (this.props.bitsPerComponent === 1) {
-        button1classes = 'BitsPerComponentControl__button-3';
-        button2classes = 'BitsPerComponentControl__button-3 hollow';
-        button3classes = 'BitsPerComponentControl__button-3 hollow';
+        binaryButtons[0].classes = 'BitsPerComponentControl__button-3 is-active';
+        binaryButtons[1].classes = 'BitsPerComponentControl__button-3';
+        binaryButtons[2].classes = 'BitsPerComponentControl__button-3';
       } else if (this.props.bitsPerComponent === 2) {
-        button1classes = 'BitsPerComponentControl__button-3 hollow';
-        button2classes = 'BitsPerComponentControl__button-3';
-        button3classes = 'BitsPerComponentControl__button-3 hollow';
+        binaryButtons[0].classess = 'BitsPerComponentControl__button-3';
+        binaryButtons[1].classes = 'BitsPerComponentControl__button-3 is-active';
+        binaryButtons[2].classes = 'BitsPerComponentControl__button-3';
       } else { // assuming (this.props.bitsPerComponent === 3)
-        button1classes = 'BitsPerComponentControl__button-3 hollow';
-        button2classes = 'BitsPerComponentControl__button-3 hollow';
-        button3classes = 'BitsPerComponentControl__button-3';
+        binaryButtons[0].classes = 'BitsPerComponentControl__button-3';
+        binaryButtons[1].classes = 'BitsPerComponentControl__button-3';
+        binaryButtons[2].classes = 'BitsPerComponentControl__button-3 is-active';
       }
       return (
         <div className='BitsPerComponentControl__container'>
           <label className='BitsPerComponentControl__label'>Bits Per Component</label>
-          <ButtonGroupMenu>
-            <Button className={button1classes} onClick={this.handleClick} color={Colors.SECONDARY}>1</Button>
+          <ButtonGroupMenu buttons={binaryButtons}>
+            {/* <Button className={button1classes} onClick={this.handleClick} color={Colors.SECONDARY}>1</Button>
             <Button className={button2classes} onClick={this.handleClick} color={Colors.SECONDARY}>2</Button>
-            <Button className={button3classes} onClick={this.handleClick} color={Colors.SECONDARY}>3</Button>
+            <Button className={button3classes} onClick={this.handleClick} color={Colors.SECONDARY}>3</Button> */}
           </ButtonGroupMenu>
         </div>
       );
     }
     else { // assuming (this.props.base === 16)
-      let button1classes;
-      let button2classes;
       if (this.props.bitsPerComponent === 4) {
-        button1classes = 'BitsPerComponentControl__button-2';
-        button2classes = 'BitsPerComponentControl__button-2 hollow';
+        hexButtons[0].classes = 'BitsPerComponentControl__button-2 is-active';
+        hexButtons[1].classes = 'BitsPerComponentControl__button-2';
       } else { // assuming (this.props.bitsPerComponent === 8) {
-        button1classes = 'BitsPerComponentControl__button-2 hollow';
-        button2classes = 'BitsPerComponentControl__button-2';
+        hexButtons[0].classes = 'BitsPerComponentControl__button-2';
+        hexButtons[1].classes = 'BitsPerComponentControl__button-2 is-active';
       }
       return (
         <div className='BitsPerComponentControl__container'>
           <label className='BitsPerComponentControl__label'>Bits Per Component</label>
-          <ButtonGroupMenu>
-            <Button className={button1classes} onClick={this.handleClick} color={Colors.SECONDARY}>4</Button>
-            <Button className={button2classes} onClick={this.handleClick} color={Colors.SECONDARY}>8</Button>
-          </ButtonGroupMenu>
+          <ButtonGroupMenu buttons={hexButtons} />
         </div>
       );
     }

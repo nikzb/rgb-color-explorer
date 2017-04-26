@@ -15,12 +15,11 @@ class UpDownControl extends Component {
   }
 
   render() {
+    // let buttons = [{label: '▼', classNames: 'UpDownControl__button'}, {label: '▲', classNames: 'UpDownControl__button'}];
+    let buttons = [{label: '−', classNames: 'UpDownControl__button'}, {label: '+', classNames: 'UpDownControl__button'}];
     return (
       <div className='UpDownControl__container'>
-        <ButtonGroupMenu className='UpDownControl__button-group-menu' size='tiny'>
-          <Button className='UpDownControl__button hollow' onClick={this.handleClick} color={Colors.SECONDARY} size={Sizes.TINY}>▼</Button>
-          <Button className='UpDownControl__button hollow' onClick={this.handleClick} color={Colors.SECONDARY} size={Sizes.TINY}>▲</Button>
-        </ButtonGroupMenu>
+        <ButtonGroupMenu buttons={buttons} size='small'/>
       </div>
     );
   }

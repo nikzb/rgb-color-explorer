@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ButtonGroupMenu from '../ButtonGroupMenu/ButtonGroupMenu';
-import { Colors, Button} from 'react-foundation';
+// import { Colors, Button} from 'react-foundation';
 
 import './NumberSystemControl.css';
 
@@ -15,23 +15,20 @@ class NumberSystemControl extends Component {
   }
 
   render() {
-    let binaryButtonClasses;
-    let hexButtonClasses;
+    let buttons = [{label: 'Binary'}, {label: 'Hex'}];
+
     if (this.props.base===2) {
-      binaryButtonClasses = 'NumberSystemControl__button';
-      hexButtonClasses = 'NumberSystemControl__button hollow';
+      buttons[0].classes = 'NumberSystemControl__button is-active';
+      buttons[1].classes = 'NumberSystemControl__button';
     } else {// assuming that (this.props.base===16) {
-      binaryButtonClasses = 'NumberSystemControl__button hollow';
-      hexButtonClasses = 'NumberSystemControl__button';
+      buttons[0].classes = 'NumberSystemControl__button';
+      buttons[1].classes = 'NumberSystemControl__button is-active';
     }
 
     return (
       <div className='NumberSystemControl__container'>
         <label className="NumberSystemControl__label">Number System</label>
-        <ButtonGroupMenu>
-          <Button className={binaryButtonClasses} onClick={this.handleClick} color={Colors.SECONDARY}>Binary</Button>
-          <Button className={hexButtonClasses} onClick={this.handleClick} color={Colors.SECONDARY}>Hex</Button>
-        </ButtonGroupMenu>
+        <ButtonGroupMenu buttons={buttons} />
       </div>
     );
   }

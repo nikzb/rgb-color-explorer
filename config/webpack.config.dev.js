@@ -120,6 +120,7 @@ module.exports = {
           // Webpack 2 fixes this, but for now we include this hack.
           // https://github.com/facebookincubator/create-react-app/issues/1713
           /\.(js|jsx)(\?.*)?$/,
+          // /\.scss$/,
           /\.css$/,
           /\.json$/,
           /\.svg$/
@@ -143,6 +144,26 @@ module.exports = {
           cacheDirectory: true
         }
       },
+      // {
+      //   test: /\.scss$/,
+      //   use: [
+      //     {
+      //       loader: 'style-loader'
+      //     },
+      //     {
+      //       loader: 'css-loader'
+      //     },
+      //     {
+      //       loader: 'sass-loader',
+      //       options: {
+      //         includePaths: [
+      //           paths.resolve(__dirname, './src/styles'),
+      //           paths.resolve(__dirname, 'node_modules/foundation-sites/scss')
+      //         ]
+      //       }
+      //     }
+      //   ]
+      // },
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.
       // "style" loader turns CSS into JS modules that inject <style> tags.
