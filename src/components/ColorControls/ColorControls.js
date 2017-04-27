@@ -6,12 +6,15 @@ import NumberSettingsControls from '../NumberSettingsControls/NumberSettingsCont
 import './ColorControls.css';
 
 class ColorControls extends Component {
+  // constructor(props) {
+  //   super(props);
+  // }
   render() {
     return (
       <div className="ColorControls__container">
-        <ColorCodeControl />
-        <ColorComponentsControls />
-        <NumberSettingsControls />
+        <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>
+        <ColorComponentsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>
+        <NumberSettingsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>
       </div>
     );
   }

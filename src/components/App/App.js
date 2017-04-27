@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from '../Header/Header';
 import MainSection from '../MainSection/MainSection';
-import ColorDisplay from '../ColorDisplay/ColorDisplay';
-import ColorControls from '../ColorControls/ColorControls';
 
 require('foundation-sites/dist/css/foundation.min.css');
 
@@ -12,10 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <MainSection>
-          <ColorDisplay />
-          <ColorControls />
-        </MainSection>
+        <MainSection />
       </div>
     );
   }

@@ -63,13 +63,13 @@ class ColorCode {
     const compValue = this.getComponent(comp);
     const maxValue = Math.pow(2, this.getBitsPerComponent()) - 1;
 
-    if (compValue === 0) {
-      return 0;
-    } else if (compValue === maxValue) {
-      return 255;
-    } else {
-      return Math.round(compValue * 255 / maxValue);
-    }
+    return Math.round(compValue * 255 / maxValue);
+  }
+
+  convertFrom256ToBaseBitValue(value) {
+    const maxValue = Math.pow(2, this.getBitsPerComponent()) - 1;
+
+    return Math.round(value * maxValue / 255);
   }
 
   // Get the full color code (all three parts combined) as a String
@@ -121,6 +121,16 @@ class ColorCode {
     if (this.bits % 3 === 0) {
       return this.bits / 3;
     }
+  }
+
+  // Return the base
+  getBase() {
+    return this.base;
+  }
+
+  // Return the number of bits for the whole code
+  getBits() {
+    return this.bits;
   }
 
   /* Return true if this color has the same RGB values as otherColor.
