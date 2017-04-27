@@ -7,12 +7,19 @@ class MainSection extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // colorCode: new ColorCode({
+      //   base: 2,
+      //   bits: 9,
+      //   red: 7,
+      //   green: 1,
+      //   blue: 0
+      // })
       colorCode: new ColorCode({
-        base: 2,
-        bits: 9,
-        red: 7,
-        green: 1,
-        blue: 0
+        base: 16,
+        bits: 12,
+        red: 0,
+        green: 3,
+        blue: 15
       })
     };
     this.updateColor = this.updateColor.bind(this);
@@ -42,7 +49,7 @@ class MainSection extends Component {
           colorCode: new ColorCode({
             base: oldCode.getBase(),
             bits: oldCode.getBits(),
-            red: oldCode.convertFrom256ToBaseBitValue(newValue),
+            red: newValue,
             green: oldCode.getComponent('G'),
             blue: oldCode.getComponent('B')
           })
@@ -53,7 +60,7 @@ class MainSection extends Component {
             base: oldCode.getBase(),
             bits: oldCode.getBits(),
             red: oldCode.getComponent('R'),
-            green: oldCode.convertFrom256ToBaseBitValue(newValue),
+            green: newValue,
             blue: oldCode.getComponent('B')
           })
         });
@@ -64,7 +71,7 @@ class MainSection extends Component {
             bits: oldCode.getBits(),
             red: oldCode.getComponent('R'),
             green: oldCode.getComponent('G'),
-            blue: oldCode.convertFrom256ToBaseBitValue(newValue)
+            blue: newValue
           })
         });
       }

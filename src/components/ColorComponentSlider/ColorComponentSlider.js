@@ -10,20 +10,21 @@ class ColorComponentSlider extends Component {
   }
 
   handleChange(e) {
+    console.log(e.target.value);
     this.props.onColorChange({
       comp: this.props.colorComp.charAt(0),
-      newValue: e.target.value
+      newValue: parseInt(e.target.value, 10)
     });
   }
 
   render() {
     const labelClassNames = `ColorComponentSlider__label ColorComponentSlider__label--${this.props.colorComp.toLowerCase()}`;
     const containerClassNames = `ColorComponentSlider__container ColorComponentSlider__container--${this.props.colorComp.toLowerCase()}`;
-    console.log(this.props.sliderStep);
+
     return (
       <div className={containerClassNames}>
         <label className={labelClassNames}>{this.props.colorComp}</label>
-        <input className='ColorComponentSlider__slider' type='range' min={0} max={255} defaultValue={this.props.intensity} step={this.props.sliderStep} onChange={this.handleChange}/>
+        <input className='ColorComponentSlider__slider' type='range' min={0} max={this.props.max} defaultValue={this.props.intensity} step={1} onChange={this.handleChange}/>
         <UpDownControl />
       </div>
     );
