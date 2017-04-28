@@ -1,5 +1,23 @@
+import _ from 'lodash';
+
 class ColorCode {
   constructor({bits=24, base=16, red=0, green=0, blue=0, code}) {
+
+    const correctCompValue = (compValue) => {
+      const maxCompValue = this.getMaxComponentValue();
+      if (compValue < 0) {
+        return 0;
+      } else if (compValue > maxCompValue) {
+        return maxCompValue;
+      } else {
+        return compValue;
+      }
+    }
+
+    const validNumbersOfBits = [3, 6, 9, 12, 24];
+    if (!_.includes(validNumbersOfBits, bits)) {
+      throw Error('Invalid number of bits used to create ColorCode');
+    }
     if (code) {
       const cLen = code.length;
       if (base === 2) {
@@ -17,9 +35,9 @@ class ColorCode {
     else {
       this.bits = bits;
       this.base = base;
-      this.red = red;
-      this.green = green;
-      this.blue = blue;
+      this.red = correctCompValue(red);
+      this.green = correctCompValue(green);
+      this.blue = correctCompValue(blue);
     }
   }
 
@@ -61,13 +79,13 @@ class ColorCode {
   // Get the requested component ("R", "G", or "B") as a 0-255 value
   getComponent256(comp) {
     const compValue = this.getComponent(comp);
-    const maxValue = Math.pow(2, this.getBitsPerComponent()) - 1;
+    const maxValue = this.getMaxComponentValue();
 
     return Math.round(compValue * 255 / maxValue);
   }
 
   convertFrom256ToBaseBitValue(value) {
-    const maxValue = Math.pow(2, this.getBitsPerComponent()) - 1;
+    const maxValue = this.getMaxComponentValue();
 
     return Math.round(value * maxValue / 255);
   }
@@ -101,7 +119,7 @@ class ColorCode {
 
   // Get a Color object whose color is the inverted from this color
   getInvertedColor() {
-    const maxValue = Math.pow(2, this.getBitsPerComponent()) - 1;
+    const maxValue = this.getMaxComponentValue();
     return new ColorCode({
       bits: this.bits,
       base: this.base,
@@ -131,6 +149,11 @@ class ColorCode {
   // Return the number of bits for the whole code
   getBits() {
     return this.bits;
+  }
+
+  // Get the maximum component value allowed given the number of bits
+  getMaxComponentValue() {
+    return Math.pow(2, this.getBitsPerComponent()) - 1;
   }
 
   /* Return true if this color has the same RGB values as otherColor.
