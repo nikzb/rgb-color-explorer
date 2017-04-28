@@ -3,13 +3,11 @@
 ## Version 0 - Work in Progress
 
 To do:
-* Add a ColorCode to the main component
 * Have the canvas draw the circles for the color code it receives via props
 * Have the code display / input show the code passed down to it via props (hex codes should start with # automatically when hex number system is selected)
 * Have the code display do validation on code it receives and turn red when it is invalid based on number system / bits per component
-* Have up / down buttons call handler to tell code to be updated appropriately
-* Have number system buttons call handler when clicked to tell code to be updated appropriately (code will get converted to closest equivalent in new number system)
-* Have bits per component buttons call handler when clicked to tell code to be updated appropriately (code will get converted to closest equivalent with new number of bits)
+* number system buttons -(code should get converted to closest equivalent in new number system)
+* bits per component buttons - (code should get converted to closest equivalent with new number of bits)
 * Have Hide / Show Color Components button update state of display so that canvas image will update appropriately
 
 Super awesome version ideas:
