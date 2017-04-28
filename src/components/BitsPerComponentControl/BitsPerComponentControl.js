@@ -5,18 +5,26 @@ import ButtonGroupMenu from '../ButtonGroupMenu/ButtonGroupMenu';
 import './BitsPerComponentControl.css';
 
 class BitsPerComponentControl extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
-    // Call the function passed down from parent that updates the code correctly
+  // Return a function that can be called when one of the bits per component buttons is clicked
+  // @param newBitsPerComponent - the bitsPerComponent to use in the new ColorCode
+  onButtonClick(newBitsPerComponent) {
+    return () => {
+      if (newBitsPerComponent !== this.props.bitsPerComponent) {
+        this.props.onColorChange({newBitsPerComponent});
+      }
+    }
   }
 
   render() {
-    let binaryButtons = [{label: '1'}, {label: '2'}, {label: '3'}];
-    let hexButtons = [{label: '4'}, {label: '8'}];
+    let binaryButtons = [
+      {label: '1', onClick: this.onButtonClick(1)},
+      {label: '2', onClick: this.onButtonClick(2)},
+      {label: '3', onClick: this.onButtonClick(3)}
+    ];
+    let hexButtons = [
+      {label: '4', onClick: this.onButtonClick(4)},
+      {label: '8', onClick: this.onButtonClick(8)}
+    ];
 
     if (this.props.base === 2) {
       if (this.props.bitsPerComponent === 1) {
@@ -35,11 +43,7 @@ class BitsPerComponentControl extends Component {
       return (
         <div className='BitsPerComponentControl__container'>
           <label className='BitsPerComponentControl__label'>Bits Per Component</label>
-          <ButtonGroupMenu buttons={binaryButtons}>
-            {/* <Button className={button1classes} onClick={this.handleClick} color={Colors.SECONDARY}>1</Button>
-            <Button className={button2classes} onClick={this.handleClick} color={Colors.SECONDARY}>2</Button>
-            <Button className={button3classes} onClick={this.handleClick} color={Colors.SECONDARY}>3</Button> */}
-          </ButtonGroupMenu>
+          <ButtonGroupMenu buttons={binaryButtons} />
         </div>
       );
     }

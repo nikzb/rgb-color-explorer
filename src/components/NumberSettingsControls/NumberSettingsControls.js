@@ -8,8 +8,8 @@ class NumberSettingsControls extends Component {
   render() {
     return (
       <div className='NumberSettingsControls__container'>
-        <NumberSystemControl base={2}/>
-        <BitsPerComponentControl base={2} bitsPerComponent={1}/>
+        <NumberSystemControl base={this.props.colorCode.base} onColorChange={this.props.onColorChange}/>
+        <BitsPerComponentControl base={this.props.colorCode.base} bitsPerComponent={this.props.colorCode.bits / 3} onColorChange={this.props.onColorChange}/>
       </div>
     );
   }

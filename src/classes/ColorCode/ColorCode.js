@@ -2,7 +2,6 @@ import _ from 'lodash';
 
 class ColorCode {
   constructor({bits=24, base=16, red=0, green=0, blue=0, code}) {
-
     const correctCompValue = (compValue) => {
       const maxCompValue = this.getMaxComponentValue();
       if (compValue < 0) {
@@ -68,10 +67,14 @@ class ColorCode {
       }
       return hexString;
     } else if (this.base === 2) {
+      console.log(`value${this.getComponent(comp)}`);
       let binaryString = this.getComponent(comp).toString(2);
+      console.log(binaryString);
       while (binaryString.length < this.getBitsPerComponent()) {
         binaryString = "0" + binaryString;
       }
+      console.log(comp);
+      console.log(binaryString);
       return binaryString;
     }
   }

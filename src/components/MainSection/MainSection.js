@@ -25,7 +25,7 @@ class MainSection extends Component {
     this.updateColor = this.updateColor.bind(this);
   }
 
-  updateColor({newCode, comp, newValue, newBase, newBits}) {
+  updateColor({newCode, comp, newValue, newBase, newBitsPerComponent}) {
     const oldCode = this.state.colorCode;
 
     // If a code is include in the parameter object, use the code to update the color
@@ -76,9 +76,60 @@ class MainSection extends Component {
         });
       }
     } else if (newBase) {
-      // convert to new base
-    } else if (newBits) {
+      // Convert to new base. This assumes that it will only be run if the base is actually changing
+      if (newBase === 16) {
+        const newBitsPerComp = 4;
+        const factor = Math.pow(2, newBitsPerComp - oldCode.getBitsPerComponent());
+        this.setState({
+          colorCode: new ColorCode({
+            base: newBase,
+            bits: newBitsPerComp * 3,
+            red: oldCode.getComponent('R') * factor,
+            green: oldCode.getComponent('G') * factor,
+            blue: oldCode.getComponent('B') * factor
+          })
+        });
+      } else {
+        const newBitsPerComp = 3;
+        const factor = Math.pow(2, oldCode.getBitsPerComponent() - newBitsPerComp);
+        console.log(factor);
+        console.log(oldCode);
+        this.setState({
+          colorCode: new ColorCode({
+            base: newBase,
+            bits: newBitsPerComp * 3,
+            red: Math.round(oldCode.getComponent('R') / factor),
+            green: Math.round(oldCode.getComponent('G') / factor),
+            blue: Math.round(oldCode.getComponent('B') / factor)
+          })
+        });
+        console.log(this.state.colorCode);
+      }
+    } else if (newBitsPerComponent) {
       // convert to new number of bits (keeping same base)
+      if (newBitsPerComponent > oldCode.getBitsPerComponent()) {
+        const factor = Math.pow(2, newBitsPerComponent - oldCode.getBitsPerComponent());
+        this.setState({
+          colorCode: new ColorCode({
+            base: oldCode.getBase(),
+            bits: newBitsPerComponent * 3,
+            red: oldCode.getComponent('R') * factor,
+            green: oldCode.getComponent('G') * factor,
+            blue: oldCode.getComponent('B') * factor
+          })
+        });
+      } else {
+        const factor = Math.pow(2, oldCode.getBitsPerComponent() - newBitsPerComponent);
+        this.setState({
+          colorCode: new ColorCode({
+            base: oldCode.getBase(),
+            bits: newBitsPerComponent * 3,
+            red: Math.round(oldCode.getComponent('R') / factor),
+            green: Math.round(oldCode.getComponent('G') / factor),
+            blue: Math.round(oldCode.getComponent('B') / factor)
+          })
+        });
+      }
     }
   }
 
