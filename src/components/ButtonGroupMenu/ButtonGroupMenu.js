@@ -6,7 +6,7 @@ class ButtonGroupMenu extends Component {
   render() {
     const buttons = this.props.buttons;
     const buttonList = buttons.map((button) => {
-      return <button key={button.label} className={`button ${button.classes}`}>{button.label}</button>
+      return <button key={button.label} className={`button ${button.classes}`} onClick={button.onClick}>{button.label}</button>
     });
     let buttonGroupMenuClasses = 'ButtonGroupMenu';
     if (this.props.size) {
