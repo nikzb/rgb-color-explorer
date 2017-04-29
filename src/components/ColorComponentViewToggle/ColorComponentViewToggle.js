@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Colors, Button, Sizes} from 'react-foundation';
 
 import './ColorComponentViewToggle.css';
 
 class ColorComponentViewToggle extends Component {
   render() {
+    const message = this.props.showColorComponents ? 'Hide' : 'Show';
+    console.log(message);
     return (
-      <div>
-        <Button className='ColorComponentViewToggle__button' isHollow color={Colors.SECONDARY} size={Sizes.SMALL}>Hide Color Components</Button>
+      <div className='ColorComponentViewToggle'>
+        <button className='button' onClick={this.props.onClick}>{message} Color Components</button>
       </div>
     );
   }

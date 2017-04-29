@@ -1,3 +1,26 @@
-.ColorComponentViewToggle__button {
-  margin: 0;
+$button-radius: .5rem;
+$button-color: grey;
+
+.ColorComponentViewToggle {
+  .button {
+    background: transparent;
+    color: $button-color;
+    border-radius: $button-radius;
+    border: 1px solid $button-color;
+    margin: 0;
+    padding: .6rem;
+    width: 12.5rem;
+
+    &:hover, &:focus {
+      background: #eee;
+      color: $button-color;
+      outline: 0;
+    }
+
+    &:active {
+      background: #ccc;
+      color: $button-color;
+      outline: 0;
+    }
+  }
 }

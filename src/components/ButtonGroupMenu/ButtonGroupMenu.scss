@@ -65,10 +65,5 @@ $button-group-menu-margin-bottom: 0; // $global-margin;
       color: $button-group-menu-color;
       outline: 0;
     }
-
-    &.is-active {
-      background: $button-group-menu-color;
-      color: white;
-    }
   }
 }

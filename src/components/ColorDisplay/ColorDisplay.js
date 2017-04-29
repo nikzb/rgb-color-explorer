@@ -10,12 +10,20 @@ class ColorDisplay extends Component {
     this.state = {
       showColorComponents: true
     }
+    this.toggleShowColorComponents = this.toggleShowColorComponents.bind(this);
   }
+
+  toggleShowColorComponents() {
+    this.setState({
+      showColorComponents: !this.state.showColorComponents
+    });
+  }
+
   render() {
     return (
       <div className='ColorDisplay__container'>
-        <ColorViz colorCode={this.props.colorCode}/>
-        <ColorComponentViewToggle />
+        <ColorViz colorCode={this.props.colorCode} showColorComponents={this.state.showColorComponents}/>
+        <ColorComponentViewToggle showColorComponents={this.state.showColorComponents} onClick={this.toggleShowColorComponents}/>
       </div>
     );
   }
