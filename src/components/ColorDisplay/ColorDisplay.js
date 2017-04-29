@@ -14,7 +14,7 @@ class ColorDisplay extends Component {
   render() {
     return (
       <div className='ColorDisplay__container'>
-        <ColorViz />
+        <ColorViz colorCode={this.props.colorCode}/>
         <ColorComponentViewToggle />
       </div>
     );
