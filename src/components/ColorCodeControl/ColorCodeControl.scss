@@ -1,9 +1,15 @@
-.ColorCodeControl__label {
-  font-size: 1rem;
-}
+.ColorCodeControl__container {
 
-.ColorCodeControl__input {
-  max-width: 10rem;
-  text-align: center;
-  margin: .5rem;
+  .ColorCodeControl__label {
+    font-size: 1.2rem;
+    color: grey;
+  }
+
+  .ColorCodeControl__input {
+    max-width: 10rem;
+    text-align: center;
+    margin: 0;
+    font-size: 1.4rem;
+    color: #555;
+  }
 }
