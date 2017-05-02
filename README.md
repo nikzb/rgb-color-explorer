@@ -11,6 +11,7 @@ To do:
   * In terms of readability - put spaces between 3 component parts or split into three UI elements and color code by RGB
   * Have the code display do validation on code it receives and turn red when it is invalid based on number system / bits per component
 * Add event for + - buttons so you can hold the mouse click down on them and they will continue to fire
+* Make Red, Green, Blue labels into buttons that you can click to toggle those colors out completely (and then back on)?
 
 * Responsive css for various screen sizes
 
