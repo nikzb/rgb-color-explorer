@@ -13,6 +13,7 @@ class ColorCodeButtonPanel extends Component {
       const getClickHandler = (buttonLabel) => {
         return () => {
           const newCode = this.props.colorCode.getCode() + buttonLabel;
+          console.log(newCode);
           this.props.onColorChange({
             newCode,
             base: this.props.colorCode.getBase(),

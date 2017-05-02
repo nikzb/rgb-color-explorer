@@ -14,13 +14,16 @@ class ColorControls extends Component {
     this.state = {
       mode: 'codeEdit'
     }
+    // this.setModeFunctions = this.setModeFunctions.bind(this);
+    this.setToCodeEditMode = this.setToCodeEditMode.bind(this);
+    this.setToSliderMode = this.setToSliderMode.bind(this);
   }
 
   // In code edit mode, buttons are shown with the number system symbols
   setToCodeEditMode() {
     this.setState({
       mode: 'codeEdit'
-    })
+    });
   }
 
   // In slider mode, a slider is shown for each of the three color components
@@ -30,18 +33,25 @@ class ColorControls extends Component {
     });
   }
 
+  setModeFunctions() {
+    return {
+      setToCodeEditMode: this.setToCodeEditMode,
+      setToSliderMode: this.setToSliderMode
+    }
+  }
+
   getControlPanel() {
     if (this.state.mode === 'slider') {
       return <ColorComponentsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} />;
     } else if (this.state.mode === 'codeEdit') {
-      return <ColorCodeButtonPanel base={this.props.colorCode.getBase()} onColorChange={this.props.onColorChange}/>;
+      return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>;
     }
   }
 
   render() {
     return (
       <div className="ColorControls__container">
-        <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>
+        <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} onFocusChange={this.setModeFunctions()}/>
         {this.getControlPanel()}
         <NumberSettingsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>
       </div>
