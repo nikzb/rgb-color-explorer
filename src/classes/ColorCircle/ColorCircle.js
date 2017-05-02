@@ -17,10 +17,15 @@ class ColorCircle {
     this.context.beginPath();
     this.context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
     this.context.fillStyle = this.getRGBString();
-    //ctx.strokeStyle = this.getRGBString();
 
     this.context.fill();
-    //ctx.stroke();
+
+    // If the circle is white, add a black border
+    if (this.colorCode.getHexCode() === '#FFFFFF') {
+      this.context.strokeStyle = 'rgb(0,0,0)';
+      this.context.stroke();
+    }
+
   };
 
   // Return the RGB String of the color of this circle

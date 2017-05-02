@@ -12,7 +12,7 @@ class ColorControls extends Component {
     super(props);
     // Two possible states: codeEdit and slider
     this.state = {
-      mode: 'codeEdit'
+      mode: 'slider'
     }
     // this.setModeFunctions = this.setModeFunctions.bind(this);
     this.setToCodeEditMode = this.setToCodeEditMode.bind(this);
