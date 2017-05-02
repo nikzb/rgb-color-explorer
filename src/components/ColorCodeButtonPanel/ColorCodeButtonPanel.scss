@@ -1,7 +1,6 @@
 $global-margin: 1rem;
 $button-panel-radius: .5rem;//rem-calc(10);
 $button-panel-color: grey; //$secondary-color;
-$button-panel-margin-bottom: 0; // $global-margin;
 
 // .ColorCodeButtonPanel {
 //   display: flex;
@@ -48,7 +47,7 @@ $button-panel-margin-bottom: 0; // $global-margin;
   border: 1px solid $button-panel-color;
   border-radius: $button-panel-radius;
   overflow: hidden;
-  margin-bottom: $button-panel-margin-bottom;
+  margin: 1rem 0 .5rem 0;
   // margin: 0;
 
   &__top-row {

@@ -65,7 +65,6 @@ class ColorViz extends Component {
     const vizCanvas = ReactDOM.findDOMNode(this.refs.vizCanvas);
     const context = vizCanvas.getContext('2d');
 
-    // console.log("updating viz " + this.state.percentFromCenter);
     const circleGroup = new ColorCircleGroup({
       colorCode: this.props.colorCode,
       x: 0,
@@ -89,9 +88,6 @@ class ColorViz extends Component {
     this.drawCircleGroup();
 
     const percentFromCenterBeforeUpdate = this.state.percentFromCenter;
-
-    console.log('transition: ' + this.state.transition);
-    console.log('progress: ' + this.state.transitionProgress);
 
     this.setState({
       percentFromCenter: this.state.percentFromCenter + this.transitionFunction(this.state.transitionProgress),
@@ -137,7 +133,6 @@ class ColorViz extends Component {
     // 2) Check for transition from not showing components to showing
     // 3) If neither, then just show draw in current position
     if (this.state.wasShowingComponents && !this.props.showColorComponents) {
-      // console.log('updating state first time');
       this.setState({
         percentFromCenter: this.state.percentFromCenter - PERCENT_CHANGE,
         transition: 'join',
@@ -176,7 +171,11 @@ class ColorViz extends Component {
   }
 
   componentDidUpdate() {
-    this.updateCanvas();
+    console.log('clicked');
+    if (this.state.transition === 'none') {
+      console.log('calling update canvas');
+      this.updateCanvas();
+    }
   }
 
   render() {

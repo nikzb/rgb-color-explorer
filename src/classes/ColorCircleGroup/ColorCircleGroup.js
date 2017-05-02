@@ -13,7 +13,6 @@ class ColorCircleGroup {
     this.circles = [];
     this.percentFromCenter = percentFromCenter;
 
-    console.log('from center ' + this.percentFromCenter);
     if (Math.abs(this.percentFromCenter) < 0.01) {
       this.circles.push(new ColorCircle({
         x: 0,
