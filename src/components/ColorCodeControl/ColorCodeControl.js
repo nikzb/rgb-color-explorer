@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 // import ColorCode from '../../classes/ColorCode/ColorCode';
 
 import './ColorCodeControl.css';
@@ -12,12 +13,41 @@ class ColorCodeControl extends Component {
   }
 
   handleChange(e) {
+    const colorCode = this.props.colorCode;
+    
     let codeToUse;
-    if (this.props.colorCode.getBase() === 2) {
+    if (colorCode.getBase() === 2) {
       codeToUse = e.target.value;
+      if (codeToUse.length > colorCode.getBits()) {
+        codeToUse = codeToUse.slice(0, colorCode.getBits());
+      }
+
+      const validBinarySymbols = ['0', '1'];
+      // Clean out bad characters and digits
+      let cleanCode = '';
+      for (let i = 0; i < codeToUse.length; i += 1) {
+        if (_.includes(validBinarySymbols, codeToUse.charAt(i))) {
+          cleanCode += codeToUse.charAt(i);
+        }
+      }
+      codeToUse = cleanCode;
     } else if (this.props.colorCode.getBase() === 16) {
       codeToUse = e.target.value.slice(1, e.target.value.length);
+      if (codeToUse.length > colorCode.getBits() / 4) {
+        codeToUse = codeToUse.slice(0, colorCode.getBits() / 4);
+      }
+      const validHexSymbols = ['0', '1', '2', '3', '4', '5', '6', '7',
+                                  '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+      // Clean out bad characters and digits
+      let cleanCode = '';
+      for (let i = 0; i < codeToUse.length; i += 1) {
+        if (_.includes(validHexSymbols, codeToUse.charAt(i))) {
+          cleanCode += codeToUse.charAt(i);
+        }
+      }
+      codeToUse = cleanCode;
     }
+
     this.props.onColorChange({
       newCode: codeToUse,
       base: this.props.colorCode.base,
