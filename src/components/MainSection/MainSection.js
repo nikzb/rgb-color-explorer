@@ -50,7 +50,7 @@ class MainSection extends Component {
     };
 
     // If a code is include in the parameter object, use the code to update the color
-    if (newCode) {
+    if (newCode || newCode === '') {
       // let baseUsedInCode;
       // if (newCode.charAt(0) === '#') {
       //   baseUsedInCode = 16;

@@ -17,7 +17,7 @@ class ColorCode {
     if (!_.includes(validNumbersOfBits, bits)) {
       throw Error('Invalid number of bits used to create ColorCode');
     }
-    if (code) {
+    if (code || code === '') {
       let fullCodeLength;
       if (base === 2) {
         this.base = 2;
