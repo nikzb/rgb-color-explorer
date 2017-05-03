@@ -107,7 +107,7 @@ class MainSection extends Component {
       } else {
         convertToNewNumberOfBits({
           base: newBase,
-          newBitsPerComp: 3
+          newBitsPerComp: 2
         });
       }
     } else if (newBitsPerComponent) {

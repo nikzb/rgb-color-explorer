@@ -19,7 +19,6 @@ class BitsPerComponentControl extends Component {
     let binaryButtons = [
       {label: '1', onClick: this.onButtonClick(1)},
       {label: '2', onClick: this.onButtonClick(2)},
-      {label: '3', onClick: this.onButtonClick(3)}
     ];
     let hexButtons = [
       {label: '4', onClick: this.onButtonClick(4)},
@@ -30,16 +29,10 @@ class BitsPerComponentControl extends Component {
       if (this.props.bitsPerComponent === 1) {
         binaryButtons[0].classes = 'BitsPerComponentControl__button-3 is-active';
         binaryButtons[1].classes = 'BitsPerComponentControl__button-3';
-        binaryButtons[2].classes = 'BitsPerComponentControl__button-3';
       } else if (this.props.bitsPerComponent === 2) {
         binaryButtons[0].classess = 'BitsPerComponentControl__button-3';
         binaryButtons[1].classes = 'BitsPerComponentControl__button-3 is-active';
-        binaryButtons[2].classes = 'BitsPerComponentControl__button-3';
-      } else { // assuming (this.props.bitsPerComponent === 3)
-        binaryButtons[0].classes = 'BitsPerComponentControl__button-3';
-        binaryButtons[1].classes = 'BitsPerComponentControl__button-3';
-        binaryButtons[2].classes = 'BitsPerComponentControl__button-3 is-active';
-      }
+      } 
       return (
         <div className='BitsPerComponentControl__container'>
           <label className='BitsPerComponentControl__label'>Bits Per Component</label>

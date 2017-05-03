@@ -13,7 +13,7 @@ class ColorCode {
       }
     }
 
-    const validNumbersOfBits = [3, 6, 9, 12, 24];
+    const validNumbersOfBits = [3, 6, 12, 24]; 
     if (!_.includes(validNumbersOfBits, bits)) {
       throw Error('Invalid number of bits used to create ColorCode');
     }
