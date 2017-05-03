@@ -4,12 +4,12 @@
 
 To do:
 * Try removing the Hide / Show color components button and just clicking on the circle group instead - will save tons of space
-* Decide what to do about code box - ideas below
-  * no editing
-  * when you edit, it stays in current number of bits and does validation
-  * when you edit, it will try to make it work based on number of bits / symbols (for example, if you had 2 bits per and deleted 3 of the 6 bits, it would automatically switch to 1 bit per?)
-  * In terms of readability - put spaces between 3 component parts or split into three UI elements and color code by RGB
-  * Have the code display do validation on code it receives and turn red when it is invalid based on number system / bits per component
+* Complete text input functionality
+  * when you edit, it stays in current base and number of bits and does validation
+  * invalid characters are ignored, as are extra characters
+    * bug- if you move the cursor back and start typing, weird things happen.
+    * but - when you try to delete all the symbols, the first one can't be deleted - maybe because it would make string code of length 0?
+  * In terms of readability - put spaces between 3 component parts or split into three UI elements and color code by RGB??
 * Add event for + - buttons so you can hold the mouse click down on them and they will continue to fire
 * Make Red, Green, Blue labels into buttons that you can click to toggle those colors out completely (and then back on)?
 
