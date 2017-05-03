@@ -14,7 +14,7 @@ class ColorCodeControl extends Component {
 
   handleChange(e) {
     const colorCode = this.props.colorCode;
-    
+
     let codeToUse;
     if (colorCode.getBase() === 2) {
       codeToUse = e.target.value;

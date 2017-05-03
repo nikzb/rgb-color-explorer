@@ -7,8 +7,9 @@ To do:
 * Complete text input functionality
   * when you edit, it stays in current base and number of bits and does validation
   * invalid characters are ignored, as are extra characters
-    * bug- if you move the cursor back and start typing, weird things happen.
-    * but - when you try to delete all the symbols, the first one can't be deleted - maybe because it would make string code of length 0?
+    * bug- if you move the cursor back and start typing, if the input is already "full", it inserts one char then jumps to the end.
+    * bug - when you try to delete all the symbols, the first one can't be deleted - maybe because it would make string code of length 0?
+  * Make the button panel buttons work
   * In terms of readability - put spaces between 3 component parts or split into three UI elements and color code by RGB??
 * Add event for + - buttons so you can hold the mouse click down on them and they will continue to fire
 * Make Red, Green, Blue labels into buttons that you can click to toggle those colors out completely (and then back on)?
