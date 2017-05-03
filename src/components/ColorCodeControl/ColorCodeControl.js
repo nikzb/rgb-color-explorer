@@ -12,8 +12,16 @@ class ColorCodeControl extends Component {
   }
 
   handleChange(e) {
+    let codeToUse;
+    if (this.props.colorCode.getBase() === 2) {
+      codeToUse = e.target.value;
+    } else if (this.props.colorCode.getBase() === 16) {
+      codeToUse = e.target.value.slice(1, e.target.value.length);
+    }
     this.props.onColorChange({
-      newCode: e.target.value
+      newCode: codeToUse,
+      base: this.props.colorCode.base,
+      bits: this.props.colorCode.bits
     });
   }
 

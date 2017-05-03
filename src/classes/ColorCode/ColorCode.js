@@ -18,18 +18,38 @@ class ColorCode {
       throw Error('Invalid number of bits used to create ColorCode');
     }
     if (code) {
-      const cLen = code.length;
+      let fullCodeLength;
       if (base === 2) {
         this.base = 2;
-        this.bits = code.length;
+        this.bits = bits;
+        fullCodeLength = bits;
       }
       else if (base === 16) {
         this.base = 16;
-        this.bits = code.length * 4;
+        this.bits = bits;
+        fullCodeLength = bits / 4;
       }
-      this.red = parseInt(code.substring(0, cLen / 3), base);
-      this.green = parseInt(code.substring(cLen / 3, 2 * cLen / 3), base);
-      this.blue = parseInt(code.substring(2 * cLen / 3), base);
+
+      let codeToUse;
+
+      if (code.length < fullCodeLength) {
+        this.isPartial = true;
+        this.partial = code;
+        codeToUse = code.slice(0, code.length);
+        console.log('codeToUse after slice ' + codeToUse);
+        console.log(fullCodeLength);
+        while (codeToUse.length < fullCodeLength) {
+          codeToUse += '0';
+        }
+        console.log('partial code ' + codeToUse);
+      }
+      else {
+        this.isPartial = false;
+        codeToUse = code;
+      }
+      this.red = parseInt(codeToUse.substring(0, fullCodeLength / 3), base);
+      this.green = parseInt(codeToUse.substring(fullCodeLength / 3, 2 * fullCodeLength / 3), base);
+      this.blue = parseInt(codeToUse.substring(2 * fullCodeLength / 3), base);
     }
     else {
       this.bits = bits;
@@ -67,14 +87,14 @@ class ColorCode {
       }
       return hexString;
     } else if (this.base === 2) {
-      console.log(`value${this.getComponent(comp)}`);
+      // console.log(`value${this.getComponent(comp)}`);
       let binaryString = this.getComponent(comp).toString(2);
-      console.log(binaryString);
+      // console.log(binaryString);
       while (binaryString.length < this.getBitsPerComponent()) {
         binaryString = "0" + binaryString;
       }
-      console.log(comp);
-      console.log(binaryString);
+      // console.log(comp);
+      // console.log(binaryString);
       return binaryString;
     }
   }
@@ -95,8 +115,16 @@ class ColorCode {
 
   // Get the full color code (all three parts combined) as a String
   getCode() {
+    if (this.isPartial) {
+      return this.partial;
+    }
     return "" + this.getComponentAsString("R") + this.getComponentAsString("G") + this.getComponentAsString("B");
   }
+
+  // // Get the partial color code (whatever is stored in partial) as a String
+  // getPartial() {
+  //   return this.partial;
+  // }
 
   // Get a String with the 0-255 components in the format "rgb(r, g, b)"
   getRGB256String() {
