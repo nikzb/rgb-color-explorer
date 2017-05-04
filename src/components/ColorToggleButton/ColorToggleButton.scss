@@ -1,0 +1,40 @@
+$button-radius: .5rem;
+
+.button.ColorToggleButton {
+  width: 4.4rem;
+  height: 1.8rem;
+  // margin: .1rem .7rem;
+  margin: .1rem .2rem;
+  border-radius: $button-radius;
+  background-color: white;
+
+  background: transparent;
+  flex: 1 0 0;
+  font-size: 1.1rem;
+  padding: .25rem;
+
+  &:hover, &:focus {
+    background: #eee;
+    outline: 0;
+  }
+
+  &:active {
+    background: #ccc;
+  }
+
+  &--red, &--red:hover, &--red:focus {
+    color: red;
+  }
+
+  &--green, &--green:hover, &--green:focus {
+    color: green;
+  }
+
+  &--blue, &--blue:hover, &--blue:focus {
+    color: blue;
+  }
+
+  &--toggled-off {
+    text-decoration: line-through;
+  }
+}
