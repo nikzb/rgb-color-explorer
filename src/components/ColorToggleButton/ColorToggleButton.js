@@ -6,7 +6,6 @@ class ColorToggleButton extends Component {
 
   render() {
     let classNames = `button ColorToggleButton ColorToggleButton--${this.props.colorComp.toLowerCase()}`;
-    console.log(classNames);
 
     if (this.props.toggledOff) {
       classNames += ' ColorToggleButton--toggled-off';

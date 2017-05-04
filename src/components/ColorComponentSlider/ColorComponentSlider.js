@@ -78,7 +78,6 @@ class ColorComponentSlider extends Component {
 
     return (
       <div className={containerClassNames}>
-        {/* <label className={labelClassNames}>{this.props.colorComp}</label> */}
         <ColorToggleButton onClick={this.handleToggle} colorComp={this.props.colorComp} toggledOff={this.state.toggledOff}/>
         <input className='ColorComponentSlider__slider' type='range' min={0} max={this.props.max} value={this.props.intensity} step={1} onChange={this.handleChange}/>
         <UpDownControl onClick={this.updateColor(this.props.colorComp.charAt(0), this.props.intensity)}/>
