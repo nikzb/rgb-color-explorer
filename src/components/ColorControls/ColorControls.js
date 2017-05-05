@@ -24,7 +24,17 @@ class ColorControls extends Component {
     this.setSliceOfInputToReplace = this.setSliceOfInputToReplace.bind(this);
   }
 
-  setSliceOfInputToReplace(startIndex, endIndex) {
+  componentWillUpdate(nextProps, nextState) {
+    // console.log('next state in componentWillUpdate: ');
+    // console.log(nextState);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // console.log('prev state in componentDidUpdate: ');
+    // console.log(prevState);
+  }
+
+  setSliceOfInputToReplace({startIndex, endIndex}) {
     this.setState({
       sliceOfInputToReplace: {
         startIndex,
@@ -54,14 +64,21 @@ class ColorControls extends Component {
     }
   }
 
+  onColorChangeForButtonPanel(input) {
+    this.props.onColorChange(input);
+
+    // put focus back on input with the cursor in the right place
+    
+  }
+
   getControlPanel() {
     const activeElement = document.activeElement;
-
-    console.log(activeElement);
+    console.log('in get control panel: ');
+    console.log(this.state.sliceOfInputToReplace);
 
     if (activeElement.className.includes('ColorCodeControl__input') ||
         activeElement.className.includes('ColorCodeButtonPanel__button')) {
-      return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} sliceOfInputToReplace={this.state.sliceOfInputToReplace}/>;
+      return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.onColorChangeForButtonPanel} sliceOfInputToReplace={this.state.sliceOfInputToReplace}/>;
     } else {
       return <ColorComponentsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} />;
     }
@@ -77,6 +94,7 @@ class ColorControls extends Component {
     return (
       <div className="ColorControls__container">
         <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} setSliceValues={this.setSliceOfInputToReplace} onFocusChange={this.setModeFunctions()}/>
+        {/* <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} codeInputRef={el => this.codeInputElement = el} onFocusChange={this.setModeFunctions()}/> */}
         {this.getControlPanel()}
         <NumberSettingsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>
       </div>

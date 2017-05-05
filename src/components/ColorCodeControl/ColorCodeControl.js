@@ -75,7 +75,9 @@ class ColorCodeControl extends Component {
   }
 
   handleOnBlur() {
-    // console.log('end' + this.textInput.selectionEnd);
+    console.log('end ' + this.textInput.selectionEnd);
+    console.log('active element in handleOnBlur ');
+    console.log(document.activeElement);
     this.props.setSliceValues({
       startIndex: this.textInput.selectionStart,
       endIndex: this.textInput.selectionEnd
@@ -97,6 +99,7 @@ class ColorCodeControl extends Component {
       <div className='ColorCodeControl__container'>
         <label className='ColorCodeControl__label'>RGB Color Code</label>
         <input className='ColorCodeControl__input' type='text' ref={(input) => { this.textInput = input; }} value={this.getCode()} onChange={this.handleChange} onFocus={this.handleOnFocus} onBlur={this.handleOnBlur}/>
+        {/* <input className='ColorCodeControl__input' type='text' ref={(input) => { this.textInput = input; }} value={this.getCode()} onChange={this.handleChange} onFocus={this.handleOnFocus} /> */}
       </div>
     );
   }

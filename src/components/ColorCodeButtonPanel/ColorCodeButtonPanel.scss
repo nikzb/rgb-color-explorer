@@ -61,6 +61,11 @@ $button-panel-color: grey; //$secondary-color;
     flex: 1;
   }
 
+  &__single-row {
+    display: flex;
+    flex: 1;
+  }
+
   .button {
     background: transparent;
     color: $button-panel-color;

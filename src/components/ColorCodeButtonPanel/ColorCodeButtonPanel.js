@@ -12,20 +12,36 @@ class ColorCodeButtonPanel extends Component {
     return labels.map((buttonLabel) => {
       const getClickHandler = (buttonLabel) => {
         return () => {
+          debugger;
           const colorCode = this.props.colorCode;
+          console.log(colorCode.getCode());
+          console.log(this.props.sliceOfInputToReplace);
 
-          // if the code input box is full, do nothing
+          let before;
+          let after;
+
+
           if (colorCode.getBase() === 2) {
+            // Figure out the piece of the code that is being kept before and after the new symbol that will be added
+
+
+            // if the code input box is full, do nothing
             if (colorCode.getBits() === colorCode.getCode().length) {
               return;
             }
           } else if (colorCode.getBase() === 16) {
-            if (colorCode.getBits() / 4 === colorCode.getCode().length) {
+            // Figure out the piece of the code that is being kept before and after the new symbol that will be added
+            before = colorCode.getCode().slice(1, this.props.sliceOfInputToReplace.startIndex);
+            after = colorCode.getCode().slice(this.props.sliceOfInputToReplace.endIndex + 1, colorCode.getCode().length);
+            const totalSymbols = before.length + after.length;
+
+            // if the code input box is full, do nothing
+            if (colorCode.getBits() / 4 === totalSymbols) {
               return;
             }
           }
           console.log('before' + colorCode.getCode());
-          const newCode = colorCode.getCode() + buttonLabel;
+          const newCode = before + buttonLabel + after;
           console.log('after' + newCode);
           this.props.onColorChange({
             newCode,
@@ -34,7 +50,7 @@ class ColorCodeButtonPanel extends Component {
           });
         };
       }
-      return <button key={buttonLabel} className={'button ColorCodeButtonPanel__button'} onClick={getClickHandler(buttonLabel)}>{buttonLabel}</button>
+      return <button key={buttonLabel} className={'button ColorCodeButtonPanel__button'} onMouseDown={getClickHandler(buttonLabel)}>{buttonLabel}</button>
     });
   }
 
