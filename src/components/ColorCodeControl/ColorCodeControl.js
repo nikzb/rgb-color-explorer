@@ -31,7 +31,7 @@ class ColorCodeControl extends Component {
         }
       }
       codeToUse = cleanCode;
-    } else if (this.props.colorCode.getBase() === 16) {
+    } else if (colorCode.getBase() === 16) {
       codeToUse = e.target.value.slice(1, e.target.value.length);
       if (codeToUse.length > colorCode.getBits() / 4) {
         codeToUse = codeToUse.slice(0, colorCode.getBits() / 4);
@@ -56,9 +56,7 @@ class ColorCodeControl extends Component {
   }
 
   handleOnFocus() {
-    console.log('input focus');
     const colorCode = this.props.colorCode;
-    // console.log(this.props.onFocusChange);
     this.props.onFocusChange.setToCodeEditMode();
 
     // Select the code so that the user can type or use button panel to replace it
@@ -73,11 +71,15 @@ class ColorCodeControl extends Component {
       endIndex = colorCode.getCode().length + 1;
     }
     this.textInput.setSelectionRange(startIndex, endIndex);
+
   }
 
   handleOnBlur() {
-    console.log('input lost focus');
-    this.props.onFocusChange.setToSliderMode();
+    // console.log('end' + this.textInput.selectionEnd);
+    this.props.setSliceValues({
+      startIndex: this.textInput.selectionStart,
+      endIndex: this.textInput.selectionEnd
+    })
   }
 
   getCode() {

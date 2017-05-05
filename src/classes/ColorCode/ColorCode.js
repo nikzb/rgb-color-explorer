@@ -13,7 +13,7 @@ class ColorCode {
       }
     }
 
-    const validNumbersOfBits = [3, 6, 12, 24]; 
+    const validNumbersOfBits = [3, 6, 12, 24];
     if (!_.includes(validNumbersOfBits, bits)) {
       throw Error('Invalid number of bits used to create ColorCode');
     }
@@ -36,12 +36,9 @@ class ColorCode {
         this.isPartial = true;
         this.partial = code;
         codeToUse = code.slice(0, code.length);
-        console.log('codeToUse after slice ' + codeToUse);
-        console.log(fullCodeLength);
         while (codeToUse.length < fullCodeLength) {
           codeToUse += '0';
         }
-        console.log('partial code ' + codeToUse);
       }
       else {
         this.isPartial = false;
