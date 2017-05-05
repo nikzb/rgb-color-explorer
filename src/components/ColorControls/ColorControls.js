@@ -22,6 +22,9 @@ class ColorControls extends Component {
     this.setToCodeEditMode = this.setToCodeEditMode.bind(this);
     this.setToSliderMode = this.setToSliderMode.bind(this);
     this.setSliceOfInputToReplace = this.setSliceOfInputToReplace.bind(this);
+    this.handleOnFocusOnTextInput = this.handleOnFocusOnTextInput.bind(this);
+    this.handleOnBlurOnTextInput = this.handleOnBlurOnTextInput.bind(this);
+    this.onColorChangeForButtonPanel = this.onColorChangeForButtonPanel.bind(this);
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -68,7 +71,42 @@ class ColorControls extends Component {
     this.props.onColorChange(input);
 
     // put focus back on input with the cursor in the right place
-    
+    this.putFocusOnTextInput(this.state.sliceOfInputToReplace.startIndex + 1);
+
+  }
+
+  handleOnFocusOnTextInput() {
+    const colorCode = this.props.colorCode;
+    this.setToCodeEditMode();
+
+    // Select the code so that the user can type or use button panel to replace it
+    // For hex, start at index 1 so that you leave the # symbol in place
+    let startIndex;
+    let endIndex;
+    if (colorCode.getBase() === 2) {
+      startIndex = 0;
+      endIndex = colorCode.getCode().length;
+    } else if (colorCode.getBase() === 16) {
+      startIndex = 1;
+      endIndex = colorCode.getCode().length + 1;
+    }
+    this.codeInputElement.setSelectionRange(startIndex, endIndex);
+  }
+
+  handleOnBlurOnTextInput() {
+    // console.log('end ' + this.textInput.selectionEnd);
+    // console.log('active element in handleOnBlur ');
+    // console.log(document.activeElement);
+    this.setSliceOfInputToReplace({
+      startIndex: this.codeInputElement.selectionStart,
+      endIndex: this.codeInputElement.selectionEnd
+    });
+  }
+
+  putFocusOnTextInput(startIndex) {
+    console.log('putting focus back on text input at index ' + startIndex);
+    this.codeInputElement.focus();
+    this.codeInputElement.setSelectionRange(startIndex, startIndex);
   }
 
   getControlPanel() {
@@ -78,7 +116,7 @@ class ColorControls extends Component {
 
     if (activeElement.className.includes('ColorCodeControl__input') ||
         activeElement.className.includes('ColorCodeButtonPanel__button')) {
-      return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.onColorChangeForButtonPanel} sliceOfInputToReplace={this.state.sliceOfInputToReplace}/>;
+      return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.onColorChangeForButtonPanel} sliceOfInputToReplace={this.state.sliceOfInputToReplace} codeInputRef={this.codeInputElement}/>;
     } else {
       return <ColorComponentsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} />;
     }
@@ -93,8 +131,8 @@ class ColorControls extends Component {
   render() {
     return (
       <div className="ColorControls__container">
-        <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} setSliceValues={this.setSliceOfInputToReplace} onFocusChange={this.setModeFunctions()}/>
-        {/* <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} codeInputRef={el => this.codeInputElement = el} onFocusChange={this.setModeFunctions()}/> */}
+        {/* <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} setSliceValues={this.setSliceOfInputToReplace} onFocusChange={this.setModeFunctions()}/> */}
+        <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} codeInputRef={el => this.codeInputElement = el} onFocusChange={this.setModeFunctions()} onFocus={this.handleOnFocusOnTextInput} onBlur={this.handleOnBlurOnTextInput}/>
         {this.getControlPanel()}
         <NumberSettingsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>
       </div>

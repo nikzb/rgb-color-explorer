@@ -8,8 +8,8 @@ class ColorCodeControl extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.handleOnFocus = this.handleOnFocus.bind(this);
-    this.handleOnBlur = this.handleOnBlur.bind(this);
+    // this.handleOnFocus = this.handleOnFocus.bind(this);
+    // this.handleOnBlur = this.handleOnBlur.bind(this);
   }
 
   handleChange(e) {
@@ -55,35 +55,6 @@ class ColorCodeControl extends Component {
     });
   }
 
-  handleOnFocus() {
-    const colorCode = this.props.colorCode;
-    this.props.onFocusChange.setToCodeEditMode();
-
-    // Select the code so that the user can type or use button panel to replace it
-    // For hex, start at index 1 so that you leave the # symbol in place
-    let startIndex;
-    let endIndex;
-    if (colorCode.getBase() === 2) {
-      startIndex = 0;
-      endIndex = colorCode.getCode().length;
-    } else if (colorCode.getBase() === 16) {
-      startIndex = 1;
-      endIndex = colorCode.getCode().length + 1;
-    }
-    this.textInput.setSelectionRange(startIndex, endIndex);
-
-  }
-
-  handleOnBlur() {
-    console.log('end ' + this.textInput.selectionEnd);
-    console.log('active element in handleOnBlur ');
-    console.log(document.activeElement);
-    this.props.setSliceValues({
-      startIndex: this.textInput.selectionStart,
-      endIndex: this.textInput.selectionEnd
-    })
-  }
-
   getCode() {
     const colorCode = this.props.colorCode;
     const codeToShow = colorCode.getCode();
@@ -94,12 +65,19 @@ class ColorCodeControl extends Component {
     }
   }
 
+  componentDidUpdate() {
+    // need to put the cursor back in the right place if using button panel or typing values in
+
+    
+  }
+
   render() {
     return (
       <div className='ColorCodeControl__container'>
         <label className='ColorCodeControl__label'>RGB Color Code</label>
-        <input className='ColorCodeControl__input' type='text' ref={(input) => { this.textInput = input; }} value={this.getCode()} onChange={this.handleChange} onFocus={this.handleOnFocus} onBlur={this.handleOnBlur}/>
-        {/* <input className='ColorCodeControl__input' type='text' ref={(input) => { this.textInput = input; }} value={this.getCode()} onChange={this.handleChange} onFocus={this.handleOnFocus} /> */}
+        {/* <input className='ColorCodeControl__input' type='text' ref={this.props.codeInputRef} value={this.getCode()} onChange={this.handleChange} onFocus={this.props.onFocus} onBlur={this.props.onBlur}/> */}
+        <input className='ColorCodeControl__input' type='text' ref={this.props.codeInputRef} value={this.getCode()} onChange={this.handleChange} onFocus={this.props.onFocus}/>
+
       </div>
     );
   }

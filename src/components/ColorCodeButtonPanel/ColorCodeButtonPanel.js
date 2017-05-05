@@ -12,18 +12,17 @@ class ColorCodeButtonPanel extends Component {
     return labels.map((buttonLabel) => {
       const getClickHandler = (buttonLabel) => {
         return () => {
-          debugger;
+          console.log('in button panel click handler');
+          console.log(this.props.codeInputRef.selectionStart);
+          console.log(this.props.codeInputRef.selectionEnd);
+
           const colorCode = this.props.colorCode;
-          console.log(colorCode.getCode());
-          console.log(this.props.sliceOfInputToReplace);
 
           let before;
           let after;
 
-
           if (colorCode.getBase() === 2) {
             // Figure out the piece of the code that is being kept before and after the new symbol that will be added
-
 
             // if the code input box is full, do nothing
             if (colorCode.getBits() === colorCode.getCode().length) {
@@ -31,8 +30,8 @@ class ColorCodeButtonPanel extends Component {
             }
           } else if (colorCode.getBase() === 16) {
             // Figure out the piece of the code that is being kept before and after the new symbol that will be added
-            before = colorCode.getCode().slice(1, this.props.sliceOfInputToReplace.startIndex);
-            after = colorCode.getCode().slice(this.props.sliceOfInputToReplace.endIndex + 1, colorCode.getCode().length);
+            before = colorCode.getCode().slice(1, this.props.codeInputRef.selectionStart);
+            after = colorCode.getCode().slice(this.props.codeInputRef.selectionEnd - 1, colorCode.getCode().length);
             const totalSymbols = before.length + after.length;
 
             // if the code input box is full, do nothing
