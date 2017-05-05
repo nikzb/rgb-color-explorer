@@ -12,72 +12,31 @@ class ColorControls extends Component {
     super(props);
     // Two possible states: codeEdit and slider
     this.state = {
-      sliceOfInputToReplace: {
-        startIndex: 0,
-        endIndex: 0
-      },
-      mode: 'slider'
+      cursorPosition: 0,
+      inCodeEditMode: false
     }
-    // this.setModeFunctions = this.setModeFunctions.bind(this);
-    this.setToCodeEditMode = this.setToCodeEditMode.bind(this);
-    this.setToSliderMode = this.setToSliderMode.bind(this);
-    this.setSliceOfInputToReplace = this.setSliceOfInputToReplace.bind(this);
     this.handleOnFocusOnTextInput = this.handleOnFocusOnTextInput.bind(this);
-    this.handleOnBlurOnTextInput = this.handleOnBlurOnTextInput.bind(this);
-    this.onColorChangeForButtonPanel = this.onColorChangeForButtonPanel.bind(this);
+    this.setCursorPosition = this.setCursorPosition.bind(this);
+    this.setCodeEditMode = this.setCodeEditMode.bind(this);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    // console.log('next state in componentWillUpdate: ');
-    // console.log(nextState);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    // console.log('prev state in componentDidUpdate: ');
-    // console.log(prevState);
-  }
-
-  setSliceOfInputToReplace({startIndex, endIndex}) {
+  setCursorPosition(cursorPosition) {
     this.setState({
-      sliceOfInputToReplace: {
-        startIndex,
-        endIndex
-      }
+      cursorPosition
     });
   }
 
-  // In code edit mode, buttons are shown with the number system symbols
-  setToCodeEditMode() {
+  setCodeEditMode(newValue) {
     this.setState({
-      mode: 'codeEdit'
+      inCodeEditMode: newValue
     });
-  }
-
-  // In slider mode, a slider is shown for each of the three color components
-  setToSliderMode() {
-    this.setState({
-      mode: 'slider'
-    });
-  }
-
-  setModeFunctions() {
-    return {
-      setToCodeEditMode: this.setToCodeEditMode,
-      setToSliderMode: this.setToSliderMode
-    }
-  }
-
-  onColorChangeForButtonPanel(input) {
-    this.props.onColorChange(input);
-
-    // put focus back on input with the cursor in the right place
-    this.putFocusOnTextInput(this.state.sliceOfInputToReplace.startIndex + 1);
-
   }
 
   handleOnFocusOnTextInput() {
+    console.log('in hanldeOnFocusOnTextInput');
     const colorCode = this.props.colorCode;
-    this.setToCodeEditMode();
+    this.setCodeEditMode(true);
 
     // Select the code so that the user can type or use button panel to replace it
     // For hex, start at index 1 so that you leave the # symbol in place
@@ -93,46 +52,51 @@ class ColorControls extends Component {
     this.codeInputElement.setSelectionRange(startIndex, endIndex);
   }
 
-  handleOnBlurOnTextInput() {
-    // console.log('end ' + this.textInput.selectionEnd);
-    // console.log('active element in handleOnBlur ');
-    // console.log(document.activeElement);
-    this.setSliceOfInputToReplace({
-      startIndex: this.codeInputElement.selectionStart,
-      endIndex: this.codeInputElement.selectionEnd
-    });
-  }
-
-  putFocusOnTextInput(startIndex) {
-    console.log('putting focus back on text input at index ' + startIndex);
-    this.codeInputElement.focus();
-    this.codeInputElement.setSelectionRange(startIndex, startIndex);
-  }
+  // putFocusOnTextInput(startIndex) {
+  //   console.log('putting focus back on text input at index ' + startIndex);
+  //   this.codeInputElement.focus();
+  //   this.codeInputElement.setSelectionRange(startIndex, startIndex);
+  // }
 
   getControlPanel() {
-    const activeElement = document.activeElement;
-    console.log('in get control panel: ');
-    console.log(this.state.sliceOfInputToReplace);
-
-    if (activeElement.className.includes('ColorCodeControl__input') ||
-        activeElement.className.includes('ColorCodeButtonPanel__button')) {
-      return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.onColorChangeForButtonPanel} sliceOfInputToReplace={this.state.sliceOfInputToReplace} codeInputRef={this.codeInputElement}/>;
+    if (this.state.inCodeEditMode) {
+      return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} setCursorPosition={this.setCursorPosition} setCodeEditMode={this.setCodeEditMode} codeInputElement={this.codeInputElement}/>;
     } else {
       return <ColorComponentsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} />;
     }
+  }
 
-    // if (this.state.mode === 'slider') {
-    //   return <ColorComponentsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} />;
-    // } else if (this.state.mode === 'codeEdit') {
-    //   return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>;
-    // }
+  handleDocumentClick(e) {
+    console.log('in handle document click');
+    if (e.target.className.includes('ColorCodeControl__input') || e.target.className.includes('ColorCodeButtonPanel__button')) {
+      if (!this.state.inCodeEditMode) {
+        console.log('setting to code edit mode');
+        this.setCodeEditMode(true);
+      }
+    }
+    else {
+      if (this.state.inCodeEditMode) {
+        this.setCodeEditMode(false);
+      }
+    }
+  }
+
+  componentDidMount() {
+	  document.addEventListener('click', this.handleDocumentClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleDocumentClick);
+  }
+
+  componentDidUpdate() {
+
   }
 
   render() {
     return (
       <div className="ColorControls__container">
-        {/* <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} setSliceValues={this.setSliceOfInputToReplace} onFocusChange={this.setModeFunctions()}/> */}
-        <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} codeInputRef={el => this.codeInputElement = el} onFocusChange={this.setModeFunctions()} onFocus={this.handleOnFocusOnTextInput} onBlur={this.handleOnBlurOnTextInput}/>
+        <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} codeInputRef={el => this.codeInputElement = el} onFocus={this.handleOnFocusOnTextInput} inCodeEditMode={this.state.inCodeEditMode} codeInputElement={this.codeInputElement} cursorPosition={this.state.cursorPosition}/>
         {this.getControlPanel()}
         <NumberSettingsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>
       </div>

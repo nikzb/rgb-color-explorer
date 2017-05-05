@@ -13,25 +13,37 @@ class ColorCodeButtonPanel extends Component {
       const getClickHandler = (buttonLabel) => {
         return () => {
           console.log('in button panel click handler');
-          console.log(this.props.codeInputRef.selectionStart);
-          console.log(this.props.codeInputRef.selectionEnd);
+          const selectionStart = this.props.codeInputElement.selectionStart;
+          const selectionEnd = this.props.codeInputElement.selectionEnd;
+
+          console.log('selection start ' + selectionStart);
+          console.log('selection end ' + selectionEnd);
 
           const colorCode = this.props.colorCode;
+
+          console.log("existing code: " + colorCode.getCode());
+          console.log("length of existing code: " + colorCode.getCode().length);
 
           let before;
           let after;
 
           if (colorCode.getBase() === 2) {
             // Figure out the piece of the code that is being kept before and after the new symbol that will be added
+            before = colorCode.getCode().slice(0, selectionStart - 1);
+            after = colorCode.getCode().slice(selectionEnd - 1, colorCode.getCode().length);
+            const totalSymbols = before.length + after.length;
 
             // if the code input box is full, do nothing
-            if (colorCode.getBits() === colorCode.getCode().length) {
+            if (colorCode.getBits() === totalSymbols) {
               return;
             }
           } else if (colorCode.getBase() === 16) {
             // Figure out the piece of the code that is being kept before and after the new symbol that will be added
-            before = colorCode.getCode().slice(1, this.props.codeInputRef.selectionStart);
-            after = colorCode.getCode().slice(this.props.codeInputRef.selectionEnd - 1, colorCode.getCode().length);
+            before = colorCode.getCode().slice(0, selectionStart - 1);
+            after = colorCode.getCode().slice(selectionEnd - 1, colorCode.getCode().length);
+
+            console.log('part before selection ' + before);
+            console.log('part after selection ' + after);
             const totalSymbols = before.length + after.length;
 
             // if the code input box is full, do nothing
@@ -39,9 +51,15 @@ class ColorCodeButtonPanel extends Component {
               return;
             }
           }
-          console.log('before' + colorCode.getCode());
+          console.log('code before modification' + colorCode.getCode());
           const newCode = before + buttonLabel + after;
-          console.log('after' + newCode);
+          console.log('code after modification' + newCode);
+
+          if (newCode.length === colorCode.getCode().length) {
+            this.props.setCodeEditMode(false);
+          }
+          this.props.setCursorPosition(this.props.codeInputElement.selectionStart);
+
           this.props.onColorChange({
             newCode,
             base: colorCode.getBase(),

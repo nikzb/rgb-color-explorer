@@ -171,9 +171,7 @@ class ColorViz extends Component {
   }
 
   componentDidUpdate() {
-    console.log('clicked');
     if (this.state.transition === 'none') {
-      console.log('calling update canvas');
       this.updateCanvas();
     }
   }

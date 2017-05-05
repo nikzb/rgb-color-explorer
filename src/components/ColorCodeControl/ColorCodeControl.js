@@ -66,16 +66,23 @@ class ColorCodeControl extends Component {
   }
 
   componentDidUpdate() {
-    // need to put the cursor back in the right place if using button panel or typing values in
+    // debugger;
+    console.log('in componentDidUpdate in ColorCodeControl');
 
-    
+    // need to put the cursor back in the right place if using button panel or typing values in
+    if (this.props.inCodeEditMode) {
+
+      const input = this.props.codeInputElement;
+      input.focus();
+      console.log('setting selection range ' + this.props.cursorPosition);
+      // input.setSelectionRange(this.props.cursorPosition);
+    }
   }
 
   render() {
     return (
       <div className='ColorCodeControl__container'>
         <label className='ColorCodeControl__label'>RGB Color Code</label>
-        {/* <input className='ColorCodeControl__input' type='text' ref={this.props.codeInputRef} value={this.getCode()} onChange={this.handleChange} onFocus={this.props.onFocus} onBlur={this.props.onBlur}/> */}
         <input className='ColorCodeControl__input' type='text' ref={this.props.codeInputRef} value={this.getCode()} onChange={this.handleChange} onFocus={this.props.onFocus}/>
 
       </div>

@@ -19,7 +19,6 @@ class UpDownControl extends Component {
 
   onMouseDown(amountToChangeBy) {
     return () => {
-      console.log('mouse is down');
       this.setState({
         interval: setInterval(() => {
           this.props.onClick(amountToChangeBy);
@@ -30,7 +29,6 @@ class UpDownControl extends Component {
 
   onMouseUp() {
     return () => {
-      console.log('mouse is up again');
       clearInterval(this.state.interval);
       this.setState({
         interval: null
