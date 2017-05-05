@@ -67,16 +67,18 @@ class ColorCodeControl extends Component {
 
   componentDidUpdate() {
     // debugger;
-    console.log('in componentDidUpdate in ColorCodeControl');
+    // console.log('in componentDidUpdate in ColorCodeControl');
+    // console.log('The active element is ');
+    // console.log(document.activeElement);
 
     // need to put the cursor back in the right place if using button panel or typing values in
-    if (this.props.inCodeEditMode) {
-
-      const input = this.props.codeInputElement;
-      input.focus();
-      console.log('setting selection range ' + this.props.cursorPosition);
+    // if (this.props.inCodeEditMode) {
+    //
+    //   const input = this.props.codeInputElement;
+    //   input.focus();
+      // console.log('setting selection range ' + this.props.cursorPosition);
       // input.setSelectionRange(this.props.cursorPosition);
-    }
+    // }
   }
 
   render() {

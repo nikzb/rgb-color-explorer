@@ -34,7 +34,7 @@ class ColorControls extends Component {
   }
 
   handleOnFocusOnTextInput() {
-    console.log('in hanldeOnFocusOnTextInput');
+    // console.log('in hanldeOnFocusOnTextInput');
     const colorCode = this.props.colorCode;
     this.setCodeEditMode(true);
 
@@ -60,17 +60,17 @@ class ColorControls extends Component {
 
   getControlPanel() {
     if (this.state.inCodeEditMode) {
-      return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} setCursorPosition={this.setCursorPosition} setCodeEditMode={this.setCodeEditMode} codeInputElement={this.codeInputElement}/>;
+      return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} setCursorPosition={this.setCursorPosition} setCodeEditMode={this.setCodeEditMode} codeInputElement={this.codeInputElement} cursorPosition={this.state.cursorPosition}/>;
     } else {
       return <ColorComponentsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} />;
     }
   }
 
   handleDocumentClick(e) {
-    console.log('in handle document click');
+    // console.log('in handle document click');
     if (e.target.className.includes('ColorCodeControl__input') || e.target.className.includes('ColorCodeButtonPanel__button')) {
       if (!this.state.inCodeEditMode) {
-        console.log('setting to code edit mode');
+        // console.log('setting to code edit mode');
         this.setCodeEditMode(true);
       }
     }

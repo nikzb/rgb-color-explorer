@@ -12,17 +12,25 @@ class ColorCodeButtonPanel extends Component {
     return labels.map((buttonLabel) => {
       const getClickHandler = (buttonLabel) => {
         return () => {
-          console.log('in button panel click handler');
-          const selectionStart = this.props.codeInputElement.selectionStart;
-          const selectionEnd = this.props.codeInputElement.selectionEnd;
+          console.log(this.props.cursorPosition);
+          // console.log('in button panel click handler');
 
-          console.log('selection start ' + selectionStart);
-          console.log('selection end ' + selectionEnd);
+          // const selectionStart = this.props.cursorPosition + 1;
+          let selectionStart = this.props.codeInputElement.selectionStart;
+          let selectionEnd = this.props.codeInputElement.selectionEnd;
+
+          if (selectionEnd - selectionStart === 0) {
+            selectionStart = this.props.cursorPosition + 1;
+            selectionEnd = this.props.cursorPosition + 1;
+          }
+
+          // console.log('selection start ' + selectionStart);
+          // console.log('selection end ' + selectionEnd);
 
           const colorCode = this.props.colorCode;
 
-          console.log("existing code: " + colorCode.getCode());
-          console.log("length of existing code: " + colorCode.getCode().length);
+          // console.log("existing code: " + colorCode.getCode());
+          // console.log("length of existing code: " + colorCode.getCode().length);
 
           let before;
           let after;
@@ -42,8 +50,8 @@ class ColorCodeButtonPanel extends Component {
             before = colorCode.getCode().slice(0, selectionStart - 1);
             after = colorCode.getCode().slice(selectionEnd - 1, colorCode.getCode().length);
 
-            console.log('part before selection ' + before);
-            console.log('part after selection ' + after);
+            // console.log('part before selection ' + before);
+            // console.log('part after selection ' + after);
             const totalSymbols = before.length + after.length;
 
             // if the code input box is full, do nothing
@@ -51,14 +59,15 @@ class ColorCodeButtonPanel extends Component {
               return;
             }
           }
-          console.log('code before modification' + colorCode.getCode());
+          // console.log('code before modification' + colorCode.getCode());
           const newCode = before + buttonLabel + after;
-          console.log('code after modification' + newCode);
+          // console.log('code after modification' + newCode);
 
           if (newCode.length === colorCode.getCode().length) {
             this.props.setCodeEditMode(false);
           }
-          this.props.setCursorPosition(this.props.codeInputElement.selectionStart);
+          this.props.setCursorPosition(selectionStart);
+          console.log('after update: ' + selectionStart);
 
           this.props.onColorChange({
             newCode,
