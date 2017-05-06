@@ -3,80 +3,32 @@ import React, { Component } from 'react';
 import './ColorCodeButtonPanel.css';
 
 class ColorCodeButtonPanel extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.handleClick = this.handleClick.bind(this);
-  // }
-
   getButtonsRow(labels) {
     return labels.map((buttonLabel) => {
       const getClickHandler = (buttonLabel) => {
         return () => {
-          console.log(this.props.cursorPosition);
-          // console.log('in button panel click handler');
-
-          // const selectionStart = this.props.cursorPosition + 1;
-          let selectionStart = this.props.codeInputElement.selectionStart;
-          let selectionEnd = this.props.codeInputElement.selectionEnd;
-
-          if (selectionEnd - selectionStart === 0) {
-            selectionStart = this.props.cursorPosition + 1;
-            selectionEnd = this.props.cursorPosition + 1;
-          }
-
-          // console.log('selection start ' + selectionStart);
-          // console.log('selection end ' + selectionEnd);
-
           const colorCode = this.props.colorCode;
 
-          // console.log("existing code: " + colorCode.getCode());
-          // console.log("length of existing code: " + colorCode.getCode().length);
-
-          let before;
-          let after;
-
-          if (colorCode.getBase() === 2) {
-            // Figure out the piece of the code that is being kept before and after the new symbol that will be added
-            before = colorCode.getCode().slice(0, selectionStart - 1);
-            after = colorCode.getCode().slice(selectionEnd - 1, colorCode.getCode().length);
-            const totalSymbols = before.length + after.length;
-
-            // if the code input box is full, do nothing
-            if (colorCode.getBits() === totalSymbols) {
-              return;
-            }
-          } else if (colorCode.getBase() === 16) {
-            // Figure out the piece of the code that is being kept before and after the new symbol that will be added
-            before = colorCode.getCode().slice(0, selectionStart - 1);
-            after = colorCode.getCode().slice(selectionEnd - 1, colorCode.getCode().length);
-
-            // console.log('part before selection ' + before);
-            // console.log('part after selection ' + after);
-            const totalSymbols = before.length + after.length;
-
-            // if the code input box is full, do nothing
-            if (colorCode.getBits() / 4 === totalSymbols) {
-              return;
-            }
+          let newCode = '';
+          if (colorCode.isPartial) {
+            newCode = this.props.colorCode.getPartial() + buttonLabel;
+          } else {
+            newCode = buttonLabel;
           }
-          // console.log('code before modification' + colorCode.getCode());
-          const newCode = before + buttonLabel + after;
-          // console.log('code after modification' + newCode);
-
-          if (newCode.length === colorCode.getCode().length) {
-            this.props.setCodeEditMode(false);
-          }
-          this.props.setCursorPosition(selectionStart);
-          console.log('after update: ' + selectionStart);
 
           this.props.onColorChange({
             newCode,
             base: colorCode.getBase(),
             bits: colorCode.getBits()
           });
+
+          if (newCode.length === colorCode.getFullCodeLength()) {
+            this.props.setCodeEditMode(false);
+            this.props.setShouldReset(true);
+          }
         };
       }
-      return <button key={buttonLabel} className={'button ColorCodeButtonPanel__button'} onMouseDown={getClickHandler(buttonLabel)}>{buttonLabel}</button>
+      return <button key={buttonLabel} className={'button ColorCodeButtonPanel__button'} onClick={getClickHandler(buttonLabel)}>{buttonLabel}</button>
     });
   }
 

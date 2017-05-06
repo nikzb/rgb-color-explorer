@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-// import ColorCode from '../../classes/ColorCode/ColorCode';
+import ColorCodeComponentDisplay from '../ColorCodeComponentDisplay/ColorCodeComponentDisplay';
 
 import './ColorCodeControl.css';
 
@@ -8,8 +8,6 @@ class ColorCodeControl extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    // this.handleOnFocus = this.handleOnFocus.bind(this);
-    // this.handleOnBlur = this.handleOnBlur.bind(this);
   }
 
   handleChange(e) {
@@ -55,38 +53,77 @@ class ColorCodeControl extends Component {
     });
   }
 
-  getCode() {
-    const colorCode = this.props.colorCode;
-    const codeToShow = colorCode.getCode();
-    if (colorCode.getBase() === 2) {
-      return codeToShow;
-    } else {
-      return `#${codeToShow}`;
-    }
-  }
-
-  componentDidUpdate() {
-    // debugger;
-    // console.log('in componentDidUpdate in ColorCodeControl');
-    // console.log('The active element is ');
-    // console.log(document.activeElement);
-
-    // need to put the cursor back in the right place if using button panel or typing values in
-    // if (this.props.inCodeEditMode) {
-    //
-    //   const input = this.props.codeInputElement;
-    //   input.focus();
-      // console.log('setting selection range ' + this.props.cursorPosition);
-      // input.setSelectionRange(this.props.cursorPosition);
-    // }
-  }
-
   render() {
+    let classNameRed = 'ColorCodeComponentDisplay';
+    let classNameGreen = 'ColorCodeComponentDisplay';
+    let classNameBlue = 'ColorCodeComponentDisplay';
+
+    const colorCode = this.props.colorCode;
+    let codeAsString;
+
+    if (colorCode.isPartial) {
+      codeAsString = colorCode.getPartial();
+      classNameRed += ' ColorCodeComponentDisplay--red';
+      classNameGreen += ' ColorCodeComponentDisplay--green';
+      classNameBlue += ' ColorCodeComponentDisplay--blue';
+    } else {
+      codeAsString = colorCode.getCode();
+      if (this.props.inCodeEditMode) {
+        classNameRed += ' ColorCodeComponentDisplay--placeholder';
+        classNameGreen += ' ColorCodeComponentDisplay--placeholder';
+        classNameBlue += ' ColorCodeComponentDisplay--placeholder';
+      } else {
+        classNameRed += ' ColorCodeComponentDisplay--red';
+        classNameGreen += ' ColorCodeComponentDisplay--green';
+        classNameBlue += ' ColorCodeComponentDisplay--blue';
+      }
+    }
+
+    let redCompString = '';
+    let greenCompString = '';
+    let blueCompString = '';
+
+    if (colorCode.getFullCodeLength() === 3) {
+      if (codeAsString.length === 3) {
+        redCompString = codeAsString.slice(0, 1);
+        greenCompString = codeAsString.slice(1, 2);
+        blueCompString = codeAsString.slice(2, 3);
+      } else if (codeAsString.length === 2) {
+        redCompString = codeAsString.slice(0, 1);
+        greenCompString = codeAsString.slice(1, 2);
+      } else if (codeAsString.length === 1) {
+        redCompString = codeAsString.slice(0, 1);
+      }
+    } else if (colorCode.getFullCodeLength() === 6) {
+      if (codeAsString.length === 6) {
+        redCompString = codeAsString.slice(0, 2);
+        greenCompString = codeAsString.slice(2, 4);
+        blueCompString = codeAsString.slice(4, 6);
+      } else if (codeAsString.length === 5) {
+        redCompString = codeAsString.slice(0, 2);
+        greenCompString = codeAsString.slice(2, 4);
+        blueCompString = codeAsString.slice(4, 5);
+      } else if (codeAsString.length === 4) {
+        redCompString = codeAsString.slice(0, 2);
+        greenCompString = codeAsString.slice(2, 4);
+      } else if (codeAsString.length === 3) {
+        redCompString = codeAsString.slice(0, 2);
+        greenCompString = codeAsString.slice(2, 3);
+      } else if (codeAsString.length === 2) {
+        redCompString = codeAsString.slice(0, 2);
+      } else if (codeAsString.length === 1) {
+        redCompString = codeAsString.slice(0, 1);
+      }
+    }
+
     return (
       <div className='ColorCodeControl__container'>
         <label className='ColorCodeControl__label'>RGB Color Code</label>
-        <input className='ColorCodeControl__input' type='text' ref={this.props.codeInputRef} value={this.getCode()} onChange={this.handleChange} onFocus={this.props.onFocus}/>
-
+        <div className='ColorCodeComponentDisplay__container'>
+          <ColorCodeComponentDisplay className={classNameRed} codeAsString={redCompString} />
+          <ColorCodeComponentDisplay className={classNameGreen} codeAsString={greenCompString} />
+          <ColorCodeComponentDisplay className={classNameBlue} codeAsString={blueCompString} />
+        </div>
       </div>
     );
   }

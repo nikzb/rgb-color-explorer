@@ -110,18 +110,23 @@ class ColorCode {
     return Math.round(value * maxValue / 255);
   }
 
-  // Get the full color code (all three parts combined) as a String
+  // Return the full color code (all three parts combined) as a String
   getCode() {
-    if (this.isPartial) {
-      return this.partial;
-    }
     return "" + this.getComponentAsString("R") + this.getComponentAsString("G") + this.getComponentAsString("B");
   }
 
-  // // Get the partial color code (whatever is stored in partial) as a String
-  // getPartial() {
-  //   return this.partial;
-  // }
+  // Get the partial color code (whatever is stored in partial) as a String
+  getPartial() {
+    return this.partial;
+  }
+
+  getFullCodeLength() {
+    if (this.base === 2) {
+      return this.bits;
+    } else {
+      return this.bits / 4;
+    }
+  }
 
   // Get a String with the 0-255 components in the format "rgb(r, g, b)"
   getRGB256String() {

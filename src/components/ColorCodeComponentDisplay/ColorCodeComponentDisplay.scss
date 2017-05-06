@@ -1,0 +1,20 @@
+.ColorCodeComponentDisplay {
+  padding: 0 0.1rem;
+  font-size: 2rem;
+
+  &--red {
+    color: red;
+  }
+
+  &--green {
+    color: green;
+  }
+
+  &--blue {
+    color: blue;
+  }
+
+  &--placeholder {
+    color: #CCC;
+  }
+}

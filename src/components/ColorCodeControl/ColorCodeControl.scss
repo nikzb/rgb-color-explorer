@@ -13,3 +13,11 @@
     color: #555;
   }
 }
+
+.ColorCodeComponentDisplay__container {
+  display: flex;
+  justify-content: center;
+  width: 10rem;
+  height: 3rem;
+  border: 1px solid grey;
+}
