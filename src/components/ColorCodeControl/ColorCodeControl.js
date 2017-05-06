@@ -116,16 +116,37 @@ class ColorCodeControl extends Component {
       }
     }
 
-    return (
-      <div className='ColorCodeControl__container'>
-        <label className='ColorCodeControl__label'>RGB Color Code</label>
-        <div className='ColorCodeComponentDisplay__container' tabIndex={2}>
-          <ColorCodeComponentDisplay className={classNameRed} codeAsString={redCompString} />
-          <ColorCodeComponentDisplay className={classNameGreen} codeAsString={greenCompString} />
-          <ColorCodeComponentDisplay className={classNameBlue} codeAsString={blueCompString} />
+    if (this.props.inCodeEditMode) {
+      return (
+        <div className='ColorCodeControl__container'>
+          <label className='ColorCodeControl__label'>RGB Color Code</label>
+          <div className='ColorCodeControl__bottom-row'>
+            {/*The next div is just there to balance the delete button for styling*/}
+            <div className='ColorControls__delete-button-balance'></div>
+            <div className='ColorCodeComponentDisplay__container' tabIndex={2}>
+              <ColorCodeComponentDisplay className={classNameRed} codeAsString={redCompString} />
+              <ColorCodeComponentDisplay className={classNameGreen} codeAsString={greenCompString} />
+              <ColorCodeComponentDisplay className={classNameBlue} codeAsString={blueCompString} />
+            </div>
+            <button className='button ColorControls__delete-button' onClick={this.props.onDeleteButton}>⌫</button>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    else {
+      return (
+        <div className='ColorCodeControl__container'>
+          <label className='ColorCodeControl__label'>RGB Color Code</label>
+          <div className='ColorCodeControl__bottom-row'>
+            <div className='ColorCodeComponentDisplay__container' tabIndex={2}>
+              <ColorCodeComponentDisplay className={classNameRed} codeAsString={redCompString} />
+              <ColorCodeComponentDisplay className={classNameGreen} codeAsString={greenCompString} />
+              <ColorCodeComponentDisplay className={classNameBlue} codeAsString={blueCompString} />
+            </div>
+          </div>
+        </div>
+      );
+    }
   }
 }
 

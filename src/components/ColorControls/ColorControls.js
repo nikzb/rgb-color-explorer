@@ -96,25 +96,6 @@ class ColorControls extends Component {
     });
   }
 
-  getCodeBoxAndDeleteButton() {
-    if (this.state.inCodeEditMode) {
-      return (
-        <div className='ColorControls__code-delete-container'>
-          {/*The next div is just there to balance the delete button for styling*/}
-          <div className='ColorControls__delete-button-balance'></div>
-          <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} inCodeEditMode={this.state.inCodeEditMode} />
-          <button className='button ColorControls__delete-button' onClick={this.handleDeleteButtonClick}>⌫</button>
-        </div>
-      );
-    } else {
-      return (
-        <div className='ColorControls__code-delete-container'>
-          <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} inCodeEditMode={this.state.inCodeEditMode} />
-        </div>
-      );
-    }
-  }
-
   handleDeleteButtonClick() {
     this.removeSymbolFromCode();
   }
@@ -188,8 +169,6 @@ class ColorControls extends Component {
     }
   }
 
-
-
   componentDidMount() {
 	  document.addEventListener('click', this.handleDocumentClick);
     document.addEventListener('keydown', this.handleKeyDown);
@@ -203,7 +182,7 @@ class ColorControls extends Component {
   render() {
     return (
       <div className='ColorControls__container'>
-        {this.getCodeBoxAndDeleteButton()}
+        <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} inCodeEditMode={this.state.inCodeEditMode} onDeleteButton={this.handleDeleteButtonClick}/>
         {this.getControlPanel()}
         <NumberSettingsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>
       </div>
