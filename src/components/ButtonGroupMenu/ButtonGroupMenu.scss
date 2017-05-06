@@ -17,7 +17,7 @@ $button-group-menu-margin-bottom: 0; // $global-margin;
     color: $button-group-menu-color;
     margin-bottom: 0;
     flex: 1 0 0;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     padding: .6rem;
 
     &:nth-child(1n + 1) {
@@ -41,7 +41,7 @@ $button-group-menu-margin-bottom: 0; // $global-margin;
   }
 }
 
-.ButtonGroupMenu--small {
+.ButtonGroupMenu--plus-minus {
   display: flex;
   width: 80%;
   // border: 1px solid $button-group-menu-color;
@@ -49,14 +49,15 @@ $button-group-menu-margin-bottom: 0; // $global-margin;
   overflow: hidden;
   margin-bottom: $button-group-menu-margin-bottom;
   // margin: 0;
+  align-items: flex-start;
 
   .button {
     background: transparent;
     color: $button-group-menu-color;
     margin-bottom: 0;
     flex: 1 0 0;
-    font-size: 1.0rem;
-    padding: .25rem;
+    font-size: 1.8rem;
+    padding: 0 0 .2rem 0;
 
     &:hover, &:focus {
       background: #eee;

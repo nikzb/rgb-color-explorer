@@ -40,14 +40,14 @@ class UpDownControl extends Component {
     let buttons = [
       {
         label: '−',
-        classNames: 'UpDownControl__button',
+        classes: 'UpDownControl__button',
         onClick: this.onButtonClick(-1),
         onMouseDown: this.onMouseDown(-1),
         onMouseUp: this.onMouseUp()
       },
       {
         label: '+',
-        classNames: 'UpDownControl__button',
+        classes: 'UpDownControl__button',
         onClick: this.onButtonClick(1),
         onMouseDown: this.onMouseDown(1),
         onMouseUp: this.onMouseUp()
@@ -55,7 +55,7 @@ class UpDownControl extends Component {
     ];
     return (
       <div className='UpDownControl__container'>
-        <ButtonGroupMenu buttons={buttons} size='small'/>
+        <ButtonGroupMenu buttons={buttons} size='plus-minus'/>
       </div>
     );
   }
