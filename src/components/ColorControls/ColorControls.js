@@ -61,7 +61,6 @@ class ColorControls extends Component {
     }
   }
 
-
   componentDidMount() {
 	  document.addEventListener('click', this.handleDocumentClick);
   }
