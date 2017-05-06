@@ -7,26 +7,8 @@ class ColorCodeButtonPanel extends Component {
     return labels.map((buttonLabel) => {
       const getClickHandler = (buttonLabel) => {
         return () => {
-          const colorCode = this.props.colorCode;
-
-          let newCode = '';
-          if (colorCode.isPartial) {
-            newCode = this.props.colorCode.getPartial() + buttonLabel;
-          } else {
-            newCode = buttonLabel;
-          }
-
-          this.props.onColorChange({
-            newCode,
-            base: colorCode.getBase(),
-            bits: colorCode.getBits()
-          });
-
-          if (newCode.length === colorCode.getFullCodeLength()) {
-            this.props.setCodeEditMode(false);
-            this.props.setShouldReset(true);
-          }
-        };
+          this.props.addSymbolToCode(buttonLabel, true);
+        }
       }
       return <button key={buttonLabel} className={'button ColorCodeButtonPanel__button'} onClick={getClickHandler(buttonLabel)}>{buttonLabel}</button>
     });
