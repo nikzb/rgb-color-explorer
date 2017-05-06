@@ -153,6 +153,12 @@ class ColorControls extends Component {
   handleKeyDown(e) {
     const symbol = e.key.toUpperCase();
 
+    if (document.activeElement.className === 'ColorCodeComponentDisplay__container') {
+      if (symbol === ' ' || symbol === 'ENTER') {
+        this.setCodeEditMode(true);
+      }
+    }
+
     const colorCode = this.props.colorCode;
 
     if (this.state.inCodeEditMode) {
