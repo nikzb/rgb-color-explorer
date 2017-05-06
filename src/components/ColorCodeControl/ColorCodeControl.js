@@ -119,7 +119,7 @@ class ColorCodeControl extends Component {
     return (
       <div className='ColorCodeControl__container'>
         <label className='ColorCodeControl__label'>RGB Color Code</label>
-        <div className='ColorCodeComponentDisplay__container'>
+        <div className='ColorCodeComponentDisplay__container' tabIndex={2}>
           <ColorCodeComponentDisplay className={classNameRed} codeAsString={redCompString} />
           <ColorCodeComponentDisplay className={classNameGreen} codeAsString={greenCompString} />
           <ColorCodeComponentDisplay className={classNameBlue} codeAsString={blueCompString} />

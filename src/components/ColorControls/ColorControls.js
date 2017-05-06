@@ -20,6 +20,7 @@ class ColorControls extends Component {
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.addSymbolToCode = this.addSymbolToCode.bind(this);
+    this.handleDeleteButtonClick = this.handleDeleteButtonClick.bind(this);
   }
 
   setCodeEditMode(newValue) {
@@ -70,8 +71,68 @@ class ColorControls extends Component {
     }
   }
 
+  // Remove the last symbol from the code and update. If the code is empty, do nothing
+  removeSymbolFromCode() {
+    const colorCode = this.props.colorCode;
+    let previousCodeAsString;
+
+    if (colorCode.isPartial) {
+      // If the code is empty, do nothing
+      if (colorCode.getPartial().length === 0) {
+        return;
+      }
+      previousCodeAsString = colorCode.getPartial();
+    }
+    else {
+      previousCodeAsString = colorCode.getCode();
+    }
+
+    const newCodeAsString = previousCodeAsString.slice(0, previousCodeAsString.length - 1);
+
+    this.props.onColorChange({
+      newCode: newCodeAsString,
+      base: colorCode.getBase(),
+      bits: colorCode.getBits()
+    });
+  }
+
+  getCodeBoxAndDeleteButton() {
+    if (this.state.inCodeEditMode) {
+      return (
+        <div className='ColorControls__code-delete-container'>
+          {/*The next div is just there to balance the delete button for styling*/}
+          <div className='ColorControls__delete-button-balance'></div>
+          <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} inCodeEditMode={this.state.inCodeEditMode} />
+          <button className='button ColorControls__delete-button' onClick={this.handleDeleteButtonClick}>⌫</button>
+        </div>
+      );
+    } else {
+      return (
+        <div className='ColorControls__code-delete-container'>
+          <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} inCodeEditMode={this.state.inCodeEditMode} />
+        </div>
+      );
+    }
+  }
+
+  handleDeleteButtonClick() {
+    this.removeSymbolFromCode();
+  }
+
   handleDocumentClick(e) {
-    if (!e.target.className.includes('ColorCodeComponentDisplay') && !e.target.className.includes('ColorCodeButtonPanel__button')) {
+    const classesOfEditModeElements = [
+      'ColorCodeComponentDisplay',
+      'ColorCodeButtonPanel__button',
+      'ColorControls__delete-button'
+    ];
+
+    const includesNone = (str, list) => {
+      return _.every(list, (item) => {
+        console.log('check if ' + str + ' includes ' + item);
+        return !str.includes(item);
+      });
+    }
+    if (includesNone(e.target.className, classesOfEditModeElements)) {
       if (this.state.inCodeEditMode) {
         this.setCodeEditMode(false);
         if (this.props.colorCode.isPartial) {
@@ -91,11 +152,16 @@ class ColorControls extends Component {
 
   handleKeyDown(e) {
     const symbol = e.key.toUpperCase();
+
     const colorCode = this.props.colorCode;
-    console.log(e);
-    console.log(symbol);
 
     if (this.state.inCodeEditMode) {
+      // Check for BACKSPACE before checking for valid symbols to add
+      if (symbol === 'BACKSPACE') {
+        this.removeSymbolFromCode();
+        return;
+      }
+
       // Validate based on base currently being used
       if (colorCode.getBase() === 2) {
         const validBinarySymbols = ['0', '1'];
@@ -116,6 +182,8 @@ class ColorControls extends Component {
     }
   }
 
+
+
   componentDidMount() {
 	  document.addEventListener('click', this.handleDocumentClick);
     document.addEventListener('keydown', this.handleKeyDown);
@@ -126,14 +194,10 @@ class ColorControls extends Component {
     document.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  componentDidUpdate() {
-
-  }
-
   render() {
     return (
-      <div className="ColorControls__container">
-        <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} inCodeEditMode={this.state.inCodeEditMode} />
+      <div className='ColorControls__container'>
+        {this.getCodeBoxAndDeleteButton()}
         {this.getControlPanel()}
         <NumberSettingsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>
       </div>
