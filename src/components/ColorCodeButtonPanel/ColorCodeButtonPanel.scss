@@ -1,21 +1,24 @@
+@import '../base-styles.scss';
+
 $global-margin: 1rem;
-$button-panel-radius: .5rem;//rem-calc(10);
-$button-panel-color: grey; //$secondary-color;
+$button-radius: $standard-border-radius;
+$button-color: $grey-2;
+$button-focus-color: $grey-8;
+$button-active-color: $grey-6;
 
 .ColorCodeButtonPanel {
   display: flex;
   flex-direction: column;
   width: 98%;
   height: 6rem;
-  border: 1px solid $button-panel-color;
-  border-radius: $button-panel-radius;
+  border: 1px solid $button-color;
+  border-radius: $button-radius;
   overflow: hidden;
   margin: 1rem 0 .5rem 0;
-  // margin: 0;
 
   &__top-row {
     display: flex;
-    border-bottom: 1px solid $button-panel-color;
+    border-bottom: 1px solid $button-color;
     flex: 1;
   }
 
@@ -31,7 +34,7 @@ $button-panel-color: grey; //$secondary-color;
 
   .button {
     background: transparent;
-    color: $button-panel-color;
+    color: $button-color;
     margin-bottom: 0;
     flex: 1 0 0;
     // font-size: 1.3rem;
@@ -46,19 +49,19 @@ $button-panel-color: grey; //$secondary-color;
     }
 
     &:hover, &:focus {
-      background: #eee;
-      color: $button-panel-color;
+      background: $button-focus-color;
+      color: $button-color;
       outline: 0;
     }
 
     &:active {
-      background: #ccc;
-      color: $button-panel-color;
+      background: $button-active-color;
+      color: $button-color;
       outline: 0;
     }
 
     &:nth-child(1n + 1) {
-      border-left: 1px solid $button-panel-color;
+      border-left: 1px solid $button-color;
     }
 
     &:nth-child(1) {

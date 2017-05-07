@@ -1,5 +1,9 @@
-$button-radius: .5rem;
-$button-color: grey;
+@import '../base-styles.scss';
+
+$button-radius: $standard-border-radius;
+$button-color: $grey-2;
+$button-focus-color: $grey-8;
+$button-active-color: $grey-6;
 
 .ColorComponentViewToggle {
   .button {
@@ -12,13 +16,13 @@ $button-color: grey;
     width: 12.5rem;
 
     &:hover, &:focus {
-      background: #eee;
+      background: $button-focus-color;
       color: $button-color;
       outline: 0;
     }
 
     &:active {
-      background: #ccc;
+      background: $button-active-color;
       color: $button-color;
       outline: 0;
     }

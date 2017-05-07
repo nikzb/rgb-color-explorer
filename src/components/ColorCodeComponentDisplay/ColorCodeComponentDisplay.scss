@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
+@import '../base-styles.scss';
 
 .ColorCodeComponentDisplay {
-  // padding: 0 0.1rem;
   font-size: 2.5rem;
   line-height: 1.1;
   font-family: 'Droid Sans Mono', monospace;
@@ -20,6 +19,6 @@
   }
 
   &--placeholder {
-    color: #CCC;
+    color: $grey-5;
   }
 }

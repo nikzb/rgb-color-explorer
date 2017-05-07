@@ -1,9 +1,13 @@
-$button-radius: .5rem;
+@import '../base-styles.scss';
+
+$button-radius: $standard-border-radius;
+$button-color: $grey-2;
+$button-focus-color: $grey-8;
+$button-active-color: $grey-6;
 
 .button.ColorToggleButton {
   width: 4.4rem;
   height: 1.8rem;
-  // margin: .1rem .7rem;
   margin: .1rem .2rem;
   border-radius: $button-radius;
   background-color: white;
@@ -14,12 +18,12 @@ $button-radius: .5rem;
   padding: .25rem;
 
   &:hover, &:focus {
-    background: #eee;
+    background: $button-focus-color;
     outline: 0;
   }
 
   &:active {
-    background: #ccc;
+    background: $button-active-color;
   }
 
   &--red, &--red:hover, &--red:focus {

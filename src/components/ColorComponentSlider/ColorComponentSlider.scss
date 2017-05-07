@@ -1,6 +1,8 @@
-$radius: .5rem;
-$slider-background: #bbb;
-$slider-background-focus: #ddd;
+@import '../base-styles.scss';
+
+$radius: $standard-border-radius;
+$slider-background: $grey-6;
+$slider-background-focus: $grey-7;
 
 .ColorComponentSlider__container {
   display: flex;
@@ -9,11 +11,9 @@ $slider-background-focus: #ddd;
   padding: .1rem;
   margin: 0;
   align-items: center;
-  // background-color: rgba(255, 230, 230, 0.5);
 }
 
 .ColorComponentSlider__slider {
-
   -webkit-appearance: none;
   width: 18rem;
   margin: 0px 0;
@@ -27,7 +27,7 @@ $slider-background-focus: #ddd;
     cursor: pointer;
     box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
     background: $slider-background;
-    border-radius: 6.5px;
+    border-radius: $radius;
     border: 5.1px solid #ffffff;
   }
   &::-webkit-slider-thumb {
@@ -58,7 +58,7 @@ $slider-background-focus: #ddd;
     cursor: pointer;
     box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
     background: $slider-background;
-    border-radius: 6.5px;
+    border-radius: $radius;
     border: 5.1px solid #ffffff;
   }
   &::-moz-range-thumb {
@@ -67,7 +67,6 @@ $slider-background-focus: #ddd;
     height: 25px;
     width: 25px;
     border-radius: 25px;
-
     cursor: pointer;
   }
   &.ColorComponentSlider__slider--red::-moz-range-thumb {
@@ -104,7 +103,6 @@ $slider-background-focus: #ddd;
     border: 0px solid #941e00;
     width: 25px;
     border-radius: 25px;
-
     cursor: pointer;
     height: 25px;
   }
@@ -123,5 +121,4 @@ $slider-background-focus: #ddd;
   &:focus::-ms-fill-upper {
     background: $slider-background-focus;
   }
-
 }

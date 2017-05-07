@@ -1,35 +1,30 @@
-$button-radius: .5rem;//rem-calc(10);
-$button-color: grey; //$secondary-color;
+@import '../base-styles.scss';
+
+$button-radius: $standard-border-radius;
 $button-width: 6rem;
+$button-color: $grey-2;
+$button-focus-color: $grey-9;
+$button-active-color: $grey-6;
 
 .ColorCodeControl__container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .ColorCodeControl__label {
     font-size: 1.2rem;
-    color: grey;
+    color: $button-color;
   }
-
-  // .ColorCodeControl__input {
-  //   max-width: 10rem;
-  //   text-align: center;
-  //   margin: 0;
-  //   font-size: 1.8rem;
-  //   color: #555;
-  // }
 }
 
 .ColorCodeControl__bottom-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
 
   max-width: 100%;
-  // border: 1px solid $button-group-menu-color;
-  // border-radius: $button-radius;
-  // overflow: hidden;
   margin-bottom: 0;
-
 
   .button {
     width: $button-width;
@@ -38,18 +33,18 @@ $button-width: 6rem;
     margin-bottom: 0;
     flex: 1;
     font-size: 1.8rem;
-    padding: .25rem 1rem;
+    padding: 0.25rem 1rem 0 1rem;
     margin-left: 1rem;
     border-radius: $button-radius;
 
     &:hover, &:focus {
-      background: #eee;
+      background: $button-focus-color;
       color: $button-color;
       outline: 0;
     }
 
     &:active {
-      background: #ccc;
+      background: $button-active-color;
       color: $button-color;
       outline: 0;
     }
@@ -58,7 +53,7 @@ $button-width: 6rem;
   .ColorControls__delete-button-balance {
     width: $button-width;
     margin-right: 1rem;
-    padding: .25rem 1rem;
+    padding: 0.25rem 1rem 0 1rem;
     flex: 1;
   }
 }
@@ -68,17 +63,17 @@ $button-width: 6rem;
   justify-content: center;
   width: 12rem;
   height: 3rem;
-  border: 1px solid grey;
+  border: 1px solid $button-color;
   border-radius: $button-radius;
 
   &:hover, &:focus {
-    background: #eee;
+    background: $button-focus-color;
     color: $button-color;
     outline: 0;
   }
 
   &:active {
-    background: #ccc;
+    background: $button-active-color;
     color: $button-color;
     outline: 0;
   }
