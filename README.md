@@ -4,9 +4,6 @@
 
 To do:
 * Try removing the Hide / Show color components button and just clicking on the circle group instead - will save tons of space
-* Complete text input functionality
-  * when in codeEditMode, keystrokes should be allowed (but must be validated - invalid characters are ignored)
-  * when a complete code has been typed, switch out of codeEditMode, hiding the button panel
 * Responsive css for various screen sizes
 
 Super awesome version ideas:
