@@ -104,7 +104,7 @@ class ColorControls extends Component {
     const classesOfEditModeElements = [
       'ColorCodeComponentDisplay',
       'ColorCodeButtonPanel__button',
-      'ColorControls__delete-button'
+      'ColorCodeControls__delete-button'
     ];
 
     const includesNone = (str, list) => {
@@ -145,6 +145,8 @@ class ColorControls extends Component {
     if (this.state.inCodeEditMode) {
       // Check for BACKSPACE before checking for valid symbols to add
       if (symbol === 'BACKSPACE') {
+        // Make the button change color like when clicked (active css)
+
         this.removeSymbolFromCode();
         return;
       }

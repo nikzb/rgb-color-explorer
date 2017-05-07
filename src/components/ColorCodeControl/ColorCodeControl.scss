@@ -48,6 +48,11 @@ $button-active-color: $grey-6;
       color: $button-color;
       outline: 0;
     }
+
+    &--active {
+      background: $button-active-color;
+      color: $button-color;
+    }
   }
 
   .ColorControls__delete-button-balance {
