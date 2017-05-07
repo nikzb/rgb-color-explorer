@@ -2,43 +2,6 @@ $global-margin: 1rem;
 $button-panel-radius: .5rem;//rem-calc(10);
 $button-panel-color: grey; //$secondary-color;
 
-// .ColorCodeButtonPanel {
-//   display: flex;
-//   width: 80%;
-//   border: 1px solid $button-panel-color;
-//   border-radius: $button-panel-radius;
-//   overflow: hidden;
-//   margin-bottom: $button-panel-margin-bottom;
-//
-//   .button {
-//     background: transparent;
-//     color: $button-panel-color;
-//     margin-bottom: 0;
-//     flex: 1 0 0;
-//     // font-size: 0.9rem;
-//     padding: .6rem;
-//
-//     &:nth-child(1n + 1) {
-//       border-left: 1px solid $button-panel-color;
-//     }
-//
-//     &:nth-child(1) {
-//       border-left: none;
-//     }
-//
-//     &:hover, &:focus {
-//       background: #eee;
-//       color: $button-panel-color;
-//       outline: 0;
-//     }
-//
-//     &.is-active {
-//       background: $button-panel-color;
-//       color: white;
-//     }
-//   }
-// }
-
 .ColorCodeButtonPanel {
   display: flex;
   flex-direction: column;
@@ -71,8 +34,16 @@ $button-panel-color: grey; //$secondary-color;
     color: $button-panel-color;
     margin-bottom: 0;
     flex: 1 0 0;
-    font-size: 1.3rem;
+    // font-size: 1.3rem;
     padding: .25rem;
+
+    &.ColorCodeButtonPanel__button--binary {
+      font-size: 2.4rem;
+    }
+
+    &.ColorCodeButtonPanel__button--hex{
+      font-size: 1.3rem;
+    }
 
     &:hover, &:focus {
       background: #eee;

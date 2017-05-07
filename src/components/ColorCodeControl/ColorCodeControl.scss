@@ -1,19 +1,65 @@
 $button-radius: .5rem;//rem-calc(10);
 $button-color: grey; //$secondary-color;
+$button-width: 6rem;
 
 .ColorCodeControl__container {
+  width: 100%;
 
   .ColorCodeControl__label {
     font-size: 1.2rem;
     color: grey;
   }
 
-  .ColorCodeControl__input {
-    max-width: 10rem;
-    text-align: center;
-    margin: 0;
+  // .ColorCodeControl__input {
+  //   max-width: 10rem;
+  //   text-align: center;
+  //   margin: 0;
+  //   font-size: 1.8rem;
+  //   color: #555;
+  // }
+}
+
+.ColorCodeControl__bottom-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  max-width: 100%;
+  // border: 1px solid $button-group-menu-color;
+  // border-radius: $button-radius;
+  // overflow: hidden;
+  margin-bottom: 0;
+
+
+  .button {
+    width: $button-width;
+    background: transparent;
+    color: $button-color;
+    margin-bottom: 0;
+    flex: 1;
     font-size: 1.8rem;
-    color: #555;
+    padding: .25rem 1rem;
+    margin-left: 1rem;
+    border-radius: $button-radius;
+
+    &:hover, &:focus {
+      background: #eee;
+      color: $button-color;
+      outline: 0;
+    }
+
+    &:active {
+      background: #ccc;
+      color: $button-color;
+      outline: 0;
+    }
+  }
+
+  .ColorControls__delete-button-balance {
+    width: $button-width;
+    margin-right: 1rem;
+    padding: .25rem 1rem;
+    flex: 1;
   }
 }
 
@@ -35,44 +81,5 @@ $button-color: grey; //$secondary-color;
     background: #ccc;
     color: $button-color;
     outline: 0;
-  }
-}
-
-.ColorCodeControl__bottom-row {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  // border: 1px solid $button-group-menu-color;
-  // border-radius: $button-radius;
-  // overflow: hidden;
-  margin-bottom: 0;
-
-  .button {
-    width: 4rem;
-    background: transparent;
-    color: $button-color;
-    margin-bottom: 0;
-    flex: 0;
-    font-size: 1.8rem;
-    padding: .25rem;
-    margin-left: 1rem;
-    border-radius: $button-radius;
-
-    &:hover, &:focus {
-      background: #eee;
-      color: $button-color;
-      outline: 0;
-    }
-
-    &:active {
-      background: #ccc;
-      color: $button-color;
-      outline: 0;
-    }
-  }
-
-  .ColorControls__delete-button-balance {
-    width: 4rem;
-    margin-right: 1rem;
   }
 }
