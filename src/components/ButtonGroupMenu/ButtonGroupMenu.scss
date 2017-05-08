@@ -3,6 +3,9 @@
 $button-group-menu-radius: $standard-border-radius;
 $button-group-menu-color: $grey-3;
 $button-group-menu-margin-bottom: 0;
+$button-active-color: $grey-6;
+$button-hover-color: $grey-8;
+$button-color: $grey-2;
 
 .ButtonGroupMenu {
   display: flex;
@@ -30,8 +33,14 @@ $button-group-menu-margin-bottom: 0;
     }
 
     &:hover, &:focus {
-      background: #eee;
+      background: $button-hover-color;
       color: $button-group-menu-color;
+      outline: 0;
+    }
+
+    &:active {
+      background: $button-active-color;
+      color: white;
       outline: 0;
     }
 
@@ -39,6 +48,7 @@ $button-group-menu-margin-bottom: 0;
       background: $button-group-menu-color;
       color: white;
     }
+
   }
 }
 

@@ -81,6 +81,14 @@ class ColorCodeControl extends Component {
     );
   }
 
+  getDeleteButton() {
+    let classes = 'button ColorCodeControls__delete-button';
+    if (this.props.isDeleteButtonActive) {
+      classes += ' button--active';
+    }
+    return <button className={classes} onClick={this.props.onDeleteButton}>⌫</button>
+  }
+
   render() {
     if (this.props.inCodeEditMode) {
       return (
@@ -90,7 +98,7 @@ class ColorCodeControl extends Component {
             {/*The next div is just there to balance the delete button for styling*/}
             <div className='ColorControls__delete-button-balance'></div>
             {this.getColorCodeComponentDisplay()}
-            <button className='button ColorCodeControls__delete-button' onClick={this.props.onDeleteButton}>⌫</button>
+            {this.getDeleteButton()}
           </div>
         </div>
       );

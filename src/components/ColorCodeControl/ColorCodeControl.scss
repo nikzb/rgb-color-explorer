@@ -50,8 +50,8 @@ $button-active-color: $grey-6;
     }
 
     &--active {
-      background: $button-active-color;
-      color: $button-color;
+      background: $button-active-color !important;
+      color: $button-color !important;
     }
   }
 

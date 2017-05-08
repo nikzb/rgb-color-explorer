@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 import './ColorCodeButtonPanel.css';
 
@@ -7,10 +8,13 @@ class ColorCodeButtonPanel extends Component {
     return labels.map((buttonLabel) => {
       const getClickHandler = (buttonLabel) => {
         return () => {
-          this.props.addSymbolToCode(buttonLabel, true);
+          this.props.addSymbolToCode(buttonLabel);
         }
       }
-      const classes = `button ColorCodeButtonPanel__button ColorCodeButtonPanel__button--${numberSystem}`;
+      let classes = `button ColorCodeButtonPanel__button ColorCodeButtonPanel__button--${numberSystem}`;
+      if (_.includes(this.props.activeSymbolButtons, buttonLabel)) {
+        classes += ' button--active';
+      }
       return <button key={buttonLabel} className={classes} onClick={getClickHandler(buttonLabel)}>{buttonLabel}</button>
     });
   }

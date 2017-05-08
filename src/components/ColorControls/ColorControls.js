@@ -13,10 +13,10 @@ class ColorControls extends Component {
     super(props);
     this.state = {
       inCodeEditMode: false,
-      shouldReset: false
+      isDeleteButtonActive: false,
+      activeSymbolButtons: []
     }
     this.setCodeEditMode = this.setCodeEditMode.bind(this);
-    this.setShouldReset = this.setShouldReset.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.addSymbolToCode = this.addSymbolToCode.bind(this);
@@ -29,15 +29,9 @@ class ColorControls extends Component {
     });
   }
 
-  setShouldReset(newValue) {
-    this.setState({
-      shouldReset: newValue
-    });
-  }
-
   getControlPanel() {
     if (this.state.inCodeEditMode) {
-      return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} addSymbolToCode={this.addSymbolToCode}/>;
+      return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.state.activeSymbolButtons} />;
     } else {
       return <ColorComponentsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} />;
     }
@@ -45,9 +39,7 @@ class ColorControls extends Component {
 
   // Given a symbol, add it to the code, or if the code is already full, start a new one
   // param symbol - the symbol to add to the code
-  // param fromButton - true if the symbol came from pressing a button in the button panel
-  //                  - needed to correctly handle reset because button click event causes issue where inCodeEditMode is set prematurely
-  addSymbolToCode(symbol, fromButton) {
+  addSymbolToCode(symbol) {
     const colorCode = this.props.colorCode;
 
     let newCode = '';
@@ -64,10 +56,12 @@ class ColorControls extends Component {
     });
 
     if (newCode.length === colorCode.getFullCodeLength()) {
-      this.setCodeEditMode(false);
-      if (fromButton) {
-        this.setShouldReset(true);
-      }
+      // using a setTimeout here eliminated the need for the "shouldReset" state value
+      // I initially put this in here so you could see the symbol button activate when you type on the keyboard
+      // I decided that it looked better if the button panel disappeared right away when you enter the last symbol
+      setTimeout(() => {
+        this.setCodeEditMode(false);
+      }, 10);
     }
   }
 
@@ -109,7 +103,6 @@ class ColorControls extends Component {
 
     const includesNone = (str, list) => {
       return _.every(list, (item) => {
-        console.log('check if ' + str + ' includes ' + item);
         return !str.includes(item);
       });
     }
@@ -123,9 +116,6 @@ class ColorControls extends Component {
           });
         }
       }
-    } else if (this.state.shouldReset) {
-      this.setCodeEditMode(false);
-      this.setShouldReset(false);
     } else if (!this.state.inCodeEditMode) {
       this.setCodeEditMode(true);
     }
@@ -145,7 +135,15 @@ class ColorControls extends Component {
     if (this.state.inCodeEditMode) {
       // Check for BACKSPACE before checking for valid symbols to add
       if (symbol === 'BACKSPACE') {
-        // Make the button change color like when clicked (active css)
+        // Make the button change color like when clicked
+        this.setState({
+          isDeleteButtonActive: true
+        });
+        setTimeout(() => {
+          this.setState({
+            isDeleteButtonActive: false
+          });
+        }, 100);
 
         this.removeSymbolFromCode();
         return;
@@ -167,6 +165,24 @@ class ColorControls extends Component {
       }
 
       // If we made it to this point, the symbol is valid for the current base
+      // Make the button change color like when clicked
+
+
+      if (!_.includes(this.state.activeSymbolButtons, symbol)) {
+          //This can be done with immutability helpers too, but just kept it simple for now: https://facebook.github.io/react/docs/update.html
+        let newActiveSymbolButtons = _.concat(this.state.activeButtons, symbol);
+        console.log('new button array: ' + newActiveSymbolButtons);
+        this.setState({
+          activeSymbolButtons: newActiveSymbolButtons
+        });
+      }
+      setTimeout(() => {
+        let newActiveSymbolButtons = _.without(this.state.activeSymbolButtons, symbol);
+        this.setState({
+          activeSymbolButtons: newActiveSymbolButtons
+        });
+      }, 100);
+
       this.addSymbolToCode(symbol);
     }
   }
@@ -184,7 +200,7 @@ class ColorControls extends Component {
   render() {
     return (
       <div className='ColorControls__container'>
-        <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} inCodeEditMode={this.state.inCodeEditMode} onDeleteButton={this.handleDeleteButtonClick}/>
+        <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} inCodeEditMode={this.state.inCodeEditMode} onDeleteButton={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive}/>
         {this.getControlPanel()}
         <NumberSettingsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>
       </div>
