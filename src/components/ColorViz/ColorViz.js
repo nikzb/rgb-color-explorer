@@ -5,8 +5,8 @@ import ColorCircleGroup from '../../classes/ColorCircleGroup/ColorCircleGroup';
 
 import './ColorViz.css';
 
-const CANVAS_WIDTH = 400;
-const CANVAS_HEIGHT = 400;
+const CANVAS_WIDTH = 320; //400
+const CANVAS_HEIGHT = 310; //400
 const PERCENT_CHANGE = 0.025;
 
 class ColorViz extends Component {
@@ -69,7 +69,7 @@ class ColorViz extends Component {
       colorCode: this.props.colorCode,
       x: 0,
       y: 0,
-      radius: 140,
+      radius: 108, //140
       percentFromCenter: this.state.percentFromCenter,
       context
     });

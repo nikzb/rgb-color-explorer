@@ -9,7 +9,7 @@ $button-color: $grey-2;
 
 .ButtonGroupMenu {
   display: flex;
-  width: 80%;
+  width: 92%; //80%
   border: 1px solid $button-group-menu-color;
   border-radius: $button-group-menu-radius;
   overflow: hidden;
@@ -21,8 +21,8 @@ $button-color: $grey-2;
     color: $button-group-menu-color;
     margin-bottom: 0;
     flex: 1 0 0;
-    font-size: 1.3rem;
-    padding: .6rem;
+    font-size: 1.1rem; //1.3rem
+    padding: .4rem; //.6rem
 
     &:nth-child(1n + 1) {
       border-left: 1px solid $button-group-menu-color;

@@ -1,6 +1,8 @@
 .UpDownControl__container {
-  display: flex;
-  width: 5.5rem;
+  display: none; //flex
+
+  flex: 0 1 4rem;
+  // width: 5.5rem;
   height: 1.5rem;
   align-items: center;
   justify-content: center;
@@ -9,4 +11,10 @@
 
 .UpDownControl__button {
   width: 48%;
+}
+
+@media (min-width: 400px) {
+  .UpDownControl__container {
+    display: flex;
+  }
 }

@@ -12,8 +12,9 @@ $button-active-color: $grey-6;
     border-radius: $button-radius;
     // border: 1px solid $button-color;
     margin: 0;
-    padding: .6rem;
-    width: 12.5rem;
+    padding: .5rem; //.6rem
+    width: 12rem; //12.5rem
+    font-size: .8rem;
 
     &:hover, &:focus {
       background: $button-focus-color;

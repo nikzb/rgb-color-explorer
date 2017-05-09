@@ -14,7 +14,7 @@ class ButtonGroupMenu extends Component {
     }
 
     return (
-      <div className={buttonGroupMenuClasses} data-mobile-app-toggle>
+      <div className={buttonGroupMenuClasses}>
         {buttonList}
       </div>
     );

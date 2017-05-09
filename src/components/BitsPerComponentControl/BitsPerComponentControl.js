@@ -27,12 +27,12 @@ class BitsPerComponentControl extends Component {
 
     if (this.props.base === 2) {
       if (this.props.bitsPerComponent === 1) {
-        binaryButtons[0].classes = 'BitsPerComponentControl__button-3 is-active';
-        binaryButtons[1].classes = 'BitsPerComponentControl__button-3';
+        binaryButtons[0].classes = 'BitsPerComponentControl__button-2 is-active';
+        binaryButtons[1].classes = 'BitsPerComponentControl__button-2';
       } else if (this.props.bitsPerComponent === 2) {
-        binaryButtons[0].classess = 'BitsPerComponentControl__button-3';
-        binaryButtons[1].classes = 'BitsPerComponentControl__button-3 is-active';
-      } 
+        binaryButtons[0].classes = 'BitsPerComponentControl__button-2';
+        binaryButtons[1].classes = 'BitsPerComponentControl__button-2 is-active';
+      }
       return (
         <div className='BitsPerComponentControl__container'>
           <label className='BitsPerComponentControl__label'>Bits Per Component</label>

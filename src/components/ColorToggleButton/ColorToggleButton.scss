@@ -6,16 +6,16 @@ $button-focus-color: $grey-8;
 $button-active-color: $grey-6;
 
 .button.ColorToggleButton {
-  width: 4.4rem;
-  height: 1.8rem;
-  margin: .1rem .2rem;
+  // width: 8rem; //4.4rem
+  height: 1.8rem; //1.8rem
+  margin: 0; //.1rem .2rem
   border-radius: $button-radius;
   background-color: white;
 
   background: transparent;
-  flex: 1 0 0;
-  font-size: 1.3rem;
-  padding: .25rem;
+  flex: 0 0 4rem;
+  font-size: 1rem; //1.3rem
+  padding: 0; //.25rem
 
   &:hover, &:focus {
     background: $button-focus-color;

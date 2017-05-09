@@ -1,6 +1,12 @@
 .App {
   text-align: center;
-  max-width: 30rem;
+  max-width: 100%;
   margin: auto;
   // border: 1px solid grey;
+
+  @media (min-width: 450px) {
+      max-width: 28rem;
+  }
 }
+
+// width: 30rem
