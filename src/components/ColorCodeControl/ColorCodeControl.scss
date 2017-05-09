@@ -1,24 +1,33 @@
-@import '../base-styles.scss';
+@import '../component-styles/base-styles.scss';
+@import '../component-styles/mixins.scss';
 
 $button-radius: $standard-border-radius;
 $button-width: 6rem;
 $button-color: $grey-2;
 $button-focus-color: $grey-9;
 $button-active-color: $grey-6;
-$delete-button-side-margin: .3rem; //1rem
+$delete-button-side-margin: .3rem;
 $delete-button-side-padding: .3rem;
 
 .ColorCodeControl__container {
   width: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   .ColorCodeControl__label {
-    font-size: 1rem; //1.2rem
+    font-size: 1rem;
     color: $button-color;
-    margin-bottom: -.3rem; // 0
+    margin-bottom: -.3rem; 
+
+    @include phone-large {
+      font-size: 1.2rem;
+      margin-bottom: 0;
+    }
   }
+
+
 }
 
 .ColorCodeControl__bottom-row {
@@ -73,6 +82,11 @@ $delete-button-side-padding: .3rem;
   height: 2.4rem; //3rem
   border: 1px solid $button-color;
   border-radius: $button-radius;
+
+  @include phone-large {
+    width: 12rem;
+    height: 3rem;
+  }
 
   &:hover, &:focus {
     background: $button-focus-color;

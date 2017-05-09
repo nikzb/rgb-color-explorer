@@ -1,4 +1,5 @@
-@import '../base-styles.scss';
+@import '../component-styles/base-styles.scss';
+@import '../component-styles/mixins.scss';
 
 $button-radius: $standard-border-radius;
 $button-color: $grey-2;
@@ -10,11 +11,16 @@ $button-active-color: $grey-6;
     background: transparent;
     color: $button-color;
     border-radius: $button-radius;
-    // border: 1px solid $button-color;
     margin: 0;
-    padding: .5rem; //.6rem
-    width: 12rem; //12.5rem
+    padding: .5rem;
+    width: 12rem;
     font-size: .8rem;
+
+    @include phone-large {
+      padding: .6rem;
+      width: 13rem;
+      font-size: .9rem;
+    }
 
     &:hover, &:focus {
       background: $button-focus-color;

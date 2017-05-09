@@ -1,4 +1,4 @@
-@import '../base-styles.scss';
+@import '../component-styles/base-styles.scss';
 
 $global-margin: 1rem;
 $button-radius: $standard-border-radius;
@@ -7,6 +7,7 @@ $button-focus-color: $grey-8;
 $button-active-color: $grey-6;
 
 .ColorCodeButtonPanel {
+  flex: 1;
   display: flex;
   flex-direction: column;
   width: 98%;

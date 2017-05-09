@@ -3,6 +3,8 @@ import ColorCode from '../../classes/ColorCode/ColorCode';
 import ColorDisplay from '../ColorDisplay/ColorDisplay';
 import ColorControls from '../ColorControls/ColorControls';
 
+import './MainSection.css';
+
 class MainSection extends Component {
   constructor(props) {
     super(props);
@@ -121,7 +123,7 @@ class MainSection extends Component {
 
   render() {
     return (
-      <div>
+      <div className='MainSection__container'>
         <ColorDisplay colorCode={this.state.colorCode} />
         <ColorControls colorCode={this.state.colorCode} onColorChange={this.updateColor} />
       </div>
