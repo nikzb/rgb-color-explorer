@@ -1,0 +1,10 @@
+.NumberSettingsControls__container {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-bottom: .2em; }
+  @media (min-width: 25em) {
+    .NumberSettingsControls__container {
+      margin-bottom: .5em; } }
