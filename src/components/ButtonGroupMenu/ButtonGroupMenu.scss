@@ -10,24 +10,23 @@ $button-color: $grey-2;
 
 .ButtonGroupMenu {
   display: flex;
-  width: 92%; //80%
+  width: 92%;
   border: 1px solid $button-group-menu-color;
   border-radius: $button-group-menu-radius;
   overflow: hidden;
   margin-bottom: $button-group-menu-margin-bottom;
-  // margin: 0;
 
   .button {
     background: transparent;
     color: $button-group-menu-color;
     margin-bottom: 0;
     flex: 1 0 0;
-    font-size: 1.1rem;
-    padding: .4rem;
+    font-size: 1.1em;
+    padding: .35em;
 
     @include phone-large {
-      font-size: 1.3rem;
-      padding: .6rem;
+      font-size: 1.3em;
+      padding: .5em;
     }
 
     &:nth-child(1n + 1) {
@@ -71,22 +70,21 @@ $button-color: $grey-2;
     color: $button-group-menu-color;
     margin-bottom: 0;
     flex: 1 0 0;
-    font-size: 1.8rem;
+    font-size: 1.8em;
     padding: 0 .5rem .2rem .5rem;
 
     @include phone-large {
-      font-size: 2rem;
       padding-bottom: .3rem;
     }
 
     &:hover, &:focus {
-      background: #eee;
+      background: $button-hover-color;
       color: $button-group-menu-color;
       outline: 0;
     }
 
     &:active {
-      background: #ccc;
+      background: $button-active-color;
       color: $button-group-menu-color;
       outline: 0;
     }

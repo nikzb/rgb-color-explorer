@@ -9,14 +9,14 @@
 
 .NumberSystemControl__label {
   padding: 0;
-  font-size: 1rem;
+  font-size: .9em;
   color: grey;
 
   @include phone-large {
-    font-size: 1.2rem;
+    font-size: 1.2em;
   }
 }
 
 .NumberSystemControl__button {
-  width: 5rem;
+  width: 4em;
 }

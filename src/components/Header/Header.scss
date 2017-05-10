@@ -6,11 +6,11 @@
 
 .Header__title {
   color: dimgrey;
-  font-size: 1.5rem; //3rem?
+  font-size: 1.5em; 
   margin: 0;
 
   @include phone-large {
-    font-size: 2.0rem;
+    font-size: 2.0em;
   }
 }
 

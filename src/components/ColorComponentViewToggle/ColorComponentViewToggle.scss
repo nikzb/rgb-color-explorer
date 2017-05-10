@@ -12,14 +12,14 @@ $button-active-color: $grey-6;
     color: $button-color;
     border-radius: $button-radius;
     margin: 0;
-    padding: .5rem;
-    width: 12rem;
-    font-size: .8rem;
+    padding: .6em;
+    width: 14em;
+    font-size: .8em;
 
     @include phone-large {
-      padding: .6rem;
-      width: 13rem;
-      font-size: .9rem;
+      padding: .8em;
+      width: 15em;
+      font-size: .9em;
     }
 
     &:hover, &:focus {
