@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 
+import ColorControlPanel from '../ColorControlPanel/ColorControlPanel';
 import ColorCodeControl from '../ColorCodeControl/ColorCodeControl';
-import ColorComponentsControls from '../ColorComponentsControls/ColorComponentsControls';
+// import ColorComponentsControls from '../ColorComponentsControls/ColorComponentsControls';
 import NumberSettingsControls from '../NumberSettingsControls/NumberSettingsControls';
-import ColorCodeButtonPanel from '../ColorCodeButtonPanel/ColorCodeButtonPanel';
+// import ColorCodeButtonPanel from '../ColorCodeButtonPanel/ColorCodeButtonPanel';
 
 import './ColorControls.css';
 
@@ -29,13 +30,13 @@ class ColorControls extends Component {
     });
   }
 
-  getControlPanel() {
-    if (this.state.inCodeEditMode) {
-      return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.state.activeSymbolButtons} />;
-    } else {
-      return <ColorComponentsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} />;
-    }
-  }
+  // getControlPanel() {
+  //   if (this.state.inCodeEditMode) {
+  //     return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.state.activeSymbolButtons} />;
+  //   } else {
+  //     return <ColorComponentsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} />;
+  //   }
+  // }
 
   // Given a symbol, add it to the code, or if the code is already full, start a new one
   // param symbol - the symbol to add to the code
@@ -201,7 +202,7 @@ class ColorControls extends Component {
     return (
       <div className='ColorControls__container'>
         <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} inCodeEditMode={this.state.inCodeEditMode} onDeleteButton={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive}/>
-        {this.getControlPanel()}
+        <ColorControlPanel colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} inCodeEditMode={this.state.inCodeEditMode} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.state.activeSymbolButtons} />
         <NumberSettingsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>
       </div>
     );

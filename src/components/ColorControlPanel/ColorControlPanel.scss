@@ -1,0 +1,13 @@
+@import '../component-styles/mixins.scss';
+
+.ColorControlPanel__container {
+  width: 96%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  height: 6rem;
+
+  @include phone-large {
+    height: 8rem;
+  }
+}
