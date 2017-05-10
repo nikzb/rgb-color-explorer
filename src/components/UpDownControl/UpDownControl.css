@@ -1,0 +1,13 @@
+.UpDownControl__container {
+  display: none;
+  flex: 0 1 4em;
+  height: 1.5em;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.2em; }
+  @media (min-width: 25em) {
+    .UpDownControl__container {
+      display: flex; } }
+
+.UpDownControl__button {
+  width: 48%; }
