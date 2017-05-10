@@ -17,6 +17,7 @@ $button-active-color: $grey-6;
     font-size: .8em;
 
     @include phone-large {
+      margin: .3em;
       padding: .8em;
       width: 15em;
       font-size: .9em;

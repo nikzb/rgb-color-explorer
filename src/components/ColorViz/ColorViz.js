@@ -6,7 +6,7 @@ import ColorCircleGroup from '../../classes/ColorCircleGroup/ColorCircleGroup';
 import './ColorViz.css';
 
 const CANVAS_WIDTH = 320; //400
-const CANVAS_HEIGHT = 310; //400
+const CANVAS_HEIGHT = 320; //400
 const PERCENT_CHANGE = 0.025;
 
 class ColorViz extends Component {
@@ -26,9 +26,14 @@ class ColorViz extends Component {
       transition: 'none',
 
       // Progress measure starts as 0 and increases until the animation transition is over
-      transitionProgress: 0
+      transitionProgress: 0,
+
+      // The radius of the circles that will be drawing
+      radius: 108
     }
     this.updateViz = this.updateViz.bind(this);
+    this.setCanvasSizeAndRadius = this.setCanvasSizeAndRadius.bind(this);
+    this.resizeCanvas = this.resizeCanvas.bind(this);
   }
 
   // Given the time of the animation transition, return a change in distance
@@ -69,7 +74,7 @@ class ColorViz extends Component {
       colorCode: this.props.colorCode,
       x: 0,
       y: 0,
-      radius: 108, //140
+      radius: this.state.radius, //140
       percentFromCenter: this.state.percentFromCenter,
       context
     });
@@ -166,8 +171,33 @@ class ColorViz extends Component {
     // }
   }
 
+  setCanvasSizeAndRadius(canvasDimension, radius) {
+    console.log('radius set to ' + radius);
+    this.refs.vizCanvas.width = canvasDimension;
+    this.refs.vizCanvas.height = canvasDimension;
+    this.setState({
+      radius
+    });
+  }
+
+  resizeCanvas() {
+
+    if (window.innerWidth < 400) {
+      this.setCanvasSizeAndRadius(320, 108);
+    } else if (window.innerWidth < 600) {
+      this.setCanvasSizeAndRadius(340, 114);
+    } else if (window.innerWidth < 890) {
+      this.setCanvasSizeAndRadius(400, 135);
+    }
+  }
+
   componentDidMount() {
+    window.addEventListener('resize', this.resizeCanvas, false);
     this.updateCanvas();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resizeCanvas, false);
   }
 
   componentDidUpdate() {
@@ -179,6 +209,7 @@ class ColorViz extends Component {
   render() {
     return (
       <div className='ColorViz__container'>
+        {/* <canvas ref='vizCanvas' className='ColorViz__canvas' width={CANVAS_WIDTH} height={CANVAS_HEIGHT}/> */}
         <canvas ref='vizCanvas' className='ColorViz__canvas' width={CANVAS_WIDTH} height={CANVAS_HEIGHT}/>
       </div>
     );
