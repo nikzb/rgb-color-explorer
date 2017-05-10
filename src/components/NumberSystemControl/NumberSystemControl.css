@@ -1,0 +1,16 @@
+.NumberSystemControl__container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.NumberSystemControl__label {
+  padding: 0;
+  font-size: .9em;
+  color: grey; }
+  @media (min-width: 25em) {
+    .NumberSystemControl__label {
+      font-size: 1.2em; } }
+
+.NumberSystemControl__button {
+  width: 4em; }
