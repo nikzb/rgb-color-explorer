@@ -90,5 +90,6 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "homepage": "https://rgb-explore.herokuapp.com/"
 }
