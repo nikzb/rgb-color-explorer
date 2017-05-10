@@ -3,12 +3,11 @@
 .UpDownControl__container {
   display: none;
 
-  flex: 0 1 4rem;
-  // width: 5.5rem;
-  height: 1.5rem;
+  flex: 0 1 4em;
+  height: 1.5em;
   align-items: center;
   justify-content: center;
-  margin: 0 0.2rem;
+  margin: 0 0.2em;
 
   @include phone-large {
     display: flex;

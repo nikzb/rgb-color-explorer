@@ -9,20 +9,20 @@
 
 .BitsPerComponentControl__label {
   padding: 0;
-  font-size: 1rem;
+  font-size: .9em;
   color: grey;
 
   @include phone-large {
-    font-size: 1.2rem;
+    font-size: 1.2em;
   }
 }
 
 .BitsPerComponentControl__button-2 {
-  width: 5rem;
+  width: 4em;
   margin: 0;
 }
 
 .BitsPerComponentControl__button-3 {
-  width: 3.333rem;
+  width: 2.333em;
   margin: 0;
 }

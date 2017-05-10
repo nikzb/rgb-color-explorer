@@ -8,18 +8,17 @@ $button-focus-color: $grey-8;
 $button-active-color: $grey-6;
 
 .ColorCodeButtonPanel {
-  flex: 1;
   display: flex;
   flex-direction: column;
   width: 98%;
-  // height: 4.8rem; //6rem
+  height: 5em;
   border: 1px solid $button-color;
   border-radius: $button-radius;
   overflow: hidden;
-  margin: 1rem 0 .5rem 0;
+  margin: .7em 0;
 
   @include phone-large {
-    // height: 6rem;
+    height: 7.2em;
   }
 
   &__top-row {
@@ -44,14 +43,22 @@ $button-active-color: $grey-6;
     margin-bottom: 0;
     flex: 1 0 0;
     // font-size: 1.3rem;
-    padding: .25rem;
+    padding: .25em;
 
     &.ColorCodeButtonPanel__button--binary {
-      font-size: 2.4rem;
+      font-size: 2.4em;
+
+      @include phone-large {
+        font-size: 2.7em;
+      }
     }
 
     &.ColorCodeButtonPanel__button--hex{
-      font-size: 1.3rem;
+      font-size: 1em;
+
+      @include phone-large {
+        font-size: 1.5em;
+      }
     }
 
     &:hover, &:focus {

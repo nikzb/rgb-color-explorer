@@ -2,12 +2,14 @@
 
 .ColorComponentsControls__container {
   flex: 1;
-  padding-top: .5rem;
-  padding-bottom: .2rem; 
+  margin-top: .5em;
+  padding-top: .2em;
+  padding-bottom: .2em;
   width: 100%;
 
   @include phone-large {
-    padding-top: .7rem;
-    padding-bottom: .4rem;
+    margin-top: 0;
+    padding-top: .5em;
+    padding-bottom: .4em;
   }
 }

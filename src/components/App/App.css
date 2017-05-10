@@ -3,6 +3,7 @@
   max-width: 100%;
   margin-left: auto;
   margin-right: auto; }
-  @media (min-width: 25em) {
-    .App {
-      max-width: 28rem; } }
+
+@media (min-width: 25em) {
+  .App {
+    max-width: 28em; } }
