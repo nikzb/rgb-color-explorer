@@ -102,6 +102,8 @@ class ColorControls extends Component {
       'ColorCodeControls__delete-button'
     ];
 
+    console.log(`${e.target.className} was clicked`);
+
     const includesNone = (str, list) => {
       return _.every(list, (item) => {
         return !str.includes(item);
@@ -118,6 +120,7 @@ class ColorControls extends Component {
         }
       }
     } else if (!this.state.inCodeEditMode) {
+      console.log('Entering edit mode');
       this.setCodeEditMode(true);
     }
   }
