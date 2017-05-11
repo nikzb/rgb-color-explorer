@@ -106,7 +106,7 @@ class ColorControls extends Component {
 
     const includesNone = (str, list) => {
       return _.every(list, (item) => {
-        return !str.includes(item);
+        return !_.includes(str, item);
       });
     }
     if (includesNone(e.target.className, classesOfEditModeElements)) {
