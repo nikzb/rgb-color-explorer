@@ -5,8 +5,8 @@ import ColorCircleGroup from '../../classes/ColorCircleGroup/ColorCircleGroup';
 
 import './ColorViz.css';
 
-const CANVAS_WIDTH = 320; //400
-const CANVAS_HEIGHT = 320; //400
+// const CANVAS_WIDTH = 320; //400
+// const CANVAS_HEIGHT = 320; //400
 const PERCENT_CHANGE = 0.025;
 
 class ColorViz extends Component {
@@ -172,7 +172,6 @@ class ColorViz extends Component {
   }
 
   setCanvasSizeAndRadius(canvasDimension, radius) {
-    console.log('radius set to ' + radius);
     this.refs.vizCanvas.width = canvasDimension;
     this.refs.vizCanvas.height = canvasDimension;
     this.setState({
@@ -181,20 +180,22 @@ class ColorViz extends Component {
   }
 
   resizeCanvas() {
-
     if (window.innerWidth < 400) {
       this.setCanvasSizeAndRadius(320, 108);
     } else if (window.innerWidth < 600) {
       this.setCanvasSizeAndRadius(340, 114);
-    } else if (window.innerWidth < 890) {
-      this.setCanvasSizeAndRadius(400, 135);
+    } else { // if (window.innerWidth < 890) {
+      this.setCanvasSizeAndRadius(370, 124);
     }
   }
 
   componentDidMount() {
     window.addEventListener('resize', this.resizeCanvas, false);
+
+    this.resizeCanvas();
     this.updateCanvas();
   }
+
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.resizeCanvas, false);
@@ -209,8 +210,7 @@ class ColorViz extends Component {
   render() {
     return (
       <div className='ColorViz__container'>
-        {/* <canvas ref='vizCanvas' className='ColorViz__canvas' width={CANVAS_WIDTH} height={CANVAS_HEIGHT}/> */}
-        <canvas ref='vizCanvas' className='ColorViz__canvas' width={CANVAS_WIDTH} height={CANVAS_HEIGHT}/>
+        <canvas ref='vizCanvas' className='ColorViz__canvas' width={370} height={370}/>
       </div>
     );
   }
