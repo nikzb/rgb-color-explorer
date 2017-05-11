@@ -20,12 +20,12 @@
     flex: 1 0 50%; }
   .ColorCodeButtonPanel__single-row {
     display: flex;
-    flex: 1; }
+    flex: 1 0 0%; }
   .ColorCodeButtonPanel .button {
     background: transparent;
     color: grey;
     margin-bottom: 0;
-    flex: 1 0 0;
+    flex: 1 0 0%;
     padding: .25em; }
     .ColorCodeButtonPanel .button.ColorCodeButtonPanel__button--binary {
       font-size: 2.4em; }

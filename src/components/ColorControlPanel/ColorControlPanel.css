@@ -1,6 +1,6 @@
 .ColorControlPanel__container {
   width: 96%;
-  flex: 1;
+  flex: 1 0 0%;
   height: 6em; }
   @media (min-width: 25em) {
     .ColorControlPanel__container {

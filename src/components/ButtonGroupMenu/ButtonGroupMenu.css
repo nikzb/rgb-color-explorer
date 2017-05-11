@@ -10,7 +10,7 @@
     background: transparent;
     color: #909090;
     margin-bottom: 0;
-    flex: 1 0 0;
+    flex: 1 0 0%;
     font-size: 1.1em;
     padding: .35em; }
     @media (min-width: 25em) {
@@ -44,7 +44,7 @@
     background: transparent;
     color: #909090;
     margin-bottom: 0;
-    flex: 1 0 0;
+    flex: 1 0 0%;
     font-size: 1.8em;
     padding: 0 .5rem .2rem .5rem; }
     @media (min-width: 25em) {

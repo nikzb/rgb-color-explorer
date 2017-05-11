@@ -20,7 +20,7 @@ $button-color: $grey-2;
     background: transparent;
     color: $button-group-menu-color;
     margin-bottom: 0;
-    flex: 1 0 0;
+    flex: 1 0 0%;
     font-size: 1.1em;
     padding: .35em;
 
@@ -69,7 +69,7 @@ $button-color: $grey-2;
     background: transparent;
     color: $button-group-menu-color;
     margin-bottom: 0;
-    flex: 1 0 0;
+    flex: 1 0 0%;
     font-size: 1.8em;
     padding: 0 .5rem .2rem .5rem;
 
