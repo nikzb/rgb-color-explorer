@@ -5,6 +5,8 @@ $radius: $standard-border-radius;
 $slider-background: $grey-6;
 $slider-background-focus: $grey-7;
 
+
+
 .ColorComponentSlider__container {
   display: flex;
   border-radius: $radius;
@@ -12,6 +14,10 @@ $slider-background-focus: $grey-7;
   margin: 0;
   align-items: center;
   width: 100%;
+
+  input[type=range]::-moz-focus-outer {
+    border: 0;
+    }
 
   @include phone-large {
     padding: .1em;
@@ -59,12 +65,12 @@ $slider-background-focus: $grey-7;
   }
   &::-moz-range-track {
     width: 100%;
-    height: 1.4em;
+    height: 0.8em;
     cursor: pointer;
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    // box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
     background: $slider-background;
-    border-radius: $radius;
-    border: .4em solid #ffffff;
+    // border-radius: $radius;
+    // border: .4em solid red;//#ffffff;
   }
   &::-moz-range-thumb {
     box-shadow: 0px 0px 5.9px rgba(155, 155, 155, 0.49), 0px 0px 0px rgba(168, 168, 168, 0.49);
@@ -74,18 +80,23 @@ $slider-background-focus: $grey-7;
     border-radius: 1.5em;
     cursor: pointer;
   }
+  &:focus::-moz-range-track {
+    background: $slider-background-focus;
+    outline: 0;
+  }
+
   &.ColorComponentSlider__slider--red::-moz-range-thumb {
-    background: rgba(255, 0, 0, 0.8);
+    background: red;
   }
   &.ColorComponentSlider__slider--green::-moz-range-thumb {
-    background: rgba(0, 255, 0, 0.8);
+    background: green;
   }
   &.ColorComponentSlider__slider--blue::-moz-range-thumb {
-    background: rgba(0, 0, 255, 0.8);
+    background: blue;
   }
   &::-ms-track {
     width: 100%;
-    height: 1.5em;
+    height: 0.8em;
     cursor: pointer;
     background: transparent;
     border-color: transparent;
@@ -112,13 +123,13 @@ $slider-background-focus: $grey-7;
     height: 1.5em;
   }
   &.ColorComponentSlider__slider--red::-ms-thumb {
-    background: rgba(255, 0, 0, 0.8);
+    background: red;
   }
   &.ColorComponentSlider__slider--green::-ms-thumb {
-    background: rgba(0, 255, 0, 0.8);
+    background: green;
   }
   &.ColorComponentSlider__slider--blue::-ms-thumb {
-    background: rgba(0, 0, 255, 0.8);
+    background: blue;
   }
   &:focus::-ms-fill-lower {
     background: $slider-background;
