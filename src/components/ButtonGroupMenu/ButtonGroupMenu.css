@@ -6,32 +6,39 @@
   border-radius: 0.5rem;
   overflow: hidden;
   margin-bottom: 0; }
+
+.ButtonGroupMenu .button {
+  background: transparent;
+  color: #909090;
+  margin-bottom: 0;
+  flex: 1 0 0;
+  font-size: 1.1em;
+  padding: .35em; }
+
+@media (min-width: 25em) {
   .ButtonGroupMenu .button {
-    background: transparent;
-    color: #909090;
-    margin-bottom: 0;
-    flex: 1 0 0%;
-    font-size: 1.1em;
-    padding: .35em; }
-    @media (min-width: 25em) {
-      .ButtonGroupMenu .button {
-        font-size: 1.3em;
-        padding: .5em; } }
-    .ButtonGroupMenu .button:nth-child(1n + 1) {
-      border-left: 1px solid #909090; }
-    .ButtonGroupMenu .button:nth-child(1) {
-      border-left: none; }
-    .ButtonGroupMenu .button:hover, .ButtonGroupMenu .button:focus {
-      background: gainsboro;
-      color: #909090;
-      outline: 0; }
-    .ButtonGroupMenu .button:active {
-      background: silver;
-      color: white;
-      outline: 0; }
-    .ButtonGroupMenu .button.is-active {
-      background: #909090;
-      color: white; }
+    font-size: 1.3em;
+    padding: .5em; } }
+
+.ButtonGroupMenu .button:nth-child(1n + 1) {
+  border-left: 1px solid #909090; }
+
+.ButtonGroupMenu .button:nth-child(1) {
+  border-left: none; }
+
+.ButtonGroupMenu .button:hover, .ButtonGroupMenu .button:focus {
+  background: gainsboro;
+  color: #909090;
+  outline: 0; }
+
+.ButtonGroupMenu .button:active {
+  background: silver;
+  color: white;
+  outline: 0; }
+
+.ButtonGroupMenu .button.is-active {
+  background: #909090;
+  color: white; }
 
 .ButtonGroupMenu--plus-minus {
   display: flex;
@@ -40,21 +47,25 @@
   overflow: hidden;
   margin-bottom: 0;
   align-items: flex-start; }
+
+.ButtonGroupMenu--plus-minus .button {
+  background: transparent;
+  color: #909090;
+  margin-bottom: 0;
+  flex: 1 0 0;
+  font-size: 1.8em;
+  padding: 0 .5rem .2rem .5rem; }
+
+@media (min-width: 25em) {
   .ButtonGroupMenu--plus-minus .button {
-    background: transparent;
-    color: #909090;
-    margin-bottom: 0;
-    flex: 1 0 0%;
-    font-size: 1.8em;
-    padding: 0 .5rem .2rem .5rem; }
-    @media (min-width: 25em) {
-      .ButtonGroupMenu--plus-minus .button {
-        padding-bottom: .3rem; } }
-    .ButtonGroupMenu--plus-minus .button:hover, .ButtonGroupMenu--plus-minus .button:focus {
-      background: gainsboro;
-      color: #909090;
-      outline: 0; }
-    .ButtonGroupMenu--plus-minus .button:active {
-      background: silver;
-      color: #909090;
-      outline: 0; }
+    padding-bottom: .3rem; } }
+
+.ButtonGroupMenu--plus-minus .button:hover, .ButtonGroupMenu--plus-minus .button:focus {
+  background: gainsboro;
+  color: #909090;
+  outline: 0; }
+
+.ButtonGroupMenu--plus-minus .button:active {
+  background: silver;
+  color: #909090;
+  outline: 0; }

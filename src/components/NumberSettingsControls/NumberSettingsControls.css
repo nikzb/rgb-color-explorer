@@ -1,5 +1,5 @@
 .NumberSettingsControls__container {
-  flex: 1 0 0%;
+  flex: 1;
   display: flex;
   justify-content: space-around;
   align-items: center;

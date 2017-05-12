@@ -34,14 +34,14 @@ $button-active-color: $grey-6;
 
   &__single-row {
     display: flex;
-    flex: 1 0 0%;
+    flex: 1;
   }
 
   .button {
     background: transparent;
     color: $button-color;
     margin-bottom: 0;
-    flex: 1 0 0%;
+    flex: 1 0 0;
     // font-size: 1.3rem;
     padding: .25em;
 

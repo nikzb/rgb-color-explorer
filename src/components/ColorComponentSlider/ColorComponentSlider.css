@@ -6,6 +6,7 @@
   margin: 0;
   align-items: center;
   width: 100%; }
+<<<<<<< HEAD
   .ColorComponentSlider__container input[type=range]::-moz-focus-outer {
     border: 0; }
   @media (min-width: 25em) {
@@ -98,3 +99,117 @@
     background: silver; }
   .ColorComponentSlider__slider:focus::-ms-fill-upper {
     background: lightgrey; }
+=======
+
+@media (min-width: 25em) {
+  .ColorComponentSlider__container {
+    padding: .1em; } }
+
+.ColorComponentSlider__slider {
+  -webkit-appearance: none;
+  margin: 0px 0;
+  flex: 1 0; }
+
+.ColorComponentSlider__slider:focus {
+  outline: none; }
+
+.ColorComponentSlider__slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 1.4em;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: silver;
+  border-radius: 0.5rem;
+  border: 0.4em solid #ffffff; }
+
+.ColorComponentSlider__slider::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0.4rem rgba(155, 155, 155, 0.49), 0px 0px 0px rgba(168, 168, 168, 0.49);
+  border: 0px solid #941e00;
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -.4em; }
+
+.ColorComponentSlider__slider.ColorComponentSlider__slider--red::-webkit-slider-thumb {
+  background: red; }
+
+.ColorComponentSlider__slider.ColorComponentSlider__slider--green::-webkit-slider-thumb {
+  background: green; }
+
+.ColorComponentSlider__slider.ColorComponentSlider__slider--blue::-webkit-slider-thumb {
+  background: blue; }
+
+.ColorComponentSlider__slider:focus::-webkit-slider-runnable-track {
+  background: lightgrey; }
+
+.ColorComponentSlider__slider::-moz-range-track {
+  width: 100%;
+  height: 1.4em;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: silver;
+  border-radius: 0.5rem;
+  border: .4em solid #ffffff; }
+
+.ColorComponentSlider__slider::-moz-range-thumb {
+  box-shadow: 0px 0px 5.9px rgba(155, 155, 155, 0.49), 0px 0px 0px rgba(168, 168, 168, 0.49);
+  border: 0px solid #941e00;
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 1.5em;
+  cursor: pointer; }
+
+.ColorComponentSlider__slider.ColorComponentSlider__slider--red::-moz-range-thumb {
+  background: rgba(255, 0, 0, 0.8); }
+
+.ColorComponentSlider__slider.ColorComponentSlider__slider--green::-moz-range-thumb {
+  background: rgba(0, 255, 0, 0.8); }
+
+.ColorComponentSlider__slider.ColorComponentSlider__slider--blue::-moz-range-thumb {
+  background: rgba(0, 0, 255, 0.8); }
+
+.ColorComponentSlider__slider::-ms-track {
+  width: 100%;
+  height: 1.5em;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent; }
+
+.ColorComponentSlider__slider::-ms-fill-lower {
+  background: silver;
+  border: 0.4em solid #ffffff;
+  border-radius: 0.8em;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; }
+
+.ColorComponentSlider__slider::-ms-fill-upper {
+  background: lightgrey;
+  border: 0.4em solid #ffffff;
+  border-radius: 0.8em;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; }
+
+.ColorComponentSlider__slider::-ms-thumb {
+  box-shadow: 0px 0px 0.5rem rgba(155, 155, 155, 0.49), 0px 0px 0px rgba(168, 168, 168, 0.49);
+  border: 0px solid #941e00;
+  width: 1.5em;
+  border-radius: 1.5em;
+  cursor: pointer;
+  height: 1.5em; }
+
+.ColorComponentSlider__slider.ColorComponentSlider__slider--red::-ms-thumb {
+  background: rgba(255, 0, 0, 0.8); }
+
+.ColorComponentSlider__slider.ColorComponentSlider__slider--green::-ms-thumb {
+  background: rgba(0, 255, 0, 0.8); }
+
+.ColorComponentSlider__slider.ColorComponentSlider__slider--blue::-ms-thumb {
+  background: rgba(0, 0, 255, 0.8); }
+
+.ColorComponentSlider__slider:focus::-ms-fill-lower {
+  background: silver; }
+
+.ColorComponentSlider__slider:focus::-ms-fill-upper {
+  background: lightgrey; }
+>>>>>>> parent of 90a636b... Changed flex 1 to flex 1 0 0percent
