@@ -181,7 +181,7 @@ class ColorViz extends Component {
 
   resizeCanvas() {
     if (window.innerWidth < 400) {
-      this.setCanvasSizeAndRadius(320, 108);
+      this.setCanvasSizeAndRadius(300, 100);
     } else if (window.innerWidth < 600) {
       this.setCanvasSizeAndRadius(340, 114);
     } else { // if (window.innerWidth < 890) {
