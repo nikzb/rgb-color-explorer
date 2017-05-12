@@ -19,7 +19,8 @@
   flex-direction: row;
   justify-content: center;
   max-width: 100%;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  cursor: pointer; }
   .ColorCodeControl__bottom-row .button {
     width: 6em;
     background: transparent;
