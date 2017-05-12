@@ -27,8 +27,14 @@ $slider-background-focus: $grey-7;
 .ColorComponentSlider__slider {
   -webkit-appearance: none;
 
-  margin: 0px 0;
+  margin: 0;
   flex: 1 0;
+
+  padding-right: 0.8em;
+
+  @include phone-large {
+    padding-right: 0;
+  }
 
   &:focus {
     outline: none;
