@@ -26,13 +26,9 @@ $slider-background-focus: $grey-7;
 
 .ColorComponentSlider__slider {
   -webkit-appearance: none;
-<<<<<<< HEAD
-  margin: 0;
-  flex: 1 0 0%;
-=======
+
   margin: 0px 0;
   flex: 1 0;
->>>>>>> parent of 90a636b... Changed flex 1 to flex 1 0 0percent
 
   &:focus {
     outline: none;
