@@ -10,16 +10,19 @@ $button-active-color: $grey-6;
   .button {
     background: transparent;
     color: $button-color;
-    border-radius: $button-radius;
+    border: 1px solid $button-color;
+    border-radius: 50%;
     margin: 0;
     padding: .6em;
-    width: 14em;
+    width: 4em;
+    height: 4em;
     font-size: .8em;
 
     @include phone-large {
       margin: .3em;
       padding: .8em;
-      width: 15em;
+      width: 4em;
+      height: 4em;
       font-size: .9em;
     }
 

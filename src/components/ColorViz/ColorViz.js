@@ -210,7 +210,7 @@ class ColorViz extends Component {
   render() {
     return (
       <div className='ColorViz__container'>
-        <canvas ref='vizCanvas' className='ColorViz__canvas' width={370} height={370}   />
+        <canvas ref='vizCanvas' className='ColorViz__canvas' width={370} height={370} onClick={this.props.onClick}/>
       </div>
     );
   }

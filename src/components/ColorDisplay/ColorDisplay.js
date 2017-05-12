@@ -22,7 +22,7 @@ class ColorDisplay extends Component {
   render() {
     return (
       <div className='ColorDisplay__container'>
-        <ColorViz colorCode={this.props.colorCode} showColorComponents={this.state.showColorComponents}/>
+        <ColorViz colorCode={this.props.colorCode} showColorComponents={this.state.showColorComponents} onClick={this.toggleShowColorComponents}/>
         <ColorComponentViewToggle showColorComponents={this.state.showColorComponents} onClick={this.toggleShowColorComponents}/>
       </div>
     );

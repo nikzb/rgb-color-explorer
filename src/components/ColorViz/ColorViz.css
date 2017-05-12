@@ -1,7 +1,8 @@
 .ColorViz__container {
   margin: 0;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  cursor: pointer; }
 
 .ColorViz__canvas {
   margin: 0; }
