@@ -9,8 +9,8 @@ $button-active-color: $grey-6;
 .ColorComponentViewToggle__container {
   flex: 0;
   width: 5em;
-  margin-left: 1.25rem;
-  margin-right: .6rem;
+  margin-left: 0.9rem;
+  margin-right: 0.95rem;
 
   .button {
     background: transparent;
@@ -24,7 +24,7 @@ $button-active-color: $grey-6;
     font-size: .8em;
 
     @include phone-large {
-      margin: .3em;
+      margin-left: 0.6rem;
       padding: .8em;
       width: 4em;
       height: 4em;
