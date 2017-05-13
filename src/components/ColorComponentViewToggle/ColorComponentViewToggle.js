@@ -6,7 +6,7 @@ class ColorComponentViewToggle extends Component {
   render() {
     const message = this.props.showColorComponents ? 'Hide' : 'Show';
     return (
-      <div className='ColorComponentViewToggle'>
+      <div className='ColorComponentViewToggle__container'>
         <button className='button' tabIndex={1} onClick={this.props.onClick}>{message}</button>
       </div>
     );

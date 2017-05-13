@@ -1,29 +1,35 @@
 @import url("https://fonts.googleapis.com/css?family=Droid+Sans+Mono");
-.ColorComponentViewToggle .button {
+.ColorComponentViewToggle__container {
+  flex: 0;
+  width: 5em;
+  margin-left: 1.25rem;
+  margin-right: .6rem; }
+
+.ColorComponentViewToggle__container .button {
   background: transparent;
   color: grey;
   border: 1px solid grey;
   border-radius: 50%;
   margin: 0;
-  padding: .6em;
+  padding: .4em;
   width: 4em;
   height: 4em;
   font-size: .8em; }
 
 @media (min-width: 25em) {
-  .ColorComponentViewToggle .button {
+  .ColorComponentViewToggle__container .button {
     margin: .3em;
     padding: .8em;
     width: 4em;
     height: 4em;
     font-size: .9em; } }
 
-.ColorComponentViewToggle .button:hover, .ColorComponentViewToggle .button:focus {
+.ColorComponentViewToggle__container .button:hover, .ColorComponentViewToggle__container .button:focus {
   background: gainsboro;
   color: grey;
   outline: 0; }
 
-.ColorComponentViewToggle .button:active {
+.ColorComponentViewToggle__container .button:active {
   background: silver;
   color: grey;
   outline: 0; }

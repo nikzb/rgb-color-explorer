@@ -22,9 +22,11 @@ class MainSection extends Component {
         red: 14,
         green: 11,
         blue: 15
-      })
+      }),
+      showColorComponents: true
     };
     this.updateColor = this.updateColor.bind(this);
+    this.toggleShowColorComponents = this.toggleShowColorComponents.bind(this);
   }
 
   // Parameters:
@@ -121,11 +123,17 @@ class MainSection extends Component {
     }
   }
 
+  toggleShowColorComponents() {
+    this.setState({
+      showColorComponents: !this.state.showColorComponents
+    });
+  }
+
   render() {
     return (
       <div className='MainSection__container'>
-        <ColorDisplay colorCode={this.state.colorCode} />
-        <ColorControls colorCode={this.state.colorCode} onColorChange={this.updateColor} />
+        <ColorDisplay colorCode={this.state.colorCode} showColorComponents={this.state.showColorComponents} toggleShowColorComponents={this.toggleShowColorComponents} />
+        <ColorControls colorCode={this.state.colorCode} onColorChange={this.updateColor} showColorComponents={this.state.showColorComponents} toggleShowColorComponents={this.toggleShowColorComponents} />
       </div>
     );
   }

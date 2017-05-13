@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import ColorCodeComponentDisplay from '../ColorCodeComponentDisplay/ColorCodeComponentDisplay';
+import ColorComponentViewToggle from '../ColorComponentViewToggle/ColorComponentViewToggle';
 
 import './ColorCodeControl.css';
 
@@ -81,8 +82,11 @@ class ColorCodeControl extends Component {
     );
   }
 
-  getDeleteButton() {
+  getDeleteButton({isHidden}) {
     let classes = 'button ColorCodeControls__delete-button';
+    if (isHidden) {
+      classes += ' hidden';
+    }
     if (this.props.isDeleteButtonActive) {
       classes += ' button--active';
     }
@@ -90,29 +94,22 @@ class ColorCodeControl extends Component {
   }
 
   render() {
+    let hideDeleteButton = true;
     if (this.props.inCodeEditMode) {
-      return (
-        <div className='ColorCodeControl__container'>
-          {this.getLabelElement()}
-          <div className='ColorCodeControl__bottom-row'>
-            {/*The next div is just there to balance the delete button for styling*/}
-            <div className='ColorControls__delete-button-balance'></div>
-            {this.getColorCodeComponentDisplay()}
-            {this.getDeleteButton()}
-          </div>
-        </div>
-      );
+      hideDeleteButton = false;
     }
-    else {
-      return (
-        <div className='ColorCodeControl__container'>
-          {this.getLabelElement()}
-          <div className='ColorCodeControl__bottom-row'>
-            {this.getColorCodeComponentDisplay()}
-          </div>
+    return (
+      <div className='ColorCodeControl__container'>
+        {this.getLabelElement()}
+        <div className='ColorCodeControl__bottom-row'>
+          {/*The next div is just there to balance the delete button for styling*/}
+          {/* <div className='ColorControls__delete-button-balance'></div> */}
+          <ColorComponentViewToggle showColorComponents={this.props.showColorComponents} onClick={this.props.toggleShowColorComponents}/>
+          {this.getColorCodeComponentDisplay()}
+          {this.getDeleteButton({isHidden:hideDeleteButton})}
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 

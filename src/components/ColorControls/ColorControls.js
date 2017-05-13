@@ -3,9 +3,7 @@ import _ from 'lodash';
 
 import ColorControlPanel from '../ColorControlPanel/ColorControlPanel';
 import ColorCodeControl from '../ColorCodeControl/ColorCodeControl';
-// import ColorComponentsControls from '../ColorComponentsControls/ColorComponentsControls';
 import NumberSettingsControls from '../NumberSettingsControls/NumberSettingsControls';
-// import ColorCodeButtonPanel from '../ColorCodeButtonPanel/ColorCodeButtonPanel';
 
 import './ColorControls.css';
 
@@ -204,7 +202,7 @@ class ColorControls extends Component {
   render() {
     return (
       <div className='ColorControls__container'>
-        <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} inCodeEditMode={this.state.inCodeEditMode} onDeleteButton={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive}/>
+        <ColorCodeControl colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} inCodeEditMode={this.state.inCodeEditMode} onDeleteButton={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} showColorComponents={this.props.showColorComponents} toggleShowColorComponents={this.props.toggleShowColorComponents}/>
         <ColorControlPanel colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} inCodeEditMode={this.state.inCodeEditMode} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.state.activeSymbolButtons} />
         <NumberSettingsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange}/>
       </div>

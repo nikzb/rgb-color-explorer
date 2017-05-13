@@ -6,14 +6,19 @@ $button-color: $grey-2;
 $button-focus-color: $grey-8;
 $button-active-color: $grey-6;
 
-.ColorComponentViewToggle {
+.ColorComponentViewToggle__container {
+  flex: 0;
+  width: 5em;
+  margin-left: 1.25rem;
+  margin-right: .6rem;
+
   .button {
     background: transparent;
     color: $button-color;
     border: 1px solid $button-color;
     border-radius: 50%;
     margin: 0;
-    padding: .6em;
+    padding: .4em;
     width: 4em;
     height: 4em;
     font-size: .8em;
