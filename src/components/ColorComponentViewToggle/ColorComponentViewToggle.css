@@ -3,7 +3,8 @@
   flex: 0;
   width: 5em;
   margin-left: 0.9rem;
-  margin-right: 0.95rem; }
+  margin-right: 0.95rem;
+  margin-bottom: 0.1em; }
 
 .ColorComponentViewToggle__container .button {
   background: transparent;
