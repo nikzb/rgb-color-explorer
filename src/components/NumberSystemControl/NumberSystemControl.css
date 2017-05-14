@@ -8,9 +8,10 @@
   padding: 0;
   font-size: .9em;
   color: grey; }
-  @media (min-width: 25em) {
-    .NumberSystemControl__label {
-      font-size: 1.2em; } }
+
+@media (min-width: 25em) {
+  .NumberSystemControl__label {
+    font-size: 1.2em; } }
 
 .NumberSystemControl__button {
   width: 4em; }
