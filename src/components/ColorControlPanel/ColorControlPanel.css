@@ -5,10 +5,10 @@
   display: flex;
   justify-content: center;
   margin-bottom: .7em; }
-  @media (min-width: 25em) {
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
     .ColorControlPanel__container {
       height: 8em;
       margin-top: .5em; } }
-  @media (min-width: 37.5em) {
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
     .ColorControlPanel__container {
       margin-bottom: .5em; } }

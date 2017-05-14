@@ -3,15 +3,30 @@
 // }
 
 @mixin phone-large {
-  @media (min-width: 25em) { @content; }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em),
+  (min-resolution: 192dpi) and (min-width: 25em)
+	{
+		@content;
+	}
 }
+// @mixin phone-large {
+//   @media (min-width: 25em) { @content; }
+// }
 
 @mixin tablet-portrait {
-  @media (min-width: 37.5em) { @content; }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+  (min-resolution: 192dpi) and (min-width: 37.5em)
+	{
+		@content;
+	}
 }
 
 @mixin tablet-landscape {
-  @media (min-width: 56em) { @content; }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 56em),
+  (min-resolution: 192dpi) and (min-width: 56em)
+	{
+		@content;
+	}
 }
 
 @mixin desktop {

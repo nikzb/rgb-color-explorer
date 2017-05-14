@@ -16,4 +16,8 @@
   @include phone-large {
     max-width: 28em;
   }
+
+  @include desktop {
+    max-width: 28em;
+  }
 }
