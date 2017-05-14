@@ -17,12 +17,12 @@ class BitsPerComponentControl extends Component {
 
   render() {
     let binaryButtons = [
-      {label: '1', onClick: this.onButtonClick(1)},
-      {label: '2', onClick: this.onButtonClick(2)},
+      {label: '3', onClick: this.onButtonClick(1)},
+      {label: '6', onClick: this.onButtonClick(2)},
     ];
     let hexButtons = [
-      {label: '4', onClick: this.onButtonClick(4)},
-      {label: '8', onClick: this.onButtonClick(8)}
+      {label: '12', onClick: this.onButtonClick(4)},
+      {label: '24', onClick: this.onButtonClick(8)}
     ];
 
     if (this.props.base === 2) {
@@ -35,7 +35,7 @@ class BitsPerComponentControl extends Component {
       }
       return (
         <div className='BitsPerComponentControl__container'>
-          <label className='BitsPerComponentControl__label'>Bits Per Component</label>
+          <label className='BitsPerComponentControl__label'>Number of Bits</label>
           <ButtonGroupMenu buttons={binaryButtons} />
         </div>
       );
@@ -50,7 +50,7 @@ class BitsPerComponentControl extends Component {
       }
       return (
         <div className='BitsPerComponentControl__container'>
-          <label className='BitsPerComponentControl__label'>Bits Per Component</label>
+          <label className='BitsPerComponentControl__label'>Number of Bits</label>
           <ButtonGroupMenu buttons={hexButtons} />
         </div>
       );
