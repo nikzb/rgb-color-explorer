@@ -12,6 +12,10 @@
   @include phone-large {
     display: flex;
   }
+
+  @include desktop {
+    display: flex;
+  }
 }
 
 .UpDownControl__button {

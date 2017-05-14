@@ -14,7 +14,7 @@
     width: 4em;
     height: 4em;
     font-size: .8em; }
-    @media (min-width: 25em) {
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
       .ColorComponentViewToggle__container .button {
         margin-left: 0.6rem;
         padding: .8em;

@@ -36,6 +36,10 @@ $slider-background-focus: $grey-7;
     padding-right: 0;
   }
 
+  @include desktop {
+    padding-right: 0;
+  }
+
   &:focus {
     outline: none;
   }

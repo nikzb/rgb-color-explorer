@@ -7,7 +7,7 @@
   width: 100%; }
   .ColorComponentSlider__container input[type=range]::-moz-focus-outer {
     border: 0; }
-  @media (min-width: 25em) {
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
     .ColorComponentSlider__container {
       padding: .1em; } }
 
@@ -16,7 +16,10 @@
   margin: 0;
   flex: 1 0;
   padding-right: 0.8em; }
-  @media (min-width: 25em) {
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    .ColorComponentSlider__slider {
+      padding-right: 0; } }
+  @media (min-width: 75em) {
     .ColorComponentSlider__slider {
       padding-right: 0; } }
   .ColorComponentSlider__slider:focus {

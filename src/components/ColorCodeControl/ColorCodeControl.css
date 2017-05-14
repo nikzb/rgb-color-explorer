@@ -9,7 +9,7 @@
     font-size: 1em;
     color: grey;
     margin-bottom: -.3em; }
-    @media (min-width: 25em) {
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
       .ColorCodeControl__container .ColorCodeControl__label {
         font-size: 1.2rem;
         margin-bottom: -.4em; } }
@@ -36,7 +36,7 @@
     margin-left: 0.3rem;
     margin-right: 0.3rem;
     border-radius: 0.5rem; }
-    @media (min-width: 25em) {
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
       .ColorCodeControl__bottom-row .ColorCodeControl__delete-button {
         padding: 1rem 1.5rem 0.75rem 1.5rem; } }
     .ColorCodeControl__bottom-row .ColorCodeControl__delete-button:hover, .ColorCodeControl__bottom-row .ColorCodeControl__delete-button:focus {
@@ -58,7 +58,7 @@
   height: 2.4em;
   border: 1px solid grey;
   border-radius: 0.5rem; }
-  @media (min-width: 25em) {
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
     .ColorCodeComponentDisplay__container {
       width: 12em;
       height: 3em; } }
