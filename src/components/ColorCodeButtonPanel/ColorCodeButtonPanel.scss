@@ -21,6 +21,10 @@ $button-active-color: $grey-6;
     height: 7.2em;
   }
 
+  @include low-res {
+    height: 6em;
+  }
+
   &__top-row {
     display: flex;
     border-bottom: 1px solid $button-color;

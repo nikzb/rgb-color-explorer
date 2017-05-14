@@ -29,8 +29,8 @@
 	}
 }
 
-@mixin desktop {
-  @media (min-width: 75em) { @content; }
+@mixin low-res {
+  @media (min-width: 28em) { @content; }
 }
 
 @mixin desktop-wide {

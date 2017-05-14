@@ -5,11 +5,14 @@
   max-width: 100%;
   margin-left: auto;
   margin-right: auto; }
-  .App .button {
-    font-family: 'Open Sans', sans-serif; }
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-    .App {
-      max-width: 28em; } }
-  @media (min-width: 75em) {
-    .App {
-      max-width: 28em; } }
+
+.App .button {
+  font-family: 'Open Sans', sans-serif; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  .App {
+    max-width: 28em; } }
+
+@media (min-width: 28em) {
+  .App {
+    max-width: 28em; } }

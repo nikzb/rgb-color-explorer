@@ -17,7 +17,7 @@
     max-width: 28em;
   }
 
-  @include desktop {
+  @include low-res {
     max-width: 28em;
   }
 }

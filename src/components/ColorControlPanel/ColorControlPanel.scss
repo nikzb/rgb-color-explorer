@@ -16,4 +16,8 @@
   @include tablet-portrait {
     margin-bottom: .5em;
   }
+
+  @include low-res {
+    height: 7em;
+  }
 }
