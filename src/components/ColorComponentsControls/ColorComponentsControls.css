@@ -4,9 +4,8 @@
   padding-top: .2em;
   padding-bottom: .2em;
   width: 100%; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .ColorComponentsControls__container {
-    margin-top: 0;
-    padding-top: .5em;
-    padding-bottom: .4em; } }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    .ColorComponentsControls__container {
+      margin-top: 0;
+      padding-top: .5em;
+      padding-bottom: .4em; } }

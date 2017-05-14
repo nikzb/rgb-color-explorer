@@ -30,7 +30,9 @@
 }
 
 @mixin low-res {
-  @media (min-width: 28em) { @content; }
+  // @media not (-webkit-min-device-pixel-ratio: 2), not (min-resolution: 192dpi) { @content; }
+  @media (min-width: 200em)
+  { @content;}
 }
 
 @mixin desktop-wide {
