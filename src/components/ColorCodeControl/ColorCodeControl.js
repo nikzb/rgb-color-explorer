@@ -83,7 +83,7 @@ class ColorCodeControl extends Component {
   }
 
   getDeleteButton({isHidden}) {
-    let classes = 'button ColorCodeControls__delete-button';
+    let classes = 'button ColorCodeControl__delete-button';
     if (isHidden) {
       classes += ' hidden';
     }
@@ -102,8 +102,6 @@ class ColorCodeControl extends Component {
       <div className='ColorCodeControl__container'>
         {this.getLabelElement()}
         <div className='ColorCodeControl__bottom-row'>
-          {/*The next div is just there to balance the delete button for styling*/}
-          {/* <div className='ColorControls__delete-button-balance'></div> */}
           <ColorComponentViewToggle showColorComponents={this.props.showColorComponents} onClick={this.props.toggleShowColorComponents}/>
           {this.getColorCodeComponentDisplay()}
           {this.getDeleteButton({isHidden:hideDeleteButton})}

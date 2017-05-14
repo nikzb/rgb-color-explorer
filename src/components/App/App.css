@@ -1,8 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Open+Sans");
 .App {
+  font-family: 'Open Sans', sans-serif;
   text-align: center;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto; }
-  @media (min-width: 25em) {
-    .App {
-      max-width: 28em; } }
+
+.App .button {
+  font-family: 'Open Sans', sans-serif; }
+
+@media (min-width: 25em) {
+  .App {
+    max-width: 28em; } }

@@ -5,8 +5,9 @@
 }
 
 .Header__title {
+  font-family: 'Open Sans', sans-serif;
   color: dimgrey;
-  font-size: 1.5em; 
+  font-size: 1.5em;
   margin: 0;
 
   @include phone-large {

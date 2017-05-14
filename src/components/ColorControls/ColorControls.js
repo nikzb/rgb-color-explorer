@@ -97,7 +97,7 @@ class ColorControls extends Component {
     const classesOfEditModeElements = [
       'ColorCodeComponentDisplay',
       'ColorCodeButtonPanel__button',
-      'ColorCodeControls__delete-button'
+      'ColorCodeControl__delete-button'
     ];
 
     console.log(`${e.target.className} was clicked`);
