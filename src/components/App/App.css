@@ -5,10 +5,8 @@
   max-width: 100%;
   margin-left: auto;
   margin-right: auto; }
-
-.App .button {
-  font-family: 'Open Sans', sans-serif; }
-
-@media (min-width: 25em) {
-  .App {
-    max-width: 28em; } }
+  .App .button {
+    font-family: 'Open Sans', sans-serif; }
+  @media (min-width: 25em) {
+    .App {
+      max-width: 28em; } }
