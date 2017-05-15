@@ -17,12 +17,12 @@ $button-active-color: $grey-6;
   overflow: hidden;
   margin: .7em 0;
 
-  @include phone-large {
-    height: 7.2em;
-  }
-
   @include low-res {
     height: 6em;
+  }
+  
+  @include phone-large {
+    height: 7.2em;
   }
 
   &__top-row {

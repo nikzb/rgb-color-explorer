@@ -9,11 +9,12 @@
   justify-content: center;
   margin: 0 0.2em;
 
-  @include phone-large {
+  @include low-res {
+    height: 1em;
     display: flex;
   }
 
-  @include low-res {
+  @include phone-large {
     display: flex;
   }
 }

@@ -13,11 +13,14 @@
     font-family: 'Open Sans', sans-serif;
   }
 
-  @include phone-large {
-    max-width: 28em;
-  }
-
   @include low-res {
     max-width: 28em;
+    font-size: 85%;
   }
+
+  @include phone-large {
+    max-width: 36em;
+  }
+
+
 }

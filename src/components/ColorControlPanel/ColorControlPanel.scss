@@ -8,6 +8,10 @@
   justify-content: center;
   margin-bottom: .7em;
 
+  @include low-res {
+    height: 7em;
+  }
+
   @include phone-large {
     height: 8em;
     margin-top: .5em;
@@ -15,9 +19,5 @@
 
   @include tablet-portrait {
     margin-bottom: .5em;
-  }
-
-  @include low-res {
-    height: 7em;
   }
 }

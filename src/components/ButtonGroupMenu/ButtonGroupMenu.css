@@ -46,6 +46,9 @@
     flex: 1 0 0;
     font-size: 1.8em;
     padding: 0 .5rem .2rem .5rem; }
+    @media (min-width: 25em) {
+      .ButtonGroupMenu--plus-minus .button {
+        font-size: 1.5em; } }
     @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
       .ButtonGroupMenu--plus-minus .button {
         padding-bottom: .3rem; } }

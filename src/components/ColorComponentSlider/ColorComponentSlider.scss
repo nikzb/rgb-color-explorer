@@ -17,12 +17,12 @@ $slider-background-focus: $grey-7;
     border: 0;
   }
 
-  @include phone-large {
-    padding: .1em;
+  @include low-res {
+    padding: .2em;
   }
 
-  @include low-res {
-    padding: .3em;
+  @include phone-large {
+    padding: .1em;
   }
 }
 
@@ -34,11 +34,11 @@ $slider-background-focus: $grey-7;
 
   padding-right: 0.8em;
 
-  @include phone-large {
+  @include low-res {
     padding-right: 0;
   }
-
-  @include low-res {
+    
+  @include phone-large {
     padding-right: 0;
   }
 
