@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+
 import ColorCode from '../../classes/ColorCode/ColorCode';
+import RGBTour from '../../classes/RGBTour/RGBTour';
+
 import ColorDisplay from '../ColorDisplay/ColorDisplay';
 import ColorControls from '../ColorControls/ColorControls';
 
@@ -23,11 +26,15 @@ class MainSection extends Component {
         green: 11,
         blue: 15
       }),
-      showColorComponents: true
+      showColorComponents: true,
+      tour: (new RGBTour()).getTour()
     };
+
     this.updateColor = this.updateColor.bind(this);
     this.toggleShowColorComponents = this.toggleShowColorComponents.bind(this);
   }
+
+
 
   // Parameters:
   //   newCode: A string with a new color code to use
@@ -127,6 +134,11 @@ class MainSection extends Component {
     this.setState({
       showColorComponents: !this.state.showColorComponents
     });
+  }
+
+  componentDidMount() {
+    console.log(this.state.tour);
+    this.state.tour.start();
   }
 
   render() {
