@@ -11,6 +11,10 @@ import './MainSection.css';
 class MainSection extends Component {
   constructor(props) {
     super(props);
+
+    this.updateColor = this.updateColor.bind(this);
+    this.toggleShowColorComponents = this.toggleShowColorComponents.bind(this);
+
     this.state = {
       // colorCode: new ColorCode({
       //   base: 2,
@@ -27,11 +31,11 @@ class MainSection extends Component {
         blue: 15
       }),
       showColorComponents: true,
-      tour: (new RGBTour()).getTour()
+      tour: (new RGBTour({
+        toggleShowColorComponents: this.toggleShowColorComponents,
+        updateColor: this.updateColor
+      })).getTour()
     };
-
-    this.updateColor = this.updateColor.bind(this);
-    this.toggleShowColorComponents = this.toggleShowColorComponents.bind(this);
   }
 
 
