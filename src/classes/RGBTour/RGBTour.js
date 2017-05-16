@@ -20,6 +20,32 @@ class RGBTour {
     return this.tour;
   }
 
+  // Updates the color, but only if the the tour step it belongs to is still active.
+  // This check is needed because a tour step can be prematurely ended by clicking back or next
+  updateIfStillActive({updateObject, stepItBelongsTo, updateColor}) {
+    console.log(this.tour.getCurrentStep().id);
+    console.log(stepItBelongsTo);
+    console.log('active', updateColor);
+    if (this.tour.getCurrentStep().id === stepItBelongsTo) {
+      updateColor(updateObject);
+    }
+  }
+
+  // Given an array of colors and a time interval to use for spacing them out,
+  // update the colors every interval ms, but only if still part of the active step
+  animateColorSequence({colors, interval, updateColor, step}) {
+    console.log('animate', updateColor);
+    colors.forEach((code, index) => {
+      setTimeout(() => {
+        this.updateIfStillActive({
+          updateObject: {newCode: code},
+          stepItBelongsTo: step,
+          updateColor
+        });
+      }, (index + 1) * interval);
+    });
+  }
+
   addTourSteps({toggleShowColorComponents, updateColor}) {
     const standardButtons = [
       {
@@ -70,6 +96,13 @@ class RGBTour {
       when: {
         show: () => {
           setTimeout(() => {
+            this.updateIfStillActive({
+              updateObject: {
+                newBase: 2
+              },
+              stepItBelongsTo: 'dimmer',
+              updateColor
+            });
             updateColor({
               newBase: 2
             });
@@ -79,13 +112,20 @@ class RGBTour {
             updateColor({
               newCode: '111'
             });
-            const timeStep = 1000;
-            setTimeout(() => { updateColor({ newCode: '011'}) }, timeStep);
-            setTimeout(() => { updateColor({ newCode: '001'}) }, timeStep * 2);
-            setTimeout(() => { updateColor({ newCode: '101'}) }, timeStep * 3);
-            setTimeout(() => { updateColor({ newCode: '100'}) }, timeStep * 4);
-            setTimeout(() => { updateColor({ newCode: '110'}) }, timeStep * 5);
-            setTimeout(() => { updateColor({ newCode: '111'}) }, timeStep * 6);
+            const colors = [
+              '011',
+              '001',
+              '101',
+              '100',
+              '110',
+              '111'
+            ];
+            this.animateColorSequence({
+              colors,
+              updateColor,
+              interval: 1000,
+              step: 'dimmer'
+            });
           }, 1000);
         }
       }
@@ -105,13 +145,20 @@ class RGBTour {
           updateColor({
             newCode: '111'
           });
-          const timeStep = 1000;
-          setTimeout(() => { updateColor({ newCode: '011'}) }, timeStep);
-          setTimeout(() => { updateColor({ newCode: '001'}) }, timeStep * 2);
-          setTimeout(() => { updateColor({ newCode: '101'}) }, timeStep * 3);
-          setTimeout(() => { updateColor({ newCode: '100'}) }, timeStep * 4);
-          setTimeout(() => { updateColor({ newCode: '110'}) }, timeStep * 5);
-          setTimeout(() => { updateColor({ newCode: '111'}) }, timeStep * 6);
+          const colors = [
+            '011',
+            '001',
+            '101',
+            '100',
+            '110',
+            '111'
+          ];
+          this.animateColorSequence({
+            colors,
+            updateColor,
+            interval: 1000,
+            step: 'binary'
+          });
         }
       }
     })
@@ -141,8 +188,8 @@ class RGBTour {
             updateColor({
               newCode: '111111'
             });
-            const timeStep = 600;
-            const codesToShow = [
+
+            const colors = [
               '101111',
               '011111',
               '011011',
@@ -156,9 +203,12 @@ class RGBTour {
               '111110',
               '111111'
             ];
-            codesToShow.forEach((code, index) => {
-              setTimeout(() => { updateColor({newCode: code}) }, (index + 1) * timeStep);
-            });
+            this.animateColorSequence({
+              colors,
+              updateColor,
+              interval: 600,
+              step: 'moreBits'
+            })
           }, 1000);
         }
       }
@@ -179,8 +229,7 @@ class RGBTour {
             updateColor({
               newCode: 'FFF'
             });
-            const timeStep = 600;
-            const codesToShow = [
+            const colors = [
               'FEF',
               'FDF',
               'FDE',
@@ -195,9 +244,12 @@ class RGBTour {
               'CD8',
               'BD8'
             ];
-            codesToShow.forEach((code, index) => {
-              setTimeout(() => { updateColor({newCode: code}) }, (index + 1) * timeStep);
-            });
+            this.animateColorSequence({
+              colors,
+              updateColor,
+              interval: 600,
+              step: 'hex'
+            })
           }, 1000);
         }
       }
@@ -218,8 +270,8 @@ class RGBTour {
             updateColor({
               newCode: 'BBDD88'
             });
-            const timeStep = 300;
-            const codesToShow = [
+
+            const colors= [
               'BCDD88',
               'BDDD88',
               'BEDD88',
@@ -239,9 +291,12 @@ class RGBTour {
               'BED681',
               'BED680'
             ];
-            codesToShow.forEach((code, index) => {
-              setTimeout(() => { updateColor({newCode: code}) }, (index + 1) * timeStep);
-            });
+            this.animateColorSequence({
+              colors,
+              updateColor,
+              interval: 300,
+              step: 'hex24'
+            })
           }, 1000);
         }
       }
