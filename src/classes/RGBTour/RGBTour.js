@@ -427,7 +427,7 @@ class RGBTour {
       text: 'Now it is your turn to explore. See what colors you can make!',
       buttons: [
         {
-          text: 'Replay the Tour',
+          text: 'Restart',
           action: () => { this.tour.show('welcome') }
         },
         {
