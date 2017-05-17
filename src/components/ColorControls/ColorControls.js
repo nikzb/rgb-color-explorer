@@ -11,6 +11,7 @@ class ColorControls extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // code edit mode is when the button panel is enabled for typing in codes
       inCodeEditMode: false,
       isDeleteButtonActive: false,
       activeSymbolButtons: []
@@ -27,14 +28,6 @@ class ColorControls extends Component {
       inCodeEditMode: newValue
     });
   }
-
-  // getControlPanel() {
-  //   if (this.state.inCodeEditMode) {
-  //     return <ColorCodeButtonPanel colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.state.activeSymbolButtons} />;
-  //   } else {
-  //     return <ColorComponentsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} />;
-  //   }
-  // }
 
   // Given a symbol, add it to the code, or if the code is already full, start a new one
   // param symbol - the symbol to add to the code

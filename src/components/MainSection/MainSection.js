@@ -14,6 +14,7 @@ class MainSection extends Component {
 
     this.updateColor = this.updateColor.bind(this);
     this.toggleShowColorComponents = this.toggleShowColorComponents.bind(this);
+    this.isShowingColorComponents = this.isShowingColorComponents.bind(this);
 
     this.state = {
       // colorCode: new ColorCode({
@@ -33,6 +34,7 @@ class MainSection extends Component {
       showColorComponents: true,
       tour: (new RGBTour({
         toggleShowColorComponents: this.toggleShowColorComponents,
+        isShowingColorComponents: this.isShowingColorComponents,
         updateColor: this.updateColor
       })).getTour()
     };
@@ -141,6 +143,10 @@ class MainSection extends Component {
     this.setState({
       showColorComponents: !this.state.showColorComponents
     });
+  }
+
+  isShowingColorComponents() {
+    return this.state.showColorComponents;
   }
 
   componentDidMount() {

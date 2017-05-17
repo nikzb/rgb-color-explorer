@@ -67,7 +67,7 @@ class RGBTour {
     });
   }
 
-  addTourSteps({toggleShowColorComponents, updateColor}) {
+  addTourSteps({toggleShowColorComponents, isShowingColorComponents, updateColor}) {
     const standardButtons = [
       {
         text: 'Back',
@@ -97,7 +97,12 @@ class RGBTour {
           text: 'Next',
           action: this.tour.next
         }
-      ]
+      ],
+      when: {
+        show: () => {
+          this.currentTourStep += 1;
+        }
+      }
     })
     .addStep('mix', {
       text: 'Digital devices mix red, green, and blue light to make various colors.',
@@ -135,10 +140,22 @@ class RGBTour {
       when: {
         show: () => {
           this.currentTourStep += 1;
-          let sequence = [
+          let sequence = [];
+          let nextWaitTime = 1000;
+
+          if (!isShowingColorComponents()) {
+            sequence.push({
+              callback: toggleShowColorComponents,
+              waitTime: 0,
+              tourStepItBelongsTo: this.currentTourStep
+            })
+            // Wait long enough to finish this animation before changing the colors.
+            nextWaitTime = 2500;
+          }
+          sequence = _.concat(sequence, [
             {
               callback: () => { updateColor({newBase: 2}) },
-              waitTime: 1000,
+              waitTime: nextWaitTime,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
@@ -151,7 +168,7 @@ class RGBTour {
               waitTime: 1,
               tourStepItBelongsTo: this.currentTourStep
             }
-          ]
+          ]);
 
           const colorArray = [
             '011',
@@ -419,6 +436,16 @@ class RGBTour {
           });
 
           funcSequence.initiateSequence();
+        }
+      }
+    })
+    .addStep('enterCode', {
+      text: 'You can type in a code to see what color it makes.',
+      buttons: standardButtons,
+      attachTo: '.ColorCodeControl__container top',
+      when: {
+        show: () => {
+          this.currentTourStep += 1;
         }
       }
     })
