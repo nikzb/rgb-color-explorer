@@ -5,7 +5,7 @@ import TimedFunctionCallSequence from '../TimedFunctionCallSequence/TimedFunctio
 
 // import './ShepherdStyles/shepherd-theme-arrows.css';
 // import './ShepherdStyles/shepherd-theme-default.css';
-import './ShepherdStyles/shepherd-theme-dark.css';
+import './ShepherdStyles/shepherd-theme-dark-edit.css';
 
 
 class RGBTour {
