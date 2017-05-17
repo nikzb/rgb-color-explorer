@@ -29,32 +29,6 @@ class RGBTour {
     return this.currentTourStep;
   }
 
-  // Updates the color, but only if the the tour step it belongs to is still active.
-  // This check is needed because a tour step can be prematurely ended by clicking back or next
-  updateIfStillActive({updateObject, stepItBelongsTo, updateColor}) {
-    console.log(this.tour.getCurrentStep().id);
-    console.log(stepItBelongsTo);
-    console.log('active', updateColor);
-    if (this.tour.getCurrentStep().id === stepItBelongsTo) {
-      updateColor(updateObject);
-    }
-  }
-
-  // Given an array of colors and a time interval to use for spacing them out,
-  // update the colors every interval ms, but only if still part of the active step
-  animateColorSequence({colors, interval, updateColor, step}) {
-    console.log('animate', updateColor);
-    colors.forEach((code, index) => {
-      setTimeout(() => {
-        this.updateIfStillActive({
-          updateObject: {newCode: code},
-          stepItBelongsTo: step,
-          updateColor
-        });
-      }, (index + 1) * interval);
-    });
-  }
-
   // Given an array of colors and a time interval to use for spacing them out,
   // return an array of objects ready to send to a TimedFunctionCallSequence
   getFunctionCallObjectArray({colorArray, updateColor, waitTime, tourStepItBelongsTo}) {
