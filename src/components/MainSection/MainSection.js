@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 import ColorCode from '../../classes/ColorCode/ColorCode';
 import RGBTour from '../../classes/RGBTour/RGBTour';
@@ -15,6 +16,11 @@ class MainSection extends Component {
     this.updateColor = this.updateColor.bind(this);
     this.toggleShowColorComponents = this.toggleShowColorComponents.bind(this);
     this.isShowingColorComponents = this.isShowingColorComponents.bind(this);
+    this.setCodeEditMode = this.setCodeEditMode.bind(this);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.addSymbolToCode = this.addSymbolToCode.bind(this);
+    this.handleDeleteButtonClick = this.handleDeleteButtonClick.bind(this);
 
     this.state = {
       // colorCode: new ColorCode({
@@ -36,11 +42,184 @@ class MainSection extends Component {
         toggleShowColorComponents: this.toggleShowColorComponents,
         isShowingColorComponents: this.isShowingColorComponents,
         updateColor: this.updateColor
-      })).getTour()
+      })).getTour(),
+      // code edit mode is when the button panel is enabled for typing in codes
+      inCodeEditMode: false,
+      isDeleteButtonActive: false,
+      activeSymbolButtons: []
     };
+
   }
 
+  setCodeEditMode(newValue) {
+    this.setState({
+      inCodeEditMode: newValue
+    });
+  }
 
+  // Given a symbol, add it to the code, or if the code is already full, start a new one
+  // param symbol - the symbol to add to the code
+  addSymbolToCode(symbol) {
+    const colorCode = this.state.colorCode;
+
+    let newCode = '';
+    if (colorCode.isPartial) {
+      newCode = this.state.colorCode.getPartial() + symbol;
+    } else {
+      newCode = symbol;
+    }
+
+    this.updateColor({
+      newCode,
+      base: colorCode.getBase(),
+      bits: colorCode.getBits()
+    });
+
+    if (newCode.length === colorCode.getFullCodeLength()) {
+      // using a setTimeout here eliminated the need for the "shouldReset" state value
+      // I initially put this in here so you could see the symbol button activate when you type on the keyboard
+      // I decided that it looked better if the button panel disappeared right away when you enter the last symbol
+      setTimeout(() => {
+        this.setCodeEditMode(false);
+      }, 10);
+    }
+  }
+
+  // Remove the last symbol from the code and update. If the code is empty, do nothing
+  removeSymbolFromCode() {
+    const colorCode = this.state.colorCode;
+    let previousCodeAsString;
+
+    if (colorCode.isPartial) {
+      // If the code is empty, do nothing
+      if (colorCode.getPartial().length === 0) {
+        return;
+      }
+      previousCodeAsString = colorCode.getPartial();
+    }
+    else {
+      previousCodeAsString = colorCode.getCode();
+    }
+
+    const newCodeAsString = previousCodeAsString.slice(0, previousCodeAsString.length - 1);
+
+    this.updateColor({
+      newCode: newCodeAsString,
+      base: colorCode.getBase(),
+      bits: colorCode.getBits()
+    });
+  }
+
+  handleDeleteButtonClick() {
+    this.removeSymbolFromCode();
+  }
+
+  handleDocumentClick(e) {
+    const classesOfEditModeElements = [
+      'ColorCodeComponentDisplay',
+      'ColorCodeButtonPanel__button',
+      'ColorCodeControl__delete-button'
+    ];
+
+    console.log(`${e.target.className} was clicked`);
+
+    const includesNone = (str, list) => {
+      return _.every(list, (item) => {
+        return !_.includes(str, item);
+      });
+    }
+    if (includesNone(e.target.className, classesOfEditModeElements)) {
+      if (this.state.inCodeEditMode) {
+        this.setCodeEditMode(false);
+        if (this.state.colorCode.isPartial) {
+          // Replace with a full code
+          this.updateColor({
+            newCode: this.state.colorCode.getCode(),
+          });
+        }
+      }
+    } else if (!this.state.inCodeEditMode) {
+      console.log('Entering edit mode');
+      this.setCodeEditMode(true);
+    }
+  }
+
+  handleKeyDown(e) {
+    const symbol = e.key.toUpperCase();
+
+    if (document.activeElement.className === 'ColorCodeComponentDisplay__container') {
+      if (symbol === ' ' || symbol === 'ENTER') {
+        this.setCodeEditMode(true);
+      }
+    }
+
+    const colorCode = this.state.colorCode;
+
+    if (this.state.inCodeEditMode) {
+      // Check for BACKSPACE before checking for valid symbols to add
+      if (symbol === 'BACKSPACE') {
+        // Make the button change color like when clicked
+        this.setState({
+          isDeleteButtonActive: true
+        });
+        setTimeout(() => {
+          this.setState({
+            isDeleteButtonActive: false
+          });
+        }, 100);
+
+        this.removeSymbolFromCode();
+        return;
+      }
+
+      // Validate based on base currently being used
+      if (colorCode.getBase() === 2) {
+        const validBinarySymbols = ['0', '1'];
+        if (!_.includes(validBinarySymbols, symbol)) {
+          return;
+        }
+      }
+      else if (colorCode.getBase() === 16) {
+        const validHexSymbols = ['0', '1', '2', '3', '4', '5', '6', '7',
+                                 '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+        if (!_.includes(validHexSymbols, symbol)) {
+          return;
+        }
+      }
+
+      // If we made it to this point, the symbol is valid for the current base
+      // Make the button change color like when clicked
+
+
+      if (!_.includes(this.state.activeSymbolButtons, symbol)) {
+          //This can be done with immutability helpers too, but just kept it simple for now: https://facebook.github.io/react/docs/update.html
+        let newActiveSymbolButtons = _.concat(this.state.activeButtons, symbol);
+        console.log('new button array: ' + newActiveSymbolButtons);
+        this.setState({
+          activeSymbolButtons: newActiveSymbolButtons
+        });
+      }
+      setTimeout(() => {
+        let newActiveSymbolButtons = _.without(this.state.activeSymbolButtons, symbol);
+        this.setState({
+          activeSymbolButtons: newActiveSymbolButtons
+        });
+      }, 100);
+
+      this.addSymbolToCode(symbol);
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener('click', this.handleDocumentClick);
+    document.addEventListener('keydown', this.handleKeyDown);
+    this.state.tour.start();
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleDocumentClick);
+    document.removeEventListener('keydown', this.handleKeyDown);
+  }
 
   // Parameters:
   //   newCode: A string with a new color code to use
@@ -149,16 +328,11 @@ class MainSection extends Component {
     return this.state.showColorComponents;
   }
 
-  componentDidMount() {
-    console.log(this.state.tour);
-    this.state.tour.start();
-  }
-
   render() {
     return (
       <div className='MainSection__container'>
         <ColorDisplay colorCode={this.state.colorCode} showColorComponents={this.state.showColorComponents} toggleShowColorComponents={this.toggleShowColorComponents} />
-        <ColorControls colorCode={this.state.colorCode} onColorChange={this.updateColor} showColorComponents={this.state.showColorComponents} toggleShowColorComponents={this.toggleShowColorComponents} />
+        <ColorControls colorCode={this.state.colorCode} onColorChange={this.updateColor} showColorComponents={this.state.showColorComponents} toggleShowColorComponents={this.toggleShowColorComponents} inCodeEditMode={this.state.inCodeEditMode} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.state.activeSymbolButtons}/>
       </div>
     );
   }

@@ -90,7 +90,7 @@ class ColorCodeControl extends Component {
     if (this.props.isDeleteButtonActive) {
       classes += ' button--active';
     }
-    return <button className={classes} onClick={this.props.onDeleteButton}>⌫</button>
+    return <button className={classes} onClick={this.props.handleDeleteButtonClick}>⌫</button>
   }
 
   render() {
