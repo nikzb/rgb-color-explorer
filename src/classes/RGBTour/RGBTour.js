@@ -100,7 +100,7 @@ class RGBTour {
       ]
     })
     .addStep('mix', {
-      text: 'Digital devices mix red, green, and blue light to make various colors',
+      text: 'Digital devices mix red, green, and blue light to make various colors.',
       attachTo: '.ColorViz__canvas bottom',
       buttons: standardButtons,
       when: {
@@ -129,7 +129,7 @@ class RGBTour {
       }
     })
     .addStep('dimmer', {
-      text: 'The red, green, and blue light intensities can be adjusted individually',
+      text: 'The red, green, and blue light intensities can be adjusted individually.',
       attachTo: '.ColorControlPanel__container top',
       buttons: standardButtons,
       when: {
@@ -183,7 +183,7 @@ class RGBTour {
       }
     })
     .addStep('binary', {
-      text: 'Binary codes can be used to represent the various combinations of red, green, and blue light intensities',
+      text: 'Binary codes can be used to represent the various combinations of red, green, and blue light intensities.',
       attachTo: '.ColorCodeControl__container bottom',
       buttons: standardButtons,
       when: {
@@ -233,7 +233,7 @@ class RGBTour {
       }
     })
     .addStep('moreBits', {
-      text: 'Using more bits to create the code allows us to create a larger number of colors',
+      text: 'Using more bits to create the code allows us to create a larger number of colors.',
       attachTo: '.ColorCodeControl__container top',
       buttons: standardButtons,
       when: {
@@ -247,12 +247,12 @@ class RGBTour {
             },
             {
               callback: () => { updateColor({newBitsPerComponent: 1}) },
-              waitTime: 1,
+              waitTime: 0,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
               callback: () => { updateColor({newCode: '111'}) },
-              waitTime: 1,
+              waitTime: 0,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
@@ -262,12 +262,12 @@ class RGBTour {
             },
             {
               callback: () => { updateColor({newBitsPerComponent: 2}) },
-              waitTime: 1,
+              waitTime: 0,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
               callback: () => { updateColor({newCode: '111111'}) },
-              waitTime: 1,
+              waitTime: 0,
               tourStepItBelongsTo: this.currentTourStep
             }
           ];
@@ -318,12 +318,12 @@ class RGBTour {
             },
             {
               callback: () => { updateColor({newBitsPerComponent: 4}) },
-              waitTime: 1,
+              waitTime: 0,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
               callback: () => { updateColor({newCode: 'FFF'}) },
-              waitTime: 1,
+              waitTime: 0,
               tourStepItBelongsTo: this.currentTourStep
             }
           ]

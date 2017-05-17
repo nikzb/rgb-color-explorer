@@ -113,6 +113,9 @@ class MainSection extends Component {
         });
       }
     } else if (newBase) {
+      // Make sure the base actually changed
+      if (newBase === oldCode.getBase())
+        return;
       // Convert to new base. This assumes that it will only be run if the base is actually changing
       if (newBase === 16) {
         convertToNewNumberOfBits({
