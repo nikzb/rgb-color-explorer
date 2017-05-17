@@ -1,4 +1,7 @@
 import Shepherd from 'tether-shepherd';
+import _ from 'lodash';
+
+import TimedFunctionCallSequence from '../TimedFunctionCallSequence/TimedFunctionCallSequence';
 
 // import './ShepherdStyles/shepherd-theme-arrows.css';
 // import './ShepherdStyles/shepherd-theme-default.css';
@@ -14,10 +17,16 @@ class RGBTour {
       },
     });
     this.addTourSteps(functions);
+    this.currentTourStep = 0;
+    this.getCurrentTourStep = this.getCurrentTourStep.bind(this);
   }
 
   getTour() {
     return this.tour;
+  }
+
+  getCurrentTourStep() {
+    return this.currentTourStep;
   }
 
   // Updates the color, but only if the the tour step it belongs to is still active.
@@ -43,6 +52,18 @@ class RGBTour {
           updateColor
         });
       }, (index + 1) * interval);
+    });
+  }
+
+  // Given an array of colors and a time interval to use for spacing them out,
+  // return an array of objects ready to send to a TimedFunctionCallSequence
+  getFunctionCallObjectArray({colorArray, updateColor, waitTime, tourStepItBelongsTo}) {
+    return _.map(colorArray, (color) => {
+      return {
+        callback: () => { updateColor({newCode: color}) },
+        waitTime,
+        tourStepItBelongsTo
+      }
     });
   }
 
@@ -84,8 +105,26 @@ class RGBTour {
       buttons: standardButtons,
       when: {
         show: () => {
-          toggleShowColorComponents();
-          setTimeout(toggleShowColorComponents, 3000);
+          this.currentTourStep += 1;
+          const sequence = [
+            {
+              callback: toggleShowColorComponents,
+              waitTime: 0,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: toggleShowColorComponents,
+              waitTime: 3000,
+              tourStepItBelongsTo: this.currentTourStep
+            }
+          ]
+
+          const funcSequence = new TimedFunctionCallSequence({
+            getCurrentTourStep: this.getCurrentTourStep,
+            sequence
+          });
+
+          funcSequence.initiateSequence();
         }
       }
     })
@@ -95,38 +134,51 @@ class RGBTour {
       buttons: standardButtons,
       when: {
         show: () => {
-          setTimeout(() => {
-            this.updateIfStillActive({
-              updateObject: {
-                newBase: 2
-              },
-              stepItBelongsTo: 'dimmer',
-              updateColor
-            });
-            updateColor({
-              newBase: 2
-            });
-            updateColor({
-              newBitsPerComponent: 1
-            });
-            updateColor({
-              newCode: '111'
-            });
-            const colors = [
-              '011',
-              '001',
-              '101',
-              '100',
-              '110',
-              '111'
-            ];
-            this.animateColorSequence({
-              colors,
-              updateColor,
-              interval: 1000,
-              step: 'dimmer'
-            });
-          }, 1000);
+          this.currentTourStep += 1;
+          let sequence = [
+            {
+              callback: () => { updateColor({newBase: 2}) },
+              waitTime: 1000,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { updateColor({newBitsPerComponent: 1}) },
+              waitTime: 1,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { updateColor({newCode: '111'}) },
+              waitTime: 1,
+              tourStepItBelongsTo: this.currentTourStep
+            }
+          ]
+
+          const colorArray = [
+            '011',
+            '001',
+            '101',
+            '100',
+            '110',
+            '111'
+          ];
+
+          sequence = _.concat(sequence, this.getFunctionCallObjectArray({
+            colorArray,
+            updateColor,
+            waitTime: 1000,
+            tourStepItBelongsTo: this.currentTourStep,
+          }));
+
+          console.log('sequence with binary colors');
+          console.log(sequence);
+
+          const funcSequence = new TimedFunctionCallSequence({
+            getCurrentTourStep: this.getCurrentTourStep,
+            sequence
+          });
+
+          funcSequence.initiateSequence();
+
         }
       }
     })
@@ -136,16 +188,26 @@ class RGBTour {
       buttons: standardButtons,
       when: {
         show: () => {
-          updateColor({
-            newBase: 2
-          });
-          updateColor({
-            newBitsPerComponent: 1
-          });
-          updateColor({
-            newCode: '111'
-          });
-          const colors = [
+          this.currentTourStep += 1;
+          let sequence = [
+            {
+              callback: () => { updateColor({newBase: 2}) },
+              waitTime: 1000,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { updateColor({newBitsPerComponent: 1}) },
+              waitTime: 1,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { updateColor({newCode: '111'}) },
+              waitTime: 1,
+              tourStepItBelongsTo: this.currentTourStep
+            }
+          ]
+
+          const colorArray = [
             '011',
             '001',
             '101',
@@ -153,12 +215,20 @@ class RGBTour {
             '110',
             '111'
           ];
-          this.animateColorSequence({
-            colors,
+
+          sequence = _.concat(sequence, this.getFunctionCallObjectArray({
+            colorArray,
             updateColor,
-            interval: 1000,
-            step: 'binary'
+            waitTime: 1000,
+            tourStepItBelongsTo: this.currentTourStep,
+          }));
+
+          const funcSequence = new TimedFunctionCallSequence({
+            getCurrentTourStep: this.getCurrentTourStep,
+            sequence
           });
+
+          funcSequence.initiateSequence();
         }
       }
     })
@@ -168,48 +238,68 @@ class RGBTour {
       buttons: standardButtons,
       when: {
         show: () => {
-          updateColor({
-            newBase: 2
-          });
-          updateColor({
-            newBitsPerComponent: 1
-          });
-          updateColor({
-            newCode: '111'
+          this.currentTourStep += 1;
+          let sequence = [
+            {
+              callback: () => { updateColor({newBase: 2}) },
+              waitTime: 1000,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { updateColor({newBitsPerComponent: 1}) },
+              waitTime: 1,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { updateColor({newCode: '111'}) },
+              waitTime: 1,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { updateColor({newBase: 2}) },
+              waitTime: 1000,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { updateColor({newBitsPerComponent: 2}) },
+              waitTime: 1,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { updateColor({newCode: '111111'}) },
+              waitTime: 1,
+              tourStepItBelongsTo: this.currentTourStep
+            }
+          ];
+
+          const colorArray = [
+            '101111',
+            '011111',
+            '011011',
+            '010111',
+            '010110',
+            '010101',
+            '100101',
+            '110101',
+            '111001',
+            '111101',
+            '111110',
+            '111111'
+          ];
+
+          sequence = _.concat(sequence, this.getFunctionCallObjectArray({
+            colorArray,
+            updateColor,
+            waitTime: 600,
+            tourStepItBelongsTo: this.currentTourStep,
+          }));
+
+          const funcSequence = new TimedFunctionCallSequence({
+            getCurrentTourStep: this.getCurrentTourStep,
+            sequence
           });
 
-          setTimeout(() => {
-            updateColor({
-              newBase: 2
-            });
-            updateColor({
-              newBitsPerComponent: 2
-            });
-            updateColor({
-              newCode: '111111'
-            });
-
-            const colors = [
-              '101111',
-              '011111',
-              '011011',
-              '010111',
-              '010110',
-              '010101',
-              '100101',
-              '110101',
-              '111001',
-              '111101',
-              '111110',
-              '111111'
-            ];
-            this.animateColorSequence({
-              colors,
-              updateColor,
-              interval: 600,
-              step: 'moreBits'
-            })
-          }, 1000);
+          funcSequence.initiateSequence();
         }
       }
     })
@@ -219,38 +309,54 @@ class RGBTour {
       buttons: standardButtons,
       when: {
         show: () => {
-          setTimeout(() => {
-            updateColor({
-                newBase: 16
-            });
-            updateColor({
-              newBitsPerComponent: 4
-            });
-            updateColor({
-              newCode: 'FFF'
-            });
-            const colors = [
-              'FEF',
-              'FDF',
-              'FDE',
-              'FDD',
-              'FDC',
-              'FDB',
-              'FDA',
-              'FD9',
-              'FD8',
-              'ED8',
-              'DD8',
-              'CD8',
-              'BD8'
-            ];
-            this.animateColorSequence({
-              colors,
-              updateColor,
-              interval: 600,
-              step: 'hex'
-            })
-          }, 1000);
+          this.currentTourStep += 1;
+          let sequence = [
+            {
+              callback: () => { updateColor({newBase: 16}) },
+              waitTime: 1000,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { updateColor({newBitsPerComponent: 4}) },
+              waitTime: 1,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { updateColor({newCode: 'FFF'}) },
+              waitTime: 1,
+              tourStepItBelongsTo: this.currentTourStep
+            }
+          ]
+
+          const colorArray = [
+            'FEF',
+            'FDF',
+            'FDE',
+            'FDD',
+            'FDC',
+            'FDB',
+            'FDA',
+            'FD9',
+            'FD8',
+            'ED8',
+            'DD8',
+            'CD8',
+            'BD8'
+          ];
+
+          sequence = _.concat(sequence, this.getFunctionCallObjectArray({
+            colorArray,
+            updateColor,
+            waitTime: 600,
+            tourStepItBelongsTo: this.currentTourStep,
+          }));
+
+          const funcSequence = new TimedFunctionCallSequence({
+            getCurrentTourStep: this.getCurrentTourStep,
+            sequence
+          });
+
+          funcSequence.initiateSequence();
         }
       }
     })
@@ -260,44 +366,59 @@ class RGBTour {
       buttons: standardButtons,
       when: {
         show: () => {
-          setTimeout(() => {
-            updateColor({
-                newBase: 16
-            });
-            updateColor({
-              newBitsPerComponent: 8
-            });
-            updateColor({
-              newCode: 'BBDD88'
-            });
+          this.currentTourStep += 1;
+          let sequence = [
+            {
+              callback: () => { updateColor({newBase: 16}) },
+              waitTime: 1000,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { updateColor({newBitsPerComponent: 8}) },
+              waitTime: 1,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { updateColor({newCode: 'BBDD88'}) },
+              waitTime: 1,
+              tourStepItBelongsTo: this.currentTourStep
+            }
+          ]
 
-            const colors= [
-              'BCDD88',
-              'BDDD88',
-              'BEDD88',
-              'BEDC88',
-              'BEDB88',
-              'BEDA88',
-              'BED988',
-              'BED888',
-              'BED788',
-              'BED688',
-              'BED687',
-              'BED686',
-              'BED685',
-              'BED684',
-              'BED683',
-              'BED682',
-              'BED681',
-              'BED680'
-            ];
-            this.animateColorSequence({
-              colors,
-              updateColor,
-              interval: 300,
-              step: 'hex24'
-            })
-          }, 1000);
+          const colorArray = [
+            'BCDD88',
+            'BDDD88',
+            'BEDD88',
+            'BEDC88',
+            'BEDB88',
+            'BEDA88',
+            'BED988',
+            'BED888',
+            'BED788',
+            'BED688',
+            'BED687',
+            'BED686',
+            'BED685',
+            'BED684',
+            'BED683',
+            'BED682',
+            'BED681',
+            'BED680'
+          ];
+
+          sequence = _.concat(sequence, this.getFunctionCallObjectArray({
+            colorArray,
+            updateColor,
+            waitTime: 300,
+            tourStepItBelongsTo: this.currentTourStep,
+          }));
+
+          const funcSequence = new TimedFunctionCallSequence({
+            getCurrentTourStep: this.getCurrentTourStep,
+            sequence
+          });
+
+          funcSequence.initiateSequence();
         }
       }
     })
@@ -312,7 +433,12 @@ class RGBTour {
           text: 'Done',
           action: this.tour.hide
         }
-      ]
+      ],
+      when: {
+        show: () => {
+          this.currentTourStep += 1;
+        }
+      }
     })
   }
 }

@@ -19,12 +19,15 @@ class TimedFunctionCallSequence {
     const executeSequence = (sequenceIndex) => {
       if (sequenceIndex < this.sequence.length) {
         const functionCallObject = this.sequence[sequenceIndex];
+        console.log(`current step: ${this.getCurrentTourStep()}`);
+        console.log(`tour step it belongs to ${functionCallObject.tourStepItBelongsTo}`);
         if (this.getCurrentTourStep() === functionCallObject.tourStepItBelongsTo) {
           setTimeout(() => {
             // cancel the sequence is no longer on the matching tour step
             if (this.getCurrentTourStep() !== functionCallObject.tourStepItBelongsTo) {
               return;
             }
+            console.log(`callback: ${functionCallObject.callback}`);
             functionCallObject.callback();
             executeSequence(sequenceIndex + 1);
           }, functionCallObject.waitTime);
