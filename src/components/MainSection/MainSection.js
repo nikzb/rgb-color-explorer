@@ -43,7 +43,9 @@ class MainSection extends Component {
         toggleShowColorComponents: this.toggleShowColorComponents,
         isShowingColorComponents: this.isShowingColorComponents,
         updateColor: this.updateColor,
-        setControlsDisabled: this.setControlsDisabled
+        setControlsDisabled: this.setControlsDisabled,
+        setCodeEditMode: this.setCodeEditMode,
+        addSymbolToCode: this.addSymbolToCode
       })).getTour(),
       // code edit mode is when the button panel is enabled for typing in codes
       inCodeEditMode: false,
@@ -61,7 +63,7 @@ class MainSection extends Component {
 
   // Given a symbol, add it to the code, or if the code is already full, start a new one
   // param symbol - the symbol to add to the code
-  addSymbolToCode(symbol) {
+  addSymbolToCode(symbol, fromTour) {
     const colorCode = this.state.colorCode;
 
     let newCode = '';
@@ -71,11 +73,22 @@ class MainSection extends Component {
       newCode = symbol;
     }
 
-    this.updateColor({
-      newCode,
-      base: colorCode.getBase(),
-      bits: colorCode.getBits()
-    });
+    // if fromTour is true, we need to pass that along to updateColor
+    if (fromTour) {
+      this.updateColor({
+        newCode,
+        base: colorCode.getBase(),
+        bits: colorCode.getBits(),
+        fromTour: true
+      });
+    } else {
+      this.updateColor({
+        newCode,
+        base: colorCode.getBase(),
+        bits: colorCode.getBits(),
+        fromTour: false
+      });
+    }
 
     if (newCode.length === colorCode.getFullCodeLength()) {
       // using a setTimeout here eliminated the need for the "shouldReset" state value

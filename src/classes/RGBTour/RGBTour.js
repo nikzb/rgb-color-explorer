@@ -31,7 +31,7 @@ class RGBTour {
     return this.currentTourStep;
   }
 
-  addTourSteps({toggleShowColorComponents, isShowingColorComponents, updateColor, setControlsDisabled}) {
+  addTourSteps({toggleShowColorComponents, isShowingColorComponents, updateColor, setControlsDisabled, setCodeEditMode, addSymbolToCode}) {
     // Take a color code object and return a function that calls updateColor with fromTour equal to true, so it
     // will work even when the controls are disabled
     const getUpdateColorFromTourFunction = (colorCodeObject) => {
@@ -387,9 +387,55 @@ class RGBTour {
       buttons: standardButtons,
       attachTo: '.ColorCodeControl__container top',
       when: {
-        show: () => {
-          this.currentTourStep += 1;
-        }
+        show: getShowFunction({
+          initSequence: [
+            {
+              callback: getUpdateColorFromTourFunction({newBase: 16}),
+              waitTime: 1000,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: getUpdateColorFromTourFunction({newBitsPerComponent: 8}),
+              waitTime: 1,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { setCodeEditMode(true); },
+              waitTime: 500,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { addSymbolToCode('A', true); },
+              waitTime: 500,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { addSymbolToCode('9', true); },
+              waitTime: 500,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { addSymbolToCode('6', true); },
+              waitTime: 500,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { addSymbolToCode('1', true); },
+              waitTime: 500,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { addSymbolToCode('E', true); },
+              waitTime: 500,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { addSymbolToCode('F', true); },
+              waitTime: 500,
+              tourStepItBelongsTo: this.currentTourStep
+            }
+          ],
+        })
       }
     })
     .addStep('explore', {
