@@ -27,7 +27,9 @@ class TimedFunctionCallSequence {
             if (this.getCurrentTourStep() !== functionCallObject.tourStepItBelongsTo) {
               return;
             }
+            
             console.log(`callback: ${functionCallObject.callback}`);
+
             functionCallObject.callback();
             executeSequence(sequenceIndex + 1);
           }, functionCallObject.waitTime);
@@ -35,6 +37,7 @@ class TimedFunctionCallSequence {
       }
     }
 
+    console.log('in TFCS ', this.sequence);
     executeSequence(0);
   }
 }

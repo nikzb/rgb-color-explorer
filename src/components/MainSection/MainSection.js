@@ -21,6 +21,7 @@ class MainSection extends Component {
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.addSymbolToCode = this.addSymbolToCode.bind(this);
     this.handleDeleteButtonClick = this.handleDeleteButtonClick.bind(this);
+    this.setControlsDisabled = this.setControlsDisabled.bind(this);
 
     this.state = {
       // colorCode: new ColorCode({
@@ -41,14 +42,15 @@ class MainSection extends Component {
       tour: (new RGBTour({
         toggleShowColorComponents: this.toggleShowColorComponents,
         isShowingColorComponents: this.isShowingColorComponents,
-        updateColor: this.updateColor
+        updateColor: this.updateColor,
+        setControlsDisabled: this.setControlsDisabled
       })).getTour(),
       // code edit mode is when the button panel is enabled for typing in codes
       inCodeEditMode: false,
       isDeleteButtonActive: false,
-      activeSymbolButtons: []
+      activeSymbolButtons: [],
+      controlsDisabled: false
     };
-
   }
 
   setCodeEditMode(newValue) {
@@ -221,13 +223,25 @@ class MainSection extends Component {
     document.removeEventListener('keydown', this.handleKeyDown);
   }
 
+  // Takes a boolean value and updates controlsDisabled state
+  setControlsDisabled(newValue) {
+    this.setState({
+      controlsDisabled: newValue
+    });
+  }
+
   // Parameters:
   //   newCode: A string with a new color code to use
   //   comp: The color component gettig updated
   //   newValue: The new value of the color component being updated
   //   newBase: The base for the new color code, if different from the old base
   //   newBitsPerComponent: The new number of bits per component, if different then the old
-  updateColor({newCode, comp, newValue, newBase, newBitsPerComponent}) {
+  updateColor({newCode, comp, newValue, newBase, newBitsPerComponent, fromTour}) {
+    // Do not update the color if the controls are disabled and the request is not from the tour
+    if (this.controlsDisabled && !fromTour) {
+      return;
+    }
+
     const oldCode = this.state.colorCode;
 
     const convertToNewNumberOfBits = ({base, newBitsPerComp}) => {

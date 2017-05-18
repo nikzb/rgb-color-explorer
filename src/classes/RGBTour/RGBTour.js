@@ -16,9 +16,11 @@ class RGBTour {
         scrollTo: true,
       },
     });
-    this.addTourSteps(functions);
     this.currentTourStep = 0;
     this.getCurrentTourStep = this.getCurrentTourStep.bind(this);
+
+    this.addTourSteps(functions);
+
   }
 
   getTour() {
@@ -29,19 +31,28 @@ class RGBTour {
     return this.currentTourStep;
   }
 
-  // Given an array of colors and a time interval to use for spacing them out,
-  // return an array of objects ready to send to a TimedFunctionCallSequence
-  getFunctionCallObjectArray({colorArray, updateColor, waitTime, tourStepItBelongsTo}) {
-    return _.map(colorArray, (color) => {
-      return {
-        callback: () => { updateColor({newCode: color}) },
-        waitTime,
-        tourStepItBelongsTo
+  addTourSteps({toggleShowColorComponents, isShowingColorComponents, updateColor, setControlsDisabled}) {
+    // Take a color code object and return a function that calls updateColor with fromTour equal to true, so it
+    // will work even when the controls are disabled
+    const getUpdateColorFromTourFunction = (colorCodeObject) => {
+      return () => {
+        console.log('trying to update color from tour');
+        updateColor({...colorCodeObject, fromTour: true});
       }
-    });
-  }
+    }
 
-  addTourSteps({toggleShowColorComponents, isShowingColorComponents, updateColor}) {
+    // Given an array of colors and a time interval to use for spacing them out,
+    // return an array of objects ready to send to a TimedFunctionCallSequence
+    const getFunctionCallObjectArray = ({colorArray, waitTime, tourStepItBelongsTo}) => {
+      return _.map(colorArray, (color) => {
+        return {
+          callback: getUpdateColorFromTourFunction({newCode: color}),
+          waitTime,
+          tourStepItBelongsTo
+        }
+      });
+    }
+
     const standardButtons = [
       {
         text: 'Back',
@@ -59,6 +70,41 @@ class RGBTour {
         action: this.tour.next
       }
     ]
+
+    const getShowFunction = ({initSequence, colorArray, waitTimeBetweenColors}) => {
+      return () => {
+        this.currentTourStep += 1;
+        setControlsDisabled(true);
+
+        initSequence = _.map(initSequence, (sequenceObject) => {
+          return {...sequenceObject, tourStepItBelongsTo: this.currentTourStep};
+        })
+
+        let colorSequence = [];
+        if (colorArray) {
+          colorSequence = getFunctionCallObjectArray({
+            colorArray,
+            waitTime: waitTimeBetweenColors,
+            tourStepItBelongsTo: this.currentTourStep,
+          })
+        }
+
+        const enableControls = {
+          callback: () => { setControlsDisabled(false) },
+          waitTime: 0,
+          tourStepItBelongsTo: this.currentTourStep
+        };
+
+        let fullSequence = _.concat(initSequence, colorSequence, enableControls);
+
+        const funcSequence = new TimedFunctionCallSequence({
+          getCurrentTourStep: this.getCurrentTourStep,
+          sequence: fullSequence
+        });
+
+        funcSequence.initiateSequence();
+      };
+    }
 
     this.tour.addStep('welcome', {
       text: 'Welcome to the RGB Color Explorer!',
@@ -83,9 +129,8 @@ class RGBTour {
       attachTo: '.ColorViz__canvas bottom',
       buttons: standardButtons,
       when: {
-        show: () => {
-          this.currentTourStep += 1;
-          const sequence = [
+        show: getShowFunction({
+          initSequence: [
             {
               callback: toggleShowColorComponents,
               waitTime: 0,
@@ -95,16 +140,14 @@ class RGBTour {
               callback: toggleShowColorComponents,
               waitTime: 3000,
               tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => { setControlsDisabled(false) },
+              waitTime: 0,
+              tourStepItBelongsTo: this.currentTourStep
             }
           ]
-
-          const funcSequence = new TimedFunctionCallSequence({
-            getCurrentTourStep: this.getCurrentTourStep,
-            sequence
-          });
-
-          funcSequence.initiateSequence();
-        }
+        })
       }
     })
     .addStep('dimmer', {
@@ -113,7 +156,6 @@ class RGBTour {
       buttons: standardButtons,
       when: {
         show: () => {
-          this.currentTourStep += 1;
           let sequence = [];
           let nextWaitTime = 1000;
 
@@ -128,48 +170,35 @@ class RGBTour {
           }
           sequence = _.concat(sequence, [
             {
-              callback: () => { updateColor({newBase: 2}) },
+              callback: getUpdateColorFromTourFunction({newBase: 2}),
               waitTime: nextWaitTime,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { updateColor({newBitsPerComponent: 1}) },
+              callback: getUpdateColorFromTourFunction({newBitsPerComponent: 1}),
               waitTime: 1,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { updateColor({newCode: '111'}) },
+              callback: getUpdateColorFromTourFunction({newCode: '111'}),
               waitTime: 1,
               tourStepItBelongsTo: this.currentTourStep
             }
           ]);
 
-          const colorArray = [
-            '011',
-            '001',
-            '101',
-            '100',
-            '110',
-            '111'
-          ];
-
-          sequence = _.concat(sequence, this.getFunctionCallObjectArray({
-            colorArray,
-            updateColor,
-            waitTime: 1000,
-            tourStepItBelongsTo: this.currentTourStep,
-          }));
-
-          console.log('sequence with binary colors');
-          console.log(sequence);
-
-          const funcSequence = new TimedFunctionCallSequence({
-            getCurrentTourStep: this.getCurrentTourStep,
-            sequence
-          });
-
-          funcSequence.initiateSequence();
-
+          // Get function and call immediately
+          getShowFunction({
+            initSequence: sequence,
+            colorArray: [
+              '011',
+              '001',
+              '101',
+              '100',
+              '110',
+              '111'
+            ],
+            waitTimeBetweenColors: 1000
+          })();
         }
       }
     })
@@ -178,49 +207,34 @@ class RGBTour {
       attachTo: '.ColorCodeControl__container bottom',
       buttons: standardButtons,
       when: {
-        show: () => {
-          this.currentTourStep += 1;
-          let sequence = [
+        show: getShowFunction({
+          initSequence: [
             {
-              callback: () => { updateColor({newBase: 2}) },
+              callback: getUpdateColorFromTourFunction({newBase: 2}),
               waitTime: 1000,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { updateColor({newBitsPerComponent: 1}) },
+              callback: getUpdateColorFromTourFunction({newBitsPerComponent: 1}),
               waitTime: 1,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { updateColor({newCode: '111'}) },
+              callback: getUpdateColorFromTourFunction({newCode: '111'}),
               waitTime: 1,
               tourStepItBelongsTo: this.currentTourStep
             }
-          ]
-
-          const colorArray = [
+          ],
+          colorArray: [
             '011',
             '001',
             '101',
             '100',
             '110',
             '111'
-          ];
-
-          sequence = _.concat(sequence, this.getFunctionCallObjectArray({
-            colorArray,
-            updateColor,
-            waitTime: 1000,
-            tourStepItBelongsTo: this.currentTourStep,
-          }));
-
-          const funcSequence = new TimedFunctionCallSequence({
-            getCurrentTourStep: this.getCurrentTourStep,
-            sequence
-          });
-
-          funcSequence.initiateSequence();
-        }
+          ],
+          waitTimeBetweenColors: 1000
+        })
       }
     })
     .addStep('moreBits', {
@@ -228,42 +242,40 @@ class RGBTour {
       attachTo: '.ColorCodeControl__container top',
       buttons: standardButtons,
       when: {
-        show: () => {
-          this.currentTourStep += 1;
-          let sequence = [
+        show: getShowFunction({
+          initSequence: [
             {
-              callback: () => { updateColor({newBase: 2}) },
+              callback: getUpdateColorFromTourFunction({newBase: 2}),
               waitTime: 1000,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { updateColor({newBitsPerComponent: 1}) },
+              callback: getUpdateColorFromTourFunction({newBitsPerComponent: 1}),
               waitTime: 0,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { updateColor({newCode: '111'}) },
+              callback: getUpdateColorFromTourFunction({newCode: '111'}),
               waitTime: 0,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { updateColor({newBase: 2}) },
+              callback: getUpdateColorFromTourFunction({newBase: 2}),
               waitTime: 1000,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { updateColor({newBitsPerComponent: 2}) },
+              callback: getUpdateColorFromTourFunction({newBitsPerComponent: 2}),
               waitTime: 0,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { updateColor({newCode: '111111'}) },
+              callback: getUpdateColorFromTourFunction({newCode: '111111'}),
               waitTime: 0,
               tourStepItBelongsTo: this.currentTourStep
             }
-          ];
-
-          const colorArray = [
+          ],
+          colorArray: [
             '101111',
             '011111',
             '011011',
@@ -276,22 +288,9 @@ class RGBTour {
             '111101',
             '111110',
             '111111'
-          ];
-
-          sequence = _.concat(sequence, this.getFunctionCallObjectArray({
-            colorArray,
-            updateColor,
-            waitTime: 600,
-            tourStepItBelongsTo: this.currentTourStep,
-          }));
-
-          const funcSequence = new TimedFunctionCallSequence({
-            getCurrentTourStep: this.getCurrentTourStep,
-            sequence
-          });
-
-          funcSequence.initiateSequence();
-        }
+          ],
+          waitTimeBetweenColors: 600
+        })
       }
     })
     .addStep('hex', {
@@ -299,27 +298,25 @@ class RGBTour {
       attachTo: '.ColorCodeControl__container top',
       buttons: standardButtons,
       when: {
-        show: () => {
-          this.currentTourStep += 1;
-          let sequence = [
+        show: getShowFunction({
+          initSequence: [
             {
-              callback: () => { updateColor({newBase: 16}) },
+              callback: getUpdateColorFromTourFunction({newBase: 16}),
               waitTime: 1000,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { updateColor({newBitsPerComponent: 4}) },
+              callback: getUpdateColorFromTourFunction({newBitsPerComponent: 4}),
               waitTime: 0,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { updateColor({newCode: 'FFF'}) },
+              callback: getUpdateColorFromTourFunction({newCode: 'FFF'}),
               waitTime: 0,
               tourStepItBelongsTo: this.currentTourStep
             }
-          ]
-
-          const colorArray = [
+          ],
+          colorArray: [
             'FEF',
             'FDF',
             'FDE',
@@ -333,22 +330,9 @@ class RGBTour {
             'DD8',
             'CD8',
             'BD8'
-          ];
-
-          sequence = _.concat(sequence, this.getFunctionCallObjectArray({
-            colorArray,
-            updateColor,
-            waitTime: 600,
-            tourStepItBelongsTo: this.currentTourStep,
-          }));
-
-          const funcSequence = new TimedFunctionCallSequence({
-            getCurrentTourStep: this.getCurrentTourStep,
-            sequence
-          });
-
-          funcSequence.initiateSequence();
-        }
+          ],
+          waitTimeBetweenColors: 600
+        })
       }
     })
     .addStep('hex24', {
@@ -356,27 +340,25 @@ class RGBTour {
       attachTo: '.ColorCodeControl__container top',
       buttons: standardButtons,
       when: {
-        show: () => {
-          this.currentTourStep += 1;
-          let sequence = [
+        show: getShowFunction({
+          initSequence: [
             {
-              callback: () => { updateColor({newBase: 16}) },
+              callback: getUpdateColorFromTourFunction({newBase: 16}),
               waitTime: 1000,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { updateColor({newBitsPerComponent: 8}) },
+              callback: getUpdateColorFromTourFunction({newBitsPerComponent: 8}),
               waitTime: 1,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { updateColor({newCode: 'BBDD88'}) },
+              callback: getUpdateColorFromTourFunction({newCode: 'BBDD88'}),
               waitTime: 1,
               tourStepItBelongsTo: this.currentTourStep
             }
-          ]
-
-          const colorArray = [
+          ],
+          colorArray: [
             'BCDD88',
             'BDDD88',
             'BEDD88',
@@ -395,22 +377,9 @@ class RGBTour {
             'BED682',
             'BED681',
             'BED680'
-          ];
-
-          sequence = _.concat(sequence, this.getFunctionCallObjectArray({
-            colorArray,
-            updateColor,
-            waitTime: 300,
-            tourStepItBelongsTo: this.currentTourStep,
-          }));
-
-          const funcSequence = new TimedFunctionCallSequence({
-            getCurrentTourStep: this.getCurrentTourStep,
-            sequence
-          });
-
-          funcSequence.initiateSequence();
-        }
+          ],
+          waitTimeBetweenColors: 300
+        })
       }
     })
     .addStep('enterCode', {
