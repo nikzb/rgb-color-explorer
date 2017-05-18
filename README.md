@@ -4,7 +4,6 @@
 
 To do:
 * Tour
-  * Cancel previous steps actions when the next step is begun (when someone clicks to the next step before the current one is finished)
   * Make a way to exit out of the tour from any step
   * Make a button for replaying the step that you are currently on?
   * Add the button for restarting the tour later, once it has been exited from

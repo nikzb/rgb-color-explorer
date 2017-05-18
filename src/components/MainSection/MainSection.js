@@ -141,8 +141,10 @@ class MainSection extends Component {
         }
       }
     } else if (!this.state.inCodeEditMode) {
-      console.log('Entering edit mode');
-      this.setCodeEditMode(true);
+      console.log('Entering edit mode, but only if controls are not disabled');
+      if (!this.state.controlsDisabled) {
+        this.setCodeEditMode(true);
+      }
     }
   }
 
@@ -238,7 +240,8 @@ class MainSection extends Component {
   //   newBitsPerComponent: The new number of bits per component, if different then the old
   updateColor({newCode, comp, newValue, newBase, newBitsPerComponent, fromTour}) {
     // Do not update the color if the controls are disabled and the request is not from the tour
-    if (this.controlsDisabled && !fromTour) {
+
+    if (this.state.controlsDisabled && !fromTour) {
       return;
     }
 
