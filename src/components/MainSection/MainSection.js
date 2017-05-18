@@ -22,6 +22,7 @@ class MainSection extends Component {
     this.addSymbolToCode = this.addSymbolToCode.bind(this);
     this.handleDeleteButtonClick = this.handleDeleteButtonClick.bind(this);
     this.setControlsDisabled = this.setControlsDisabled.bind(this);
+    this.activateSymbolButtonInPanel = this.activateSymbolButtonInPanel.bind(this);
 
     this.state = {
       // colorCode: new ColorCode({
@@ -45,7 +46,8 @@ class MainSection extends Component {
         updateColor: this.updateColor,
         setControlsDisabled: this.setControlsDisabled,
         setCodeEditMode: this.setCodeEditMode,
-        addSymbolToCode: this.addSymbolToCode
+        addSymbolToCode: this.addSymbolToCode,
+        activateSymbolButtonInPanel: this.activateSymbolButtonInPanel
       })).getTour(),
       // code edit mode is when the button panel is enabled for typing in codes
       inCodeEditMode: false,
@@ -161,6 +163,22 @@ class MainSection extends Component {
     }
   }
 
+  activateSymbolButtonInPanel(symbol) {
+    if (!_.includes(this.state.activeSymbolButtons, symbol)) {
+      //This can be done with immutability helpers too, but just kept it simple for now: https://facebook.github.io/react/docs/update.html
+      let newActiveSymbolButtons = _.concat(this.state.activeButtons, symbol);
+      this.setState({
+        activeSymbolButtons: newActiveSymbolButtons
+      });
+    }
+    setTimeout(() => {
+      let newActiveSymbolButtons = _.without(this.state.activeSymbolButtons, symbol);
+      this.setState({
+        activeSymbolButtons: newActiveSymbolButtons
+      });
+    }, 100);
+  }
+
   handleKeyDown(e) {
     const symbol = e.key.toUpperCase();
 
@@ -206,22 +224,7 @@ class MainSection extends Component {
 
       // If we made it to this point, the symbol is valid for the current base
       // Make the button change color like when clicked
-
-
-      if (!_.includes(this.state.activeSymbolButtons, symbol)) {
-          //This can be done with immutability helpers too, but just kept it simple for now: https://facebook.github.io/react/docs/update.html
-        let newActiveSymbolButtons = _.concat(this.state.activeButtons, symbol);
-        console.log('new button array: ' + newActiveSymbolButtons);
-        this.setState({
-          activeSymbolButtons: newActiveSymbolButtons
-        });
-      }
-      setTimeout(() => {
-        let newActiveSymbolButtons = _.without(this.state.activeSymbolButtons, symbol);
-        this.setState({
-          activeSymbolButtons: newActiveSymbolButtons
-        });
-      }, 100);
+      this.activateSymbolButtonInPanel(symbol);
 
       this.addSymbolToCode(symbol);
     }

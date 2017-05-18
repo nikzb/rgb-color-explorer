@@ -31,7 +31,7 @@ class RGBTour {
     return this.currentTourStep;
   }
 
-  addTourSteps({toggleShowColorComponents, isShowingColorComponents, updateColor, setControlsDisabled, setCodeEditMode, addSymbolToCode}) {
+  addTourSteps({toggleShowColorComponents, isShowingColorComponents, updateColor, setControlsDisabled, setCodeEditMode, addSymbolToCode, activateSymbolButtonInPanel}) {
     // Take a color code object and return a function that calls updateColor with fromTour equal to true, so it
     // will work even when the controls are disabled
     const getUpdateColorFromTourFunction = (colorCodeObject) => {
@@ -405,32 +405,50 @@ class RGBTour {
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { addSymbolToCode('A', true); },
+              callback: () => {
+                activateSymbolButtonInPanel('A');
+                addSymbolToCode('A', true);
+              },
               waitTime: 500,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { addSymbolToCode('9', true); },
+              callback: () => {
+                activateSymbolButtonInPanel('9');
+                addSymbolToCode('9', true);
+              },
               waitTime: 500,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { addSymbolToCode('6', true); },
+              callback: () => {
+                activateSymbolButtonInPanel('6');
+                addSymbolToCode('6', true);
+              },
               waitTime: 500,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { addSymbolToCode('1', true); },
+              callback: () => {
+                activateSymbolButtonInPanel('5');
+                addSymbolToCode('5', true);
+              },
               waitTime: 500,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { addSymbolToCode('E', true); },
+              callback: () => {
+                activateSymbolButtonInPanel('E');
+                addSymbolToCode('E', true);
+              },
               waitTime: 500,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { addSymbolToCode('F', true); },
+              callback: () => {
+                activateSymbolButtonInPanel('F');
+                addSymbolToCode('F', true);
+              },
               waitTime: 500,
               tourStepItBelongsTo: this.currentTourStep
             }
@@ -453,6 +471,7 @@ class RGBTour {
       when: {
         show: () => {
           this.currentTourStep += 1;
+          setControlsDisabled(false);
         }
       }
     })
