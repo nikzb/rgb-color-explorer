@@ -19,6 +19,11 @@ class ColorComponentSlider extends Component {
   }
 
   handleToggle() {
+    // if controls are disabled, then do not toggle
+    if (this.props.controlsDisabled) {
+      return;
+    }
+
     const comp = this.props.colorComp.charAt(0);
 
     if (this.state.toggledOff) {
@@ -79,7 +84,7 @@ class ColorComponentSlider extends Component {
 
     return (
       <div className={containerClassNames}>
-        <ColorToggleButton onClick={this.handleToggle} colorComp={this.props.colorComp} toggledOff={this.state.toggledOff}/>
+        <ColorToggleButton onClick={this.handleToggle} colorComp={this.props.colorComp} toggledOff={this.state.toggledOff} controlsDisabled={this.props.controlsDisabled}/>
         <input className={inputClassNames} type='range' min={0} max={this.props.max} value={this.props.intensity} step={1} onChange={this.handleChange}/>
         <UpDownControl onClick={this.updateColor(this.props.colorComp.charAt(0), this.props.intensity)}/>
       </div>

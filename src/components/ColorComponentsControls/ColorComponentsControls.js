@@ -14,9 +14,9 @@ class ColorComponentsControls extends Component {
     const blueIntensity = colorCode.getComponent('B');
     return (
       <div className='ColorComponentsControls__container'>
-        <ColorComponentSlider colorComp='Red' intensity={redIntensity} max={maxIntensity} onColorChange={this.props.onColorChange}/>
-        <ColorComponentSlider colorComp='Green' intensity={greenIntensity} max={maxIntensity} onColorChange={this.props.onColorChange}/>
-        <ColorComponentSlider colorComp='Blue' intensity={blueIntensity} max={maxIntensity} onColorChange={this.props.onColorChange}/>
+        <ColorComponentSlider colorComp='Red' intensity={redIntensity} max={maxIntensity} onColorChange={this.props.onColorChange} controlsDisabled={this.props.controlsDisabled}/>
+        <ColorComponentSlider colorComp='Green' intensity={greenIntensity} max={maxIntensity} onColorChange={this.props.onColorChange} controlsDisabled={this.props.controlsDisabled}/>
+        <ColorComponentSlider colorComp='Blue' intensity={blueIntensity} max={maxIntensity} onColorChange={this.props.onColorChange} controlsDisabled={this.props.controlsDisabled}/>
       </div>
     );
   }

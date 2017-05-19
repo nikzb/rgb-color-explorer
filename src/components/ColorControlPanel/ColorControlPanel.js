@@ -16,7 +16,7 @@ class ColorControlPanel extends Component {
     } else {
       return (
         <div className='ColorControlPanel__container'>
-          <ColorComponentsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} />
+          <ColorComponentsControls colorCode={this.props.colorCode} onColorChange={this.props.onColorChange} controlsDisabled={this.props.controlsDisabled}/>
         </div>
       );
     }
