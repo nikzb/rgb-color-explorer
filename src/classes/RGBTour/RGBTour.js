@@ -13,7 +13,6 @@ class RGBTour {
     this.tour = new Shepherd.Tour({
       defaults: {
         classes: 'shepherd-theme-dark',
-        scrollTo: true,
         showCancelLink: true
       },
     });
@@ -472,6 +471,7 @@ class RGBTour {
     })
     .addStep('explore', {
       text: 'Now it is your turn to explore. See what colors you can make!',
+      showCancelLink: false,
       buttons: [
         {
           text: 'Restart',
