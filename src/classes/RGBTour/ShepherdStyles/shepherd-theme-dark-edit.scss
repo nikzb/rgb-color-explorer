@@ -4,6 +4,7 @@ $el-bg-color: red;
 //original element bg color?: #303030;
 $btn-bg-color: #080;
 //original button color? #3288e6;
+$text-color: #EEE;
 
 
 .shepherd-element-attached-bottom.shepherd-element-attached-right.shepherd-target-attached-top.shepherd-target-attached-left .shepherd-content:before,
@@ -29,7 +30,7 @@ $btn-bg-color: #080;
     position: relative;
     font-family: inherit;
     background: $background-color;
-    color: #eee;
+    color: $text-color;
     padding: 1em;
     font-size: 1.1em;
     line-height: 1.5em; }
@@ -184,8 +185,7 @@ $btn-bg-color: #080;
         font-size: 1.25em;
         line-height: .8em;
         font-weight: normal;
-        color: rgba(0, 0, 0, 0.5);
-        opacity: 0.25;
+        color: $text-color;
         position: relative;
         top: .1em;
         padding: .8em;
@@ -230,7 +230,7 @@ $btn-bg-color: #080;
             color: #fff; }
             .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary {
               background: #eee;
-              color: #888; }
+              color: white; }
           .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li:last-child .shepherd-button {
             margin-right: 0; }
 

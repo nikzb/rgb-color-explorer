@@ -14,6 +14,7 @@ class RGBTour {
       defaults: {
         classes: 'shepherd-theme-dark',
         scrollTo: true,
+        showCancelLink: true
       },
     });
     this.currentTourStep = 0;
@@ -31,12 +32,19 @@ class RGBTour {
     return this.currentTourStep;
   }
 
-  addTourSteps({toggleShowColorComponents, isShowingColorComponents, updateColor, setControlsDisabled, setCodeEditMode, addSymbolToCode, activateSymbolButtonInPanel}) {
+  addTourSteps({
+    toggleShowColorComponents,
+    isShowingColorComponents,
+    updateColor,
+    setControlsDisabled,
+    setCodeEditMode,
+    addSymbolToCode,
+    activateSymbolButtonInPanel,
+    updateToFullCode}) {
     // Take a color code object and return a function that calls updateColor with fromTour equal to true, so it
     // will work even when the controls are disabled
     const getUpdateColorFromTourFunction = (colorCodeObject) => {
       return () => {
-        console.log('trying to update color from tour');
         updateColor({...colorCodeObject, fromTour: true});
       }
     }
@@ -76,6 +84,12 @@ class RGBTour {
         this.currentTourStep += 1;
         setControlsDisabled(true);
 
+        const ensureIsFullCode = {
+          callback: () => { updateToFullCode(true) },
+          waitTime: 0,
+          tourStepItBelongsTo: this.currentTourStep
+        }
+
         initSequence = _.map(initSequence, (sequenceObject) => {
           return {...sequenceObject, tourStepItBelongsTo: this.currentTourStep};
         })
@@ -95,7 +109,7 @@ class RGBTour {
           tourStepItBelongsTo: this.currentTourStep
         };
 
-        let fullSequence = _.concat(initSequence, colorSequence, enableControls);
+        let fullSequence = _.concat(ensureIsFullCode, initSequence, colorSequence, enableControls);
 
         const funcSequence = new TimedFunctionCallSequence({
           getCurrentTourStep: this.getCurrentTourStep,

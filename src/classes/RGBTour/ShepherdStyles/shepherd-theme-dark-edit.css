@@ -23,7 +23,7 @@
   position: relative;
   font-family: inherit;
   background: #555;
-  color: #eee;
+  color: #EEE;
   padding: 1em;
   font-size: 1.1em;
   line-height: 1.5em; }
@@ -223,8 +223,7 @@
   font-size: 1.25em;
   line-height: .8em;
   font-weight: normal;
-  color: rgba(0, 0, 0, 0.5);
-  opacity: 0.25;
+  color: #EEE;
   position: relative;
   top: .1em;
   padding: .8em;
@@ -278,7 +277,7 @@
 
 .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary {
   background: #eee;
-  color: #888; }
+  color: white; }
 
 .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li:last-child .shepherd-button {
   margin-right: 0; }

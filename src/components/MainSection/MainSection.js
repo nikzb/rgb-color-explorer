@@ -23,6 +23,7 @@ class MainSection extends Component {
     this.handleDeleteButtonClick = this.handleDeleteButtonClick.bind(this);
     this.setControlsDisabled = this.setControlsDisabled.bind(this);
     this.activateSymbolButtonInPanel = this.activateSymbolButtonInPanel.bind(this);
+    this.updateToFullCode = this.updateToFullCode.bind(this);
 
     this.state = {
       // colorCode: new ColorCode({
@@ -47,7 +48,8 @@ class MainSection extends Component {
         setControlsDisabled: this.setControlsDisabled,
         setCodeEditMode: this.setCodeEditMode,
         addSymbolToCode: this.addSymbolToCode,
-        activateSymbolButtonInPanel: this.activateSymbolButtonInPanel
+        activateSymbolButtonInPanel: this.activateSymbolButtonInPanel,
+        updateToFullCode: this.updateToFullCode
       })).getTour(),
       // code edit mode is when the button panel is enabled for typing in codes
       inCodeEditMode: false,
@@ -127,6 +129,16 @@ class MainSection extends Component {
     });
   }
 
+  updateToFullCode(fromTour) {
+    console.log('updating to full code');
+    console.log(this.state.colorCode.getCode());
+    console.log(fromTour);
+    this.updateColor({
+      newCode: this.state.colorCode.getCode(),
+      fromTour
+    });
+  }
+
   handleDeleteButtonClick() {
     this.removeSymbolFromCode();
   }
@@ -138,8 +150,6 @@ class MainSection extends Component {
       'ColorCodeControl__delete-button'
     ];
 
-    console.log(`${e.target.className} was clicked`);
-
     const includesNone = (str, list) => {
       return _.every(list, (item) => {
         return !_.includes(str, item);
@@ -150,13 +160,10 @@ class MainSection extends Component {
         this.setCodeEditMode(false);
         if (this.state.colorCode.isPartial) {
           // Replace with a full code
-          this.updateColor({
-            newCode: this.state.colorCode.getCode(),
-          });
+          this.updateToFullCode();
         }
       }
     } else if (!this.state.inCodeEditMode) {
-      console.log('Entering edit mode, but only if controls are not disabled');
       if (!this.state.controlsDisabled) {
         this.setCodeEditMode(true);
       }
