@@ -1,15 +1,47 @@
 @import url("https://fonts.googleapis.com/css?family=Averia+Sans+Libre:700");
 .Header__container {
-  border-bottom: 1px solid #333; }
+  text-align: center; }
 
 .Header__container .logo {
-  margin-top: 1em; }
+  width: 44px;
+  height: 44px;
+  margin: 0.3em;
+  position: fixed;
+  top: 0;
+  left: 0; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  .Header__container .logo {
+    width: 56px;
+    height: 56px;
+    margin: 0.3em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+  .Header__container .logo {
+    width: 68px;
+    height: 68px;
+    margin: 0.6em; } }
 
 .Header__title {
   font-family: 'Averia Sans Libre', sans-serif;
   color: #333;
-  font-size: 1.9em;
-  margin-top: -0.5em; }
+  margin-top: 0.15em;
+  margin-bottom: 0.25em;
+  font-size: 1.8em; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  .Header__title {
+    font-size: 2.5em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+  .Header__title {
+    font-size: 3.5em; } }
+
+.Header__title.under-logo {
+  font-size: 1.9em; }
+
+.Header__title.next-to-logo {
+  font-size: 3.5em; }
 
 .Header__title--io {
   color: #B72616; }

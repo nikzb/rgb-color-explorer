@@ -4,7 +4,7 @@ class Logo extends Component {
   render() {
     const mainColor = '#333';
     return (
-      <svg className='logo' width="75" height="75" viewBox="0 0 520 520">
+      <svg className='logo' width="64" height="64" viewBox="0 0 520 520">
 
       	<circle cx="260" cy="260" r="254" stroke="#F8E6B6" strokeWidth="1" fill="#F8E6B6" />
 
