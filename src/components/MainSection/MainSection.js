@@ -36,7 +36,7 @@ class MainSection extends Component {
       colorCode: new ColorCode({
         base: 16,
         bits: 12,
-        red: 14,
+        red: 15,
         green: 11,
         blue: 15
       }),

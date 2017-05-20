@@ -493,10 +493,11 @@ class RGBTour {
       buttons: [
         {
           text: 'Restart',
+          classes: 'shepherd-button-secondary',
           action: () => { this.tour.show('welcome') }
         },
         {
-          text: 'Done',
+          text: 'OK',
           action: this.tour.hide
         }
       ],

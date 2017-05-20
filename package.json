@@ -7,6 +7,7 @@
     "react-dom": "^15.5.4",
     "react-foundation": "^0.7.0",
     "react-helmet": "^5.0.3",
+    "snapsvg": "^0.5.1",
     "tether-shepherd": "^1.8.1"
   },
   "devDependencies": {
@@ -37,6 +38,7 @@
     "fs-extra": "0.30.0",
     "html-webpack-plugin": "2.24.0",
     "http-proxy-middleware": "0.17.3",
+    "imports-loader": "^0.7.1",
     "jest": "18.1.0",
     "jquery": "^3.2.1",
     "json-loader": "0.5.4",
