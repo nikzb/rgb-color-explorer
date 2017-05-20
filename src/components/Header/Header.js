@@ -8,8 +8,8 @@ class Header extends Component {
     return (
       <div className="Header__container">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        {/* <Logo className="Logo" /> */}
-        <h1 className="Header__title">RGB Color Explorer</h1>
+        <Logo className="Logo" />
+        <h1 className="Header__title">souvlaki.<span className="Header__title--io">io</span></h1>
       </div>
     );
   }

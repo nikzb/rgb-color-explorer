@@ -1,18 +1,28 @@
 @import '../component-styles/mixins.scss';
 
-.Header__container {
+@import url('https://fonts.googleapis.com/css?family=Averia+Sans+Libre:700');
 
+.Header__container {
+  .logo {
+    margin-top: 1em;
+  }
+  border-bottom: 1px solid #333;
 }
 
 .Header__title {
-  font-family: 'Open Sans', sans-serif;
-  color: dimgrey;
-  font-size: 1.5em;
-  margin: 0;
+  font-family: 'Averia Sans Libre', sans-serif;
+  color: #333;
+  font-size: 1.9em;
+  margin-top: -0.5em;
 
-  @include phone-large {
-    font-size: 2.0em;
+  &--io {
+    color: #B72616;
   }
+
+  // @include phone-large {
+  //   font-size: 2.0em;
+  // }
 }
+
 
 //font-size: 3rem;

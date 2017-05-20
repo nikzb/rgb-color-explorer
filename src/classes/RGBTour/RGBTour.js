@@ -121,7 +121,7 @@ class RGBTour {
     }
 
     this.tour.addStep('welcome', {
-      text: 'Welcome to the RGB Color Explorer!<br>Let me give you a quick tour.',
+      text: 'Welcome to the RGB Color Explorer!',
       showCancelLink: false,
       buttons: [
         {
