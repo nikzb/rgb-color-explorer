@@ -274,16 +274,16 @@ class RGBTour {
               waitTime: 1000,
               tourStepItBelongsTo: this.currentTourStep
             },
-            {
-              callback: getUpdateColorFromTourFunction({newBitsPerComponent: 1}),
-              waitTime: 0,
-              tourStepItBelongsTo: this.currentTourStep
-            },
-            {
-              callback: getUpdateColorFromTourFunction({newCode: '111'}),
-              waitTime: 0,
-              tourStepItBelongsTo: this.currentTourStep
-            },
+            // {
+            //   callback: getUpdateColorFromTourFunction({newBitsPerComponent: 1}),
+            //   waitTime: 0,
+            //   tourStepItBelongsTo: this.currentTourStep
+            // },
+            // {
+            //   callback: getUpdateColorFromTourFunction({newCode: '111'}),
+            //   waitTime: 0,
+            //   tourStepItBelongsTo: this.currentTourStep
+            // },
             {
               callback: getUpdateColorFromTourFunction({newBase: 2}),
               waitTime: 1000,
