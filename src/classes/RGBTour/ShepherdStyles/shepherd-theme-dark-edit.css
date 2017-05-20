@@ -183,10 +183,10 @@
   font-size: 1em; }
 
 .shepherd-element.shepherd-theme-dark.shepherd-element-attached-top.shepherd-element-attached-center.shepherd-has-title .shepherd-content:before, .shepherd-element.shepherd-theme-dark.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before, .shepherd-element.shepherd-theme-dark.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before {
-  border-bottom-color: red; }
+  border-bottom-color: #707070; }
 
 .shepherd-element.shepherd-theme-dark.shepherd-has-title .shepherd-content header {
-  background: red;
+  background: #707070;
   padding: 1em; }
 
 .shepherd-element.shepherd-theme-dark.shepherd-has-title .shepherd-content header a.shepherd-cancel-link {
@@ -223,13 +223,14 @@
   font-size: 1.25em;
   line-height: .8em;
   font-weight: normal;
-  color: #EEE;
+  color: darkgrey;
   position: relative;
   top: .1em;
   padding: .8em;
   margin-bottom: -.8em; }
 
 .shepherd-element.shepherd-theme-dark .shepherd-content header a.shepherd-cancel-link:hover {
+  color: #EEE;
   opacity: 1; }
 
 .shepherd-element.shepherd-theme-dark .shepherd-content .shepherd-text {
@@ -276,7 +277,7 @@
   color: #fff; }
 
 .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary {
-  background: #eee;
+  background: #707070;
   color: white; }
 
 .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li:last-child .shepherd-button {

@@ -13,14 +13,15 @@ class RGBTour {
     this.tour = new Shepherd.Tour({
       defaults: {
         classes: 'shepherd-theme-dark',
-        showCancelLink: true
+        showCancelLink: true,
       },
     });
     this.currentTourStep = 0;
     this.getCurrentTourStep = this.getCurrentTourStep.bind(this);
+    this.setControlsDisabled = functions.setControlsDisabled;
+    this.onHide = this.onHide.bind(this);
 
     this.addTourSteps(functions);
-
   }
 
   getTour() {
@@ -29,6 +30,11 @@ class RGBTour {
 
   getCurrentTourStep() {
     return this.currentTourStep;
+  }
+
+  onHide() {
+    this.currentTourStep += 1;
+    this.setControlsDisabled(false);
   }
 
   addTourSteps({
@@ -40,6 +46,7 @@ class RGBTour {
     addSymbolToCode,
     activateSymbolButtonInPanel,
     updateToFullCode}) {
+
     // Take a color code object and return a function that calls updateColor with fromTour equal to true, so it
     // will work even when the controls are disabled
     const getUpdateColorFromTourFunction = (colorCodeObject) => {
@@ -63,15 +70,9 @@ class RGBTour {
     const standardButtons = [
       {
         text: 'Back',
-        action: this.tour.back
+        action: this.tour.back,
+        classes: 'shepherd-button-secondary'
       },
-      // {
-      //   text: 'Replay',
-      //   action: () => {
-      //     this.tour.back();
-      //     this.tour.next();
-      //   }
-      // },
       {
         text: 'Next',
         action: this.tour.next
@@ -120,7 +121,8 @@ class RGBTour {
     }
 
     this.tour.addStep('welcome', {
-      text: 'Welcome to the RGB Color Explorer!',
+      text: 'Welcome to the RGB Color Explorer!<br>Let me give you a quick tour.',
+      showCancelLink: false,
       buttons: [
         {
           text: 'Skip',
@@ -134,14 +136,18 @@ class RGBTour {
       when: {
         show: () => {
           this.currentTourStep += 1;
-        }
+        },
+        hide: this.onHide
       }
     })
     .addStep('mix', {
-      text: 'Digital devices mix red, green, and blue light to make various colors.',
+      title: 'Adding Light',
+      text: 'Digital devices combine red, green, and blue light to make various colors.',
       attachTo: '.ColorViz__canvas bottom',
       buttons: standardButtons,
       when: {
+        hide: this.onHide,
+        cancel: () => {console.log('cancel') },
         show: getShowFunction({
           initSequence: [
             {
@@ -164,10 +170,12 @@ class RGBTour {
       }
     })
     .addStep('dimmer', {
+      title: 'Adjusting Light Levels',
       text: 'The red, green, and blue light intensities can be adjusted individually.',
       attachTo: '.ColorControlPanel__container top',
       buttons: standardButtons,
       when: {
+        hide: this.onHide,
         show: () => {
           let sequence = [];
           let nextWaitTime = 1000;
@@ -216,10 +224,12 @@ class RGBTour {
       }
     })
     .addStep('binary', {
+      title: 'Binary Color Codes',
       text: 'Binary codes can be used to represent the various combinations of red, green, and blue light intensities.',
       attachTo: '.ColorCodeControl__container bottom',
       buttons: standardButtons,
       when: {
+        hide: this.onHide,
         show: getShowFunction({
           initSequence: [
             {
@@ -251,10 +261,12 @@ class RGBTour {
       }
     })
     .addStep('moreBits', {
+      title: 'More Bits, More Colors',
       text: 'Using more bits to create the code allows us to create a larger number of colors.',
       attachTo: '.ColorCodeControl__container top',
       buttons: standardButtons,
       when: {
+        hide: this.onHide,
         show: getShowFunction({
           initSequence: [
             {
@@ -307,10 +319,12 @@ class RGBTour {
       }
     })
     .addStep('hex', {
+      title: 'Hex Codes',
       text: 'When the binary codes start to get long, it is more convenient to use hexadecimal codes instead.',
       attachTo: '.ColorCodeControl__container top',
       buttons: standardButtons,
       when: {
+        hide: this.onHide,
         show: getShowFunction({
           initSequence: [
             {
@@ -349,10 +363,12 @@ class RGBTour {
       }
     })
     .addStep('hex24', {
+      title: 'Millions of Shades',
       text: 'With 24 bits, you can really fine tune your color shades!',
       attachTo: '.ColorCodeControl__container top',
       buttons: standardButtons,
       when: {
+        hide: this.onHide,
         show: getShowFunction({
           initSequence: [
             {
@@ -396,10 +412,12 @@ class RGBTour {
       }
     })
     .addStep('enterCode', {
+      title: 'Type In Codes',
       text: 'You can type in a code to see what color it makes.',
       buttons: standardButtons,
       attachTo: '.ColorCodeControl__container top',
       when: {
+        hide: this.onHide,
         show: getShowFunction({
           initSequence: [
             {
@@ -483,6 +501,7 @@ class RGBTour {
         }
       ],
       when: {
+        hide: this.onHide,
         show: () => {
           this.currentTourStep += 1;
           setControlsDisabled(false);

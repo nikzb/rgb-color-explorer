@@ -51,6 +51,7 @@ class MainSection extends Component {
         activateSymbolButtonInPanel: this.activateSymbolButtonInPanel,
         updateToFullCode: this.updateToFullCode
       })).getTour(),
+
       // code edit mode is when the button panel is enabled for typing in codes
       inCodeEditMode: false,
       isDeleteButtonActive: false,
