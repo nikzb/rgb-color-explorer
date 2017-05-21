@@ -413,7 +413,7 @@ class RGBTour {
     })
     .addStep('enterCode', {
       title: 'Type In Codes',
-      text: 'You can type in a code to see what color it makes.',
+      text: 'If you click the code box you can type in a new code.',
       buttons: standardButtons,
       attachTo: '.ColorCodeControl__container top',
       when: {

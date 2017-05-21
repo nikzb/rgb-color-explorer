@@ -25,7 +25,7 @@
 
 // This is intended for older screens that do not have high resolution
 @mixin low-res {
-  @media (-webkit-max-device-pixel-ratio: 1.99) and (min-width: 25em), (max-resolution: 191dpi) and (min-width: 25em)
+  @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi)
   { @content; }
 }
 

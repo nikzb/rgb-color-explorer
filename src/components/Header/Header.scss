@@ -45,6 +45,10 @@
   margin-bottom: 0;
   font-size: 1.8em;
 
+  @include low-res {
+    font-size: 2.4em;
+  }
+
   @include phone-large {
     font-size: 2.2em;
   }
