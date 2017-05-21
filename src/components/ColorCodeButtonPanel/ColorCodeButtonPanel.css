@@ -7,66 +7,51 @@
   border-radius: 0.5rem;
   overflow: hidden;
   margin: .7em 0; }
-
-@media (-webkit-max-device-pixel-ratio: 1.99) and (min-width: 25em), (max-resolution: 191dpi) and (min-width: 25em) {
-  .ColorCodeButtonPanel {
-    height: 6em; } }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .ColorCodeButtonPanel {
-    height: 7em;
-    margin: 0.5em; } }
-
-.ColorCodeButtonPanel__top-row {
-  display: flex;
-  border-bottom: 1px solid grey;
-  flex: 1 0 50%; }
-
-.ColorCodeButtonPanel__bottom-row {
-  display: flex;
-  flex: 1 0 50%; }
-
-.ColorCodeButtonPanel__single-row {
-  display: flex;
-  flex: 1; }
-
-.ColorCodeButtonPanel .button {
-  background: transparent;
-  color: grey;
-  margin-bottom: 0;
-  flex: 1 0 0;
-  padding: .25em; }
-
-.ColorCodeButtonPanel .button.ColorCodeButtonPanel__button--binary {
-  font-size: 2.4em; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .ColorCodeButtonPanel .button.ColorCodeButtonPanel__button--binary {
-    font-size: 2.7em; } }
-
-.ColorCodeButtonPanel .button.ColorCodeButtonPanel__button--hex {
-  font-size: 1em; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .ColorCodeButtonPanel .button.ColorCodeButtonPanel__button--hex {
-    font-size: 1.5em; } }
-
-.ColorCodeButtonPanel .button:hover, .ColorCodeButtonPanel .button:focus {
-  background: gainsboro;
-  color: grey;
-  outline: 0; }
-
-.ColorCodeButtonPanel .button:active {
-  background: silver;
-  color: grey;
-  outline: 0; }
-
-.ColorCodeButtonPanel .button--active {
-  background: silver !important;
-  color: grey !important; }
-
-.ColorCodeButtonPanel .button:nth-child(1n + 1) {
-  border-left: 1px solid grey; }
-
-.ColorCodeButtonPanel .button:nth-child(1) {
-  border-left: none; }
+  @media (-webkit-max-device-pixel-ratio: 1.99) and (min-width: 25em), (max-resolution: 191dpi) and (min-width: 25em) {
+    .ColorCodeButtonPanel {
+      height: 6em; } }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    .ColorCodeButtonPanel {
+      height: 7em;
+      margin: 0.5em; } }
+  .ColorCodeButtonPanel__top-row {
+    display: flex;
+    border-bottom: 1px solid grey;
+    flex: 1 0 50%; }
+  .ColorCodeButtonPanel__bottom-row {
+    display: flex;
+    flex: 1 0 50%; }
+  .ColorCodeButtonPanel__single-row {
+    display: flex;
+    flex: 1; }
+  .ColorCodeButtonPanel .button {
+    background: transparent;
+    color: grey;
+    margin-bottom: 0;
+    flex: 1 0 0;
+    padding: .25em; }
+    .ColorCodeButtonPanel .button.ColorCodeButtonPanel__button--binary {
+      font-size: 2.4em; }
+      @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+        .ColorCodeButtonPanel .button.ColorCodeButtonPanel__button--binary {
+          font-size: 2.7em; } }
+    .ColorCodeButtonPanel .button.ColorCodeButtonPanel__button--hex {
+      font-size: 1em; }
+      @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+        .ColorCodeButtonPanel .button.ColorCodeButtonPanel__button--hex {
+          font-size: 1.5em; } }
+    .ColorCodeButtonPanel .button:hover, .ColorCodeButtonPanel .button:focus {
+      background: gainsboro;
+      color: grey;
+      outline: 0; }
+    .ColorCodeButtonPanel .button:active {
+      background: silver;
+      color: grey;
+      outline: 0; }
+    .ColorCodeButtonPanel .button--active {
+      background: silver !important;
+      color: grey !important; }
+    .ColorCodeButtonPanel .button:nth-child(1n + 1) {
+      border-left: 1px solid grey; }
+    .ColorCodeButtonPanel .button:nth-child(1) {
+      border-left: none; }

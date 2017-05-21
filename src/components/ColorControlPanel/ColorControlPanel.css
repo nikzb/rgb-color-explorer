@@ -5,16 +5,13 @@
   display: flex;
   justify-content: center;
   margin-bottom: .2em; }
-
-@media (-webkit-max-device-pixel-ratio: 1.99) and (min-width: 25em), (max-resolution: 191dpi) and (min-width: 25em) {
-  .ColorControlPanel__container {
-    height: 7em; } }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .ColorControlPanel__container {
-    height: 8em;
-    margin-top: .2em; } }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
-  .ColorControlPanel__container {
-    margin-bottom: .5em; } }
+  @media (-webkit-max-device-pixel-ratio: 1.99) and (min-width: 25em), (max-resolution: 191dpi) and (min-width: 25em) {
+    .ColorControlPanel__container {
+      height: 7em; } }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    .ColorControlPanel__container {
+      height: 8em;
+      margin-top: .2em; } }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+    .ColorControlPanel__container {
+      margin-bottom: .5em; } }
