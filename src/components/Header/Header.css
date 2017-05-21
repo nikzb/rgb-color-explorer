@@ -41,5 +41,7 @@
     font-size: 1.9em; }
   .Header__title.next-to-logo {
     font-size: 3.5em; }
+  .Header__title--dot {
+    color: dimgrey; }
   .Header__title--io {
     color: #B72616; }
