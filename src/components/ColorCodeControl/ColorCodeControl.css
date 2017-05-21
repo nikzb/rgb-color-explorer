@@ -13,8 +13,7 @@
 
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCodeControl__container .ColorCodeControl__label {
-    font-size: 1.2rem;
-    margin-bottom: -.4em; } }
+    font-size: 1.2rem; } }
 
 .ColorCodeControl__bottom-row {
   display: flex;

@@ -20,9 +20,10 @@ $button-active-color: $grey-6;
   @include low-res {
     height: 6em;
   }
-  
+
   @include phone-large {
-    height: 7.2em;
+    height: 7em;
+    margin: 0.5em;
   }
 
   &__top-row {

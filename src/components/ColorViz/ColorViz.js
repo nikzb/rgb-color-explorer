@@ -180,7 +180,10 @@ class ColorViz extends Component {
   }
 
   resizeCanvas() {
-    if (window.innerWidth < 400) {
+    const lowResMedia = "(-webkit-max-device-pixel-ratio: 1.99) and (min-width: 25em), (max-resolution: 191dpi) and (min-width: 25em)";
+    const lowResMediaQuery = window.matchMedia(lowResMedia);
+
+    if (window.innerWidth < 400 || lowResMediaQuery.matches) {
       this.setCanvasSizeAndRadius(300, 100);
     } else if (window.innerWidth < 600) {
       this.setCanvasSizeAndRadius(340, 114);
