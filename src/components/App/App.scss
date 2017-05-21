@@ -15,7 +15,8 @@
 
   @include low-res {
     max-width: 28em;
-    font-size: 85%;
+    background: red;
+    // font-size: 85%;
   }
 
   @include phone-large {

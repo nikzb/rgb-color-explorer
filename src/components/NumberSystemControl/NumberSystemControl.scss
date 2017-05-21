@@ -15,6 +15,10 @@
   @include phone-large {
     font-size: 1.2em;
   }
+
+  @include low-res {
+    font-size: 1.1em;
+  }
 }
 
 .NumberSystemControl__button {

@@ -5,9 +5,7 @@
 @mixin phone-large {
   @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em),
   (min-resolution: 192dpi) and (min-width: 25em)
-	{
-		@content;
-	}
+	{ @content; }
 }
 // @mixin phone-large {
 //   @media (min-width: 25em) { @content; }
@@ -16,26 +14,29 @@
 @mixin tablet-portrait {
   @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
   (min-resolution: 192dpi) and (min-width: 37.5em)
-	{
-		@content;
-	}
+	{ @content; }
 }
 
 @mixin tablet-landscape {
   @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 56em),
   (min-resolution: 192dpi) and (min-width: 56em)
-	{
-		@content;
-	}
+	{ @content; }
 }
 
 // This is intended for older screens that do not have high resolution
 @mixin low-res {
-  // @media not (-webkit-min-device-pixel-ratio: 2), not (min-resolution: 192dpi) { @content; }
-  @media (min-width: 25em)
-  { @content;}
+  @media (-webkit-max-device-pixel-ratio: 1.99) and (min-width: 25em), (max-resolution: 191dpi) and (min-width: 25em)
+  { @content; }
+}
+
+@mixin desktop {
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 78em),
+  (min-resolution: 192dpi) and (min-width: 78em)
+	{ @content; }
 }
 
 @mixin desktop-wide {
-  @media (min-width: 110em) { @content; }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 110em),
+  (min-resolution: 192dpi) and (min-width: 110em)
+  { @content; }
 }
