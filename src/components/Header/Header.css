@@ -28,15 +28,15 @@
 .Header__title {
   font-family: 'Averia Sans Libre', sans-serif;
   color: #333;
-  margin-top: 0.15em;
-  margin-bottom: 0.25em;
+  padding-top: 0.2em;
+  margin-bottom: 0;
   font-size: 1.8em; }
   @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
     .Header__title {
-      font-size: 2.5em; } }
+      font-size: 2.2em; } }
   @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
     .Header__title {
-      font-size: 3.5em; } }
+      font-size: 3.0em; } }
   .Header__title.under-logo {
     font-size: 1.9em; }
   .Header__title.next-to-logo {

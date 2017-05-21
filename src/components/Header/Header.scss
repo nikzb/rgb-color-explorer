@@ -41,16 +41,16 @@
 .Header__title {
   font-family: 'Averia Sans Libre', sans-serif;
   color: #333;
-  margin-top: 0.15em;
-  margin-bottom: 0.25em;
+  padding-top: 0.2em;
+  margin-bottom: 0;
   font-size: 1.8em;
 
   @include phone-large {
-    font-size: 2.5em;
+    font-size: 2.2em;
   }
 
   @include tablet-portrait {
-    font-size: 3.5em;
+    font-size: 3.0em;
   }
 
   &.under-logo {
@@ -70,9 +70,6 @@
     color: #B72616;
   }
 
-  // @include phone-large {
-  //   font-size: 2.0em;
-  // }
 }
 
 

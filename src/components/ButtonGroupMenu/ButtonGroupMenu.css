@@ -14,7 +14,6 @@
     padding: .35em; }
     @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
       .ButtonGroupMenu .button {
-        font-size: 1.3em;
         padding: .5em; } }
     .ButtonGroupMenu .button:nth-child(1n + 1) {
       border-left: 1px solid #909090; }
@@ -46,9 +45,6 @@
     flex: 1 0 0;
     font-size: 1.8em;
     padding: 0 .5rem .2rem .5rem; }
-    @media (-webkit-max-device-pixel-ratio: 1.99) and (min-width: 25em), (max-resolution: 191dpi) and (min-width: 25em) {
-      .ButtonGroupMenu--plus-minus .button {
-        font-size: 1.5em; } }
     @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
       .ButtonGroupMenu--plus-minus .button {
         padding-bottom: .3rem; } }
