@@ -1,14 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Open+Sans");
 .ColorCodeControl__container {
   width: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
+  margin-bottom: 0.8em; }
 
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCodeControl__container {
-    margin-bottom: 0.4em; } }
+    margin-bottom: 1em; } }
 
 .ColorCodeControl__container .ColorCodeControl__label {
   font-size: 1em;
