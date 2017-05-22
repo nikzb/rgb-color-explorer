@@ -5,15 +5,13 @@
   align-items: center;
   justify-content: center;
   margin: 0 0.2em; }
-
-@media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
-  .UpDownControl__container {
-    height: 1em;
-    display: flex; } }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .UpDownControl__container {
-    display: flex; } }
+  @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+    .UpDownControl__container {
+      height: 1em;
+      display: flex; } }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    .UpDownControl__container {
+      display: flex; } }
 
 .UpDownControl__button {
   width: 48%; }
