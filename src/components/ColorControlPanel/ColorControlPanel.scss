@@ -1,25 +1,16 @@
 @import '../component-styles/mixins.scss';
 
 .ColorControlPanel__container {
-  width: 96%;
-  flex: 1;
-  height: 6em;
+  width: 100%;
+  padding: 0 0.5em;
   display: block;
-  justify-content: center;
-  margin-top: 0.2em;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.8em;
 
   @include low-res {
-    height: 7em;
+
   }
 
   @include phone-large {
-    height: 8em;
-    margin-top: 0.2em;
-    margin-bottom: 0.1em;
-  }
-
-  @include tablet-portrait {
-    margin-bottom: 0.3em;
+    margin-bottom: 1.0em;
   }
 }
