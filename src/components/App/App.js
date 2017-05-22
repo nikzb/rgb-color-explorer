@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from '../Header/Header';
-import MainSection from '../MainSection/MainSection';
+import RGBMainSection from '../RGBMainSection/RGBMainSection';
 // import {Helmet} from 'react-helmet';
 
 require('foundation-sites/dist/css/foundation.min.css');
@@ -18,7 +18,7 @@ class App extends Component {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Helmet> */}
         <Header />
-        <MainSection />
+        <RGBMainSection />
       </div>
     );
   }

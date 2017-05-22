@@ -7,7 +7,7 @@ import RGBTour from '../../classes/RGBTour/RGBTour';
 import ColorDisplay from '../ColorDisplay/ColorDisplay';
 import ColorControls from '../ColorControls/ColorControls';
 
-import './MainSection.css';
+import './RGBMainSection.css';
 
 class MainSection extends Component {
   constructor(props) {
