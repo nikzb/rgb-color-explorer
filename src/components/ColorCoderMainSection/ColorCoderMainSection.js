@@ -18,7 +18,8 @@ class ColorCoderMainSection extends Component {
         green: 255,
         blue: 255
       }),
-      showColorComponents: true
+      levelScreenShowColorComponents: true,
+      currentGame: null
     }
   }
 
@@ -45,14 +46,28 @@ class ColorCoderMainSection extends Component {
     ]
   }
 
-  render() {
+  getLevelScreen() {
     return (
-      <div className='MainSection__container'>
-        <h1 className='MainSection__title'>ColorCoder</h1>
-        <ColorDisplay colorCode={this.state.logoColor} showColorComponents={this.state.showColorComponents} size={'small'}/>
-        <GameLevelsMenu getLevelInfoList={this.getLevelInfoList} />
+      <div className='ColorCoderMainSection__container'>
+        <div>
+          <h1 className='ColorCoderMainSection__title'>ColorCoder</h1>
+          <ColorDisplay colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'small'}/>
+          <GameLevelsMenu getLevelInfoList={this.getLevelInfoList} />
+        </div>
       </div>
-    );
+    )
+  }
+
+  render() {
+    let currentGame = this.state.currentGame;
+
+    if (currentGame === null) {
+      return this.getLevelScreen();
+    } else if (currentGame.currentPuzzleIndex === 3) {
+      return this.getEndScreen();
+    } else {
+      return this.gamePlayScreen();
+    }
   }
 }
 
