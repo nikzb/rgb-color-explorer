@@ -1,16 +1,19 @@
-@import url("https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Averia+Sans+Libre:700");
 .App {
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto; }
-  .App .button {
-    font-family: 'Open Sans', sans-serif; }
-  @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
-    .App {
-      max-width: 28em;
-      font-size: 85%; } }
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-    .App {
-      max-width: 30em; } }
+
+.App .button {
+  font-family: 'Open Sans', sans-serif; }
+
+@media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+  .App {
+    max-width: 28em;
+    font-size: 85%; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  .App {
+    max-width: 30em; } }

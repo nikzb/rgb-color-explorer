@@ -1,0 +1,90 @@
+@import '../component-styles/base-styles.scss';
+@import '../component-styles/mixins.scss';
+
+$button-color: $grey-2;
+$button-radius: $standard-border-radius;
+$button-active-color: $grey-6;
+$button-hover-color: $grey-8;
+
+.GameLevelsMenu__container {
+
+  // display: flex
+  .button {
+    background: $grey-3;
+    color: white;
+    margin-bottom: 0;
+    // flex: 1 0 40%;
+    font-size: 0.9em;
+    padding: 0.7em;
+    border: 1px solid white;
+    border-radius: $button-radius;
+
+    @include phone-large {
+      font-size: 1.05em;
+      padding: 1em;
+    }
+
+    @include tablet-portrait {
+      font-size: 1.3em;
+    }
+
+    &:hover, &:focus {
+      background: $button-hover-color;
+      color: $button-color;
+      outline: 0;
+    }
+
+    &:active {
+      background: $button-active-color;
+      color: white;
+      outline: 0;
+    }
+
+    &.is-active {
+      background: $button-color;
+      color: white;
+    }
+  }
+}
+
+.GameLevelsMenu__title {
+  color: $grey-2;
+  font-size: 1.2em;
+
+  @include phone-large {
+    font-size: 1.6em;
+  }
+
+  @include tablet-portrait {
+    font-size: 1.7em;
+  }
+}
+
+.GameLevelsMenu__row {
+  background: white;
+  padding: 0.3em 0;
+  display: flex;
+  // justify-content: space-around;
+  align-items: center;
+  color: $grey-2;
+
+  .GameLevelsMenu__label {
+    font-size: 0.75em;
+
+    @include phone-large {
+      font-size: 1.0em;
+      padding: 0 1em;
+    }
+
+    @include tablet-portrait {
+      font-size: 1.1em;
+    }
+    // flex: 1 1 30%;
+    // width: 10em;
+  }
+
+  .GameLevelsMenu__button {
+
+  }
+
+}

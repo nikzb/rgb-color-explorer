@@ -183,12 +183,17 @@ class ColorViz extends Component {
     const lowResMedia = "(-webkit-max-device-pixel-ratio: 1.99) and (min-width: 25em), (max-resolution: 191dpi) and (min-width: 25em)";
     const lowResMediaQuery = window.matchMedia(lowResMedia);
 
+    // use multiplier to make the canvas smaller in some situations
+    let multiplier = 1;
+    if (this.props.size === 'small') {
+      multiplier = 0.8;
+    }   
     if (window.innerWidth < 400 || lowResMediaQuery.matches) {
-      this.setCanvasSizeAndRadius(300, 100);
+      this.setCanvasSizeAndRadius(300 * multiplier, 100 * multiplier);
     } else if (window.innerWidth < 600) {
-      this.setCanvasSizeAndRadius(340, 114);
+      this.setCanvasSizeAndRadius(340 * multiplier, 114 * multiplier);
     } else { // if (window.innerWidth < 890) {
-      this.setCanvasSizeAndRadius(370, 124);
+      this.setCanvasSizeAndRadius(370 * multiplier, 124 * multiplier);
     }
   }
 
