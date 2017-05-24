@@ -30,6 +30,10 @@ class ColorPuzzle {
   getNumberOfGuesses() {
     return this.guesses.length;
   }
+
+  getActualColor() {
+    return this.actualColor;
+  }
 }
 
 export default ColorPuzzle;

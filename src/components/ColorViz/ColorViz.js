@@ -12,14 +12,25 @@ const PERCENT_CHANGE = 0.025;
 class ColorViz extends Component {
   constructor(props) {
     super(props);
+    // Default values assume that we are going to show the color components
+    let percentFromCenter = 1.00;
+    let wasShowingComponents = true;
+
+    // Alter defaults if needed based on prop
+    if (!this.props.showColorComponents) {
+      percentFromCenter = 0;
+      wasShowingComponents = false;
+    }
+
     this.state = {
+
       // A measure of what percentage of the fully separated distance the circles are apart.
       // Note that this goes over 1 during the animation
       // A value of 0 would imply that you would only see one circle
-      percentFromCenter: 1.00,
+      percentFromCenter,
 
       // Keep track of whether components are shown to compare with new props value upon update
-      wasShowingComponents: true,
+      wasShowingComponents,
 
       // Keeps track of what transition is currently being executed
       // Values are 'none', 'join', 'separate'
@@ -218,7 +229,7 @@ class ColorViz extends Component {
   render() {
     return (
       <div className='ColorViz__container'>
-        <canvas ref='vizCanvas' className='ColorViz__canvas' width={370} height={370} onClick={this.props.onClick}/>
+        <canvas ref='vizCanvas' className={`ColorViz__canvas${this.props.canvasClassesToAdd}`} width={370} height={370} onClick={this.props.onClick}/>
       </div>
     );
   }

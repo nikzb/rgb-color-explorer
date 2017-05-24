@@ -27,7 +27,8 @@ class ColorCoderMainSection extends Component {
       activeSymbolButtons: [],
       isDeleteButtonActive: false,
       currentGame: null,
-      guessInProgress: null
+      guessInProgress: null,
+      gameScreenShowColorComponents: false
     }
 
     this.getSetUpGameFunction = this.getSetUpGameFunction.bind(this);
@@ -268,7 +269,7 @@ class ColorCoderMainSection extends Component {
     return (
       <div className='ColorCoderMainSection__container'>
         {/* <ColorCoderGuessPanel /> */}
-        {/* <ColorDisplay /> */}
+        <ColorDisplay colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false}/>
         <ColorCoderGuessInProgressDisplay guessInProgress={this.state.guessInProgress} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} />
         <ColorCodeButtonPanel colorCode={this.state.guessInProgress} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.activeSymbolButtons} />
       </div>

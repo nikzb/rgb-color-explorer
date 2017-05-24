@@ -51,6 +51,13 @@ class ColorCoderGame {
     return this.colorPuzzles[this.currentPuzzleIndex];
   }
 
+  getCurrentColorToGuess() {
+    if (this.currentPuzzleIndex > 3) {
+      throw Error('Puzzle Index is too big. Puzzles have been used up');
+    }
+    return this.colorPuzzles[this.currentPuzzleIndex].getActualColor();
+  }
+
   processGuess(guess) {
     const isGuessCorrect = this.getCurrentPuzzle().checkGuess(guess);
     if (isGuessCorrect) {

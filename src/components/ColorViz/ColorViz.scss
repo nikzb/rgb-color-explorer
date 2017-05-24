@@ -8,5 +8,8 @@
 
 .ColorViz__canvas {
   margin: 0;
-  cursor: pointer;
+
+  &--clickable {
+    cursor: pointer;
+  }
 }
