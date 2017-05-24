@@ -43,15 +43,15 @@ class ColorCoderMainSection extends Component {
   initializeGuessInProgress(level) {
     if (level === 1) {
       this.setState({
-        guessInProgress: new ColorCode({ base: 2, bits: 6, code: '000000'})
+        guessInProgress: new ColorCode({ base: 2, bits: 6, code: ''})
       })
     } else if (level === 2) {
       this.setState({
-        guessInProgress: new ColorCode({ base: 16, bits: 12, code: '000'})
+        guessInProgress: new ColorCode({ base: 16, bits: 12, code: ''})
       })
     } else if (level === 3) {
       this.setState({
-        guessInProgress: new ColorCode({ base: 16, bits: 24, code: '000000'})
+        guessInProgress: new ColorCode({ base: 16, bits: 24, code: ''})
       })
     }
   }
@@ -107,15 +107,11 @@ class ColorCoderMainSection extends Component {
     if (fromTour) {
       this.updateGuessInProgress({
         newCode,
-        base: colorCode.getBase(),
-        bits: colorCode.getBits(),
         fromTour: true
       });
     } else {
       this.updateGuessInProgress({
         newCode,
-        base: colorCode.getBase(),
-        bits: colorCode.getBits(),
         fromTour: false
       });
     }
@@ -148,8 +144,6 @@ class ColorCoderMainSection extends Component {
 
     this.updateGuessInProgress({
       newCode: newCodeAsString,
-      base: colorCode.getBase(),
-      bits: colorCode.getBits()
     });
   }
 
@@ -248,7 +242,7 @@ class ColorCoderMainSection extends Component {
     const oldCode = this.state.guessInProgress;
 
     this.setState({
-      colorCode: new ColorCode({
+      guessInProgress: new ColorCode({
         base: oldCode.getBase(),
         bits: oldCode.getBits(),
         code: newCode
@@ -276,7 +270,7 @@ class ColorCoderMainSection extends Component {
         {/* <ColorCoderGuessPanel /> */}
         {/* <ColorDisplay /> */}
         <ColorCoderGuessInProgressDisplay guessInProgress={this.state.guessInProgress} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} />
-        <ColorCodeButtonPanel colorCode={this.state.guessInProgress} onColorChange={this.updateGuessInProgress} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.activeSymbolButtons} />
+        <ColorCodeButtonPanel colorCode={this.state.guessInProgress} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.activeSymbolButtons} />
       </div>
     )
   }

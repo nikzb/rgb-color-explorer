@@ -115,7 +115,7 @@ class ColorCoderGuessInProgressDisplay extends Component {
       <div className='ColorCoderGuessInProgressDisplay__container'>
         {this.getLabelElement()}
         <div className='ColorCoderGuessInProgressDisplay__bottom-row'>
-          <ColorComponentViewToggle showColorComponents={false} onClick={() => { throw Error('Toggle should be hidden, should not be able to be clicked') }}/>
+          <ColorComponentViewToggle hidden={true} showColorComponents={false} onClick={() => { throw Error('Toggle should be hidden, should not be able to be clicked') }}/>
           {this.getColorCodeComponentDisplay()}
           {this.getDeleteButton({isHidden:false})}
         </div>

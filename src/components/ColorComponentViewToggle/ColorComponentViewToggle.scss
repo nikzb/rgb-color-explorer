@@ -13,6 +13,10 @@ $button-active-color: $grey-6;
   margin-right: 0.95rem;
   margin-bottom: 0.1em;
 
+  .hidden {
+    visibility: hidden;
+  }
+
   .button {
     background: transparent;
     color: $button-color;
