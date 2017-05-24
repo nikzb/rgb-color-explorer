@@ -10,13 +10,17 @@ const GameLevelsMenu = ({getLevelInfoList}) => (
       return (
         <div className={`row GameLevelsMenu__row GameLevelsMenu__row--${levelInfo.background}`} key={levelInfo.bits}>
           <div className="small-4 medium-3 columns GameLevelsMenu__label">
-            {`${levelInfo.bits} Bit ${levelInfo.system}`}
+            {`${levelInfo.bits} Bit`}
+            <br></br>
+            {`${levelInfo.system}`}
           </div>
-          <button className="small-4 medium-6 columns button GameLevelsMenu__button">
+          <button className="small-4 medium-6 columns button GameLevelsMenu__button" onClick={levelInfo.callback}>
             {`${levelInfo.title}`}
           </button>
           <div className="small-4 medium-3 columns GameLevelsMenu__label">
-            {`${levelInfo.colors} Colors`}
+            {`${levelInfo.colors}`}
+            <br></br>
+            {`Colors`}
           </div>
         </div>
       )

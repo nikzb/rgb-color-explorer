@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Averia+Sans+Libre:700");
+.ColorCoderGuessInProgressDisplay__container {
+  width: 100%;
+  margin-bottom: 0.8em; }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    .ColorCoderGuessInProgressDisplay__container {
+      margin-bottom: 1em; } }
+  .ColorCoderGuessInProgressDisplay__container .ColorCoderGuessInProgressDisplay__label {
+    font-size: 1em;
+    color: grey;
+    margin-bottom: -.3em; }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+      .ColorCoderGuessInProgressDisplay__container .ColorCoderGuessInProgressDisplay__label {
+        font-size: 1.2rem; } }
+
+.ColorCoderGuessInProgressDisplay__bottom-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  margin-bottom: 0;
+  cursor: pointer; }
+  .ColorCoderGuessInProgressDisplay__bottom-row .hidden {
+    visibility: hidden; }
+  .ColorCoderGuessInProgressDisplay__bottom-row .ColorCoderGuessInProgressDisplay__delete-button {
+    width: 5em;
+    height: 100%;
+    background: transparent;
+    color: grey;
+    margin-bottom: 0;
+    flex: 0;
+    font-size: 1.8em;
+    padding: 0.5rem 0.9rem 0.5rem 0.9rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    border-radius: 0.5rem; }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+      .ColorCoderGuessInProgressDisplay__bottom-row .ColorCoderGuessInProgressDisplay__delete-button {
+        padding: 1rem 1.5rem 0.75rem 1.5rem; } }
+    .ColorCoderGuessInProgressDisplay__bottom-row .ColorCoderGuessInProgressDisplay__delete-button:hover, .ColorCoderGuessInProgressDisplay__bottom-row .ColorCoderGuessInProgressDisplay__delete-button:focus {
+      background: #E9E9E9;
+      color: grey;
+      outline: 0; }
+    .ColorCoderGuessInProgressDisplay__bottom-row .ColorCoderGuessInProgressDisplay__delete-button:active {
+      background: silver;
+      color: grey;
+      outline: 0; }
+    .ColorCoderGuessInProgressDisplay__bottom-row .ColorCoderGuessInProgressDisplay__delete-button--active {
+      background: silver !important;
+      color: grey !important; }
+
+.ColorCodeComponentDisplay__container {
+  display: flex;
+  justify-content: center;
+  width: 10em;
+  height: 2.4em;
+  border: 1px solid grey;
+  border-radius: 0.5rem; }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    .ColorCodeComponentDisplay__container {
+      width: 12em;
+      height: 3em; } }
+  .ColorCodeComponentDisplay__container:hover, .ColorCodeComponentDisplay__container:focus {
+    background: #E9E9E9;
+    color: grey;
+    outline: 0; }
+  .ColorCodeComponentDisplay__container:active {
+    background: silver;
+    color: grey;
+    outline: 0; }

@@ -3,12 +3,13 @@
 ## Version 0 - Work in Progress
 
 To do:
+* RGB Color Explorer
+  * Check if typing keys on keyboard during tour is blocked or not
+
 * Tour
-  * Make a way to exit out of the tour from any step
-  * Make a button for replaying the step that you are currently on?
   * Add the button for restarting the tour later, once it has been exited from
 
-* Favicon!
+* Favicon - Change ones?
 
 * Share button(s) -- don't really need these till later
 

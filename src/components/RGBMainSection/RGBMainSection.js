@@ -131,9 +131,6 @@ class MainSection extends Component {
   }
 
   updateToFullCode(fromTour) {
-    console.log('updating to full code');
-    console.log(this.state.colorCode.getCode());
-    console.log(fromTour);
     this.updateColor({
       newCode: this.state.colorCode.getCode(),
       fromTour
@@ -258,13 +255,12 @@ class MainSection extends Component {
 
   // Parameters:
   //   newCode: A string with a new color code to use
-  //   comp: The color component gettig updated
+  //   comp: The color component getting updated
   //   newValue: The new value of the color component being updated
   //   newBase: The base for the new color code, if different from the old base
   //   newBitsPerComponent: The new number of bits per component, if different then the old
   updateColor({newCode, comp, newValue, newBase, newBitsPerComponent, fromTour}) {
     // Do not update the color if the controls are disabled and the request is not from the tour
-
     if (this.state.controlsDisabled && !fromTour) {
       return;
     }
@@ -286,7 +282,7 @@ class MainSection extends Component {
       });
     };
 
-    // If a code is include in the parameter object, use the code to update the color
+    // If a code is included in the parameter object, use the code to update the color
     if (newCode || newCode === '') {
       // let baseUsedInCode;
       // if (newCode.charAt(0) === '#') {

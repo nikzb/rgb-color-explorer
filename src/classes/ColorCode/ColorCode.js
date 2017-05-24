@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 class ColorCode {
-  constructor({bits=24, base=16, red=0, green=0, blue=0, code}) {
+  constructor({bits=24, base=16, red=0, green=0, blue=0, random=false, code}) {
     const correctCompValue = (compValue) => {
       const maxCompValue = this.getMaxComponentValue();
       if (compValue < 0) {
@@ -17,7 +17,18 @@ class ColorCode {
     if (!_.includes(validNumbersOfBits, bits)) {
       throw Error('Invalid number of bits used to create ColorCode');
     }
-    if (code || code === '') {
+
+    // If random code requested, must have provided base and bits
+    if (random) {
+      if (!base || !bits) {
+        throw Error('Need base and bits to create random code');
+      }
+      this.base = base;
+      this.bits = bits;
+      this.red = this.getRandomComponent();
+      this.green = this.getRandomComponent();
+      this.blue = this.getRandomComponent();
+    } else if (code || code === '') {
       let fullCodeLength;
       if (base === 2) {
         this.base = 2;
@@ -55,13 +66,6 @@ class ColorCode {
       this.green = correctCompValue(green);
       this.blue = correctCompValue(blue);
     }
-  }
-
-  // Set data to a color with random R, G, B components
-  setToRandomColor() {
-    this.red = this.getRandomComponent();
-    this.green = this.getRandomComponent();
-    this.blue = this.getRandomComponent();
   }
 
   // Get the requested component ("R", "G", or "B") of this color as a number
@@ -197,6 +201,14 @@ class ColorCode {
     return (this.getComponent256("R") === otherColor.getComponent256("R") &&
             this.getComponent256("G") === otherColor.getComponent256("G") &&
             this.getComponent256("B") === otherColor.getComponent256("B"));
+  }
+
+  closeTo(otherColor) {
+    const sumOfDiffs = Math.abs(this.getComponent256("R") - otherColor.getComponent256("R")) +
+                       Math.abs(this.getComponent256("G") - otherColor.getComponent256("G")) +
+                       Math.abs(this.getComponent256("B") - otherColor.getComponent256("B"));
+
+    return sumOfDiffs < 50;
   }
 }
 

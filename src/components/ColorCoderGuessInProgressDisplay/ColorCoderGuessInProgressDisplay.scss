@@ -1,0 +1,109 @@
+@import '../component-styles/base-styles.scss';
+@import '../component-styles/mixins.scss';
+@import '../component-styles/fonts.scss';
+
+$button-radius: $standard-border-radius;
+$button-width: 5em;
+$button-color: $grey-2;
+$button-focus-color: $grey-9;
+$button-active-color: $grey-6;
+$delete-button-side-margin: .3rem;
+$delete-button-side-padding: 1.5rem;
+$delete-button-side-padding-small: 0.9rem;
+
+.ColorCoderGuessInProgressDisplay__container {
+  width: 100%;
+  margin-bottom: 0.8em;
+
+  @include phone-large {
+    margin-bottom: 1em;
+  }
+
+  .ColorCoderGuessInProgressDisplay__label {
+    font-size: 1em;
+    color: $button-color;
+    margin-bottom: -.3em;
+
+    @include phone-large {
+      font-size: 1.2rem;
+      // margin-bottom: -.4em;
+    }
+  }
+}
+
+.ColorCoderGuessInProgressDisplay__bottom-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 100%;
+  margin-bottom: 0;
+
+  cursor: pointer;
+
+  .hidden {
+    visibility: hidden;
+  }
+
+  .ColorCoderGuessInProgressDisplay__delete-button {
+    width: $button-width;
+    height: 100%;
+    background: transparent;
+    color: $button-color;
+    margin-bottom: 0;
+    flex: 0;
+    font-size: 1.8em;
+    padding: .5rem $delete-button-side-padding-small 0.5rem $delete-button-side-padding-small;
+    margin-left: $delete-button-side-margin;
+    margin-right: $delete-button-side-margin;
+    border-radius: $button-radius;
+
+    @include phone-large {
+      padding: 1rem $delete-button-side-padding 0.75rem $delete-button-side-padding;
+    }
+
+    &:hover, &:focus {
+      background: $button-focus-color;
+      color: $button-color;
+      outline: 0;
+    }
+
+    &:active {
+      background: $button-active-color;
+      color: $button-color;
+      outline: 0;
+    }
+
+    &--active {
+      background: $button-active-color !important;
+      color: $button-color !important;
+    }
+  }
+}
+
+.ColorCodeComponentDisplay__container {
+  display: flex;
+  justify-content: center;
+  width: 10em;
+  height: 2.4em;
+  border: 1px solid $button-color;
+  border-radius: $button-radius;
+
+  @include phone-large {
+    width: 12em;
+    height: 3em;
+  }
+
+  &:hover, &:focus {
+    background: $button-focus-color;
+    color: $button-color;
+    outline: 0;
+  }
+
+  &:active {
+    background: $button-active-color;
+    color: $button-color;
+    outline: 0;
+  }
+}
