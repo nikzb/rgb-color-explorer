@@ -4,7 +4,12 @@
 
 To do:
 * RGB Color Explorer
-  * Check if typing keys on keyboard during tour is blocked or not
+  * Prevent enabling button panel by selecting input via actual keyboard
+
+* Color Coder Game
+  * Figure out why color display is starting open when guess display panel is enabled
+  * Add end game screen
+  * Fix size/styling/spacing of elements in guess panel
 
 * Tour
   * Add the button for restarting the tour later, once it has been exited from
