@@ -4,12 +4,6 @@ import './ColorDisplay.css';
 import ColorViz from '../ColorViz/ColorViz';
 
 class ColorDisplay extends Component {
-  constructor(props) {
-    super(props);
-
-    //this.getOnClick = this.getOnClick.bind(this);
-  }
-
   getOnClick() {
     if (this.props.userCanToggle) {
       return this.props.toggleShowColorComponents;

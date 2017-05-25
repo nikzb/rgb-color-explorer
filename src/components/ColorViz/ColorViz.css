@@ -5,6 +5,5 @@
 
 .ColorViz__canvas {
   margin: 0; }
-
-.ColorViz__canvas--clickable {
-  cursor: pointer; }
+  .ColorViz__canvas--clickable {
+    cursor: pointer; }

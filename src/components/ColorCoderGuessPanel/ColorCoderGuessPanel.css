@@ -1,0 +1,13 @@
+.ColorCoderGuessPanel__container {
+  display: flex; }
+
+.ColorCoderGuessCountDisplay {
+  flex: 1 1 30%; }
+  .ColorCoderGuessCountDisplay__label {
+    color: #909090; }
+  .ColorCoderGuessCountDisplay__count {
+    color: #909090;
+    font-size: 2em; }
+
+.ColorCoderComponentsAndFeedbackDisplay {
+  flex: 1 0 40%; }

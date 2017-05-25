@@ -198,6 +198,8 @@ class ColorViz extends Component {
     let multiplier = 1;
     if (this.props.size === 'small') {
       multiplier = 0.8;
+    } else if (this.props.size === 'tiny') {
+      multiplier = 0.5;
     }
     if (window.innerWidth < 400 || lowResMediaQuery.matches) {
       this.setCanvasSizeAndRadius(300 * multiplier, 100 * multiplier);

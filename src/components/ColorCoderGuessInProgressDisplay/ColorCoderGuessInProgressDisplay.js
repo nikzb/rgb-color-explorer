@@ -34,7 +34,7 @@ class ColorCoderGuessInProgressDisplay extends Component {
     let greenCompString = '';
     let blueCompString = '';
 
-    if (codeAsString.length === 0) {
+    if (codeAsString.length === 0 || codeAsString.length === colorCode.getFullCodeLength()) {
       classNameRed += ' ColorCodeComponentDisplay--placeholder';
       classNameGreen += ' ColorCodeComponentDisplay--placeholder';
       classNameBlue += ' ColorCodeComponentDisplay--placeholder';

@@ -1,0 +1,30 @@
+@import '../component-styles/mixins.scss';
+@import '../component-styles/base-styles.scss';
+
+.ColorCoderGuessPanel__container {
+display: flex;
+
+  &--empty {
+    // make sure maintains size???
+  }
+
+
+}
+
+.ColorCoderGuessCountDisplay {
+  flex: 1 1 30%;
+
+  &__label {
+    color: $grey-3;
+  }
+
+  &__count {
+    color: $grey-3;
+    font-size: 2em;
+  }
+}
+
+
+.ColorCoderComponentsAndFeedbackDisplay {
+  flex: 1 0 40%;
+}

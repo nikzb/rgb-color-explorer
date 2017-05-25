@@ -13,13 +13,16 @@ class ColorPuzzle {
   getMostRecentGuess() {
     if (this.guesses.length === 0) {
       return null;
-    } else {
-      // return the last item in the guesses list
-      return this.guesses[this.guesses.length - 1];
     }
+    // return the last item in the guesses list
+    return this.guesses[this.guesses.length - 1];
+    
   }
 
   getComponentDiffsForMostRecentGuess() {
+    if (this.guesses.length === 0) {
+      return null;
+    }
     return {
       red: this.getMostRecentGuess().getComponent('R') - this.actualColor.getComponent('R'),
       green: this.getMostRecentGuess().getComponent('G') - this.actualColor.getComponent('G'),

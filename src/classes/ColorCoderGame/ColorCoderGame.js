@@ -2,7 +2,7 @@ import ColorCode from '../ColorCode/ColorCode';
 import ColorPuzzle from './ColorPuzzle';
 
 class ColorCoderGame {
-  constructor(level) {
+  constructor({level}) {
     this.level = level;
     this.colorPuzzles = [];
     this.currentPuzzleIndex = 0;

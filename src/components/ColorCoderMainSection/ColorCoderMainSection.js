@@ -7,6 +7,7 @@ import ColorCoderGame from '../../classes/ColorCoderGame/ColorCoderGame';
 import GameLevelsMenu from '../GameLevelsMenu/GameLevelsMenu';
 import ColorCoderGuessInProgressDisplay from '../ColorCoderGuessInProgressDisplay/ColorCoderGuessInProgressDisplay';
 import ColorCodeButtonPanel from '../ColorCodeButtonPanel/ColorCodeButtonPanel';
+import ColorCoderGuessPanel from '../ColorCoderGuessPanel/ColorCoderGuessPanel';
 
 import './ColorCoderMainSection.css';
 
@@ -119,9 +120,12 @@ class ColorCoderMainSection extends Component {
 
     if (newCode.length === colorCode.getFullCodeLength()) {
       // Guess code is complete, so process it
-      setTimeout(() => {
-        this.state.currentGame.processGuess(newCode);
-      }, 10);
+      this.state.currentGame.processGuess(
+        new ColorCode({
+          code: newCode,
+          bits: colorCode.getBits(),
+          base: colorCode.getBase()
+        }));
     }
   }
 
@@ -268,7 +272,7 @@ class ColorCoderMainSection extends Component {
   getGamePlayScreen() {
     return (
       <div className='ColorCoderMainSection__container'>
-        {/* <ColorCoderGuessPanel /> */}
+        <ColorCoderGuessPanel currentPuzzle={this.state.currentGame.getCurrentPuzzle()}/>
         <ColorDisplay colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false}/>
         <ColorCoderGuessInProgressDisplay guessInProgress={this.state.guessInProgress} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} />
         <ColorCodeButtonPanel colorCode={this.state.guessInProgress} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.activeSymbolButtons} />

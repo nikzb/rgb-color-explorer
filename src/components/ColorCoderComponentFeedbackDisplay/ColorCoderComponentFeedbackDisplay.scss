@@ -1,0 +1,15 @@
+.ColorCoderComponentFeedbackDisplay {
+  font-size: 1.5em;
+
+  &--red {
+    color: red;
+  }
+
+  &--green {
+    color: green;
+  }
+
+  &--blue {
+    color: blue;
+  }
+}
