@@ -4,11 +4,20 @@ import ColorCoderComponentFeedbackDisplay from  '../ColorCoderComponentFeedbackD
 
 import './ColorCoderGuessFeedbackDisplay.css';
 
-const ColorCoderGuessFeedbackDisplay= ({componentDiffs}) => {
+const ColorCoderGuessFeedbackDisplay= ({componentDiffs, codeLength}) => {
 
-  const classNameRed = 'ColorCoderComponentFeedbackDisplay ColorCoderComponentFeedbackDisplay--red';
-  const classNameGreen = 'ColorCoderComponentFeedbackDisplay ColorCoderComponentFeedbackDisplay--green';
-  const classNameBlue = 'ColorCoderComponentFeedbackDisplay ColorCoderComponentFeedbackDisplay--blue';
+  let spacingClass;
+  if (codeLength === 3) {
+    spacingClass = 'ColorCoderComponentFeedbackDisplay--three-symbols';
+  } else if (codeLength === 6) {
+    spacingClass = 'ColorCoderComponentFeedbackDisplay--six-symbols';
+  } else {
+    throw Error('code length is invalid. It is neither 3 nor 6.');
+  }
+
+  const classNameRed = spacingClass + ' ColorCoderComponentFeedbackDisplay ColorCoderComponentFeedbackDisplay--red';
+  const classNameGreen = spacingClass + ' ColorCoderComponentFeedbackDisplay ColorCoderComponentFeedbackDisplay--green';
+  const classNameBlue = spacingClass + ' ColorCoderComponentFeedbackDisplay ColorCoderComponentFeedbackDisplay--blue';
 
   return (
     <div className='ColorCoderGuessFeedbackDisplay__container'>

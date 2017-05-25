@@ -9,7 +9,12 @@ import './ColorCoderGuessPanel.css';
 const ColorCoderGuessPanel = ({currentPuzzle}) => {
   if (currentPuzzle.getNumberOfGuesses() === 0) {
     return (
-      <div className={'ColorCoderGuessPanel__container ColorCoderGuessPanel__container--empty'}></div>
+      <div className={'ColorCoderGuessPanel__container'}>
+        <div className={'ColorCoderGuessCountDisplay'}>
+          <div className={'ColorCoderGuessCountDisplay__label'}>Guess</div>
+          <div className={'ColorCoderGuessCountDisplay__count'}>{currentPuzzle.getNumberOfGuesses()}</div>
+        </div>
+      </div>
     )
   } else {
     return (
@@ -18,10 +23,12 @@ const ColorCoderGuessPanel = ({currentPuzzle}) => {
           <div className={'ColorCoderGuessCountDisplay__label'}>Guess</div>
           <div className={'ColorCoderGuessCountDisplay__count'}>{currentPuzzle.getNumberOfGuesses()}</div>
         </div>
+
         <div className={'ColorCoderComponentsAndFeedbackDisplay'}>
           <ColorCoderMostRecentGuessDisplay colorCode={currentPuzzle.getMostRecentGuess()} />
-          <ColorCoderGuessFeedbackDisplay componentDiffs={currentPuzzle.getComponentDiffsForMostRecentGuess()} />
+          <ColorCoderGuessFeedbackDisplay componentDiffs={currentPuzzle.getComponentDiffsForMostRecentGuess()} codeLength={currentPuzzle.getActualColor().getFullCodeLength()} />
         </div>
+
         <ColorDisplay colorCode={currentPuzzle.getMostRecentGuess()} showColorComponents={false} userCanToggle={false} size={'tiny'}/>
       </div>
     )

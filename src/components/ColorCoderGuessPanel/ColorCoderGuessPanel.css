@@ -1,13 +1,26 @@
 .ColorCoderGuessPanel__container {
-  display: flex; }
+  display: flex;
+  align-items: center;
+  border: 1px solid #909090; }
 
 .ColorCoderGuessCountDisplay {
-  flex: 1 1 30%; }
+  flex: 0 0 28.125%; }
+
+.ColorCoderGuessCountDisplay__label {
+  color: #909090;
+  font-size: 1.2em; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCoderGuessCountDisplay__label {
-    color: #909090; }
+    font-size: 1.5em; } }
+
+.ColorCoderGuessCountDisplay__count {
+  color: dimgrey;
+  font-size: 1.8em; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCoderGuessCountDisplay__count {
-    color: #909090;
-    font-size: 2em; }
+    font-size: 2.2em; } }
 
 .ColorCoderComponentsAndFeedbackDisplay {
-  flex: 1 0 40%; }
+  flex: 0 0 43.75%; }

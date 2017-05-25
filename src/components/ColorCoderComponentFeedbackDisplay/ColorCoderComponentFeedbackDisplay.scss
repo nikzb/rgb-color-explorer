@@ -1,5 +1,27 @@
+@import '../component-styles/mixins.scss';
+
 .ColorCoderComponentFeedbackDisplay {
-  font-size: 1.5em;
+  font-size: 1.8em;
+
+  @include phone-large {
+    font-size: 2.1em;
+  }
+
+  &--three-symbols {
+    padding: 0 0.1em;
+
+    @include phone-large {
+      padding: 0 0.05em;
+    }
+  }
+
+  &--six-symbols {
+    padding: 0 0.3em;
+
+    @include phone-large {
+      padding: 0 0.4em;
+    }
+  }
 
   &--red {
     color: red;
