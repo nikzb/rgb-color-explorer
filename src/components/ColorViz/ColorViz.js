@@ -5,13 +5,12 @@ import ColorCircleGroup from '../../classes/ColorCircleGroup/ColorCircleGroup';
 
 import './ColorViz.css';
 
-// const CANVAS_WIDTH = 320; //400
-// const CANVAS_HEIGHT = 320; //400
 const PERCENT_CHANGE = 0.025;
 
 class ColorViz extends Component {
   constructor(props) {
     super(props);
+
     // Default values assume that we are going to show the color components
     let percentFromCenter = 1.00;
     let wasShowingComponents = true;
@@ -217,7 +216,6 @@ class ColorViz extends Component {
     this.updateCanvas();
   }
 
-
   componentWillUnmount() {
     window.removeEventListener('resize', this.resizeCanvas, false);
   }
@@ -231,6 +229,7 @@ class ColorViz extends Component {
   render() {
     return (
       <div className='ColorViz__container'>
+        {/* <canvas ref='vizCanvas' className={`ColorViz__canvas${this.props.canvasClassesToAdd}`} width={370} height={370} onClick={this.props.onClick}/> */}
         <canvas ref='vizCanvas' className={`ColorViz__canvas${this.props.canvasClassesToAdd}`} width={370} height={370} onClick={this.props.onClick}/>
       </div>
     );

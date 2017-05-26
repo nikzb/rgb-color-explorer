@@ -91,7 +91,7 @@ class ColorCoderGuessInProgressDisplay extends Component {
     }
 
     return (
-      <div className='ColorCodeComponentDisplay__container' tabIndex={2}>
+      <div className='ColorCodeComponentDisplay__container' >
         <ColorCodeComponentDisplay className={classNameRed} codeAsString={redCompString} />
         <ColorCodeComponentDisplay className={classNameGreen} codeAsString={greenCompString} />
         <ColorCodeComponentDisplay className={classNameBlue} codeAsString={blueCompString} />

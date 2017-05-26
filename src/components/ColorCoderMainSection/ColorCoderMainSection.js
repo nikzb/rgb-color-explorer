@@ -264,7 +264,7 @@ class ColorCoderMainSection extends Component {
     return (
       <div className='ColorCoderMainSection__container'>
         <h1 className='ColorCoderMainSection__title'>ColorCoder</h1>
-        <ColorDisplay colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'small'}/>
+        <ColorDisplay key={'levelScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'small'}/>
         <GameLevelsMenu getLevelInfoList={this.getLevelInfoList} />
       </div>
     )
@@ -282,7 +282,7 @@ class ColorCoderMainSection extends Component {
 
       <div className='ColorCoderMainSection__container'>
         <h1 className='ColorCoderMainSection__title'>ColorCoder</h1>
-        <ColorDisplay colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'small'}/>
+        <ColorDisplay key={'endScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'small'}/>
 
         <div className='ColorCoder__message'>{message}</div>
         <div className='ColorCoder__action-buttons'>
@@ -297,7 +297,7 @@ class ColorCoderMainSection extends Component {
     return (
       <div className='ColorCoderMainSection__container'>
         <ColorCoderGuessPanel currentPuzzle={this.state.currentGame.getCurrentPuzzle()}/>
-        <ColorDisplay colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false}/>
+        <ColorDisplay key={'gamePlay'} colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false}/>
         <ColorCoderGuessInProgressDisplay guessInProgress={this.state.guessInProgress} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} />
         <ColorCodeButtonPanel colorCode={this.state.guessInProgress} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.activeSymbolButtons} />
       </div>
