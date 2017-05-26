@@ -4,7 +4,13 @@
 .ColorCoderGuessPanel__container {
   display: flex;
   align-items: center;
-  border: 1px solid $grey-3;
+  // border: 1px solid $grey-3;
+  height: 6em;
+  margin-top: 0.5em;
+
+  @include phone-large {
+    margin-top: 1em;
+  }
 
   &--empty {
     // make sure maintains size???
@@ -28,6 +34,7 @@
   &__count {
     color: $grey-1;
     font-size: 1.8em;
+    margin-top: -0.2em;
 
     @include phone-large {
       font-size: 2.2em;

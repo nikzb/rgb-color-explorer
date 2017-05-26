@@ -10,10 +10,6 @@ const ColorCoderGuessPanel = ({currentPuzzle}) => {
   if (currentPuzzle.getNumberOfGuesses() === 0) {
     return (
       <div className={'ColorCoderGuessPanel__container'}>
-        <div className={'ColorCoderGuessCountDisplay'}>
-          <div className={'ColorCoderGuessCountDisplay__label'}>Guess</div>
-          <div className={'ColorCoderGuessCountDisplay__count'}>{currentPuzzle.getNumberOfGuesses()}</div>
-        </div>
       </div>
     )
   } else {

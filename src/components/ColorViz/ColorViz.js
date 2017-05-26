@@ -197,6 +197,8 @@ class ColorViz extends Component {
     let multiplier = 1;
     if (this.props.size === 'small') {
       multiplier = 0.8;
+    } else if (this.props.size === 'smaller') {
+      multiplier = 0.75;
     } else if (this.props.size === 'tiny') {
       multiplier = 0.3;
     }

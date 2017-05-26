@@ -260,6 +260,9 @@ class ColorCoderMainSection extends Component {
     this.setState({currentGame:null});
   }
 
+  // Note about ColorDisplay: I used the key prop to force each screen to get a unique ColorDisplay
+  // This resolved an issue with the transition animation showing when it shouldn't.
+
   getLevelScreen() {
     return (
       <div className='ColorCoderMainSection__container'>
@@ -297,7 +300,7 @@ class ColorCoderMainSection extends Component {
     return (
       <div className='ColorCoderMainSection__container'>
         <ColorCoderGuessPanel currentPuzzle={this.state.currentGame.getCurrentPuzzle()}/>
-        <ColorDisplay key={'gamePlay'} colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false}/>
+        <ColorDisplay key={'gamePlay'} colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false} size={'smaller'}/>
         <ColorCoderGuessInProgressDisplay guessInProgress={this.state.guessInProgress} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} />
         <ColorCodeButtonPanel colorCode={this.state.guessInProgress} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.activeSymbolButtons} />
       </div>
