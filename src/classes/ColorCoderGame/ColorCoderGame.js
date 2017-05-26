@@ -2,11 +2,15 @@ import ColorCode from '../ColorCode/ColorCode';
 import ColorPuzzle from './ColorPuzzle';
 
 class ColorCoderGame {
-  constructor({level}) {
+  constructor({level, performAnimationWhenPuzzleSolved, forceUpdate}) {
     this.level = level;
     this.colorPuzzles = [];
     this.currentPuzzleIndex = 0;
+
+    // A promise that performs the animation, then resolves
+    this.performAnimationWhenPuzzleSolved = performAnimationWhenPuzzleSolved;
     this.populateColorPuzzles();
+    this.forceUpdate = forceUpdate;
   }
 
   populateColorPuzzles() {
@@ -58,10 +62,16 @@ class ColorCoderGame {
     return this.colorPuzzles[this.currentPuzzleIndex].getActualColor();
   }
 
+  incrementPuzzleIndex() {
+    this.currentPuzzleIndex += 1;
+    this.forceUpdate();
+  }
+
   processGuess(guess) {
     const isGuessCorrect = this.getCurrentPuzzle().checkGuess(guess);
     if (isGuessCorrect) {
-      this.currentPuzzleIndex += 1;
+      // call the function that performs the animation before transitioning to the next puzzle
+      this.performAnimationWhenPuzzleSolved().then(this.incrementPuzzleIndex.bind(this));
     }
   }
 

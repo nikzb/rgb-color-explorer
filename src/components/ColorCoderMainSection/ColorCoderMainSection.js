@@ -41,6 +41,9 @@ class ColorCoderMainSection extends Component {
     this.activateSymbolButtonInPanel = this.activateSymbolButtonInPanel.bind(this);
     this.updateGuessInProgress = this.updateGuessInProgress.bind(this);
     this.goToLevelScreen = this.goToLevelScreen.bind(this);
+    this.performAnimationWhenPuzzleSolved = this.performAnimationWhenPuzzleSolved.bind(this);
+    this.toggleGameScreenShowColorComponents = this.toggleGameScreenShowColorComponents.bind(this);
+
   }
 
   initializeGuessInProgress(level) {
@@ -63,7 +66,11 @@ class ColorCoderMainSection extends Component {
     return () => {
       this.initializeGuessInProgress(level);
       this.setState({
-        currentGame: new ColorCoderGame({level})
+        currentGame: new ColorCoderGame({
+          level,
+          performAnimationWhenPuzzleSolved: this.performAnimationWhenPuzzleSolved,
+          forceUpdate: this.forceUpdate.bind(this)
+        })
       });
     }
   }
@@ -256,8 +263,31 @@ class ColorCoderMainSection extends Component {
     });
   }
 
+  toggleGameScreenShowColorComponents() {
+    this.setState({
+      gameScreenShowColorComponents: !this.state.gameScreenShowColorComponents
+    });
+  }
+
   goToLevelScreen() {
     this.setState({currentGame:null});
+  }
+
+  getAnimationSequence(resolve) {
+    this.toggleGameScreenShowColorComponents();
+    setTimeout(() => {
+      this.toggleGameScreenShowColorComponents();
+      setTimeout(() => {
+        resolve();
+      }, 2000);
+    }, 2500)
+  }
+
+  performAnimationWhenPuzzleSolved() {
+    return new Promise((resolve, reject) => {
+      this.getAnimationSequence(resolve);
+      //setTimeout(this.getAnimationSequence.bind(this, resolve), 1000);
+    })
   }
 
   // Note about ColorDisplay: I used the key prop to force each screen to get a unique ColorDisplay

@@ -14,11 +14,11 @@
 .ColorCoder__message {
   margin-bottom: 0.5em;
   color: #333;
-  font-size: 1.5em; }
+  font-size: 1.2em; }
 
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCoder__message {
-    font-size: 1.8em; } }
+    font-size: 1.6em; } }
 
 .ColorCoder__action-buttons {
   display: flex;
