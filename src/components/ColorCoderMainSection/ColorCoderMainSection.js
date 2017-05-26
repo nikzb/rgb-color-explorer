@@ -40,6 +40,7 @@ class ColorCoderMainSection extends Component {
     this.setControlsDisabled = this.setControlsDisabled.bind(this);
     this.activateSymbolButtonInPanel = this.activateSymbolButtonInPanel.bind(this);
     this.updateGuessInProgress = this.updateGuessInProgress.bind(this);
+    this.goToLevelScreen = this.goToLevelScreen.bind(this);
   }
 
   initializeGuessInProgress(level) {
@@ -255,6 +256,10 @@ class ColorCoderMainSection extends Component {
     });
   }
 
+  goToLevelScreen() {
+    this.setState({currentGame:null});
+  }
+
   getLevelScreen() {
     return (
       <div className='ColorCoderMainSection__container'>
@@ -266,7 +271,26 @@ class ColorCoderMainSection extends Component {
   }
 
   getEndScreen() {
+    const bestScore = this.state.currentGame.getBestScore();
+    let message;
+    if (bestScore === 1) {
+      message = 'Your best score was 1 guess.';
+    } else {
+      message = `Your best score was ${bestScore} guesses.`;
+    }
+    return (
 
+      <div className='ColorCoderMainSection__container'>
+        <h1 className='ColorCoderMainSection__title'>ColorCoder</h1>
+        <ColorDisplay colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'small'}/>
+
+        <div className='ColorCoder__message'>{message}</div>
+        <div className='ColorCoder__action-buttons'>
+          <button className='button ColorCoder__play-again-button' onClick={this.getSetUpGameFunction(this.state.currentGame.getLevel())}>Play Again</button>
+          <button className='button ColorCoder__level-choice-button' onClick={this.goToLevelScreen}>Level Options</button>
+        </div>
+      </div>
+    )
   }
 
   getGamePlayScreen() {

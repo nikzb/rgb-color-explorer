@@ -40,8 +40,6 @@ $delete-button-side-padding-small: 0.9rem;
   max-width: 100%;
   margin-bottom: 0;
 
-  cursor: pointer;
-
   .hidden {
     visibility: hidden;
   }
@@ -80,30 +78,32 @@ $delete-button-side-padding-small: 0.9rem;
       color: $button-color !important;
     }
   }
-}
 
-.ColorCodeComponentDisplay__container {
-  display: flex;
-  justify-content: center;
-  width: 10em;
-  height: 2.4em;
-  border: 1px solid $button-color;
-  border-radius: $button-radius;
+  .ColorCodeComponentDisplay__container {
+    display: flex;
+    justify-content: center;
+    width: 10em;
+    height: 2.4em;
+    border: 1px solid $button-color;
+    border-radius: $button-radius;
 
-  @include phone-large {
-    width: 12em;
-    height: 3em;
-  }
+    // background: red;
 
-  &:hover, &:focus {
-    background: $button-focus-color;
-    color: $button-color;
-    outline: 0;
-  }
-
-  &:active {
-    background: $button-active-color;
-    color: $button-color;
-    outline: 0;
+    @include phone-large {
+      width: 12em;
+      height: 3em;
+    }
+    //
+    // &:hover, &:focus {
+    //   background: $button-focus-color;
+    //   color: $button-color;
+    //   outline: 0;
+    // }
+    //
+    // &:active {
+    //   background: $button-active-color;
+    //   color: $button-color;
+    //   outline: 0;
+    // }
   }
 }

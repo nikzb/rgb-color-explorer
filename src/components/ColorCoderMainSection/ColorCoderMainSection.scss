@@ -1,5 +1,11 @@
 @import '../component-styles/fonts.scss';
 @import '../component-styles/mixins.scss';
+@import '../component-styles/base-styles.scss';
+
+$button-color: $grey-2;
+$button-radius: $standard-border-radius;
+$button-active-color: $grey-6;
+$button-hover-color: $grey-8;
 
 .ColorCoderMainSection__title {
   font-family: 'Averia Sans Libre', sans-serif;
@@ -11,5 +17,59 @@
   @include phone-large {
     font-size: 3.8em;
     top: 0.5em;
+  }
+}
+
+.ColorCoder__message {
+  margin-bottom: 0.5em;
+  color: #333;
+  font-size: 1.5em;
+
+  @include phone-large {
+    font-size: 1.8em;
+  }
+}
+
+.ColorCoder__action-buttons {
+  display: flex;
+  justify-content: center;
+
+  .button {
+    flex: 0 0 40%;
+    background: $grey-3;
+    color: white;
+    margin-bottom: 0;
+    // flex: 1 0 40%;
+    font-size: 0.9em;
+    padding: 0.7em;
+    margin: 2%;
+    border: 1px solid white;
+    border-radius: $button-radius;
+
+    @include phone-large {
+      font-size: 1.05em;
+      padding: 1em;
+    }
+
+    @include tablet-portrait {
+      font-size: 1.3em;
+    }
+
+    &:hover, &:focus {
+      background: $button-hover-color;
+      color: $button-color;
+      outline: 0;
+    }
+
+    &:active {
+      background: $button-active-color;
+      color: white;
+      outline: 0;
+    }
+
+    &.is-active {
+      background: $button-color;
+      color: white;
+    }
   }
 }

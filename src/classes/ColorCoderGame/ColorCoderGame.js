@@ -64,6 +64,16 @@ class ColorCoderGame {
       this.currentPuzzleIndex += 1;
     }
   }
+
+  getBestScore() {
+    return this.colorPuzzles.reduce((min, puzzle) => {
+      return Math.min(min, puzzle.getNumberOfGuesses());
+    }, this.colorPuzzles[0].getNumberOfGuesses());
+  }
+
+  getLevel() {
+    return this.level;
+  }
 }
 
 export default ColorCoderGame;
