@@ -1,6 +1,8 @@
 @import '../component-styles/mixins.scss';
 @import '../component-styles/base-styles.scss';
 
+
+
 .ColorCoderGuessPanel__container {
   display: flex;
   align-items: center;
@@ -17,7 +19,7 @@
 
     .ColorCoderGuessPanel__round-number {
       font-size: 2.5em;
-      color: $grey-3;
+      color: $main-color;
     }
   }
 
@@ -28,7 +30,7 @@
   flex: 0 0 28.125%;
 
   &__label {
-    color: $grey-3;
+    color: $placeholder-color;
     font-size: 1.2em;
 
     @include phone-large {
@@ -37,7 +39,7 @@
   }
 
   &__count {
-    color: $grey-1;
+    color: $main-color;
     font-size: 1.8em;
     margin-top: -0.2em;
 

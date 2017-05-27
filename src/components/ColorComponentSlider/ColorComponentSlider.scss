@@ -2,8 +2,8 @@
 @import '../component-styles/mixins.scss';
 
 $radius: $standard-border-radius;
-$slider-background: $grey-6;
-$slider-background-focus: $grey-7;
+$slider-background: $slider-color;
+$slider-background-focus: $slider-focus-color;
 $ms-percent: 49%;
 
 .ColorComponentSlider__container {

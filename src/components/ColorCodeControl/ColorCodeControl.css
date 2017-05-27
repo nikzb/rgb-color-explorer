@@ -2,16 +2,19 @@
 .ColorCodeControl__container {
   width: 100%;
   margin-bottom: 0.8em; }
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-    .ColorCodeControl__container {
-      margin-bottom: 1em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  .ColorCodeControl__container {
+    margin-bottom: 1em; } }
+
+.ColorCodeControl__container .ColorCodeControl__label {
+  font-size: 1em;
+  color: #707070;
+  margin-bottom: -.3em; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCodeControl__container .ColorCodeControl__label {
-    font-size: 1em;
-    color: grey;
-    margin-bottom: -.3em; }
-    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-      .ColorCodeControl__container .ColorCodeControl__label {
-        font-size: 1.2rem; } }
+    font-size: 1.2rem; } }
 
 .ColorCodeControl__bottom-row {
   display: flex;
@@ -21,50 +24,60 @@
   max-width: 100%;
   margin-bottom: 0;
   cursor: pointer; }
-  .ColorCodeControl__bottom-row .hidden {
-    visibility: hidden; }
+
+.ColorCodeControl__bottom-row .hidden {
+  visibility: hidden; }
+
+.ColorCodeControl__bottom-row .ColorCodeControl__delete-button {
+  width: 5em;
+  height: 100%;
+  background: transparent;
+  color: #707070;
+  margin-bottom: 0;
+  flex: 0;
+  font-size: 1.8em;
+  padding: 0.5rem 0.9rem 0.5rem 0.9rem;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+  border-radius: 0.5rem; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCodeControl__bottom-row .ColorCodeControl__delete-button {
-    width: 5em;
-    height: 100%;
-    background: transparent;
-    color: grey;
-    margin-bottom: 0;
-    flex: 0;
-    font-size: 1.8em;
-    padding: 0.5rem 0.9rem 0.5rem 0.9rem;
-    margin-left: 0.3rem;
-    margin-right: 0.3rem;
-    border-radius: 0.5rem; }
-    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-      .ColorCodeControl__bottom-row .ColorCodeControl__delete-button {
-        padding: 1rem 1.5rem 0.75rem 1.5rem; } }
-    .ColorCodeControl__bottom-row .ColorCodeControl__delete-button:hover, .ColorCodeControl__bottom-row .ColorCodeControl__delete-button:focus {
-      background: #E9E9E9;
-      color: grey;
-      outline: 0; }
-    .ColorCodeControl__bottom-row .ColorCodeControl__delete-button:active {
-      background: silver;
-      color: grey;
-      outline: 0; }
-    .ColorCodeControl__bottom-row .ColorCodeControl__delete-button--active {
-      background: silver !important;
-      color: grey !important; }
+    padding: 1rem 1.5rem 0.75rem 1.5rem; } }
+
+.ColorCodeControl__bottom-row .ColorCodeControl__delete-button:hover, .ColorCodeControl__bottom-row .ColorCodeControl__delete-button:focus {
+  background: #E9E9E9;
+  color: #707070;
+  outline: 0; }
+
+.ColorCodeControl__bottom-row .ColorCodeControl__delete-button:active {
+  background: silver;
+  color: #707070;
+  outline: 0; }
+
+.ColorCodeControl__bottom-row .ColorCodeControl__delete-button--active {
+  background: silver !important;
+  color: #707070 !important; }
+
+.ColorCodeControl__bottom-row .ColorCodeComponentDisplay__container {
+  display: flex;
+  justify-content: center;
+  width: 10em;
+  height: 2.4em;
+  border: 1px solid #707070;
+  border-radius: 0.5rem; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCodeControl__bottom-row .ColorCodeComponentDisplay__container {
-    display: flex;
-    justify-content: center;
-    width: 10em;
-    height: 2.4em;
-    border: 1px solid grey;
-    border-radius: 0.5rem; }
-    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-      .ColorCodeControl__bottom-row .ColorCodeComponentDisplay__container {
-        width: 12em;
-        height: 3em; } }
-    .ColorCodeControl__bottom-row .ColorCodeComponentDisplay__container:hover, .ColorCodeControl__bottom-row .ColorCodeComponentDisplay__container:focus {
-      background: #E9E9E9;
-      color: grey;
-      outline: 0; }
-    .ColorCodeControl__bottom-row .ColorCodeComponentDisplay__container:active {
-      background: silver;
-      color: grey;
-      outline: 0; }
+    width: 12em;
+    height: 3em; } }
+
+.ColorCodeControl__bottom-row .ColorCodeComponentDisplay__container:hover, .ColorCodeControl__bottom-row .ColorCodeComponentDisplay__container:focus {
+  background: #E9E9E9;
+  color: #707070;
+  outline: 0; }
+
+.ColorCodeControl__bottom-row .ColorCodeComponentDisplay__container:active {
+  background: silver;
+  color: #707070;
+  outline: 0; }

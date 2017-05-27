@@ -13,13 +13,13 @@
 
 .ColorCoderGuessPanel__container--empty .ColorCoderGuessPanel__round-number {
   font-size: 2.5em;
-  color: #909090; }
+  color: #707070; }
 
 .ColorCoderGuessCountDisplay {
   flex: 0 0 28.125%; }
 
 .ColorCoderGuessCountDisplay__label {
-  color: #909090;
+  color: #A0A0A0;
   font-size: 1.2em; }
 
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
@@ -27,7 +27,7 @@
     font-size: 1.5em; } }
 
 .ColorCoderGuessCountDisplay__count {
-  color: dimgrey;
+  color: #707070;
   font-size: 1.8em;
   margin-top: -0.2em; }
 

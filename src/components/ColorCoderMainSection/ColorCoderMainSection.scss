@@ -2,10 +2,10 @@
 @import '../component-styles/mixins.scss';
 @import '../component-styles/base-styles.scss';
 
-$button-color: $grey-2;
+$button-color: $main-color;
 $button-radius: $standard-border-radius;
-$button-active-color: $grey-6;
-$button-hover-color: $grey-8;
+$button-active-color: $active-color;
+$button-hover-color: $hover-color;
 
 .ColorCoderMainSection__title {
   font-family: 'Averia Sans Libre', sans-serif;
@@ -36,7 +36,7 @@ $button-hover-color: $grey-8;
 
   .button {
     flex: 0 0 40%;
-    background: $grey-3;
+    background: $button-color;
     color: white;
     margin-bottom: 0;
     // flex: 1 0 40%;

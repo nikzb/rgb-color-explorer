@@ -2,9 +2,9 @@
 @import '../component-styles/mixins.scss';
 
 $button-radius: $standard-border-radius;
-$button-color: $grey-2;
-$button-focus-color: $grey-8;
-$button-active-color: $grey-6;
+$button-color: $main-color;
+$button-focus-color: $focus-color;
+$button-active-color: $active-color;
 
 .ColorComponentViewToggle__container {
   flex: 0;

@@ -1,16 +1,16 @@
 @import '../component-styles/base-styles.scss';
 @import '../component-styles/mixins.scss';
 
-$button-color: $grey-2;
+$button-color: $main-color;
 $button-radius: $standard-border-radius;
-$button-active-color: $grey-6;
-$button-hover-color: $grey-8;
+$button-active-color: $active-color;
+$button-hover-color: $placeholder-color;
 
 .GameLevelsMenu__container {
 
   // display: flex
   .button {
-    background: $grey-3;
+    background: $main-color;
     color: white;
     margin-bottom: 0;
     flex: 0 0 40%;
@@ -30,13 +30,13 @@ $button-hover-color: $grey-8;
 
     &:hover, &:focus {
       background: $button-hover-color;
-      color: $button-color;
+      color: white;
       outline: 0;
     }
 
     &:active {
       background: $button-active-color;
-      color: white;
+      color: $main-color;
       outline: 0;
     }
 
@@ -48,7 +48,7 @@ $button-hover-color: $grey-8;
 }
 
 .GameLevelsMenu__title {
-  color: $grey-2;
+  color: $main-color;
   font-size: 1.2em;
 
   @include phone-large {
@@ -66,7 +66,7 @@ $button-hover-color: $grey-8;
   display: flex;
   // justify-content: space-around;
   align-items: center;
-  color: $grey-2;
+  color: $button-color;
 
   .GameLevelsMenu__label {
     flex: 0 0 30%;
