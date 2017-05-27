@@ -4,8 +4,6 @@ import Logo from '../Logo/Logo';
 import './Header.css';
 
 class Header extends Component {
-  
-
   render() {
     return (
       <div className="Header__container">
