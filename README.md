@@ -3,16 +3,24 @@
 ## Version 0 - Work in Progress
 
 To do:
+* General styling
+  * Fix greys to be darker
+  * Clean up code for sizing of ColorViz?
+
 * RGB Color Explorer
   * Prevent enabling button panel by selecting input via actual keyboard
 
 * Color Coder Game
-  * Figure out why color display is starting open when guess display panel is enabled
-  * Add end game screen
-  * Fix size/styling/spacing of elements in guess panel
+  * Add the tour / demo
+  * Add transitions between
+    * level screen / game screen
+    * game screen / end screen ?
+    * end screen / game screen (via play again button - could me same as level screen / game screen)
+    * end screen / level screen ?
+
 
 * Tour
-  * Add the button for restarting the tour later, once it has been exited from
+  * Add the button for resuming the tour later, once it has been exited from
 
 * Favicon - Change ones?
 
