@@ -329,10 +329,12 @@ class ColorCoderMainSection extends Component {
   getGamePlayScreen() {
     return (
       <div className='ColorCoderMainSection__container'>
-        <ColorCoderGuessPanel currentPuzzle={this.state.currentGame.getCurrentPuzzle()}/>
+        <ColorCoderGuessPanel currentPuzzle={this.state.currentGame.getCurrentPuzzle()} puzzleNumber={this.state.currentGame.currentPuzzleIndex + 1}/>
         <ColorDisplay key={'gamePlay'} colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false} size={'smaller'}/>
         <ColorCoderGuessInProgressDisplay guessInProgress={this.state.guessInProgress} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} />
-        <ColorCodeButtonPanel colorCode={this.state.guessInProgress} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.activeSymbolButtons} />
+        <div className='ColorControlPanel__container'>
+            <ColorCodeButtonPanel colorCode={this.state.guessInProgress} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.activeSymbolButtons} />
+        </div>
       </div>
     )
   }

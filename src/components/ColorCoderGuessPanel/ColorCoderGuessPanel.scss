@@ -13,7 +13,12 @@
   }
 
   &--empty {
-    // make sure maintains size???
+    justify-content: center;
+
+    .ColorCoderGuessPanel__round-number {
+      font-size: 2.5em;
+      color: $grey-3;
+    }
   }
 
 

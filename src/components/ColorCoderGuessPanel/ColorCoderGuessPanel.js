@@ -6,10 +6,11 @@ import ColorDisplay from '../ColorDisplay/ColorDisplay';
 
 import './ColorCoderGuessPanel.css';
 
-const ColorCoderGuessPanel = ({currentPuzzle}) => {
+const ColorCoderGuessPanel = ({currentPuzzle, puzzleNumber}) => {
   if (currentPuzzle.getNumberOfGuesses() === 0) {
     return (
-      <div className={'ColorCoderGuessPanel__container'}>
+      <div className={'ColorCoderGuessPanel__container ColorCoderGuessPanel__container--empty'}>
+        <div className={'ColorCoderGuessPanel__round-number'}>Round {puzzleNumber}</div>
       </div>
     )
   } else {
