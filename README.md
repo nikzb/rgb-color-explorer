@@ -3,8 +3,12 @@
 ## Version 0 - Work in Progress
 
 To do:
+* Main page
+  * Create main page
+  * Set up routing to Color Explorer and ColorCoder
+  * Have logo be a link back to main page?
+
 * General styling
-  * Fix greys to be darker
   * Clean up code for sizing of ColorViz?
 
 * RGB Color Explorer
@@ -17,7 +21,6 @@ To do:
     * game screen / end screen ?
     * end screen / game screen (via play again button - could me same as level screen / game screen)
     * end screen / level screen ?
-
 
 * Tour
   * Add the button for resuming the tour later, once it has been exited from

@@ -1,0 +1,74 @@
+@import '../component-styles/mixins.scss';
+@import '../component-styles/base-styles.scss';
+@import '../component-styles/fonts.scss';
+
+.SouvlakiTitle {
+  font-family: 'Averia Sans Libre', sans-serif;
+  color: #333;
+  padding-top: 0.2em;
+  margin-bottom: 0;
+  font-size: 1.8em;
+
+  @include low-res {
+    font-size: 2.4em;
+  }
+
+  @include phone-large {
+    font-size: 2.2em;
+  }
+
+  @include tablet-portrait {
+    font-size: 3.0em;
+  }
+
+  &.under-logo {
+    font-size: 1.9em;
+    // margin-top: -0.5em;
+  }
+
+  &.next-to-logo {
+    font-size: 3.5em;
+  }
+
+  &--dot {
+    color: $main-color;
+  }
+
+  &--io {
+    color: $logo-secondary;
+  }
+
+  // title used for main page (at least for temporary main page created early on)
+  &--med-large {
+    font-size: 2.4em;
+
+    @include low-res {
+      font-size: 3.5em;
+    }
+
+    @include phone-large {
+      font-size: 3.3em;
+    }
+
+    @include tablet-portrait {
+      font-size: 4.8em;
+    }
+  }
+
+  &--large {
+    font-size: 3em;
+
+    @include low-res {
+      font-size: 4em;
+    }
+
+    @include phone-large {
+      font-size: 3.8em;
+    }
+
+    @include tablet-portrait {
+      font-size: 5.5em;
+    }
+  }
+
+}

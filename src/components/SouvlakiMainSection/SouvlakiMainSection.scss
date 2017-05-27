@@ -1,0 +1,121 @@
+@import '../component-styles/mixins.scss';
+@import '../component-styles/base-styles.scss';
+@import '../component-styles/fonts.scss';
+
+$button-color: $main-color;
+$button-radius: $standard-border-radius;
+$button-active-color: $active-color;
+$button-hover-color: $placeholder-color;
+
+.SouvlakiMainSection__tagline {
+  font-family: 'Averia Sans Libre', sans-serif;
+  color: $logo-secondary;
+  text-shadow: 0.06em 0.06em $main-color;
+  padding-top: 0.2em;
+  margin-bottom: 0;
+  font-size: 1.4em;
+
+  @include low-res {
+    font-size: 2.4em;
+  }
+
+  @include phone-large {
+    font-size: 2.2em;
+  }
+
+  @include tablet-portrait {
+    font-size: 3.0em;
+  }
+}
+
+.SouvlakiMainSection__headline {
+  font-family: 'Averia Sans Libre', sans-serif;
+  color: $main-color;
+  // text-shadow: 0.06em 0.06em $main-color;
+  padding-top: 0.2em;
+  margin-bottom: 0;
+  font-size: 1.8em;
+
+  @include low-res {
+    font-size: 2.4em;
+  }
+
+  @include phone-large {
+    font-size: 2.2em;
+  }
+
+  @include tablet-portrait {
+    font-size: 3.0em;
+  }
+}
+
+.SneakPreview__container {
+  //background: $grey-9;
+  border: 1px solid $main-color;
+  border-radius: $standard-border-radius;
+  margin: 0.7em;
+
+  .SneakPreview__title {
+    font-family: 'Averia Sans Libre', sans-serif;
+    color: $main-color;
+    font-size: 1.8em;
+    padding: 0.2em;
+  }
+}
+
+.SneakPreview__options {
+  display: flex;
+  justify-content: space-around;
+
+  .Option__container {
+    flex: 0 0 42%;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .Option__title {
+    font-family: 'Averia Sans Libre', sans-serif;
+    font-size: 1.3em;
+  }
+
+  .Option__details {
+    font-size: 0.8em;
+  }
+
+  .button.Option__button {
+    width: 7em;
+    background: $main-color;
+    color: white;
+    margin-bottom: 1em;
+    flex: 0 0 40%;
+    font-size: 0.9em;
+    padding: 0.7em 1em;
+    border: 1px solid white;
+    border-radius: $button-radius;
+
+    @include phone-large {
+      font-size: 1.05em;
+      padding: 1em;
+    }
+
+    @include tablet-portrait {
+      font-size: 1.3em;
+    }
+
+    &:hover, &:focus {
+      background: $button-hover-color;
+      color: white;
+      outline: 0;
+    }
+
+    &:active {
+      background: $button-active-color;
+      color: $main-color;
+      outline: 0;
+    }
+
+    &.is-active {
+      background: $button-color;
+      color: white;
+    }
+  }
+}

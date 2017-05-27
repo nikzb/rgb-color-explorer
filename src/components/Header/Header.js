@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 // import logo from '../../logo.svg';
 import Logo from '../Logo/Logo';
+import SouvlakiTitle from '../SouvlakiTitle/SouvlakiTitle';
 import './Header.css';
+
 
 class Header extends Component {
   render() {
@@ -9,8 +11,8 @@ class Header extends Component {
       <div className="Header__container">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
 
-        <h1 className="Header__title">souvlaki<span className="Header__title--dot">.</span><span className="Header__title--io">io</span></h1>
-        <Logo />
+        {/* <SouvlakiTitle size={'medium'}/> */}
+        {/* <Logo size={'64'}/> */}
       </div>
     );
   }

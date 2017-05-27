@@ -3,6 +3,7 @@ import './App.css';
 import Header from '../Header/Header';
 import RGBMainSection from '../RGBMainSection/RGBMainSection';
 import ColorCoderMainSection from '../ColorCoderMainSection/ColorCoderMainSection';
+import SouvlakiMainSection from '../SouvlakiMainSection/SouvlakiMainSection';
 // import {Helmet} from 'react-helmet';
 
 require('foundation-sites/dist/css/foundation.min.css');
@@ -20,7 +21,8 @@ class App extends Component {
         </Helmet> */}
         <Header />
         {/* <RGBMainSection /> */}
-        <ColorCoderMainSection />
+        {/* <ColorCoderMainSection /> */}
+        <SouvlakiMainSection />
       </div>
     );
   }
