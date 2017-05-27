@@ -14,7 +14,8 @@
 
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCodeControl__container .ColorCodeControl__label {
-    font-size: 1.2rem; } }
+    font-size: 1.2rem;
+    margin-bottom: 0; } }
 
 .ColorCodeControl__bottom-row {
   display: flex;
@@ -32,7 +33,7 @@
   width: 5em;
   height: 100%;
   background: transparent;
-  color: #707070;
+  color: #A0A0A0;
   margin-bottom: 0;
   flex: 0;
   font-size: 1.8em;
@@ -69,8 +70,9 @@
 
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCodeControl__bottom-row .ColorCodeComponentDisplay__container {
-    width: 12em;
-    height: 3em; } }
+    width: 13em;
+    height: 3.6em;
+    padding: 0.3em; } }
 
 .ColorCodeControl__bottom-row .ColorCodeComponentDisplay__container:hover, .ColorCodeControl__bottom-row .ColorCodeComponentDisplay__container:focus {
   background: #E9E9E9;

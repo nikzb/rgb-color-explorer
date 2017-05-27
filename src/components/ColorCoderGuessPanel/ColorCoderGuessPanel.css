@@ -6,7 +6,7 @@
 
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCoderGuessPanel__container {
-    margin-top: 1em; } }
+    margin-top: 2em; } }
 
 .ColorCoderGuessPanel__container--empty {
   justify-content: center; }

@@ -26,7 +26,7 @@ $delete-button-side-padding-small: 0.9rem;
 
     @include phone-large {
       font-size: 1.2rem;
-      // margin-bottom: -.4em;
+      margin-bottom: 0;
     }
   }
 }
@@ -50,7 +50,7 @@ $delete-button-side-padding-small: 0.9rem;
     width: $button-width;
     height: 100%;
     background: transparent;
-    color: $button-color;
+    color: $placeholder-color;
     margin-bottom: 0;
     flex: 0;
     font-size: 1.8em;
@@ -90,8 +90,9 @@ $delete-button-side-padding-small: 0.9rem;
     border-radius: $button-radius;
 
     @include phone-large {
-      width: 12em;
-      height: 3em;
+      width: 13em;
+      height: 3.6em;
+      padding: 0.3em;
     }
 
     &:hover, &:focus {
