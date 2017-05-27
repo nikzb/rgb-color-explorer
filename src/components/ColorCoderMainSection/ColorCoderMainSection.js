@@ -344,7 +344,7 @@ class ColorCoderMainSection extends Component {
 
     if (currentGame === null) {
       return this.getLevelScreen();
-    } else if (currentGame.currentPuzzleIndex === 3) {
+    } else if (currentGame.isGameOver()) {
       return this.getEndScreen();
     } else {
       return this.getGamePlayScreen();

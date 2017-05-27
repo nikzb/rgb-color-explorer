@@ -49,21 +49,27 @@ class ColorCoderGame {
   }
 
   getCurrentPuzzle() {
-    if (this.currentPuzzleIndex > 3) {
+    if (this.currentPuzzleIndex >= 3) {
       throw Error('Puzzle Index is too big. Puzzles have been used up');
     }
     return this.colorPuzzles[this.currentPuzzleIndex];
   }
 
   getCurrentColorToGuess() {
-    if (this.currentPuzzleIndex > 3) {
+    if (this.currentPuzzleIndex >= 3) {
       throw Error('Puzzle Index is too big. Puzzles have been used up');
     }
     return this.colorPuzzles[this.currentPuzzleIndex].getActualColor();
   }
 
+  isGameOver() {
+    return this.currentPuzzleIndex >= 3;
+  }
+
   incrementPuzzleIndex() {
     this.currentPuzzleIndex += 1;
+    // Needed to add force update for React component this game belongs to because it stopped updating
+    // when I added the animation when a puzzle is solved
     this.forceUpdate();
   }
 
