@@ -5,8 +5,8 @@ $button-group-menu-radius: $standard-border-radius;
 $button-group-menu-color: $main-color;
 $button-group-menu-margin-bottom: 0;
 $button-active-color: $active-color;
-$button-hover-color: $hover-color
-$button-color: $button-color;
+$button-hover-color: $focus-color;
+$button-color: $main-color;
 
 .ButtonGroupMenu {
   display: flex;

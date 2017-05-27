@@ -193,10 +193,14 @@ class ColorViz extends Component {
     const lowResMedia = "(-webkit-max-device-pixel-ratio: 1.99) and (min-width: 25em), (max-resolution: 191dpi) and (min-width: 25em)";
     const lowResMediaQuery = window.matchMedia(lowResMedia);
 
+    const phoneLargeMedia = "(-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em)";
+    const phoneLargeQuery = window.matchMedia(phoneLargeMedia);
+
     // use multiplier to make the canvas smaller in some situations
     let multiplier = 1;
-    if (this.props.size === 'small') {
-      multiplier = 0.8;
+
+    if (this.props.size === 'small' || (this.props.size === 'smaller' && phoneLargeQuery.matches)) {
+      multiplier = 0.85;
     } else if (this.props.size === 'smaller') {
       multiplier = 0.75;
     } else if (this.props.size === 'tiny') {
