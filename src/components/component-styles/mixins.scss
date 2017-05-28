@@ -7,9 +7,6 @@
   (min-resolution: 192dpi) and (min-width: 25em)
 	{ @content; }
 }
-// @mixin phone-large {
-//   @media (min-width: 25em) { @content; }
-// }
 
 @mixin tablet-portrait {
   @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
@@ -18,7 +15,7 @@
 }
 
 @mixin tablet-landscape {
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 56em),
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 54em),
   (min-resolution: 192dpi) and (min-width: 56em)
 	{ @content; }
 }

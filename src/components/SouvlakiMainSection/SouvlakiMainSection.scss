@@ -56,6 +56,10 @@ $button-hover-color: $placeholder-color;
 
   background: rgba(255, 255, 255, 0.8);
 
+  @include tablet-landscape {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
   @include phone-large {
     margin-top: 1.3em;
   }
@@ -86,6 +90,11 @@ $button-hover-color: $placeholder-color;
 .SneakPreview__options {
   display: flex;
   justify-content: space-around;
+
+  @include tablet-landscape {
+    justify-content: space-between;
+  }
+
   margin-top: 1em;
   margin-bottom: 1.3em;
 
@@ -95,12 +104,22 @@ $button-hover-color: $placeholder-color;
     border-radius: $standard-border-radius;
     // background: $grey-9;
     // opacity: 0.7;
+
+    @include tablet-landscape {
+      flex: 0 0 22%;
+      margin: 0.3em 4em;
+    }
   }
 
   .Option__title {
     font-family: 'Averia Sans Libre', sans-serif;
     font-size: 1.3em;
     border-bottom: 1px solid $main-color;
+
+    @include tablet-landscape {
+      border-bottom: none;
+    }
+
     padding: 0.3em;
 
     @include phone-large {
@@ -140,12 +159,14 @@ $button-hover-color: $placeholder-color;
 
     &:hover, &:focus {
       background: $button-hover-color;
+      border: 1px solid $button-hover-color;
       color: white;
       outline: 0;
     }
 
     &:active {
       background: $button-active-color;
+      border: 1px solid $button-active-color;
       color: $main-color;
       outline: 0;
     }

@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Averia+Sans+Libre:700");
+.ColorCoderMainSection__container {
+  flex: 0 0 30em; }
+
 .ColorCoderMainSection__title {
   font-family: 'Averia Sans Libre', sans-serif;
   color: #333;

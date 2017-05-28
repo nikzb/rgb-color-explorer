@@ -9,8 +9,17 @@
     font-family: 'Open Sans', sans-serif; }
   @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
     .App {
+      display: flex;
+      justify-content: center;
       max-width: 28em;
       font-size: 85%; } }
   @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
     .App {
+      display: flex;
+      justify-content: center;
       max-width: 30em; } }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+    .App {
+      display: flex;
+      justify-content: center;
+      max-width: 54em; } }

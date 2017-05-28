@@ -14,13 +14,21 @@
   }
 
   @include low-res {
+    display: flex;
+    justify-content: center;
     max-width: 28em;
     font-size: 85%;
   }
 
   @include phone-large {
+    display: flex;
+    justify-content: center;
     max-width: 30em;
   }
 
-
+  @include tablet-portrait {
+    display: flex;
+    justify-content: center;
+    max-width: 54em;
+  }
 }

@@ -7,6 +7,12 @@ $button-radius: $standard-border-radius;
 $button-active-color: $active-color;
 $button-hover-color: $focus-color;
 
+.ColorCoderMainSection__container {
+  flex: 0 0 $max-width-in-portrait;
+  // max-width: $max-width-in-portrait;
+
+}
+
 .ColorCoderMainSection__title {
   font-family: 'Averia Sans Libre', sans-serif;
   color: #333;
