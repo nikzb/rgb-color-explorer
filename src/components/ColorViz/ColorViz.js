@@ -203,7 +203,9 @@ class ColorViz extends Component {
       multiplier = 0.85;
     } else if (this.props.size === 'smaller') {
       multiplier = 0.75;
-    } else if (this.props.size === 'tiny') {
+    } else if (this.props.size === 'mini') {
+      multiplier = 0.5;
+    }else if (this.props.size === 'tiny') {
       multiplier = 0.3;
     }
     if (window.innerWidth < 400 || lowResMediaQuery.matches) {

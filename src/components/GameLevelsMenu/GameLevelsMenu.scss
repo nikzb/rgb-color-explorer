@@ -16,7 +16,7 @@ $button-hover-color: $placeholder-color;
     flex: 0 0 40%;
     font-size: 0.9em;
     padding: 0.7em;
-    border: 1px solid white;
+    border: 1px solid $main-color;
     border-radius: $button-radius;
 
     @include phone-large {

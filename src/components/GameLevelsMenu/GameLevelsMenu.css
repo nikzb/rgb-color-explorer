@@ -5,36 +5,43 @@
   flex: 0 0 40%;
   font-size: 0.9em;
   padding: 0.7em;
-  border: 1px solid white;
+  border: 1px solid #707070;
   border-radius: 0.5rem; }
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-    .GameLevelsMenu__container .button {
-      font-size: 1.05em;
-      padding: 1em; } }
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
-    .GameLevelsMenu__container .button {
-      font-size: 1.3em; } }
-  .GameLevelsMenu__container .button:hover, .GameLevelsMenu__container .button:focus {
-    background: #A0A0A0;
-    color: white;
-    outline: 0; }
-  .GameLevelsMenu__container .button:active {
-    background: silver;
-    color: #707070;
-    outline: 0; }
-  .GameLevelsMenu__container .button.is-active {
-    background: #707070;
-    color: white; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  .GameLevelsMenu__container .button {
+    font-size: 1.05em;
+    padding: 1em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+  .GameLevelsMenu__container .button {
+    font-size: 1.3em; } }
+
+.GameLevelsMenu__container .button:hover, .GameLevelsMenu__container .button:focus {
+  background: #A0A0A0;
+  color: white;
+  outline: 0; }
+
+.GameLevelsMenu__container .button:active {
+  background: silver;
+  color: #707070;
+  outline: 0; }
+
+.GameLevelsMenu__container .button.is-active {
+  background: #707070;
+  color: white; }
 
 .GameLevelsMenu__title {
   color: #707070;
   font-size: 1.2em; }
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-    .GameLevelsMenu__title {
-      font-size: 1.6em; } }
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
-    .GameLevelsMenu__title {
-      font-size: 1.7em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  .GameLevelsMenu__title {
+    font-size: 1.6em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+  .GameLevelsMenu__title {
+    font-size: 1.7em; } }
 
 .GameLevelsMenu__row {
   background: white;
@@ -42,13 +49,16 @@
   display: flex;
   align-items: center;
   color: #707070; }
+
+.GameLevelsMenu__row .GameLevelsMenu__label {
+  flex: 0 0 30%;
+  font-size: 0.75em; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .GameLevelsMenu__row .GameLevelsMenu__label {
-    flex: 0 0 30%;
-    font-size: 0.75em; }
-    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-      .GameLevelsMenu__row .GameLevelsMenu__label {
-        font-size: 1.0em;
-        padding: 0 1em; } }
-    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
-      .GameLevelsMenu__row .GameLevelsMenu__label {
-        font-size: 1.1em; } }
+    font-size: 1.0em;
+    padding: 0 1em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+  .GameLevelsMenu__row .GameLevelsMenu__label {
+    font-size: 1.1em; } }
