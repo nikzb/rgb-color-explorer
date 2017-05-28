@@ -19,17 +19,15 @@
 
 .GameLevelsMenu__container .button:hover, .GameLevelsMenu__container .button:focus {
   background: #A0A0A0;
+  border: 1px solid #A0A0A0;
   color: white;
   outline: 0; }
 
 .GameLevelsMenu__container .button:active {
   background: silver;
+  border: 1px solid silver;
   color: #707070;
   outline: 0; }
-
-.GameLevelsMenu__container .button.is-active {
-  background: #707070;
-  color: white; }
 
 .GameLevelsMenu__title {
   color: #707070;

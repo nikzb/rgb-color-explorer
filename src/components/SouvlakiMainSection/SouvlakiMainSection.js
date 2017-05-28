@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import ColorCode from '../../classes/ColorCode/ColorCode';
 
 import Logo from '../Logo/Logo';
@@ -40,13 +42,19 @@ class SouvlakiMainSection extends Component {
               {/* // icon */}
               <h4 className='Option__title'>{'RGB Colors'}</h4>
               <p className='Option__details'>{'Explore RGB Colors and Codes'}</p>
-              <button className='button Option__button'>{'Explore'}</button>
+
+              <Link to='/rgb'>
+                <button className='button Option__button'>{'Explore'}</button>
+              </Link>
             </div>
             <div className='Option__container'>
               {/* // icon */}
               <h4 className='Option__title'>{'ColorCoder'}</h4>
               <p className='Option__details'>{'Use Clues to Discover a Code'}</p>
-              <button className='button Option__button'>{'Play'}</button>
+
+              <Link to='color-coder'>
+                <button className='button Option__button'>{'Play'}</button>
+              </Link>
             </div>
           </div>
         </div>

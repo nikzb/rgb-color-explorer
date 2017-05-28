@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
+import { Route } from 'react-router-dom';
+
 import Header from '../Header/Header';
 import RGBMainSection from '../RGBMainSection/RGBMainSection';
 import ColorCoderMainSection from '../ColorCoderMainSection/ColorCoderMainSection';
 import SouvlakiMainSection from '../SouvlakiMainSection/SouvlakiMainSection';
 // import {Helmet} from 'react-helmet';
+
+import './App.css';
 
 require('foundation-sites/dist/css/foundation.min.css');
 
@@ -20,9 +23,9 @@ class App extends Component {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Helmet> */}
         <Header />
-        {/* <RGBMainSection /> */}
-        {/* <ColorCoderMainSection /> */}
-        <SouvlakiMainSection />
+        <Route exact path='/rgb' component={RGBMainSection} />
+        <Route exact path='/color-coder' component={ColorCoderMainSection} />
+        <Route exact path='/' component={SouvlakiMainSection} />
       </div>
     );
   }
