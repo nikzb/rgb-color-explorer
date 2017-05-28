@@ -6,6 +6,7 @@ import RGBTour from '../../classes/RGBTour/RGBTour';
 
 import ColorDisplay from '../ColorDisplay/ColorDisplay';
 import ColorControls from '../ColorControls/ColorControls';
+import Header from '../Header/Header';
 
 import './RGBMainSection.css';
 
@@ -368,6 +369,7 @@ class MainSection extends Component {
   render() {
     return (
       <div className='MainSection__container'>
+        <Header title={'RGB Color Explorer'} />
         <ColorDisplay colorCode={this.state.colorCode} showColorComponents={this.state.showColorComponents} toggleShowColorComponents={this.toggleShowColorComponents} userCanToggle={true}/>
         <ColorControls colorCode={this.state.colorCode} onColorChange={this.updateColor} showColorComponents={this.state.showColorComponents} toggleShowColorComponents={this.toggleShowColorComponents} inCodeEditMode={this.state.inCodeEditMode} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.state.activeSymbolButtons} controlsDisabled={this.state.controlsDisabled}/>
       </div>

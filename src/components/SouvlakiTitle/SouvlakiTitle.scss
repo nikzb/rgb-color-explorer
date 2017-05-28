@@ -38,6 +38,36 @@
     color: $logo-secondary;
   }
 
+  &--color {
+    color: $grey-1;
+    text-shadow: 0.02em 0.02em black; //#B72616;//#3F88C5;//#B72616;
+  }
+
+  &--coder {
+    color: $grey-0b;
+    text-shadow: 0.02em 0.02em black;//#B72616; //#3F88C5;//#7C8947;
+  }
+
+  &--R {
+    color: $grey-0b;
+    text-shadow: 0.02em 0.02em red;
+  }
+
+  &--G{
+    color: $grey-0b;
+    text-shadow: 0.02em 0.02em green;
+  }
+
+  &--B {
+    color: $grey-0b;
+    text-shadow: 0.02em 0.02em blue;
+  }
+
+  &--colors {
+    color: $grey-1;
+    text-shadow: 0.02em 0.02em #333; //#B72616;//#3F88C5;//#B72616;
+  }
+
   // title used for main page (at least for temporary main page created early on)
   &--med-large {
     font-size: 2.4em;

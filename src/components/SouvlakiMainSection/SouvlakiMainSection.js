@@ -52,7 +52,7 @@ class SouvlakiMainSection extends Component {
               <h4 className='Option__title'>{'ColorCoder'}</h4>
               <p className='Option__details'>{'Use Clues to Discover a Code'}</p>
 
-              <Link to='color-coder'>
+              <Link to='/color-coder'>
                 <button className='button Option__button'>{'Play'}</button>
               </Link>
             </div>

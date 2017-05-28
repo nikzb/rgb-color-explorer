@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 // import logo from '../../logo.svg';
 import Logo from '../Logo/Logo';
 import SouvlakiTitle from '../SouvlakiTitle/SouvlakiTitle';
@@ -9,10 +10,10 @@ class Header extends Component {
   render() {
     return (
       <div className="Header__container">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-
-        {/* <SouvlakiTitle size={'medium'}/> */}
-        {/* <Logo size={'64'}/> */}
+        <SouvlakiTitle title={this.props.title} size={'medium'}/>
+        <Link to='/'>
+          <Logo size={'64'}/>
+        </Link>
       </div>
     );
   }

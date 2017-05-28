@@ -22,7 +22,7 @@ class App extends Component {
           <meta name="description" content="The RGB Color Explorer can be used to understand how red, green, and blue light are mixed to create all the colors that can be viewed on a digital device. Binary and hexadecimal codes are used to represent RGB color codes of various lengths. Using more bits provides more color optoins." />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Helmet> */}
-        <Header />
+        {/* <Header /> */}
         <Route exact path='/rgb' component={RGBMainSection} />
         <Route exact path='/color-coder' component={ColorCoderMainSection} />
         <Route exact path='/' component={SouvlakiMainSection} />

@@ -5,42 +5,81 @@
   padding-top: 0.2em;
   margin-bottom: 0;
   font-size: 1.8em; }
-  @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
-    .SouvlakiTitle {
-      font-size: 2.4em; } }
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-    .SouvlakiTitle {
-      font-size: 2.2em; } }
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
-    .SouvlakiTitle {
-      font-size: 3.0em; } }
-  .SouvlakiTitle.under-logo {
-    font-size: 1.9em; }
-  .SouvlakiTitle.next-to-logo {
-    font-size: 3.5em; }
-  .SouvlakiTitle--dot {
-    color: #707070; }
-  .SouvlakiTitle--io {
-    color: #B72616; }
+
+@media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+  .SouvlakiTitle {
+    font-size: 2.4em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  .SouvlakiTitle {
+    font-size: 2.2em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+  .SouvlakiTitle {
+    font-size: 3.0em; } }
+
+.SouvlakiTitle.under-logo {
+  font-size: 1.9em; }
+
+.SouvlakiTitle.next-to-logo {
+  font-size: 3.5em; }
+
+.SouvlakiTitle--dot {
+  color: #707070; }
+
+.SouvlakiTitle--io {
+  color: #B72616; }
+
+.SouvlakiTitle--color {
+  color: dimgrey;
+  text-shadow: 0.02em 0.02em black; }
+
+.SouvlakiTitle--coder {
+  color: #555;
+  text-shadow: 0.02em 0.02em black; }
+
+.SouvlakiTitle--R {
+  color: #555;
+  text-shadow: 0.02em 0.02em red; }
+
+.SouvlakiTitle--G {
+  color: #555;
+  text-shadow: 0.02em 0.02em green; }
+
+.SouvlakiTitle--B {
+  color: #555;
+  text-shadow: 0.02em 0.02em blue; }
+
+.SouvlakiTitle--colors {
+  color: dimgrey;
+  text-shadow: 0.02em 0.02em #333; }
+
+.SouvlakiTitle--med-large {
+  font-size: 2.4em; }
+
+@media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
   .SouvlakiTitle--med-large {
-    font-size: 2.4em; }
-    @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
-      .SouvlakiTitle--med-large {
-        font-size: 3.5em; } }
-    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-      .SouvlakiTitle--med-large {
-        font-size: 3.3em; } }
-    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
-      .SouvlakiTitle--med-large {
-        font-size: 4.8em; } }
+    font-size: 3.5em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  .SouvlakiTitle--med-large {
+    font-size: 3.3em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+  .SouvlakiTitle--med-large {
+    font-size: 4.8em; } }
+
+.SouvlakiTitle--large {
+  font-size: 3em; }
+
+@media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
   .SouvlakiTitle--large {
-    font-size: 3em; }
-    @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
-      .SouvlakiTitle--large {
-        font-size: 4em; } }
-    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-      .SouvlakiTitle--large {
-        font-size: 3.8em; } }
-    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
-      .SouvlakiTitle--large {
-        font-size: 5.5em; } }
+    font-size: 4em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  .SouvlakiTitle--large {
+    font-size: 3.8em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+  .SouvlakiTitle--large {
+    font-size: 5.5em; } }

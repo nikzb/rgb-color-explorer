@@ -8,6 +8,8 @@ import GameLevelsMenu from '../GameLevelsMenu/GameLevelsMenu';
 import ColorCoderGuessInProgressDisplay from '../ColorCoderGuessInProgressDisplay/ColorCoderGuessInProgressDisplay';
 import ColorCodeButtonPanel from '../ColorCodeButtonPanel/ColorCodeButtonPanel';
 import ColorCoderGuessPanel from '../ColorCoderGuessPanel/ColorCoderGuessPanel';
+import Header from '../Header/Header';
+import Logo from '../Logo/Logo';
 
 import './ColorCoderMainSection.css';
 
@@ -296,6 +298,7 @@ class ColorCoderMainSection extends Component {
   getLevelScreen() {
     return (
       <div className='ColorCoderMainSection__container'>
+        <Header />
         <h1 className='ColorCoderMainSection__title'>ColorCoder</h1>
         <ColorDisplay key={'levelScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'small'}/>
         <GameLevelsMenu getLevelInfoList={this.getLevelInfoList} />
@@ -329,6 +332,7 @@ class ColorCoderMainSection extends Component {
   getGamePlayScreen() {
     return (
       <div className='ColorCoderMainSection__container'>
+        <Header title={'ColorCoder'} />
         <ColorCoderGuessPanel currentPuzzle={this.state.currentGame.getCurrentPuzzle()} puzzleNumber={this.state.currentGame.currentPuzzleIndex + 1}/>
         <ColorDisplay key={'gamePlay'} colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false} size={'smaller'}/>
         <ColorCoderGuessInProgressDisplay guessInProgress={this.state.guessInProgress} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} />
