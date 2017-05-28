@@ -3,10 +3,13 @@
 ## Version 0 - Work in Progress
 
 To do:
+
+* Header
+  * Make it only show when not on main page
+  
 * Main page
-  * Create main page
   * Set up routing to Color Explorer and ColorCoder
-  * Have logo be a link back to main page?
+  * Have logo(/title?) be a link back to main page (when on other pages)
 
 * General styling
   * Clean up code for sizing of ColorViz?
