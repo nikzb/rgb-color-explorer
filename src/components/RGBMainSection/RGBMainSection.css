@@ -2,4 +2,8 @@
   display: block;
   flex-direction: column;
   justify-content: flex-end;
-  flex: 0 0 30em; }
+  width: 100%; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+  .MainSection__container {
+    flex: 0 0 30em; } }

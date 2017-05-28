@@ -1,8 +1,15 @@
 @import '../component-styles/base-styles.scss';
+@import '../component-styles/mixins.scss';
 
 .MainSection__container {
   display: block;
   flex-direction: column;
   justify-content: flex-end;
-  flex: 0 0 $max-width-in-portrait;
+
+  width: 100%;
+
+  @include tablet-portrait {
+    flex: 0 0 $max-width-in-portrait;
+    // max-width: $max-width-in-portrait;
+  }
 }
