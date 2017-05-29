@@ -31,7 +31,8 @@ class ColorCoderMainSection extends Component {
       isDeleteButtonActive: false,
       currentGame: null,
       guessInProgress: null,
-      gameScreenShowColorComponents: false
+      gameScreenShowColorComponents: false,
+      lastTouch: 0
     }
 
     this.getSetUpGameFunction = this.getSetUpGameFunction.bind(this);
@@ -237,12 +238,41 @@ class ColorCoderMainSection extends Component {
     });
   }
 
+  // code from: https://stackoverflow.com/questions/42450642/prevent-double-tap-zoom-without-jquery
+  preventZoom(e) {
+    var t2 = e.timeStamp;
+    var t1 = this.state.lastTouch || t2;
+    var dt = t2 - t1;
+    var fingers = e.touches.length;
+    this.setState({
+      lastTouch: t2
+    })
+
+    if (!dt || dt >= 300 || fingers > 1) {
+        return;
+    }
+    this.resetPreventZoom();
+    e.preventDefault();
+    e.target.click();
+  }
+
+  resetPreventZoom() {
+    this.setState({
+      lastTouch: 0
+    });
+  }
+
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown);
+    document.addEventListener('touchstart', this.preventZoom, false);
+    document.addEventListener('touchmove', this.resetPreventZoom, false);
+
   }
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeyDown);
+    document.removeEventListener('touchstart', this.preventZoom, false);
+    document.removeEventListener('touchmove', this.resetPreventZoom, false);
   }
 
   // Parameters:
