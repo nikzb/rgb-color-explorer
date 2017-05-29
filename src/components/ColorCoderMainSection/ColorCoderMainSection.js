@@ -31,6 +31,7 @@ class ColorCoderMainSection extends Component {
       currentGame: null,
       guessInProgress: null,
       gameScreenShowColorComponents: false,
+      readyToShowScore: false,
       lastTouch: 0
     }
 
@@ -310,8 +311,18 @@ class ColorCoderMainSection extends Component {
     setTimeout(() => {
       this.toggleGameScreenShowColorComponents();
       setTimeout(() => {
-        resolve();
-      }, 2000);
+        //Set the state so that the guess panel will show the points earned
+        this.setState({
+          readyToShowScore: true
+        });
+        //this.currentGame.getCurrentPuzzle().
+        setTimeout(() => {
+          resolve();
+          this.setState({
+            readyToShowScore: false
+          });
+        }, 3000);
+      }, 1);
     }, 2500)
   }
 
@@ -362,8 +373,8 @@ class ColorCoderMainSection extends Component {
         </div>
 
         <div className='ColorCoder__action-buttons'>
-          <button className='button ColorCoder__play-again-button' onClick={this.getSetUpGameFunction(this.state.currentGame.getLevel())}>Play Again</button>
-          <button className='button ColorCoder__level-choice-button' onClick={this.goToLevelScreen}>Level Options</button>
+          <button className='button' onClick={this.getSetUpGameFunction(this.state.currentGame.getLevel())}>Play Again</button>
+          <button className='button' onClick={this.goToLevelScreen}>Level Options</button>
         </div>
       </div>
     )
@@ -373,7 +384,7 @@ class ColorCoderMainSection extends Component {
     return (
       <div className='ColorCoderMainSection__container'>
         <Header title={'ColorCoder'} />
-        <ColorCoderGuessPanel currentPuzzle={this.state.currentGame.getCurrentPuzzle()} puzzleNumber={this.state.currentGame.currentPuzzleIndex + 1}/>
+        <ColorCoderGuessPanel currentPuzzle={this.state.currentGame.getCurrentPuzzle()} puzzleNumber={this.state.currentGame.currentPuzzleIndex + 1} readyToShowScore={this.state.readyToShowScore}/>
         <ColorDisplay key={'gamePlay'} colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false} size={'even-smaller'}/>
         <ColorCoderGuessInProgressDisplay guessInProgress={this.state.guessInProgress} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} />
         <div className='ColorControlPanel__container'>

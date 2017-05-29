@@ -5,7 +5,7 @@
 $button-color: $main-color;
 $button-radius: $standard-border-radius;
 $button-active-color: $active-color;
-$button-hover-color: $focus-color;
+$button-hover-color: $placeholder-color;
 
 .ColorCoderMainSection__container {
   width: 100%;
@@ -42,21 +42,21 @@ $button-hover-color: $focus-color;
   }
 
   .ColorCoder__score {
-    font-size: 3.5em;
+    font-size: 3.4em;
     text-shadow: 0.02em 0.02em $grey-0a;
     margin-top: -0.2em;
 
     @include phone-large {
-      font-size: 4.5em;
+      font-size: 4.0em;
 
     }
   }
 
   .ColorCoder__score-label {
-    font-size: 1.4em;
+    font-size: 1.3em;
 
     @include phone-large {
-      font-size: 1.7em;
+      font-size: 1.5em;
     }
   }
 
@@ -91,19 +91,16 @@ $button-hover-color: $focus-color;
 
     &:hover, &:focus {
       background: $button-hover-color;
-      color: $button-color;
+      border: 1px solid $button-hover-color;
+      color: white;
       outline: 0;
     }
 
     &:active {
       background: $button-active-color;
-      color: white;
+      border: 1px solid $button-active-color;
+      color: $main-color;
       outline: 0;
-    }
-
-    &.is-active {
-      background: $button-color;
-      color: white;
     }
   }
 }
