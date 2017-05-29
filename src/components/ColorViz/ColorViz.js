@@ -193,25 +193,41 @@ class ColorViz extends Component {
   resizeCanvas() {
     const lowResMediaQuery = MediaQueries.lowResQuery();
     const phoneLargeQuery = MediaQueries.phoneLargeQuery();
+    const phoneMediumQuery = MediaQueries.phoneMediumQuery();
 
     // use multiplier to make the canvas smaller in some situations
     let multiplier = 1;
 
     if (phoneLargeQuery.matches) {
+      console.log('large');
       if (this.props.size === 'smaller') {
-        multiplier = 0.90;
+        multiplier = 0.9;
       } else if (this.props.size === 'even-smaller') {
-        multiplier = 0.80;
+        multiplier = 0.8;
       } else if (this.props.size === 'mini') {
-        multiplier = 0.70;
+        multiplier = 0.7;
       } else if (this.props.size === 'tiny') {
+        multiplier = 0.4;
+      }
+    } else if (phoneMediumQuery.matches) {
+      console.log('medium');
+      if (this.props.size === 'small') {
+        multiplier = 0.95;
+      } else if (this.props.size === 'smaller') {
+        multiplier = 0.9;
+      } else if (this.props.size === 'even-smaller') {
+        multiplier = 0.8;
+      } else if (this.props.size === 'mini') {
+        multiplier = 0.7;
+      }else if (this.props.size === 'tiny') {
         multiplier = 0.35;
       }
     } else {
+      console.log('small');
       if (this.props.size === 'small') {
         multiplier = 0.85;
       } else if (this.props.size === 'smaller') {
-        multiplier = 0.75;
+        multiplier = 0.7;
       } else if (this.props.size === 'even-smaller') {
         multiplier = 0.625;
       } else if (this.props.size === 'mini') {

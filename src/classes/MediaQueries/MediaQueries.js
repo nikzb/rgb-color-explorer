@@ -9,6 +9,11 @@ class MediaQueries{
     const phoneLargeMedia = "(-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em)";
     return window.matchMedia(phoneLargeMedia);
   }
+
+  static phoneMediumQuery() {
+    const phoneMediumMedia = "(-webkit-min-device-pixel-ratio: 2) and (min-width: 23em), (min-resolution: 192dpi) and (min-width: 23em)";
+    return window.matchMedia(phoneMediumMedia);
+  }
 }
 
 export default MediaQueries;
