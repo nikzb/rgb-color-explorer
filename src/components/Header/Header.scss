@@ -5,6 +5,10 @@
 .Header__container {
   text-align: center;
 
+  .Header__title-container {
+    padding-top: 0.4em;
+  }
+
   .logo {
     width: 44px;
     height: 44px;

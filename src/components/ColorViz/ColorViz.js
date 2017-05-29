@@ -199,7 +199,6 @@ class ColorViz extends Component {
     let multiplier = 1;
 
     if (phoneLargeQuery.matches) {
-      console.log('large');
       if (this.props.size === 'smaller') {
         multiplier = 0.9;
       } else if (this.props.size === 'even-smaller') {
@@ -210,7 +209,6 @@ class ColorViz extends Component {
         multiplier = 0.4;
       }
     } else if (phoneMediumQuery.matches) {
-      console.log('medium');
       if (this.props.size === 'small') {
         multiplier = 0.95;
       } else if (this.props.size === 'smaller') {
@@ -223,7 +221,6 @@ class ColorViz extends Component {
         multiplier = 0.35;
       }
     } else {
-      console.log('small');
       if (this.props.size === 'small') {
         multiplier = 0.85;
       } else if (this.props.size === 'smaller') {

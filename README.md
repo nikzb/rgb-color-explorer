@@ -19,7 +19,6 @@ To do:
 * Color Coder Game
   * Prevent backspace from navigating so it can function only as a way to delete characters with the keyboard
   * Add the tour / demo
-  * Show the number of points earned at the end of each round, before moving to the next round
   * Add transitions between
     * level screen / game screen
     * game screen / end screen ?

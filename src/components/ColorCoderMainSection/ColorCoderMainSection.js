@@ -9,6 +9,7 @@ import ColorCoderGuessInProgressDisplay from '../ColorCoderGuessInProgressDispla
 import ColorCodeButtonPanel from '../ColorCodeButtonPanel/ColorCodeButtonPanel';
 import ColorCoderGuessPanel from '../ColorCoderGuessPanel/ColorCoderGuessPanel';
 import Header from '../Header/Header';
+import SouvlakiTitle from '../SouvlakiTitle/SouvlakiTitle';
 
 import './ColorCoderMainSection.css';
 
@@ -340,7 +341,9 @@ class ColorCoderMainSection extends Component {
     return (
       <div className='ColorCoderMainSection__container'>
         <Header />
-        <h1 className='ColorCoderMainSection__title'>ColorCoder</h1>
+        <div className='ColorCoderMainSection__title'>
+          <SouvlakiTitle size={'med-large'} title={'ColorCoder'} />
+        </div>
         <ColorDisplay key={'levelScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'smaller'}/>
         <GameLevelsMenu getLevelInfoList={this.getLevelInfoList} />
       </div>
@@ -363,7 +366,9 @@ class ColorCoderMainSection extends Component {
 
       <div className='ColorCoderMainSection__container'>
         <Header />
-        <h1 className='ColorCoderMainSection__title'>ColorCoder</h1>
+        <div className='ColorCoderMainSection__title'>
+          <SouvlakiTitle size={'med-large'} title={'ColorCoder'} />
+        </div>
         <ColorDisplay key={'endScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'smaller'}/>
 
         <div className='ColorCoder__score-message'>

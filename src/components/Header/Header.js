@@ -10,7 +10,9 @@ class Header extends Component {
   render() {
     return (
       <div className="Header__container">
-        <SouvlakiTitle title={this.props.title} size={'medium'}/>
+        <div className="Header__title-container">
+          <SouvlakiTitle title={this.props.title} size={'medium'}/>
+        </div>
         <Link to='/'>
           <Logo size={'64'}/>
         </Link>
