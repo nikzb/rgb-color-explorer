@@ -4,12 +4,17 @@
 
 To do:
 
-* Header
-  * Make it only show when not on main page
-  
+* Stuff
+  * Add more padding on the bottom of the level select screen
+
+* Header(s)
+  * Make a "header" component for each app? Or make a general one?
+     * Need to apply styles to ColorCoder header on level screen and end screen
+
 * Main page
   * Set up routing to Color Explorer and ColorCoder
   * Have logo(/title?) be a link back to main page (when on other pages)
+    * Clicking on souvlaki logo during tour - tour does not hide
 
 * General styling
   * Clean up code for sizing of ColorViz?

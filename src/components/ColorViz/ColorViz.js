@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import ColorCircleGroup from '../../classes/ColorCircleGroup/ColorCircleGroup';
+import MediaQueries from '../../classes/MediaQueries/MediaQueries';
 
 import './ColorViz.css';
 
@@ -190,23 +191,30 @@ class ColorViz extends Component {
   }
 
   resizeCanvas() {
-    const lowResMedia = "(-webkit-max-device-pixel-ratio: 1.99) and (min-width: 25em), (max-resolution: 191dpi) and (min-width: 25em)";
-    const lowResMediaQuery = window.matchMedia(lowResMedia);
-
-    const phoneLargeMedia = "(-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em)";
-    const phoneLargeQuery = window.matchMedia(phoneLargeMedia);
+    const lowResMediaQuery = MediaQueries.lowResQuery();
+    const phoneLargeQuery = MediaQueries.phoneLargeQuery();
 
     // use multiplier to make the canvas smaller in some situations
     let multiplier = 1;
-
-    if (this.props.size === 'small' || (this.props.size === 'smaller' && phoneLargeQuery.matches)) {
-      multiplier = 0.85;
-    } else if (this.props.size === 'smaller') {
-      multiplier = 0.75;
-    } else if (this.props.size === 'mini') {
-      multiplier = 0.5;
-    }else if (this.props.size === 'tiny') {
-      multiplier = 0.3;
+    console.log(phoneLargeQuery.matches);
+    if (phoneLargeQuery.matches) {
+      if (this.props.size === 'smaller') {
+        multiplier = 0.90;
+      } else if (this.props.size === 'mini') {
+        multiplier = 0.70;
+      }else if (this.props.size === 'tiny') {
+        multiplier = 0.35;
+      }
+    } else {
+      if (this.props.size === 'small') {
+        multiplier = 0.85;
+      } else if (this.props.size === 'smaller') {
+        multiplier = 0.75;
+      } else if (this.props.size === 'mini') {
+        multiplier = 0.5;
+      }else if (this.props.size === 'tiny') {
+        multiplier = 0.3;
+      }
     }
     if (window.innerWidth < 400 || lowResMediaQuery.matches) {
       this.setCanvasSizeAndRadius(300 * multiplier, 100 * multiplier);

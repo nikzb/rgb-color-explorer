@@ -34,7 +34,7 @@ class SouvlakiMainSection extends Component {
 
           <h3 className='SneakPreview__title'>{'Sneak Preview'}</h3>
           <div className='ColorDisplay'>
-            <ColorDisplay key={'tempMainScreen'} colorCode={logoColor} showColorComponents={true} size={'small'}/>
+            <ColorDisplay key={'tempMainScreen'} colorCode={logoColor} showColorComponents={true} size={'smaller'}/>
             {/* <ColorDisplay key={'tempMainScreen'} colorCode={logoColor} showColorComponents={true} size={'mini'}/>  */}
           </div>
           <div className='SneakPreview__options'>

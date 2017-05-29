@@ -370,7 +370,7 @@ class MainSection extends Component {
     return (
       <div className='MainSection__container'>
         <Header title={'RGB Color Explorer'} />
-        <ColorDisplay colorCode={this.state.colorCode} showColorComponents={this.state.showColorComponents} toggleShowColorComponents={this.toggleShowColorComponents} userCanToggle={true}/>
+        <ColorDisplay colorCode={this.state.colorCode} showColorComponents={this.state.showColorComponents} toggleShowColorComponents={this.toggleShowColorComponents} userCanToggle={true} size={'smaller'}/>
         <ColorControls colorCode={this.state.colorCode} onColorChange={this.updateColor} showColorComponents={this.state.showColorComponents} toggleShowColorComponents={this.toggleShowColorComponents} inCodeEditMode={this.state.inCodeEditMode} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.state.activeSymbolButtons} controlsDisabled={this.state.controlsDisabled}/>
       </div>
     );

@@ -92,13 +92,14 @@ $button-hover-color: $placeholder-color;
 .SneakPreview__options {
   display: flex;
   justify-content: space-around;
+  margin-top: 1em;
+  margin-bottom: 2.7em;
 
   @include tablet-landscape {
     justify-content: space-between;
+    // margin-bottom:
   }
 
-  margin-top: 1em;
-  margin-bottom: 1.3em;
 
   .Option__container {
     flex: 0 0 42%;
