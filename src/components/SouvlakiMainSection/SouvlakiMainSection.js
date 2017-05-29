@@ -27,7 +27,7 @@ class SouvlakiMainSection extends Component {
     return (
       <div className='SouvlakiMainSection__container'>
         <SouvlakiTitle size={'med-large'}/>
-        <Logo size={160}/>
+        <Logo size={140}/>
         {/* <h2 className='SouvlakiMainSection__tagline'>{'Take a Byte!'}</h2> */}
         <h2 className='SouvlakiMainSection__headline'>{'Coming Soon!'}</h2>
         <div className='SneakPreview__container'>

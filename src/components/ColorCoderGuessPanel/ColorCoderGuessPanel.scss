@@ -11,15 +11,19 @@
   margin-top: 0.5em;
 
   @include phone-large {
-    margin-top: 2em;
+    margin-top: 1em;
   }
 
   &--empty {
     justify-content: center;
 
     .ColorCoderGuessPanel__round-number {
-      font-size: 2.5em;
+      font-size: 2.0em;
       color: $main-color;
+
+      @include phone-large {
+        font-size: 2.5em;
+      }
     }
   }
 

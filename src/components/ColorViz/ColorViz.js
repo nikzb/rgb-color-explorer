@@ -196,13 +196,15 @@ class ColorViz extends Component {
 
     // use multiplier to make the canvas smaller in some situations
     let multiplier = 1;
-    
+
     if (phoneLargeQuery.matches) {
       if (this.props.size === 'smaller') {
         multiplier = 0.90;
+      } else if (this.props.size === 'even-smaller') {
+        multiplier = 0.80;
       } else if (this.props.size === 'mini') {
         multiplier = 0.70;
-      }else if (this.props.size === 'tiny') {
+      } else if (this.props.size === 'tiny') {
         multiplier = 0.35;
       }
     } else {
@@ -210,6 +212,8 @@ class ColorViz extends Component {
         multiplier = 0.85;
       } else if (this.props.size === 'smaller') {
         multiplier = 0.75;
+      } else if (this.props.size === 'even-smaller') {
+        multiplier = 0.625;
       } else if (this.props.size === 'mini') {
         multiplier = 0.5;
       }else if (this.props.size === 'tiny') {

@@ -330,7 +330,7 @@ class ColorCoderMainSection extends Component {
       <div className='ColorCoderMainSection__container'>
         <Header />
         <h1 className='ColorCoderMainSection__title'>ColorCoder</h1>
-        <ColorDisplay key={'levelScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'small'}/>
+        <ColorDisplay key={'levelScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'smaller'}/>
         <GameLevelsMenu getLevelInfoList={this.getLevelInfoList} />
       </div>
     )
@@ -353,7 +353,7 @@ class ColorCoderMainSection extends Component {
       <div className='ColorCoderMainSection__container'>
         <Header />
         <h1 className='ColorCoderMainSection__title'>ColorCoder</h1>
-        <ColorDisplay key={'endScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'small'}/>
+        <ColorDisplay key={'endScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'smaller'}/>
 
         <div className='ColorCoder__score-message'>
           <div className='ColorCoder__score-label'>Final Score</div>
@@ -374,7 +374,7 @@ class ColorCoderMainSection extends Component {
       <div className='ColorCoderMainSection__container'>
         <Header title={'ColorCoder'} />
         <ColorCoderGuessPanel currentPuzzle={this.state.currentGame.getCurrentPuzzle()} puzzleNumber={this.state.currentGame.currentPuzzleIndex + 1}/>
-        <ColorDisplay key={'gamePlay'} colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false} size={'smaller'}/>
+        <ColorDisplay key={'gamePlay'} colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false} size={'even-smaller'}/>
         <ColorCoderGuessInProgressDisplay guessInProgress={this.state.guessInProgress} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} />
         <div className='ColorControlPanel__container'>
             <ColorCodeButtonPanel colorCode={this.state.guessInProgress} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.activeSymbolButtons} />
