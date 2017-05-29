@@ -3,10 +3,7 @@ import _ from 'lodash';
 
 import TimedFunctionCallSequence from '../TimedFunctionCallSequence/TimedFunctionCallSequence';
 
-// import './ShepherdStyles/shepherd-theme-arrows.css';
-// import './ShepherdStyles/shepherd-theme-default.css';
 import './ShepherdStyles/shepherd-theme-dark-edit.css';
-
 
 class RGBTour {
   constructor(functions) {
@@ -22,9 +19,6 @@ class RGBTour {
     this.onHide = this.onHide.bind(this);
 
     this.addTourSteps(functions);
-
-    // Hide when browser back button is clicked
-    // window.onpopstate = this.tour.hide;
   }
 
   getTour() {
@@ -80,7 +74,7 @@ class RGBTour {
         text: 'Next',
         action: this.tour.next
       }
-    ]
+    ];
 
     const getShowFunction = ({initSequence, colorArray, waitTimeBetweenColors}) => {
       return () => {
@@ -102,8 +96,8 @@ class RGBTour {
           colorSequence = getFunctionCallObjectArray({
             colorArray,
             waitTime: waitTimeBetweenColors,
-            tourStepItBelongsTo: this.currentTourStep,
-          })
+            tourStepItBelongsTo: this.currentTourStep
+          });
         }
 
         const enableControls = {
@@ -150,7 +144,6 @@ class RGBTour {
       buttons: standardButtons,
       when: {
         hide: this.onHide,
-        cancel: () => {console.log('cancel') },
         show: getShowFunction({
           initSequence: [
             {

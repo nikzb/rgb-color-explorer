@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 
 import ColorCode from '../../classes/ColorCode/ColorCode';
-import RGBTour from '../../classes/RGBTour/RGBTour';
+import RGBTour from '../../classes/Tours/RGBTour';
 
 import ColorDisplay from '../ColorDisplay/ColorDisplay';
 import ColorControls from '../ColorControls/ColorControls';

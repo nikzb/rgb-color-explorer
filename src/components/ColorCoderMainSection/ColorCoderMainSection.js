@@ -10,12 +10,27 @@ import ColorCodeButtonPanel from '../ColorCodeButtonPanel/ColorCodeButtonPanel';
 import ColorCoderGuessPanel from '../ColorCoderGuessPanel/ColorCoderGuessPanel';
 import Header from '../Header/Header';
 import SouvlakiTitle from '../SouvlakiTitle/SouvlakiTitle';
+import ColorCoderTour from '../../classes/Tours/ColorCoderTour';
 
 import './ColorCoderMainSection.css';
 
 class ColorCoderMainSection extends Component {
   constructor(props) {
     super(props);
+
+    this.getSetUpGameFunction = this.getSetUpGameFunction.bind(this);
+    this.getLevelInfoList = this.getLevelInfoList.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.addSymbolToCode = this.addSymbolToCode.bind(this);
+    this.handleDeleteButtonClick = this.handleDeleteButtonClick.bind(this);
+    this.setControlsDisabled = this.setControlsDisabled.bind(this);
+    this.activateSymbolButtonInPanel = this.activateSymbolButtonInPanel.bind(this);
+    this.updateGuessInProgress = this.updateGuessInProgress.bind(this);
+    this.goToLevelScreen = this.goToLevelScreen.bind(this);
+    this.performAnimationWhenPuzzleSolved = this.performAnimationWhenPuzzleSolved.bind(this);
+    this.toggleGameScreenShowColorComponents = this.toggleGameScreenShowColorComponents.bind(this);
+    this.preventZoom = this.preventZoom.bind(this);
+    this.resetPreventZoom = this.resetPreventZoom.bind(this);
 
     this.state = {
       logoColor: new ColorCode({
@@ -33,22 +48,12 @@ class ColorCoderMainSection extends Component {
       guessInProgress: null,
       gameScreenShowColorComponents: false,
       readyToShowScore: false,
-      lastTouch: 0
+      lastTouch: 0,
+      tour: (new ColorCoderTour({
+        addSymbolToCode: this.addSymbolToCode,
+        activateSymbolButtonInPanel: this.activateSymbolButtonInPanel
+      })).getTour(),
     }
-
-    this.getSetUpGameFunction = this.getSetUpGameFunction.bind(this);
-    this.getLevelInfoList = this.getLevelInfoList.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.addSymbolToCode = this.addSymbolToCode.bind(this);
-    this.handleDeleteButtonClick = this.handleDeleteButtonClick.bind(this);
-    this.setControlsDisabled = this.setControlsDisabled.bind(this);
-    this.activateSymbolButtonInPanel = this.activateSymbolButtonInPanel.bind(this);
-    this.updateGuessInProgress = this.updateGuessInProgress.bind(this);
-    this.goToLevelScreen = this.goToLevelScreen.bind(this);
-    this.performAnimationWhenPuzzleSolved = this.performAnimationWhenPuzzleSolved.bind(this);
-    this.toggleGameScreenShowColorComponents = this.toggleGameScreenShowColorComponents.bind(this);
-    this.preventZoom = this.preventZoom.bind(this);
-    this.resetPreventZoom = this.resetPreventZoom.bind(this);
   }
 
   initializeGuessInProgress(level) {
@@ -67,9 +72,10 @@ class ColorCoderMainSection extends Component {
     }
   }
 
-  getSetUpGameFunction(level) {
+  getSetUpGameFunction(level, isDemo) {
     return () => {
       this.initializeGuessInProgress(level);
+
       this.setState({
         currentGame: new ColorCoderGame({
           level,
@@ -77,6 +83,13 @@ class ColorCoderMainSection extends Component {
           forceUpdate: this.forceUpdate.bind(this)
         })
       });
+
+      if (isDemo) {
+        this.setState({
+          controlsDisabled: true
+        });
+        this.state.tour.start();
+      }
     }
   }
 
@@ -132,6 +145,7 @@ class ColorCoderMainSection extends Component {
     }
 
     if (newCode.length === colorCode.getFullCodeLength()) {
+      debugger;
       // Guess code is complete, so process it
       this.state.currentGame.processGuess(
         new ColorCode({
@@ -345,6 +359,7 @@ class ColorCoderMainSection extends Component {
           <SouvlakiTitle size={'med-large'} title={'ColorCoder'} />
         </div>
         <ColorDisplay key={'levelScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'smaller'}/>
+        <button className='button ColorCoder__demo-button' onClick={this.getSetUpGameFunction(1, true)}>Demo</button>
         <GameLevelsMenu getLevelInfoList={this.getLevelInfoList} />
       </div>
     )
