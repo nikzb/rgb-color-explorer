@@ -4,15 +4,11 @@
 
 To do:
 
-* Stuff
-  * Add more padding on the bottom of the level select screen
-
 * Header(s)
   * Make a "header" component for each app? Or make a general one?
      * Need to apply styles to ColorCoder header on level screen and end screen
 
 * Main page
-  * Set up routing to Color Explorer and ColorCoder
   * Have logo(/title?) be a link back to main page (when on other pages)
     * Clicking on souvlaki logo during tour - tour does not hide
 
@@ -23,6 +19,7 @@ To do:
   * Prevent enabling button panel by selecting input via actual keyboard
 
 * Color Coder Game
+  * Prevent backspace from navigating so it can function only as a way to delete characters with the keyboard
   * Add the tour / demo
   * Add transitions between
     * level screen / game screen
