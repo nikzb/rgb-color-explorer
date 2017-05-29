@@ -38,7 +38,7 @@ class SouvlakiMainSection extends Component {
             {/* <ColorDisplay key={'tempMainScreen'} colorCode={logoColor} showColorComponents={true} size={'mini'}/>  */}
           </div>
           <div className='SneakPreview__options'>
-            <div className='Option__container'>
+            <div className='Option__container Option__container--left'>
               {/* // icon */}
               <h4 className='Option__title'>{'RGB Colors'}</h4>
               <p className='Option__details'>{'Explore RGB Colors and Codes'}</p>
@@ -47,7 +47,7 @@ class SouvlakiMainSection extends Component {
                 <button className='button Option__button'>{'Explore'}</button>
               </Link>
             </div>
-            <div className='Option__container'>
+            <div className='Option__container Option__container--right'>
               {/* // icon */}
               <h4 className='Option__title'>{'ColorCoder'}</h4>
               <p className='Option__details'>{'Use Clues to Discover a Code'}</p>

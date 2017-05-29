@@ -6,6 +6,10 @@
   .ColorCoderMainSection__container {
     flex: 0 0 30em; } }
 
+@media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+  .ColorCoderMainSection__container {
+    flex: 0 0 30em; } }
+
 .ColorCoderMainSection__title {
   margin-top: 1em;
   margin-bottom: -1em; }

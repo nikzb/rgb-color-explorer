@@ -62,6 +62,10 @@ $button-hover-color: $placeholder-color;
     background: rgba(255, 255, 255, 0.3);
   }
 
+  @include low-res {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
   @include phone-large {
     margin-top: 1.3em;
   }
@@ -105,9 +109,11 @@ $button-hover-color: $placeholder-color;
 
   @include tablet-landscape {
     justify-content: space-between;
-    // margin-bottom:
   }
 
+  @include low-res {
+    justify-content: space-between;
+  }
 
   .Option__container {
     flex: 0 0 42%;
@@ -118,8 +124,35 @@ $button-hover-color: $placeholder-color;
 
     @include tablet-landscape {
       flex: 0 0 22%;
-      margin: 0.3em 4em;
+      margin: 0.3em 0;
+
+      &--left {
+        margin-left: 3em;
+        margin-right: 4em;
+      }
+
+      &--right {
+        margin-left: 4em;
+        margin-right: 3em;
+      }
     }
+
+    @include low-res {
+      flex: 0 0 22%;
+      margin: 0.3em 0;
+
+      &--left {
+        margin-left: 2em;
+        margin-right: 4em;
+      }
+
+      &--right {
+        margin-left: 4em;
+        margin-right: 2em;
+      }
+    }
+
+
   }
 
   .Option__title {
@@ -128,6 +161,10 @@ $button-hover-color: $placeholder-color;
     border-bottom: 1px solid $main-color;
 
     @include tablet-landscape {
+      border-bottom: none;
+    }
+
+    @include low-res {
       border-bottom: none;
     }
 

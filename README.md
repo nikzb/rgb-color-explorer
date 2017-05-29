@@ -6,15 +6,7 @@ To do:
 
 * Put up on Souvlaki.io
 
-* Header(s)
-  * Make a "title" component for each app? Or make a general one?
-     * Need to apply styles to ColorCoder title on level screen and end screen
-
-* General styling
-  * Clean up code for sizing of ColorViz?
-
-* RGB Color Explorer
-  * Prevent enabling button panel by selecting input via actual keyboard
+* Fix temp landing page on low-res screens
 
 * Color Coder Game
   * Prevent backspace from navigating so it can function only as a way to delete characters with the keyboard
@@ -29,6 +21,12 @@ To do:
   * Add the button for resuming the tour later, once it has been exited from
 
 * Favicon - Change ones?
+
+* General styling
+  * Clean up code for sizing of ColorViz?
+
+* RGB Color Explorer
+  * Prevent enabling button panel by selecting input via actual keyboard
 
 * Share button(s) -- don't really need these till later
 

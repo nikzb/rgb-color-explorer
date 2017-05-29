@@ -15,6 +15,9 @@ $button-hover-color: $placeholder-color;
     // max-width: $max-width-in-portrait;
   }
 
+  @include low-res {
+    flex: 0 0 $max-width-in-portrait;
+  }
 }
 
 

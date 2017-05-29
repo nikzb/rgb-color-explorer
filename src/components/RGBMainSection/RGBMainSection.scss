@@ -12,4 +12,9 @@
     flex: 0 0 $max-width-in-portrait;
     // max-width: $max-width-in-portrait;
   }
+
+  @include low-res {
+    flex: 0 0 24em;
+    // max-width: $max-width-in-portrait;
+  }
 }
