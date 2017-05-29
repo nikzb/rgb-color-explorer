@@ -88,6 +88,7 @@ class ColorCoderGame {
       // call the function that performs the animation before transitioning to the next puzzle
       this.performAnimationWhenPuzzleSolved().then(this.incrementPuzzleIndex.bind(this));
     }
+    this.forceUpdate();
   }
 
   // Returns the lowest number of guesses in a single puzzle

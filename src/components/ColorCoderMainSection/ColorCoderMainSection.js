@@ -145,14 +145,14 @@ class ColorCoderMainSection extends Component {
     }
 
     if (newCode.length === colorCode.getFullCodeLength()) {
-      debugger;
       // Guess code is complete, so process it
       this.state.currentGame.processGuess(
         new ColorCode({
           code: newCode,
           bits: colorCode.getBits(),
           base: colorCode.getBase()
-        }));
+        })
+      );
     }
   }
 
