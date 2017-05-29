@@ -245,6 +245,7 @@ class MainSection extends Component {
   componentWillUnmount() {
     document.removeEventListener('click', this.handleDocumentClick);
     document.removeEventListener('keydown', this.handleKeyDown);
+    this.state.tour.hide();
   }
 
   // Takes a boolean value and updates controlsDisabled state

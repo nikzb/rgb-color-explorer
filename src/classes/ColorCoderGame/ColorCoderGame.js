@@ -13,6 +13,10 @@ class ColorCoderGame {
     this.forceUpdate = forceUpdate;
   }
 
+  getPuzzlesPerGame() {
+    return 3;
+  }
+
   populateColorPuzzles() {
     let bits;
     let base;
@@ -27,6 +31,9 @@ class ColorCoderGame {
         bits = 24;
       }
     }
+
+    // Generate random colors for this game. The second and third colors try to avoid being too similar to the first and second
+    // Note that this code is not generalized for a number of puzzles other than 3.
     let color1 = new ColorCode({bits, base, random: true});
     this.colorPuzzles.push(new ColorPuzzle(color1));
 
@@ -49,21 +56,23 @@ class ColorCoderGame {
   }
 
   getCurrentPuzzle() {
-    if (this.currentPuzzleIndex >= 3) {
+    if (this.currentPuzzleIndex >= this.getPuzzlesPerGame()) {
       throw Error('Puzzle Index is too big. Puzzles have been used up');
     }
     return this.colorPuzzles[this.currentPuzzleIndex];
   }
 
   getCurrentColorToGuess() {
-    if (this.currentPuzzleIndex >= 3) {
+    console.log(this.currentPuzzleIndex);
+    console.log(this.getPuzzlesPerGame());
+    if (this.currentPuzzleIndex >= this.getPuzzlesPerGame()) {
       throw Error('Puzzle Index is too big. Puzzles have been used up');
     }
     return this.colorPuzzles[this.currentPuzzleIndex].getActualColor();
   }
 
   isGameOver() {
-    return this.currentPuzzleIndex >= 3;
+    return this.currentPuzzleIndex >= this.getPuzzlesPerGame();
   }
 
   incrementPuzzleIndex() {
@@ -81,10 +90,27 @@ class ColorCoderGame {
     }
   }
 
-  getBestScore() {
+  // Returns the lowest number of guesses in a single puzzle
+  getLowestNumberOfGuesses() {
     return this.colorPuzzles.reduce((min, puzzle) => {
       return Math.min(min, puzzle.getNumberOfGuesses());
     }, this.colorPuzzles[0].getNumberOfGuesses());
+  }
+
+  // Returns the current score based on the rounds that have been completed
+  getScore() {
+    let totalScore = 0;
+
+    for (let i = 0; i < this.currentPuzzleIndex; i += 1) {
+      totalScore += this.colorPuzzles[i].getScore();
+    }
+
+    return totalScore;
+  }
+
+  getMaxPossibleScore() {
+    // This assumes 100 points per puzzle
+    return this.getPuzzlesPerGame() * 100;
   }
 
   getLevel() {

@@ -196,7 +196,7 @@ class ColorViz extends Component {
 
     // use multiplier to make the canvas smaller in some situations
     let multiplier = 1;
-    console.log(phoneLargeQuery.matches);
+    
     if (phoneLargeQuery.matches) {
       if (this.props.size === 'smaller') {
         multiplier = 0.90;

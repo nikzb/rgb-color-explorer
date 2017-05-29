@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
-import Header from '../Header/Header';
 import RGBMainSection from '../RGBMainSection/RGBMainSection';
 import ColorCoderMainSection from '../ColorCoderMainSection/ColorCoderMainSection';
 import SouvlakiMainSection from '../SouvlakiMainSection/SouvlakiMainSection';

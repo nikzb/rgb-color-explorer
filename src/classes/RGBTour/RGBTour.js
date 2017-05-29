@@ -24,7 +24,7 @@ class RGBTour {
     this.addTourSteps(functions);
 
     // Hide when browser back button is clicked
-    window.onpopstate = this.tour.hide;
+    // window.onpopstate = this.tour.hide;
   }
 
   getTour() {

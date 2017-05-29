@@ -9,7 +9,6 @@ import ColorCoderGuessInProgressDisplay from '../ColorCoderGuessInProgressDispla
 import ColorCodeButtonPanel from '../ColorCodeButtonPanel/ColorCodeButtonPanel';
 import ColorCoderGuessPanel from '../ColorCoderGuessPanel/ColorCoderGuessPanel';
 import Header from '../Header/Header';
-import Logo from '../Logo/Logo';
 
 import './ColorCoderMainSection.css';
 
@@ -46,7 +45,8 @@ class ColorCoderMainSection extends Component {
     this.goToLevelScreen = this.goToLevelScreen.bind(this);
     this.performAnimationWhenPuzzleSolved = this.performAnimationWhenPuzzleSolved.bind(this);
     this.toggleGameScreenShowColorComponents = this.toggleGameScreenShowColorComponents.bind(this);
-
+    this.preventZoom = this.preventZoom.bind(this);
+    this.resetPreventZoom = this.resetPreventZoom.bind(this);
   }
 
   initializeGuessInProgress(level) {
@@ -337,20 +337,30 @@ class ColorCoderMainSection extends Component {
   }
 
   getEndScreen() {
-    const bestScore = this.state.currentGame.getBestScore();
-    let message;
-    if (bestScore === 1) {
-      message = 'Your best score was 1 guess.';
-    } else {
-      message = `Your best score was ${bestScore} guesses.`;
-    }
+    // const bestScore = this.state.currentGame.getLowestNumberOfGuesses();
+    // let message;
+    // if (bestScore === 1) {
+    //   message = 'Your best score was 1 guess.';
+    // } else {
+    //   message = `Your best score was ${bestScore} guesses.`;
+    // }
+
+    const score = this.state.currentGame.getScore();
+    // const maxScore = this.state.currentGame.getMaxPossibleScore();
+
     return (
 
       <div className='ColorCoderMainSection__container'>
+        <Header />
         <h1 className='ColorCoderMainSection__title'>ColorCoder</h1>
         <ColorDisplay key={'endScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'small'}/>
 
-        <div className='ColorCoder__message'>{message}</div>
+        <div className='ColorCoder__score-message'>
+          <div className='ColorCoder__score-label'>Final Score</div>
+          <div className='ColorCoder__score'>{score}</div>
+          {/* <div className='ColorCoder__score-out-of'>out of {maxScore}</div> */}
+        </div>
+
         <div className='ColorCoder__action-buttons'>
           <button className='button ColorCoder__play-again-button' onClick={this.getSetUpGameFunction(this.state.currentGame.getLevel())}>Play Again</button>
           <button className='button ColorCoder__level-choice-button' onClick={this.goToLevelScreen}>Level Options</button>

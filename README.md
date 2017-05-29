@@ -4,13 +4,11 @@
 
 To do:
 
-* Header(s)
-  * Make a "header" component for each app? Or make a general one?
-     * Need to apply styles to ColorCoder header on level screen and end screen
+* 100 per round point system - 300 per game
 
-* Main page
-  * Have logo(/title?) be a link back to main page (when on other pages)
-    * Clicking on souvlaki logo during tour - tour does not hide
+* Header(s)
+  * Make a "title" component for each app? Or make a general one?
+     * Need to apply styles to ColorCoder title on level screen and end screen
 
 * General styling
   * Clean up code for sizing of ColorViz?

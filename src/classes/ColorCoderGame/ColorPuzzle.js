@@ -16,7 +16,7 @@ class ColorPuzzle {
     }
     // return the last item in the guesses list
     return this.guesses[this.guesses.length - 1];
-    
+
   }
 
   getComponentDiffsForMostRecentGuess() {
@@ -36,6 +36,24 @@ class ColorPuzzle {
 
   getActualColor() {
     return this.actualColor;
+  }
+
+  getScore() {
+    // Start with 100 points. Reduce score based on each guess, pass new score along
+    return this.guesses.reduce((points, guess) => {
+      let pointsLost = 0;
+      if (guess.getComponent('R') !== this.actualColor.getComponent('R')) {
+        pointsLost += 1;
+      }
+      if (guess.getComponent('G') !== this.actualColor.getComponent('G')) {
+        pointsLost += 1;
+      }
+      if (guess.getComponent('B') !== this.actualColor.getComponent('B')) {
+        pointsLost += 1;
+      }
+      // Score should never go below 1
+      return Math.max(points - pointsLost, 1);
+    }, 100);
   }
 }
 
