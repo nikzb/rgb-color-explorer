@@ -123,7 +123,8 @@ class RGBTour {
       buttons: [
         {
           text: 'Skip',
-          action: this.tour.hide
+          action: this.tour.hide,
+          classes: 'shepherd-button-secondary'
         },
         {
           text: 'Next',

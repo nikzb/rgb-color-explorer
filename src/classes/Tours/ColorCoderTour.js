@@ -30,7 +30,7 @@ class ColorCoderTour {
   }
 
   onHide() {
-    
+
     // this.currentTourStep += 1;
 
     console.log("in on hide");
@@ -95,13 +95,13 @@ class ColorCoderTour {
     }
 
     this.tour.addStep('welcome', {
-      text: "Let's learn how to play ColorCoder!",
+      text: "Let's play ColorCoder!",
       showCancelLink: false,
       buttons: [
-        {
-          text: 'Exit',
-          action: this.tour.hide
-        },
+        // {
+        //   text: 'Exit',
+        //   action: this.tour.hide
+        // },
         {
           text: 'Next',
           action: this.tour.next
