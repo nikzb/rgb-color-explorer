@@ -51,7 +51,10 @@ class ColorCoderMainSection extends Component {
       lastTouch: 0,
       tour: (new ColorCoderTour({
         addSymbolToCode: this.addSymbolToCode,
-        activateSymbolButtonInPanel: this.activateSymbolButtonInPanel
+        activateSymbolButtonInPanel: this.activateSymbolButtonInPanel,
+        setGameToNull: () => { this.setState({
+          currentGame: null
+        })}
       })).getTour(),
     }
   }
@@ -380,7 +383,6 @@ class ColorCoderMainSection extends Component {
     // const maxScore = this.state.currentGame.getMaxPossibleScore();
 
     return (
-
       <div className='ColorCoderMainSection__container'>
         <Header />
         <div className='ColorCoderMainSection__title'>

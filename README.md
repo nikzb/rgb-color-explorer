@@ -4,22 +4,22 @@
 
 To do:
 
+* ColorCoder tour - if someone clicks X to hide it, need to navigate back to level screen
+
 * Look at what happens when there is no internet connection!
   * Either need to include font so it works with offline version, or need to tweak the fallback fonts to avoid ugliness
-* Put up on Souvlaki.io
 
-* Fix temp landing page on low-res screens
+* Put up on Souvlaki.io
 
 * Color Coder Game
   * Prevent backspace from navigating so it can function only as a way to delete characters with the keyboard
-  * Add the tour / demo
   * Add transitions between
     * level screen / game screen
     * game screen / end screen ?
     * end screen / game screen (via play again button - could me same as level screen / game screen)
     * end screen / level screen ?
 
-* Tour
+* Tours
   * Add the button for resuming the tour later, once it has been exited from
 
 * Favicon - Change ones?

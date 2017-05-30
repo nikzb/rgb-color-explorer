@@ -16,6 +16,7 @@ class ColorCoderTour {
     this.currentTourStep = 0;
     this.getCurrentTourStep = this.getCurrentTourStep.bind(this);
     this.onHide = this.onHide.bind(this);
+    this.sendBackToLevelScreen = functions.setGameToNull;
 
     this.addTourSteps(functions);
   }
@@ -30,9 +31,10 @@ class ColorCoderTour {
 
   onHide() {
     this.currentTourStep += 1;
-    //this.setControlsDisabled(false);
 
+    console.log("in on hide");
     // send back to level page?
+    this.sendBackToLevelScreen();
   }
 
   addTourSteps({ addSymbolToCode, activateSymbolButtonInPanel}) {
