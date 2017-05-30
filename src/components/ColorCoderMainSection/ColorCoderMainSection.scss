@@ -20,6 +20,58 @@ $button-hover-color: $placeholder-color;
   }
 }
 
+.ColorCoder__demo-container {
+  font-size: 0.85em;
+  color: $main-color;
+  margin-bottom: 1em;
+
+  @include phone-large {
+    font-size: 1em;
+  }
+
+  .ColorCoder__demo-link {
+    cursor: pointer;
+    text-decoration: underline;
+    color: $souvlaki-red;
+
+    &:active {
+      color: $souvlaki-red-dark;
+    }
+  }
+}
+
+.ColorCoder__demo-button.button {
+  background: transparent;
+  color: $button-color;
+  border: 1px solid $button-color;
+  border-radius: $standard-border-radius;
+  margin: 0;
+  padding: .4em;
+  width: 6em;
+  height: 3em;
+  font-size: .8em;
+
+  @include phone-large {
+    margin-left: 0.6rem;
+    padding: .8em;
+    width: 8em;
+    height: 3em;
+    font-size: .9em;
+  }
+
+  &:hover, &:focus {
+    background: $button-hover-color;
+    color: $button-color;
+    outline: 0;
+  }
+
+  &:active {
+    background: $button-active-color;
+    color: $button-color;
+    outline: 0;
+  }
+}
+
 
 
 // .ColorCoderMainSection__title {

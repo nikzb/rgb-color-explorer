@@ -4,6 +4,8 @@
 
 To do:
 
+* Look at what happens when there is no internet connection!
+  * Either need to include font so it works with offline version, or need to tweak the fallback fonts to avoid ugliness
 * Put up on Souvlaki.io
 
 * Fix temp landing page on low-res screens

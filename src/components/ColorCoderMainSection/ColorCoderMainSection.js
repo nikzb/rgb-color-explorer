@@ -79,6 +79,7 @@ class ColorCoderMainSection extends Component {
       this.setState({
         currentGame: new ColorCoderGame({
           level,
+          isDemo,
           performAnimationWhenPuzzleSolved: this.performAnimationWhenPuzzleSolved,
           forceUpdate: this.forceUpdate.bind(this)
         })
@@ -358,8 +359,9 @@ class ColorCoderMainSection extends Component {
         <div className='ColorCoderMainSection__title'>
           <SouvlakiTitle size={'med-large'} title={'ColorCoder'} />
         </div>
-        <ColorDisplay key={'levelScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'smaller'}/>
-        <button className='button ColorCoder__demo-button' onClick={this.getSetUpGameFunction(1, true)}>Demo</button>
+        <ColorDisplay key={'levelScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'even-smaller'}/>
+        <div className='ColorCoder__demo-container'>First time? Try this <span className='ColorCoder__demo-link' onClick={this.getSetUpGameFunction(1, true)}>Demo</span></div>
+        {/* <button className='button ColorCoder__demo-button' onClick={this.getSetUpGameFunction(1, true)}>Demo</button> */}
         <GameLevelsMenu getLevelInfoList={this.getLevelInfoList} />
       </div>
     )
@@ -384,7 +386,7 @@ class ColorCoderMainSection extends Component {
         <div className='ColorCoderMainSection__title'>
           <SouvlakiTitle size={'med-large'} title={'ColorCoder'} />
         </div>
-        <ColorDisplay key={'endScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'smaller'}/>
+        <ColorDisplay key={'endScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'even-smaller'}/>
 
         <div className='ColorCoder__score-message'>
           <div className='ColorCoder__score-label'>Final Score</div>
@@ -405,7 +407,7 @@ class ColorCoderMainSection extends Component {
       <div className='ColorCoderMainSection__container'>
         <Header title={'ColorCoder'} />
         <ColorCoderGuessPanel currentPuzzle={this.state.currentGame.getCurrentPuzzle()} puzzleNumber={this.state.currentGame.currentPuzzleIndex + 1} readyToShowScore={this.state.readyToShowScore}/>
-        <ColorDisplay key={'gamePlay'} colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false} size={'even-smaller'}/>
+        <ColorDisplay classes={'ColorDisplay--level'} key={'gamePlay'} colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false} size={'even-smaller'}/>
         <ColorCoderGuessInProgressDisplay guessInProgress={this.state.guessInProgress} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} />
         <div className='ColorControlPanel__container'>
             <ColorCodeButtonPanel colorCode={this.state.guessInProgress} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.activeSymbolButtons} />

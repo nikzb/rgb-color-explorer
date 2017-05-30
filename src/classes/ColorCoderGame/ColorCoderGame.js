@@ -2,19 +2,40 @@ import ColorCode from '../ColorCode/ColorCode';
 import ColorPuzzle from './ColorPuzzle';
 
 class ColorCoderGame {
-  constructor({level, performAnimationWhenPuzzleSolved, forceUpdate}) {
+  constructor({level, isDemo, performAnimationWhenPuzzleSolved, forceUpdate}) {
     this.level = level;
     this.colorPuzzles = [];
     this.currentPuzzleIndex = 0;
 
     // A promise that performs the animation, then resolves
     this.performAnimationWhenPuzzleSolved = performAnimationWhenPuzzleSolved;
-    this.populateColorPuzzles();
+
+    if (isDemo) {
+      this.setUpDemo();
+    } else {
+      this.populateColorPuzzles();
+    }
     this.forceUpdate = forceUpdate;
   }
 
-  getPuzzlesPerGame() {
-    return 3;
+  setUpDemo() {
+    const color1 = new ColorCode({
+      bits: 6,
+      base: 2,
+      code: '110110'
+    });
+    this.colorPuzzles.push(new ColorPuzzle(color1));
+
+    const color2 = new ColorCode({
+      bits: 12,
+      base: 16,
+      code: 'A4E'
+    })
+    this.colorPuzzles.push(new ColorPuzzle(color2));
+  }
+
+  setLevel(newLevel) {
+    this.level = newLevel;
   }
 
   populateColorPuzzles() {
@@ -53,6 +74,10 @@ class ColorCoderGame {
       color3 = new ColorCode({bits, base, random: true});
     }
     this.colorPuzzles.push(new ColorPuzzle(color3));
+  }
+
+  getPuzzlesPerGame() {
+    return 3;
   }
 
   getCurrentPuzzle() {

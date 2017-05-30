@@ -23,8 +23,15 @@ class ColorDisplay extends Component {
   }
 
   render() {
+    let classes;
+    if (this.props.classes) {
+      classes = `ColorDisplay__container ${this.props.classes}`;
+    } else {
+      classes = 'ColorDisplay__container';
+    }
+    
     return (
-      <div className='ColorDisplay__container'>
+      <div className={classes}>
         <ColorViz colorCode={this.props.colorCode}
                   showColorComponents={this.props.showColorComponents}
                   onClick={this.getOnClick()}
