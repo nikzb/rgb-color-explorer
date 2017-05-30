@@ -30,7 +30,8 @@ class ColorCoderTour {
   }
 
   onHide() {
-    this.currentTourStep += 1;
+    
+    // this.currentTourStep += 1;
 
     console.log("in on hide");
     // send back to level page?

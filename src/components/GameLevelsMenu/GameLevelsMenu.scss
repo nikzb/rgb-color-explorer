@@ -23,11 +23,18 @@ $button-hover-color: $placeholder-color;
 
     @include phone-large {
       font-size: 1.05em;
-      padding: 1em;
+      padding: 0.8em;
+      margin: 0.1em 0;
     }
 
     @include tablet-portrait {
       font-size: 1.3em;
+    }
+
+    @include low-res {
+      font-size: 1.0em;
+      padding: 0.9em;
+      margin: 0.1em 0;
     }
 
     &:hover, &:focus {
@@ -69,7 +76,7 @@ $button-hover-color: $placeholder-color;
 
   .GameLevelsMenu__label {
     flex: 0 0 30%;
-    font-size: 0.75em;
+    font-size: 0.85em;
 
     @include phone-large {
       font-size: 1.0em;
@@ -78,6 +85,10 @@ $button-hover-color: $placeholder-color;
 
     @include tablet-portrait {
       font-size: 1.1em;
+    }
+
+    @include low-res {
+      font-size: 1.0em;
     }
     // flex: 1 1 30%;
     // width: 10em;

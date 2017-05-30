@@ -14,11 +14,18 @@
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .GameLevelsMenu__container .button {
     font-size: 1.05em;
-    padding: 1em; } }
+    padding: 0.8em;
+    margin: 0.1em 0; } }
 
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
   .GameLevelsMenu__container .button {
     font-size: 1.3em; } }
+
+@media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+  .GameLevelsMenu__container .button {
+    font-size: 1.0em;
+    padding: 0.9em;
+    margin: 0.1em 0; } }
 
 .GameLevelsMenu__container .button:hover, .GameLevelsMenu__container .button:focus {
   background: #A0A0A0;
@@ -53,7 +60,7 @@
 
 .GameLevelsMenu__row .GameLevelsMenu__label {
   flex: 0 0 30%;
-  font-size: 0.75em; }
+  font-size: 0.85em; }
 
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .GameLevelsMenu__row .GameLevelsMenu__label {
@@ -63,3 +70,7 @@
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
   .GameLevelsMenu__row .GameLevelsMenu__label {
     font-size: 1.1em; } }
+
+@media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+  .GameLevelsMenu__row .GameLevelsMenu__label {
+    font-size: 1.0em; } }
