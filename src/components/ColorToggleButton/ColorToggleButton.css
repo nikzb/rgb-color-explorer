@@ -7,21 +7,28 @@
   flex: 0 0 4em;
   font-size: 1em;
   padding: 0; }
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-    .button.ColorToggleButton {
-      font-size: 1.2em;
-      padding: .25em;
-      margin: .1em .2em; } }
-  .button.ColorToggleButton:hover, .button.ColorToggleButton:focus {
-    background: #E9E9E9;
-    outline: 0; }
-  .button.ColorToggleButton:active {
-    background: silver; }
-  .button.ColorToggleButton--red, .button.ColorToggleButton--red:hover, .button.ColorToggleButton--red:focus {
-    color: red; }
-  .button.ColorToggleButton--green, .button.ColorToggleButton--green:hover, .button.ColorToggleButton--green:focus {
-    color: green; }
-  .button.ColorToggleButton--blue, .button.ColorToggleButton--blue:hover, .button.ColorToggleButton--blue:focus {
-    color: blue; }
-  .button.ColorToggleButton--toggled-off {
-    text-decoration: line-through; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  .button.ColorToggleButton {
+    font-size: 1.2em;
+    padding: .25em;
+    margin: .1em .2em; } }
+
+.button.ColorToggleButton:hover, .button.ColorToggleButton:focus {
+  background: #E9E9E9;
+  outline: 0; }
+
+.button.ColorToggleButton:active {
+  background: silver; }
+
+.button.ColorToggleButton--red, .button.ColorToggleButton--red:hover, .button.ColorToggleButton--red:focus {
+  color: red; }
+
+.button.ColorToggleButton--green, .button.ColorToggleButton--green:hover, .button.ColorToggleButton--green:focus {
+  color: green; }
+
+.button.ColorToggleButton--blue, .button.ColorToggleButton--blue:hover, .button.ColorToggleButton--blue:focus {
+  color: blue; }
+
+.button.ColorToggleButton--toggled-off {
+  text-decoration: line-through; }

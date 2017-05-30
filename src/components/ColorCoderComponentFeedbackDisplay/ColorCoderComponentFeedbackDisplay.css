@@ -1,21 +1,29 @@
 .ColorCoderComponentFeedbackDisplay {
   font-size: 1.8em; }
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-    .ColorCoderComponentFeedbackDisplay {
-      font-size: 2.1em; } }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  .ColorCoderComponentFeedbackDisplay {
+    font-size: 2.1em; } }
+
+.ColorCoderComponentFeedbackDisplay--three-symbols {
+  padding: 0 0.1em; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCoderComponentFeedbackDisplay--three-symbols {
-    padding: 0 0.1em; }
-    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-      .ColorCoderComponentFeedbackDisplay--three-symbols {
-        padding: 0 0.05em; } }
+    padding: 0 0.05em; } }
+
+.ColorCoderComponentFeedbackDisplay--six-symbols {
+  padding: 0 0.3em; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCoderComponentFeedbackDisplay--six-symbols {
-    padding: 0 0.3em; }
-    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-      .ColorCoderComponentFeedbackDisplay--six-symbols {
-        padding: 0 0.4em; } }
-  .ColorCoderComponentFeedbackDisplay--red {
-    color: red; }
-  .ColorCoderComponentFeedbackDisplay--green {
-    color: green; }
-  .ColorCoderComponentFeedbackDisplay--blue {
-    color: blue; }
+    padding: 0 0.4em; } }
+
+.ColorCoderComponentFeedbackDisplay--red {
+  color: red; }
+
+.ColorCoderComponentFeedbackDisplay--green {
+  color: green; }
+
+.ColorCoderComponentFeedbackDisplay--blue {
+  color: blue; }

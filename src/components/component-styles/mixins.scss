@@ -2,6 +2,12 @@
 //   @media (max-width: 449px) { @content; }
 // }
 
+@mixin phone-medium {
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 23em),
+  (min-resolution: 192dpi) and (min-width: 23em)
+	{ @content; }
+}
+
 @mixin phone-large {
   @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em),
   (min-resolution: 192dpi) and (min-width: 25em)

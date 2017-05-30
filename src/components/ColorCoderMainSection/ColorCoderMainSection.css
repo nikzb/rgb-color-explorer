@@ -33,7 +33,7 @@
   border: 1px solid #707070;
   border-radius: 0.5rem;
   margin: 0;
-  padding: .4em;
+  padding: 0.4em;
   width: 6em;
   height: 3em;
   font-size: .8em; }
@@ -41,7 +41,7 @@
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCoder__demo-button.button {
     margin-left: 0.6rem;
-    padding: .8em;
+    padding: 0.8em;
     width: 8em;
     height: 3em;
     font-size: .9em; } }
@@ -62,7 +62,6 @@
 
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCoderMainSection__title {
-    margin-top: 1em;
     margin-bottom: -1.5em; } }
 
 .ColorCoderMainSection__title .ColorCoderMainSection__presents {
