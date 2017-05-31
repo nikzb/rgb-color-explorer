@@ -15,8 +15,9 @@ class ColorCoderTour {
     });
     this.currentTourStep = 0;
     this.getCurrentTourStep = this.getCurrentTourStep.bind(this);
-    this.onHide = this.onHide.bind(this);
     this.sendBackToLevelScreen = functions.setGameToNull;
+    this.tour.on('complete', functions.setGameToNull);
+    this.tour.on('cancel', functions.setGameToNull);
 
     this.addTourSteps(functions);
   }
@@ -29,22 +30,13 @@ class ColorCoderTour {
     return this.currentTourStep;
   }
 
-  onHide() {
-
-    // this.currentTourStep += 1;
-
-    console.log("in on hide");
-    // send back to level page?
-    this.sendBackToLevelScreen();
-  }
-
   addTourSteps({ addSymbolToCode, activateSymbolButtonInPanel}) {
     const standardButtons = [
-      {
-        text: 'Back',
-        action: this.tour.back,
-        classes: 'shepherd-button-secondary'
-      },
+      // {
+      //   text: 'Back',
+      //   action: this.tour.back,
+      //   classes: 'shepherd-button-secondary'
+      // },
       {
         text: 'Next',
         action: this.tour.next
@@ -110,8 +102,7 @@ class ColorCoderTour {
       when: {
         show: () => {
           this.currentTourStep += 1;
-        },
-        hide: this.onHide
+        }
       }
     })
     .addStep('goal', {
@@ -120,7 +111,6 @@ class ColorCoderTour {
       attachTo: '.ColorViz__canvas bottom',
       buttons: standardButtons,
       when: {
-        hide: this.onHide,
         show: () => {
           this.currentTourStep += 1
         }
@@ -132,7 +122,6 @@ class ColorCoderTour {
       showCancelLink: false,
       buttons: [],
       when: {
-        hide: this.onHide,
         show: getShowFunction({
           initArray: [
             {
@@ -153,12 +142,11 @@ class ColorCoderTour {
       }
     })
     .addStep('explainFeedback1', {
-      title: 'Color Level Feedback',
+      title: 'Color Feedback',
       text: 'We have the perfect amount of red, but we need more green and less blue.',
       attachTo: '.ColorCoderGuessPanel__container bottom',
       buttons: standardButtons,
       when: {
-        hide: this.onHide,
         show: () => {
           this.currentTourStep += 1
         }
@@ -170,7 +158,6 @@ class ColorCoderTour {
       showCancelLink: false,
       buttons: [],
       when: {
-        hide: this.onHide,
         show: getShowFunction({
           initArray: [
             {
@@ -196,7 +183,6 @@ class ColorCoderTour {
       attachTo: '.ColorCoderGuessPanel__container bottom',
       buttons: standardButtons,
       when: {
-        hide: this.onHide,
         show: () => {
           this.currentTourStep += 1
         }
@@ -208,7 +194,6 @@ class ColorCoderTour {
       showCancelLink: false,
       buttons: [],
       when: {
-        hide: this.onHide,
         show: getShowFunction({
           initArray: [
             {
@@ -234,7 +219,6 @@ class ColorCoderTour {
       showCancelLink: false,
       buttons: [],
       when: {
-        hide: this.onHide,
         show: getShowFunction({
           postArray: [
             {
@@ -252,20 +236,44 @@ class ColorCoderTour {
       showCancelLink: false,
       buttons: [],
       when: {
-        hide: this.onHide,
         show: getShowFunction({
           postArray: [
             {
               callback: this.tour.next,
-              waitTime: 3000,
+              waitTime: 3500,
               tourStepItBelongsTo: this.currentTourStep
             }
           ]
         })
       }
     })
+    .addStep('rounds', {
+      title: 'Go for 300!',
+      text: 'There are 3 rounds, each earning you a maximum of 100 points',
+      attachTo: '.ColorCoderGuessPanel__round-number bottom',
+      buttons: standardButtons,
+      when: {
+        show: () => {
+          this.currentTourStep += 1
+        }
+      }
+    })
+    .addStep('difficulty', {
+      title: 'Like a Challenge?',
+      text: 'For more challenging puzzles, try the intermediate or expert modes.',
+      buttons: [
+        {
+          text: 'Done',
+          action: this.tour.cancel
+        }
+      ],
+      when: {
+        show: () => {
+          this.currentTourStep += 1
+        }
+      }
+    })
   }
-
 }
 
 export default ColorCoderTour;

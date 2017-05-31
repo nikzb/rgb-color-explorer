@@ -52,9 +52,12 @@ class ColorCoderMainSection extends Component {
       tour: (new ColorCoderTour({
         addSymbolToCode: this.addSymbolToCode,
         activateSymbolButtonInPanel: this.activateSymbolButtonInPanel,
-        setGameToNull: () => { this.setState({
-          currentGame: null
-        })}
+        setGameToNull: () => {
+          this.setState({
+            currentGame: null
+          });
+          console.log('set game to null');
+        }
       })).getTour(),
     }
   }

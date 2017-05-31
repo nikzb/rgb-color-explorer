@@ -27,11 +27,18 @@ class ColorCoderGame {
     this.colorPuzzles.push(new ColorPuzzle(color1));
 
     const color2 = new ColorCode({
-      bits: 12,
-      base: 16,
-      code: 'A4E'
-    })
+      bits: 6,
+      base: 2,
+      code: '011100'
+    });
     this.colorPuzzles.push(new ColorPuzzle(color2));
+
+    // const color2 = new ColorCode({
+    //   bits: 12,
+    //   base: 16,
+    //   code: 'A4E'
+    // })
+    // this.colorPuzzles.push(new ColorPuzzle(color2));
   }
 
   setLevel(newLevel) {

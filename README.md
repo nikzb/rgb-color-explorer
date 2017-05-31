@@ -4,10 +4,9 @@
 
 To do:
 
-* ColorCoder tour - if someone clicks X to hide it, need to navigate back to level screen
-
 * Look at what happens when there is no internet connection!
   * Either need to include font so it works with offline version, or need to tweak the fallback fonts to avoid ugliness
+  * Need to include fonts in files so that they don't need to be fetched separately
 
 * Put up on Souvlaki.io
 
