@@ -16,8 +16,7 @@ class ColorCoderGuessInProgressDisplay extends Component {
     let classNameBlue = 'ColorCodeComponentDisplay';
 
     const colorCode = this.props.guessInProgress;
-    console.log('in color coder guess in progress');
-    console.log(colorCode);
+
     let codeAsString;
 
     if (colorCode.isPartial) {

@@ -45,6 +45,7 @@ class ColorCoderTour {
 
     const getAddSymbolToCodeFromTourFunction = (symbol) => {
       return () => {
+        activateSymbolButtonInPanel(symbol);
         addSymbolToCode(symbol, true);
       }
     }

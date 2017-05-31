@@ -56,7 +56,6 @@ class ColorCoderMainSection extends Component {
           this.setState({
             currentGame: null
           });
-          console.log('set game to null');
         }
       })).getTour(),
     }
@@ -191,6 +190,7 @@ class ColorCoderMainSection extends Component {
   }
 
   activateSymbolButtonInPanel(symbol) {
+
     if (!_.includes(this.state.activeSymbolButtons, symbol)) {
       //This can be done with immutability helpers too, but just kept it simple for now: https://facebook.github.io/react/docs/update.html
       let newActiveSymbolButtons = _.concat(this.state.activeButtons, symbol);
@@ -415,7 +415,7 @@ class ColorCoderMainSection extends Component {
         <ColorDisplay classes={'ColorDisplay--level'} key={'gamePlay'} colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false} size={'even-smaller'}/>
         <ColorCoderGuessInProgressDisplay guessInProgress={this.state.guessInProgress} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} />
         <div className='ColorControlPanel__container'>
-            <ColorCodeButtonPanel colorCode={this.state.guessInProgress} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.activeSymbolButtons} />
+            <ColorCodeButtonPanel colorCode={this.state.guessInProgress} addSymbolToCode={this.addSymbolToCode} activeSymbolButtons={this.state.activeSymbolButtons} />
         </div>
       </div>
     )

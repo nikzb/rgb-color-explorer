@@ -95,8 +95,6 @@ class ColorCoderGame {
   }
 
   getCurrentColorToGuess() {
-    console.log(this.currentPuzzleIndex);
-    console.log(this.getPuzzlesPerGame());
     if (this.currentPuzzleIndex >= this.getPuzzlesPerGame()) {
       throw Error('Puzzle Index is too big. Puzzles have been used up');
     }
