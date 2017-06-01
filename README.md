@@ -4,6 +4,13 @@
 
 To do:
 
+* Finish fixing colors for dark background
+  * Souvlaki title
+  * Color Coder title - might be okay, try just fixing shadow?
+  * Hover/focus color during game play - make more subtle?
+  * End game screen buttons, etc.
+
+
 * Look at what happens when there is no internet connection!
   * Either need to include font so it works with offline version, or need to tweak the fallback fonts to avoid ugliness
   * Need to include fonts in files so that they don't need to be fetched separately
@@ -20,8 +27,6 @@ To do:
 
 * Tours
   * Add the button for resuming the tour later, once it has been exited from
-
-* Favicon - Change ones?
 
 * General styling
   * Clean up code for sizing of ColorViz?
