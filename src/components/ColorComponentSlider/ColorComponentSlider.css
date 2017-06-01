@@ -6,6 +6,9 @@
   align-items: center;
   width: 100%; }
 
+.ColorComponentSlider__container input {
+  background-color: black; }
+
 .ColorComponentSlider__container input[type=range]::-moz-focus-outer {
   border: 0; }
 

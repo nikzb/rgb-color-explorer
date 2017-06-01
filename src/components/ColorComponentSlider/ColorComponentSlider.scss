@@ -9,10 +9,15 @@ $ms-percent: 49%;
 .ColorComponentSlider__container {
   display: flex;
   border-radius: $radius;
+
   padding: 0.0333em;
   margin: 0;
   align-items: center;
   width: 100%;
+
+  input {
+    background-color: black;
+  }
 
   input[type=range]::-moz-focus-outer {
     border: 0;

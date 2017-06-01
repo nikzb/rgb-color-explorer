@@ -13,9 +13,9 @@ class Header extends Component {
         <div className="Header__title-container">
           <SouvlakiTitle bg={this.props.bg} title={this.props.title} size={'medium'}/>
         </div>
-        <Link to='/'>
+        {/* <Link to='/'>
           <Logo size={'64'}/>
-        </Link>
+        </Link> */}
       </div>
     );
   }
