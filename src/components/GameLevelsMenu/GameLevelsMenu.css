@@ -5,7 +5,7 @@
   color: darkgrey; }
 
 .GameLevelsMenu__container .button {
-  background: black;
+  background: transparent;
   color: darkgrey;
   margin-bottom: 0;
   flex: 0 0 40%;
@@ -53,7 +53,7 @@
     font-size: 1.7em; } }
 
 .GameLevelsMenu__row {
-  background: black;
+  background: transparent;
   padding: 0.3em 0;
   display: flex;
   align-items: center;

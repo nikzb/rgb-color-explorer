@@ -8,6 +8,7 @@ To do:
   * Color Coder title
     * Fix shadow on game play screen?
   * Try using gradients in background?
+    * Need to get body to extend all the way to the bottom of the viewport
 
 
 * Look at what happens when there is no internet connection!
