@@ -36,9 +36,9 @@ class ColorCoderMainSection extends Component {
       logoColor: new ColorCode({
         base: 16,
         bits: 24,
-        red: 255,
-        green: 255,
-        blue: 255
+        red: 180,
+        green: 180,
+        blue: 180
       }),
       levelScreenShowColorComponents: true,
       controlsDisabled: false,
@@ -52,6 +52,7 @@ class ColorCoderMainSection extends Component {
       tour: (new ColorCoderTour({
         addSymbolToCode: this.addSymbolToCode,
         activateSymbolButtonInPanel: this.activateSymbolButtonInPanel,
+        setControlsDisabled: this.setControlsDisabled,
         setGameToNull: () => {
           this.setState({
             currentGame: null

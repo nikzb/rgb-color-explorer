@@ -4,7 +4,7 @@
 $button-color: $main-color;
 $button-radius: $standard-border-radius;
 $button-active-color: $active-color;
-$button-hover-color: $placeholder-color;
+$button-hover-color: $focus-color;
 
 .GameLevelsMenu__container {
 
@@ -12,8 +12,9 @@ $button-hover-color: $placeholder-color;
 
   // display: flex
   .button {
-    background: $main-color;
-    color: white;
+    //background: $main-color;
+    background: black;
+    color: #888;
     margin-bottom: 0;
     flex: 0 0 40%;
     font-size: 0.9em;
@@ -39,15 +40,15 @@ $button-hover-color: $placeholder-color;
 
     &:hover, &:focus {
       background: $button-hover-color;
-      border: 1px solid $button-hover-color;
-      color: white;
+      // border: 1px solid $button-hover-color;
+      color: $button-color;
       outline: 0;
     }
 
     &:active {
       background: $button-active-color;
-      border: 1px solid $button-active-color;
-      color: $main-color;
+      // border: 1px solid $button-active-color;
+      color: $button-color;
       outline: 0;
     }
   }
@@ -67,7 +68,7 @@ $button-hover-color: $placeholder-color;
 }
 
 .GameLevelsMenu__row {
-  background: white;
+  background: black;
   padding: 0.3em 0;
   display: flex;
   // justify-content: space-around;

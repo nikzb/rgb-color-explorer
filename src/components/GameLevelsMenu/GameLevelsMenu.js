@@ -8,7 +8,7 @@ const GameLevelsMenu = ({getLevelInfoList}) => (
     <h2 className="GameLevelsMenu__title">Choose a Level</h2>
     {getLevelInfoList().map(levelInfo => {
       return (
-        <div className={`row GameLevelsMenu__row GameLevelsMenu__row--${levelInfo.background}`} key={levelInfo.bits}>
+        <div className={'row GameLevelsMenu__row'} key={levelInfo.bits}>
           <div className="small-4 medium-3 columns GameLevelsMenu__label">
             {`${levelInfo.bits} Bit`}
             <br></br>

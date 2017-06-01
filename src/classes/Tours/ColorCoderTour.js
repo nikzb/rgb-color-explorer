@@ -17,7 +17,10 @@ class ColorCoderTour {
     this.getCurrentTourStep = this.getCurrentTourStep.bind(this);
     this.sendBackToLevelScreen = functions.setGameToNull;
     this.tour.on('complete', functions.setGameToNull);
-    this.tour.on('cancel', functions.setGameToNull);
+    this.tour.on('cancel', () => {
+      functions.setGameToNull();
+      functions.setControlsDisabled(false);
+    });
 
     this.addTourSteps(functions);
   }
