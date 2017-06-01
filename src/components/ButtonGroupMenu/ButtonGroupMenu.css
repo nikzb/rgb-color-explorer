@@ -1,14 +1,14 @@
 .ButtonGroupMenu {
   display: flex;
   width: 92%;
-  border: 1px solid #A0A0A0;
+  border: 1px solid #909090;
   border-radius: 0.5rem;
   overflow: hidden;
   margin-bottom: 0; }
 
 .ButtonGroupMenu .button {
   background: transparent;
-  color: #A0A0A0;
+  color: #909090;
   margin-bottom: 0;
   flex: 1 0 0;
   font-size: 1.1em;
@@ -19,14 +19,14 @@
     padding: .5em; } }
 
 .ButtonGroupMenu .button:nth-child(1n + 1) {
-  border-left: 1px solid #A0A0A0; }
+  border-left: 1px solid #909090; }
 
 .ButtonGroupMenu .button:nth-child(1) {
   border-left: none; }
 
 .ButtonGroupMenu .button:hover, .ButtonGroupMenu .button:focus {
   background: #333;
-  color: #A0A0A0;
+  color: #909090;
   outline: 0; }
 
 .ButtonGroupMenu .button:active {
@@ -35,7 +35,7 @@
   outline: 0; }
 
 .ButtonGroupMenu .button.is-active {
-  background: #A0A0A0;
+  background: #909090;
   color: black; }
 
 .ButtonGroupMenu--plus-minus {
@@ -48,7 +48,7 @@
 
 .ButtonGroupMenu--plus-minus .button {
   background: transparent;
-  color: #A0A0A0;
+  color: #909090;
   margin-bottom: 0;
   flex: 1 0 0;
   font-size: 1.8em;
@@ -60,10 +60,10 @@
 
 .ButtonGroupMenu--plus-minus .button:hover, .ButtonGroupMenu--plus-minus .button:focus {
   background: #333;
-  color: #A0A0A0;
+  color: #909090;
   outline: 0; }
 
 .ButtonGroupMenu--plus-minus .button:active {
   background: dimgrey;
-  color: #A0A0A0;
+  color: #909090;
   outline: 0; }
