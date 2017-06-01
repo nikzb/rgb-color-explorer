@@ -286,6 +286,7 @@ class ColorCoderMainSection extends Component {
   }
 
   componentDidMount() {
+    document.body.classList.add('dark');
     document.addEventListener('keydown', this.handleKeyDown);
     document.addEventListener('touchstart', this.preventZoom, false);
     document.addEventListener('touchmove', this.resetPreventZoom, false);
@@ -293,6 +294,7 @@ class ColorCoderMainSection extends Component {
   }
 
   componentWillUnmount() {
+    document.body.classList.remove('dark');
     document.removeEventListener('keydown', this.handleKeyDown);
     document.removeEventListener('touchstart', this.preventZoom, false);
     document.removeEventListener('touchmove', this.resetPreventZoom, false);

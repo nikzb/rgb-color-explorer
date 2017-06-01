@@ -2,7 +2,8 @@
 @import '../component-styles/base-styles.scss';
 @import '../component-styles/fonts.scss';
 
-$button-color: $main-color;
+$main-color: $grey-1b;
+$button-color: $grey-1b;
 $button-radius: $standard-border-radius;
 $button-active-color: $active-color;
 $button-hover-color: $placeholder-color;
@@ -190,14 +191,14 @@ $button-hover-color: $placeholder-color;
 
   .button.Option__button {
     width: 7em;
-    background: $main-color;
+    background: $button-color;
     opacity: 0.8;
     color: white;
     margin-bottom: 1em;
     flex: 0 0 40%;
     font-size: 1.0em;
     padding: 0.9em;
-    border: 1px solid $main-color;
+    border: 1px solid $button-color;
     border-radius: $button-radius;
 
     @include phone-medium {

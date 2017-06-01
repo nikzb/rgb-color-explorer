@@ -23,7 +23,7 @@
   position: relative;
   font-family: inherit;
   background: #555;
-  color: #EEE;
+  color: #E0E0E0;
   padding: 1em;
   font-size: 1.0em;
   line-height: 1.5em; }
@@ -234,7 +234,7 @@
   margin-bottom: -.8em; }
 
 .shepherd-element.shepherd-theme-dark .shepherd-content header a.shepherd-cancel-link:hover {
-  color: #EEE;
+  color: #E0E0E0;
   opacity: 1; }
 
 .shepherd-element.shepherd-theme-dark .shepherd-content .shepherd-text {
@@ -278,11 +278,11 @@
   line-height: 1em;
   padding: .75em 2em;
   background: #080;
-  color: #fff; }
+  color: #E0E0E0; }
 
 .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary {
   background: #707070;
-  color: white; }
+  color: #E0E0E0; }
 
 .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li:last-child .shepherd-button {
   margin-right: 0; }
@@ -304,4 +304,4 @@
   line-height: 1em;
   padding: .75em 2em;
   background: #080;
-  color: #fff; }
+  color: #E0E0E0; }

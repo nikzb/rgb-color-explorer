@@ -7,7 +7,7 @@ $el-bg-color: $grey-1b;
 //original element bg color?: #303030;
 $btn-bg-color: #080;
 //original button color? #3288e6;
-$text-color: #EEE;
+$text-color: #E0E0E0;
 
 $dark-text-color: $grey-5;
 
@@ -239,10 +239,10 @@ $dark-text-color: $grey-5;
             line-height: 1em;
             padding: .75em 2em;
             background: $btn-bg-color;
-            color: #fff; }
+            color: $text-color; }
             .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary {
               background: $el-bg-color;//#eee;
-              color: white; }
+              color: $text-color; }
           .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li:last-child .shepherd-button {
             margin-right: 0; }
 
@@ -263,4 +263,4 @@ $dark-text-color: $grey-5;
   line-height: 1em;
   padding: .75em 2em;
   background: $btn-bg-color;
-  color: #fff; }
+  color: $text-color; }
