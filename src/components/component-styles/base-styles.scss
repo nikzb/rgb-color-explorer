@@ -17,16 +17,23 @@ $grey-7: lightgrey; // #D3D3D3
 $grey-8: gainsboro; // #DCDCDC
 $grey-9: #E9E9E9;
 
-$main-color: $grey-1b;
-$focus-color: $grey-9;
-$active-color: $grey-6;
+$main-color: $grey-4;
+$focus-color: $grey-0a;
+$active-color: $grey-1;
 $placeholder-color: $grey-4;
-$slider-color: $grey-5;
-$slider-focus-color: $grey-7;
+$slider-color: $grey-1b;
+$button-color: $grey-1b;
+$slider-focus-color: $grey-5;
+
+$main-color-for-dark-bg: $grey-2;
 
 $logo-secondary: #B72616;
 $souvlaki-red: #B72616;
 $souvlaki-red-dark: #73180E;
+
+$red-for-dark-bg: #C00;
+$green-for-dark-bg: #080;
+$blue-for-dark-bg: #06F;
 
 // For controlling the width of app containers
 

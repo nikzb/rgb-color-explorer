@@ -237,12 +237,14 @@ class MainSection extends Component {
   }
 
   componentDidMount() {
+    document.body.classList.add('dark');
     document.addEventListener('click', this.handleDocumentClick);
     document.addEventListener('keydown', this.handleKeyDown);
     this.state.tour.start();
   }
 
   componentWillUnmount() {
+    document.body.classList.remove('dark');
     document.removeEventListener('click', this.handleDocumentClick);
     document.removeEventListener('keydown', this.handleKeyDown);
     this.state.tour.hide();

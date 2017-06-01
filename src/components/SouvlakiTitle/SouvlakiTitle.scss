@@ -2,6 +2,9 @@
 @import '../component-styles/base-styles.scss';
 @import '../component-styles/fonts.scss';
 
+$text-shadow-size: 0.03em;
+$rgb-letter-colors: $grey-1;
+
 .SouvlakiTitle {
   font-family: 'Averia Sans Libre', sans-serif;
   color: $grey-0a;
@@ -39,23 +42,23 @@
   }
 
   &--R {
-    color: $grey-0b;
-    text-shadow: 0.02em 0.02em red;
+    color: $rgb-letter-colors;
+    text-shadow: $text-shadow-size $text-shadow-size $red-for-dark-bg;
   }
 
   &--G{
-    color: $grey-0b;
-    text-shadow: 0.02em 0.02em green;
+    color: $rgb-letter-colors;
+    text-shadow: $text-shadow-size $text-shadow-size $green-for-dark-bg;
   }
 
   &--B {
-    color: $grey-0b;
-    text-shadow: 0.02em 0.02em blue;
+    color: $rgb-letter-colors;
+    text-shadow: $text-shadow-size $text-shadow-size $blue-for-dark-bg;
   }
 
   &--colors {
-    color: $grey-1;
-    text-shadow: 0.02em 0.02em #333; //#B72616;//#3F88C5;//#B72616;
+    color: $grey-2;
+    text-shadow: $text-shadow-size $text-shadow-size #333; //#B72616;//#3F88C5;//#B72616;
   }
 
   // title used for main page (at least for temporary main page created early on)

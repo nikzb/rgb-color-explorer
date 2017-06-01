@@ -10,13 +10,13 @@
     font-size: 2.5em; } }
 
 .ColorCodeComponentDisplay--red {
-  color: red; }
+  color: #C00; }
 
 .ColorCodeComponentDisplay--green {
-  color: green; }
+  color: #080; }
 
 .ColorCodeComponentDisplay--blue {
-  color: blue; }
+  color: #06F; }
 
 .ColorCodeComponentDisplay--placeholder {
   color: #A0A0A0; }

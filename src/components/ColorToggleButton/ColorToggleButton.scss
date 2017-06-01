@@ -33,15 +33,15 @@ $button-active-color: $active-color;
   }
 
   &--red, &--red:hover, &--red:focus {
-    color: red;
+    color: $red-for-dark-bg;
   }
 
   &--green, &--green:hover, &--green:focus {
-    color: green;
+    color: $green-for-dark-bg;
   }
 
   &--blue, &--blue:hover, &--blue:focus {
-    color: blue;
+    color: $blue-for-dark-bg;
   }
 
   &--toggled-off {
