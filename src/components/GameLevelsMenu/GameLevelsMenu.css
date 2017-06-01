@@ -2,16 +2,16 @@
   padding-bottom: 1.5em; }
 
 .GameLevelsMenu__container .GameLevelsMenu__title {
-  color: silver; }
+  color: darkgrey; }
 
 .GameLevelsMenu__container .button {
   background: black;
-  color: silver;
+  color: darkgrey;
   margin-bottom: 0;
   flex: 0 0 40%;
   font-size: 0.9em;
   padding: 0.7em;
-  border: 1px solid silver;
+  border: 1px solid darkgrey;
   border-radius: 0.5rem; }
 
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
@@ -32,12 +32,12 @@
 
 .GameLevelsMenu__container .button:hover, .GameLevelsMenu__container .button:focus {
   background: #333;
-  color: silver;
+  color: darkgrey;
   outline: 0; }
 
 .GameLevelsMenu__container .button:active {
   background: dimgrey;
-  color: silver;
+  color: darkgrey;
   outline: 0; }
 
 .GameLevelsMenu__title {
@@ -57,7 +57,7 @@
   padding: 0.3em 0;
   display: flex;
   align-items: center;
-  color: silver; }
+  color: darkgrey; }
 
 .GameLevelsMenu__row .GameLevelsMenu__label {
   flex: 0 0 30%;

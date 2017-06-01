@@ -12,10 +12,9 @@ class ColorCodeButtonPanel extends Component {
         }
       }
       let classes = `button ColorCodeButtonPanel__button ColorCodeButtonPanel__button--${numberSystem}`;
-      
+
       if (_.includes(this.props.activeSymbolButtons, buttonLabel)) {
         classes += ' button--active';
-        console.log(buttonLabel + ' is active');
       }
       return <button key={buttonLabel} className={classes} onClick={getClickHandler(buttonLabel)}>{buttonLabel}</button>
     });

@@ -65,7 +65,7 @@
   background: #06F; }
 
 .ColorComponentSlider__slider:focus::-webkit-slider-runnable-track {
-  background: darkgrey; }
+  background: silver; }
 
 .ColorComponentSlider__slider::-moz-range-track {
   width: 100%;
@@ -82,7 +82,7 @@
   cursor: pointer; }
 
 .ColorComponentSlider__slider:focus::-moz-range-track {
-  background: darkgrey;
+  background: silver;
   outline: 0; }
 
 .ColorComponentSlider__slider.ColorComponentSlider__slider--red::-moz-range-thumb {
@@ -131,7 +131,7 @@
   background: #06F; }
 
 .ColorComponentSlider__slider:focus::-ms-fill-lower {
-  background: darkgrey; }
+  background: silver; }
 
 .ColorComponentSlider__slider:focus::-ms-fill-upper {
-  background: darkgrey; }
+  background: silver; }
