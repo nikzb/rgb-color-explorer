@@ -2,11 +2,10 @@
 @import '../component-styles/mixins.scss';
 
 $button-group-menu-radius: $standard-border-radius;
-$button-group-menu-color: $button-color;
+$button-group-menu-color: $grey-5;
 $button-group-menu-margin-bottom: 0;
 $button-active-color: $active-color;
 $button-hover-color: $focus-color;
-$button-color: $main-color;
 
 .ButtonGroupMenu {
   display: flex;

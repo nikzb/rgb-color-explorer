@@ -11,7 +11,7 @@ class Header extends Component {
     return (
       <div className="Header__container">
         <div className="Header__title-container">
-          <SouvlakiTitle title={this.props.title} size={'medium'}/>
+          <SouvlakiTitle bg={this.props.bg} title={this.props.title} size={'medium'}/>
         </div>
         <Link to='/'>
           <Logo size={'64'}/>

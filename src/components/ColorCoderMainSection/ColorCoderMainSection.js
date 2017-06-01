@@ -36,9 +36,9 @@ class ColorCoderMainSection extends Component {
       logoColor: new ColorCode({
         base: 16,
         bits: 24,
-        red: 180,
-        green: 180,
-        blue: 180
+        red: 200,
+        green: 200,
+        blue: 200
       }),
       levelScreenShowColorComponents: true,
       controlsDisabled: false,
@@ -364,9 +364,9 @@ class ColorCoderMainSection extends Component {
   getLevelScreen() {
     return (
       <div className='ColorCoderMainSection__container'>
-        <Header />
+        <Header bg={'dark'}/>
         <div className='ColorCoderMainSection__title'>
-          <SouvlakiTitle size={'med-large'} title={'ColorCoder'} />
+          <SouvlakiTitle bg={'dark'} size={'med-large'} title={'ColorCoder'} />
         </div>
         <ColorDisplay key={'levelScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'even-smaller'}/>
         <div className='ColorCoder__demo-container'>First time? Try this <span className='ColorCoder__demo-link' onClick={this.getSetUpGameFunction(1, true)}>Demo</span></div>
@@ -390,9 +390,9 @@ class ColorCoderMainSection extends Component {
 
     return (
       <div className='ColorCoderMainSection__container'>
-        <Header />
+        <Header bg={'dark'}/>
         <div className='ColorCoderMainSection__title'>
-          <SouvlakiTitle size={'med-large'} title={'ColorCoder'} />
+          <SouvlakiTitle bg={'dark'} size={'med-large'} title={'ColorCoder'} />
         </div>
         <ColorDisplay key={'endScreen'} colorCode={this.state.logoColor} showColorComponents={this.state.levelScreenShowColorComponents} size={'even-smaller'}/>
 

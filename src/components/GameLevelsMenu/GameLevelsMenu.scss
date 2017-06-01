@@ -1,12 +1,16 @@
 @import '../component-styles/base-styles.scss';
 @import '../component-styles/mixins.scss';
 
-$button-color: $main-color;
+$button-color: $main-color-dark;
 $button-radius: $standard-border-radius;
 $button-active-color: $active-color;
 $button-hover-color: $focus-color;
 
 .GameLevelsMenu__container {
+
+  .GameLevelsMenu__title {
+    color: $button-color;
+  }
 
   padding-bottom: 1.5em;
 
@@ -14,12 +18,12 @@ $button-hover-color: $focus-color;
   .button {
     //background: $main-color;
     background: black;
-    color: #888;
+    color: $button-color;
     margin-bottom: 0;
     flex: 0 0 40%;
     font-size: 0.9em;
     padding: 0.7em;
-    border: 1px solid $main-color;
+    border: 1px solid $button-color;
     border-radius: $button-radius;
 
     @include phone-large {

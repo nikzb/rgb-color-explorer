@@ -2,14 +2,18 @@
 @import '../component-styles/base-styles.scss';
 @import '../component-styles/fonts.scss';
 
-$text-shadow-size: 0.03em;
-$rgb-letter-colors: $grey-1;
+$text-shadow-size: 1px;
+$rgb-letter-colors: $grey-3;
 
 .SouvlakiTitle {
   font-family: 'Averia Sans Libre', sans-serif;
   color: $grey-0a;
   margin-bottom: 0;
   font-size: 1.8em;
+
+  &--dark {
+    color: $grey-3;
+  }
 
   @include low-res {
     font-size: 2.4em;
@@ -33,12 +37,22 @@ $rgb-letter-colors: $grey-1;
 
   &--color {
     color: $grey-1;
-    text-shadow: 0.02em 0.02em black; //#B72616;//#3F88C5;//#B72616;
+    text-shadow: $text-shadow-size $text-shadow-size black; //#B72616;//#3F88C5;//#B72616;
+  }
+
+  &--color-dark {
+    color: $grey-3;
+    text-shadow: $text-shadow-size $text-shadow-size $grey-8;
   }
 
   &--coder {
-    color: $grey-0b;
-    text-shadow: 0.02em 0.02em black;//#B72616; //#3F88C5;//#7C8947;
+    color: $grey-3;
+    text-shadow: $text-shadow-size $text-shadow-size black;//#B72616; //#3F88C5;//#7C8947;
+  }
+
+  &--coder-dark {
+    color: $grey-5;
+    text-shadow: $text-shadow-size $text-shadow-size $grey-8;
   }
 
   &--R {
@@ -57,8 +71,8 @@ $rgb-letter-colors: $grey-1;
   }
 
   &--colors {
-    color: $grey-2;
-    text-shadow: $text-shadow-size $text-shadow-size #333; //#B72616;//#3F88C5;//#B72616;
+    color: $grey-4;
+    text-shadow: $text-shadow-size $text-shadow-size $grey-8; //#B72616;//#3F88C5;//#B72616;
   }
 
   // title used for main page (at least for temporary main page created early on)

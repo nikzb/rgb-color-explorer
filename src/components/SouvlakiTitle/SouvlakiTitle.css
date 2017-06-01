@@ -5,6 +5,9 @@
   margin-bottom: 0;
   font-size: 1.8em; }
 
+.SouvlakiTitle--dark {
+  color: #909090; }
+
 @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
   .SouvlakiTitle {
     font-size: 2.4em; } }
@@ -25,27 +28,35 @@
 
 .SouvlakiTitle--color {
   color: dimgrey;
-  text-shadow: 0.02em 0.02em black; }
+  text-shadow: 1px 1px black; }
+
+.SouvlakiTitle--color-dark {
+  color: #909090;
+  text-shadow: 1px 1px gainsboro; }
 
 .SouvlakiTitle--coder {
-  color: #555;
-  text-shadow: 0.02em 0.02em black; }
+  color: #909090;
+  text-shadow: 1px 1px black; }
+
+.SouvlakiTitle--coder-dark {
+  color: darkgrey;
+  text-shadow: 1px 1px gainsboro; }
 
 .SouvlakiTitle--R {
-  color: dimgrey;
-  text-shadow: 0.03em 0.03em #C00; }
+  color: #909090;
+  text-shadow: 1px 1px #C00; }
 
 .SouvlakiTitle--G {
-  color: dimgrey;
-  text-shadow: 0.03em 0.03em #080; }
+  color: #909090;
+  text-shadow: 1px 1px #080; }
 
 .SouvlakiTitle--B {
-  color: dimgrey;
-  text-shadow: 0.03em 0.03em #06F; }
+  color: #909090;
+  text-shadow: 1px 1px #06F; }
 
 .SouvlakiTitle--colors {
-  color: grey;
-  text-shadow: 0.03em 0.03em #333; }
+  color: #A0A0A0;
+  text-shadow: 1px 1px gainsboro; }
 
 .SouvlakiTitle--med-large {
   font-size: 2.4em; }
