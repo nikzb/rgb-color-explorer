@@ -152,6 +152,9 @@ class ColorCoderMainSection extends Component {
     }
 
     if (newCode.length === colorCode.getFullCodeLength()) {
+      // remove focus from button that was last used
+      document.activeElement.blur();
+      
       // Guess code is complete, so process it
       this.state.currentGame.processGuess(
         new ColorCode({

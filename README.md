@@ -19,7 +19,6 @@ To do:
 
 * Color Coder Game
   * Double check font size for Round Number title
-  * Need to remove focus from all buttons in panel when each round is completed
   * Need to figure out feedback arrow spacing - is it different in different browsers? Use svg icons instead?
   * Prevent backspace from navigating so it can function only as a way to delete characters with the keyboard
   * Add transitions between
