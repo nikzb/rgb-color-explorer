@@ -31,16 +31,14 @@
   text-shadow: 1px 1px black; }
 
 .SouvlakiTitle--color-dark {
-  color: #909090;
-  text-shadow: 1px 1px gainsboro; }
+  color: #909090; }
 
 .SouvlakiTitle--coder {
   color: #909090;
   text-shadow: 1px 1px black; }
 
 .SouvlakiTitle--coder-dark {
-  color: darkgrey;
-  text-shadow: 1px 1px gainsboro; }
+  color: darkgrey; }
 
 .SouvlakiTitle--R {
   color: #909090;
@@ -56,7 +54,7 @@
 
 .SouvlakiTitle--colors {
   color: #A0A0A0;
-  text-shadow: 1px 1px silver; }
+  text-shadow: 1px 1px #A0A0A0; }
 
 .SouvlakiTitle--med-large {
   font-size: 2.4em; }

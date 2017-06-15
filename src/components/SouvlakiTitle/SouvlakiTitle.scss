@@ -42,7 +42,7 @@ $rgb-letter-colors: $grey-3;
 
   &--color-dark {
     color: $grey-3;
-    text-shadow: $text-shadow-size $text-shadow-size $grey-8;
+    // text-shadow: $text-shadow-size $text-shadow-size $grey-8;
   }
 
   &--coder {
@@ -52,7 +52,7 @@ $rgb-letter-colors: $grey-3;
 
   &--coder-dark {
     color: $grey-5;
-    text-shadow: $text-shadow-size $text-shadow-size $grey-8;
+    // text-shadow: $text-shadow-size $text-shadow-size $grey-8;
   }
 
   &--R {
@@ -72,7 +72,7 @@ $rgb-letter-colors: $grey-3;
 
   &--colors {
     color: $grey-4;
-    text-shadow: $text-shadow-size $text-shadow-size $grey-6; //#B72616;//#3F88C5;//#B72616;
+    text-shadow: $text-shadow-size $text-shadow-size $grey-4; //#B72616;//#3F88C5;//#B72616;
   }
 
   // title used for main page (at least for temporary main page created early on)

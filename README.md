@@ -5,8 +5,6 @@
 To do:
 
 * Finish fixing colors for dark background
-  * Color Coder title
-    * Fix shadow on game play screen?
   * Try using gradients in background?
     * Need to get body to extend all the way to the bottom of the viewport
 
