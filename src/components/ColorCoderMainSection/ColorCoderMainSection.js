@@ -154,7 +154,7 @@ class ColorCoderMainSection extends Component {
     if (newCode.length === colorCode.getFullCodeLength()) {
       // remove focus from button that was last used
       document.activeElement.blur();
-      
+
       // Guess code is complete, so process it
       this.state.currentGame.processGuess(
         new ColorCode({
@@ -416,7 +416,7 @@ class ColorCoderMainSection extends Component {
   getGamePlayScreen() {
     return (
       <div className='ColorCoderMainSection__container'>
-        <Header title={'ColorCoder'} />
+        <Header bg={'dark'} title={'ColorCoder'} />
         <ColorCoderGuessPanel currentPuzzle={this.state.currentGame.getCurrentPuzzle()} puzzleNumber={this.state.currentGame.currentPuzzleIndex + 1} readyToShowScore={this.state.readyToShowScore}/>
         <ColorDisplay classes={'ColorDisplay--level'} key={'gamePlay'} colorCode={this.state.currentGame.getCurrentColorToGuess()} showColorComponents={this.state.gameScreenShowColorComponents} userCanToggle={false} size={'even-smaller'}/>
         <ColorCoderGuessInProgressDisplay guessInProgress={this.state.guessInProgress} handleDeleteButtonClick={this.handleDeleteButtonClick} isDeleteButtonActive={this.state.isDeleteButtonActive} />
