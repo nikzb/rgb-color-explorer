@@ -24,6 +24,6 @@ const SouvlakiTitle = ({size, title, bg}) => {
       </h1>
     );
   }
-}
+};
 
 export default SouvlakiTitle;

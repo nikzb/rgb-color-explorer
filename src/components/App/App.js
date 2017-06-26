@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import RGBMainSection from '../RGBMainSection/RGBMainSection';
 import ColorCoderMainSection from '../ColorCoderMainSection/ColorCoderMainSection';
 import SouvlakiMainSection from '../SouvlakiMainSection/SouvlakiMainSection';
+import BinaryCountingMain from '../BinaryCountingMain/BinaryCountingMain';
 // import {Helmet} from 'react-helmet';
 
 import './App.css';
@@ -24,7 +25,8 @@ class App extends Component {
         {/* <Header /> */}
         <Route exact path='/rgb' component={RGBMainSection} />
         <Route exact path='/color-coder' component={ColorCoderMainSection} />
-        <Route exact path='/' component={SouvlakiMainSection} />
+        {/* <Route exact path='/' component={SouvlakiMainSection} /> */}
+        <Route exact path='/' component={BinaryCountingMain} />
       </div>
     );
   }

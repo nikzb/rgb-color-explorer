@@ -1,0 +1,22 @@
+.BitPanel {
+  .BitPanel__face {
+    border: 1px solid black;
+    border-radius: 0.1em;
+    font-size: 5.0em;
+    padding: 0.1em 0.3em;
+    color: white;
+    cursor: pointer;
+    backface-visibility: hidden;
+    position: absolute;
+  }
+
+  .BitPanel__face-front {
+    background: blue;
+    cursor: pointer;
+  }
+
+  .BitPanel__face-back {
+    background: red;
+    cursor: pointer;
+  }
+}
