@@ -1,4 +1,6 @@
 .BitPanel {
+  width: 6.5em;
+
   .BitPanel__face {
     border: 1px solid black;
     border-radius: 0.1em;
@@ -11,12 +13,12 @@
   }
 
   .BitPanel__face-front {
-    background: blue;
+    background: #286DA8;
     cursor: pointer;
   }
 
   .BitPanel__face-back {
-    background: red;
+    background: #CD5360;
     cursor: pointer;
   }
 }

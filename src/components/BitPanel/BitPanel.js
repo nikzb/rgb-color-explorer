@@ -2,7 +2,7 @@ import React from 'react';
 
 import './BitPanel.css';
 
-const BitPanel = ({numberToShow, angle, onClick}) => {
+const BitPanel = ({angle, onClick}) => {
   const bitPanelStyleFront = {
     transform: `rotateX(${angle}deg`
   };
@@ -20,9 +20,9 @@ const BitPanel = ({numberToShow, angle, onClick}) => {
   };
 
   return (
-    <div className="BitPanel">
-      <div style={bitPanelStyleFront} className="BitPanel__face BitPanel__face-front">0</div>
-      <div style={bitPanelStyleBack} className="BitPanel__face BitPanel__face-back">1</div>
+    <div className="BitPanel" onClick={onClick}>
+      <div style={bitPanelStyleFront} className="BitPanel__face BitPanel__face-front" onClick={onClick}>0</div>
+      <div style={bitPanelStyleBack} className="BitPanel__face BitPanel__face-back" onClick={onClick}>1</div>
     </div>
   );
 };
