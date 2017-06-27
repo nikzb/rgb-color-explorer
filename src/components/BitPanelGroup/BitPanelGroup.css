@@ -3,4 +3,5 @@
   justify-content: center;
   border: 1px solid green;
   perspective: 100em;
-  transform-style: preserve-3d; }
+  transform-style: preserve-3d;
+  flex-direction: row-reverse; }

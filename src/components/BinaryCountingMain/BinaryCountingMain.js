@@ -24,31 +24,65 @@ class BinaryCountingMain extends Component {
 
   getClickHandler(index) {
     return () => {
-      this.initiateFlip(index);
+      this.initiateFlip(index, true);
     }
   }
 
   // @param index: the index of the bit panel to be rotated
-  // @param firstIter: boolean value signifying that this is the initial rotation of this bit panel within this flip
-  rotate(index, firstIter) {
+  // @param firstIter: boolean value signifying if this is the initial rotation of this bit panel within this flip
+  // @param shouldPropagate: boolean value signifying if a panel being flipped to 0 should cause the next panel to its left to flip
+  rotate({index, firstIter, shouldPropagate, fromClick}) {
     const bitList = this.state.bitList;
     const angle = bitList.get(index).get('angle');
 
-    const rotateOneDegree = () => {
+    const rotateOneDegree = (index) => {
       this.setState({
         bitList: bitList.update(index, mapThingy => mapThingy.set('angle', (angle + 1) % 360))
       });
     };
 
+    // if (firstIter || (angle !== 0 && angle !== 180)) {
+    //   rotateOneDegree(index);
+    //   setTimeout(() => { this.rotate(index, false) }, 2);
+    // } else if (angle === 0) {
+    //   this.initiateFlip(index + 1);
+    // }
+
+    // if (firstIter || (angle !== 0 && angle !== 180)) {
+    //   rotateOneDegree(index);
+    //   let time = 10;
+    //   if (!fromClick) {
+    //     time = 1;
+    //   }
+    //   setTimeout(() => { this.rotate({index, firstIter: false, shouldPropagate: true, fromClick}) }, time);
+    // }
+    //
+    // if (shouldPropagate && angle === 181) {
+    //   this.initiateFlip(index + 1, false);
+    // }
+
     if (firstIter || (angle !== 0 && angle !== 180)) {
-      rotateOneDegree();
-      setTimeout(() => { this.rotate(index, false) }, 2);
+      rotateOneDegree(index);
+      let time = 11.8;
+      if (!fromClick) {
+        time = 1;
+      }
+      setTimeout(() => { this.rotate({index, firstIter: false, shouldPropagate: true, fromClick}) }, time);
     }
+
+    if (shouldPropagate && angle === 181) {
+      this.initiateFlip(index + 1, false);
+    }
+
+
   }
 
   // @param index: the index of the bit panel to be flipped
-  initiateFlip(index) {
-    this.rotate(index, true);
+  initiateFlip(index, fromClick) {
+    // debugger;
+    if (index < this.state.bitList.size) {
+      this.rotate({index, firstIter: true, shouldPropagate: true, fromClick});
+    }
   }
 
   render() {
