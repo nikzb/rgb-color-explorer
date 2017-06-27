@@ -67,7 +67,7 @@ class BinaryCountingMain extends Component {
       if (!fromClick) {
         time = 1;
       }
-      setTimeout(() => { this.rotate({index, firstIter: false, shouldPropagate: true, fromClick}) }, time);
+      setTimeout(() => { this.rotate({index, firstIter: false, shouldPropagate: true, fromClick}) }, 2);
     }
 
     if (shouldPropagate && angle === 181) {
