@@ -14,7 +14,8 @@ class BinaryCountingMain extends Component {
         Map({angle: 0, extraRotation: false, onClick: this.getClickHandler(0)}),
         Map({angle: 0, extraRotation: false, onClick: this.getClickHandler(1)}),
         Map({angle: 0, extraRotation: false, onClick: this.getClickHandler(2)})
-      ])
+      ]),
+      numberValue: 0
     };
   }
 
@@ -40,7 +41,6 @@ class BinaryCountingMain extends Component {
       rotateOneDegree(index);
       setTimeout(() => { this.rotate({index, firstIter: false, shouldPropagate: true}) }, 2);
     } else {
-      console.log(index + ' ' + this.state.bitList.get(index).get('extraRotation'));
       if (this.state.bitList.get(index).get('extraRotation')) {
         this.setState({
           bitList: this.state.bitList.update(index, mapThingy => mapThingy.set('extraRotation', false))
@@ -49,6 +49,8 @@ class BinaryCountingMain extends Component {
         setTimeout(() => { this.rotate({index, firstIter: false, shouldPropagate: true}) }, 2);
       }
     }
+
+    this.updateNumberValue(this.state.numberValue);
 
     if (shouldPropagate && angle === 181) {
       this.initiateFlip(index + 1, false);
@@ -75,6 +77,33 @@ class BinaryCountingMain extends Component {
     }
   }
 
+  // Value must go up except if overflowing back to 0.
+  // The oldValue parameter is used to enforce this rule. This is necessary because of a bug that causes the wrong value to be returned in some cases, due to timing issues.
+  updateNumberValue(oldValue) {
+    const getNumberShowing = (angle) => {
+      if (angle < 90 || angle >= 270) {
+        return 0;
+      } else {
+        return 1;
+      }
+    }
+
+    let binaryString = '';
+
+    for (let index = 0; index < this.state.bitList.size; index += 1) {
+      binaryString = getNumberShowing(this.state.bitList.get(index).get('angle')) + binaryString;
+    }
+
+    const newValue = parseInt(binaryString, 2);
+    const maxValue = Math.pow(2, this.state.bitList.size) - 1;
+
+    if (newValue > oldValue || (oldValue === maxValue && newValue === 0)) {
+      this.setState({
+        numberValue: newValue
+      });
+    }
+  }
+
   render() {
     const bitInfoArray = this.state.bitList.map((mapThingy) => {
       return mapThingy.toJS();
@@ -82,6 +111,7 @@ class BinaryCountingMain extends Component {
 
     return (
       <div className='BinaryCountingMain'>
+        <div className='unsigned-int'>{this.state.numberValue}</div>
         <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={false} />
       </div>
     )
