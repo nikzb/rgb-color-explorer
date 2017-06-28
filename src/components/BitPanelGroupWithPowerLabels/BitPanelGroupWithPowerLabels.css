@@ -4,4 +4,9 @@
   border: 1px solid green;
   perspective: 100em;
   transform-style: preserve-3d;
-  flex-direction: row-reverse; }
+  flex-direction: row-reverse;
+  height: 11em; }
+
+.BitPanelWithLabel {
+  z-index: -1;
+  cursor: pointer; }

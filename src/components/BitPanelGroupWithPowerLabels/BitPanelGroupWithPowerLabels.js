@@ -4,7 +4,6 @@ import BitPanel from '../BitPanel/BitPanel';
 import './BitPanelGroupWithPowerLabels.css';
 
 const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower}) => {
-  console.log(bitInfoArray);
   const bitPanelsWithLabels = bitInfoArray.map((bitInfo, index) => {
     let powerDiv;
     if (showCalculatedPower) {
@@ -13,7 +12,7 @@ const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower}) => {
       powerDiv = <div className="PowerLabel">{2}<sup>{index}</sup></div>;
     }
     return (
-      <div key={index}>
+      <div key={index} className='BitPanelWithLabel'>
         {powerDiv}
         <BitPanel angle={bitInfo.angle} onClick={bitInfo.onClick} />
       </div>
