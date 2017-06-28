@@ -19,6 +19,17 @@ class BinaryCountingMain extends Component {
       inReset: false
     };
     this.resetAllPanels = this.resetAllPanels.bind(this);
+    this.addBitPanel = this.addBitPanel.bind(this);
+    this.removeBitPanel = this.removeBitPanel.bind(this);
+  }
+
+  newBitPanelObject() {
+    return Map({
+      angle: 0,
+      extraRotation: false,
+      resetting: false,
+      onClick: this.getClickHandler(this.state.bitList.size)
+    })
   }
 
   isResetting() {
@@ -92,6 +103,10 @@ class BinaryCountingMain extends Component {
   }
 
   resetAllPanels() {
+    if (this.state.numberValue === 0) {
+      return;
+    }
+
     this.setState({
       inReset: true
     })
@@ -150,6 +165,23 @@ class BinaryCountingMain extends Component {
     // }
   }
 
+  addBitPanel() {
+    if (this.state.bitList.size < 8) {
+      this.setState({
+        bitList: this.state.bitList.push(this.newBitPanelObject())
+      });
+    }
+  }
+
+  removeBitPanel() {
+    if (this.state.bitList.size > 1) {
+      this.setState({
+        bitList: this.state.bitList.delete(this.state.bitList.size - 1)
+      }, () => { this.updateNumberValue(-1); } );
+    }
+
+  }
+
   render() {
     const bitInfoArray = this.state.bitList.map((mapThingy) => {
       return mapThingy.toJS();
@@ -160,6 +192,8 @@ class BinaryCountingMain extends Component {
         <div className='BinaryCountingMain__unsigned-int'>{this.state.numberValue}</div>
         <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={false} />
         <button className='button BinaryCountingMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
+        <button className='button' onClick={this.removeBitPanel}>-</button>
+        <button className='button' onClick={this.addBitPanel}>+</button>
       </div>
     )
   }
