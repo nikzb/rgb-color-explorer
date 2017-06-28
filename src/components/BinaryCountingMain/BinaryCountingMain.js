@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Map, List } from 'immutable';
 
 import BitPanelGroup from '../BitPanelGroup/BitPanelGroup';
+import BitPanelGroupWithPowerLabels from '../BitPanelGroupWithPowerLabels/BitPanelGroupWithPowerLabels';
 
 import './BinaryCountingMain.css';
 
@@ -81,7 +82,7 @@ class BinaryCountingMain extends Component {
 
     return (
       <div className='BinaryCountingMain'>
-        <BitPanelGroup bitInfoArray={bitInfoArray} />
+        <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={false} />
       </div>
     )
   }
