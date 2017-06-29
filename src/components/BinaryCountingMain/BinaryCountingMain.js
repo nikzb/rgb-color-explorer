@@ -38,7 +38,6 @@ class BinaryCountingMain extends Component {
 
   getClickHandler(index) {
     return () => {
-      console.log(this.isResetting());
       if (!this.isResetting()) {
         this.initiateFlip(index);
       }
@@ -51,16 +50,17 @@ class BinaryCountingMain extends Component {
   rotate({index, firstIter, shouldPropagate, isAReset}) {
     const waitTime = 2;
     const angle = this.state.bitList.get(index).get('angle');
-    console.log('index ' + index + ' angle ' + angle + ' should propogate ' + shouldPropagate + ' is resetting ' + this.state.bitList.get(index).get('resetting'));
+    // console.log('index ' + index + ' angle ' + angle + ' should propogate ' + shouldPropagate + ' is resetting ' + this.state.bitList.get(index).get('resetting'));
 
     const rotateOneDegree = (index) => {
-      this.setState({
-        bitList: this.state.bitList.update(index, mapThingy => mapThingy.set('angle', (angle + 1) % 360))
+      this.setState(previousState => {
+        return {
+          bitList: previousState.bitList.update(index, immutObj => immutObj.set('angle', (angle + 1) % 360))
+        }
       });
     };
 
     if (this.isResetting()) {
-      console.log(index + ' ' + angle);
       if (angle === 0) {
         const totalAngle = this.state.bitList.reduce((acc, immutObj) => {
           return acc + immutObj.get('angle');
@@ -81,8 +81,10 @@ class BinaryCountingMain extends Component {
         setTimeout(() => { this.rotate({index, firstIter: false, shouldPropagate}) }, waitTime);
       } else {
         if (this.state.bitList.get(index).get('extraRotation')) {
-          this.setState({
-            bitList: this.state.bitList.update(index, mapThingy => mapThingy.set('extraRotation', false))
+          this.setState(previousState => {
+            return {
+              bitList: previousState.bitList.update(index, immutObj => immutObj.set('extraRotation', false))
+            }
           });
           rotateOneDegree(index);
           setTimeout(() => { this.rotate({index, firstIter: false, shouldPropagate}) }, waitTime);
@@ -97,11 +99,13 @@ class BinaryCountingMain extends Component {
     }
   }
 
+  // Take the index of where to look in bitList and return true if that panel is currently rotating
   isRotating(index) {
     const angle = this.state.bitList.get(index).get('angle');
     return angle !== 0 && angle !== 180;
   }
 
+  // Get all the panels to rotate to show 0
   resetAllPanels() {
     if (this.state.numberValue === 0) {
       return;
@@ -109,24 +113,23 @@ class BinaryCountingMain extends Component {
 
     this.setState({
       inReset: true
-    })
-
-    this.state.bitList.forEach((immutObj, index) => {
-      if (!this.isRotating(index) && immutObj.get('angle') === 180) {
-        console.log('initiating rotation for index ' + index);
-        this.rotate({index, firstIter: true, shouldPropagate: false, isAReset: true });
-      }
+    }, () => {
+      this.state.bitList.forEach((immutObj, index) => {
+        if (!this.isRotating(index) && immutObj.get('angle') === 180) {
+          this.rotate({index, firstIter: true, shouldPropagate: false, isAReset: true });
+        }
+      });
     });
   }
 
   // @param index: the index of the bit panel to be flipped
   initiateFlip(index) {
-    const bitList = this.state.bitList;
-    if (index < bitList.size) {
-      if (this.isRotating(index) || bitList.get(index).get('extraRotation')) {
-        this.setState({
-          //bitList: bitList.get(index).set('extraRotation', true)
-          bitList: bitList.update(index, mapThingy => mapThingy.set('extraRotation', true))
+    if (index < this.state.bitList.size) {
+      if (this.isRotating(index) || this.state.bitList.get(index).get('extraRotation')) {
+        this.setState(previousState => {
+          return {
+            bitList: previousState.bitList.update(index, immutObj => immutObj.set('extraRotation', true))
+          }
         });
       } else {
         this.rotate({index, firstIter: true, shouldPropagate: true});
@@ -167,8 +170,10 @@ class BinaryCountingMain extends Component {
 
   addBitPanel() {
     if (this.state.bitList.size < 8) {
-      this.setState({
-        bitList: this.state.bitList.push(this.newBitPanelObject())
+      this.setState(previousState => {
+        return {
+          bitList: previousState.bitList.push(this.newBitPanelObject())
+        };
       });
     }
   }
@@ -179,12 +184,11 @@ class BinaryCountingMain extends Component {
         bitList: this.state.bitList.delete(this.state.bitList.size - 1)
       }, () => { this.updateNumberValue(-1); } );
     }
-
   }
 
   render() {
-    const bitInfoArray = this.state.bitList.map((mapThingy) => {
-      return mapThingy.toJS();
+    const bitInfoArray = this.state.bitList.map((immutObj) => {
+      return immutObj.toJS();
     }).toJS();
 
     return (
