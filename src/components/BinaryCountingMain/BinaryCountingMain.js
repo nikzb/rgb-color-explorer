@@ -11,9 +11,9 @@ class BinaryCountingMain extends Component {
     super(props);
     this.state = {
       bitList: List([
-        Map({angle: 0, extraRotation: false, resetting: false, onClick: this.getClickHandler(0)}),
-        Map({angle: 0, extraRotation: false, resetting: false, onClick: this.getClickHandler(1)}),
-        Map({angle: 0, extraRotation: false, resetting: false, onClick: this.getClickHandler(2)})
+        Map({angle: 0, extraRotation: false, onClick: this.getClickHandler(0)}),
+        Map({angle: 0, extraRotation: false, onClick: this.getClickHandler(1)}),
+        Map({angle: 0, extraRotation: false, onClick: this.getClickHandler(2)})
       ]),
       numberValue: 0,
       inReset: false
@@ -27,7 +27,6 @@ class BinaryCountingMain extends Component {
     return Map({
       angle: 0,
       extraRotation: false,
-      resetting: false,
       onClick: this.getClickHandler(this.state.bitList.size)
     })
   }
