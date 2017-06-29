@@ -47,9 +47,10 @@ class BinaryCountingMain extends Component {
   // @param index: the index of the bit panel to be rotated
   // @param firstIter: boolean value signifying if this is the initial rotation of this bit panel within this flip
   // @param shouldPropagate: boolean value signifying if a panel being flipped to 0 should cause the next panel to its left to flip
-  rotate({index, firstIter, shouldPropagate, isAReset}) {
+  rotate({index, firstIter, shouldPropagate}) {
     const waitTime = 2;
     const angle = this.state.bitList.get(index).get('angle');
+    console.log(index + ' ' + angle);
     // console.log('index ' + index + ' angle ' + angle + ' should propogate ' + shouldPropagate + ' is resetting ' + this.state.bitList.get(index).get('resetting'));
 
     const rotateOneDegree = (index) => {
@@ -73,15 +74,21 @@ class BinaryCountingMain extends Component {
         }
       } else {
         rotateOneDegree(index);
-        setTimeout(() => { this.rotate({index, firstIter: false, shouldPropagate: false, isAReset: true }) }, waitTime);
+        setTimeout(() => { this.rotate({index, firstIter: false, shouldPropagate: false }) }, waitTime);
       }
     } else {
       if (firstIter || (angle !== 0 && angle !== 180)) {
+        if (firstIter && shouldPropagate && angle === 180) {
+          this.initiateFlip(index + 1);
+        }
         rotateOneDegree(index);
         setTimeout(() => { this.rotate({index, firstIter: false, shouldPropagate}) }, waitTime);
       } else {
         if (this.state.bitList.get(index).get('extraRotation')) {
-          this.setState(previousState => {
+          if (shouldPropagate && angle === 180) {
+            this.initiateFlip(index + 1);
+          }
+           this.setState(previousState => {
             return {
               bitList: previousState.bitList.update(index, immutObj => immutObj.set('extraRotation', false))
             }
@@ -94,9 +101,9 @@ class BinaryCountingMain extends Component {
 
     this.updateNumberValue(this.state.numberValue);
 
-    if (shouldPropagate && angle === 181) {
-      this.initiateFlip(index + 1, false);
-    }
+    // if (shouldPropagate && angle === 181) {
+    //   this.initiateFlip(index + 1);
+    // }
   }
 
   // Take the index of where to look in bitList and return true if that panel is currently rotating
@@ -116,7 +123,7 @@ class BinaryCountingMain extends Component {
     }, () => {
       this.state.bitList.forEach((immutObj, index) => {
         if (!this.isRotating(index) && immutObj.get('angle') === 180) {
-          this.rotate({index, firstIter: true, shouldPropagate: false, isAReset: true });
+          this.rotate({index, firstIter: true, shouldPropagate: false});
         }
       });
     });
@@ -157,6 +164,8 @@ class BinaryCountingMain extends Component {
     const newValue = parseInt(binaryString, 2);
     const maxValue = Math.pow(2, this.state.bitList.size) - 1;
 
+    console.log('old vs new' + oldValue + ' ' + newValue);
+
     this.setState({
       numberValue: newValue
     });
@@ -196,8 +205,10 @@ class BinaryCountingMain extends Component {
         <div className='BinaryCountingMain__unsigned-int'>{this.state.numberValue}</div>
         <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={false} />
         <button className='button BinaryCountingMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
-        <button className='button' onClick={this.removeBitPanel}>-</button>
-        <button className='button' onClick={this.addBitPanel}>+</button>
+        <div className='BinaryCountingMain__add-remove-button-container'>
+          <button className='button' onClick={this.removeBitPanel}>-</button>
+          <button className='button' onClick={this.addBitPanel}>+</button>
+        </div>
       </div>
     )
   }

@@ -4,3 +4,6 @@
 
 .BinaryCountingMain__reset-button.button {
   border-radius: 0.5rem; }
+
+.BinaryCountingMain__unsigned-int {
+  font-size: 8em; }

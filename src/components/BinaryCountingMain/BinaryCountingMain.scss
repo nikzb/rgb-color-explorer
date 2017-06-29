@@ -6,6 +6,9 @@
 
   &__reset-button.button {
     border-radius: $standard-border-radius;
-    
+  }
+
+  &__unsigned-int {
+    font-size: 8em;
   }
 }
