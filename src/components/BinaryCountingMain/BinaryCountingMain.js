@@ -53,8 +53,6 @@ class BinaryCountingMain extends Component {
     for (let index = 0; index < this.state.bitList.size; index += 1) {
 
       let immutObj = this.state.bitList.get(index);
-      console.log('in reset: ' + this.isResetting());
-      console.log('index: ' + index + ' angle: ' + immutObj.get('angle'));
 
       if (this.isResetting()) {
         immutObj = immutObj.set('extraRotation', false);
