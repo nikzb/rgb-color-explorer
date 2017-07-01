@@ -223,6 +223,7 @@ class BinaryCountingMain extends Component {
         <div className='BinaryCountingMain__unsigned-int'>{this.state.numberValue}</div>
         <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower}/>
         <button className='button BinaryCountingMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
+        <div className='BinaryCountingMain__bits-buttons-label'>Bits</div>
         <div className='BinaryCountingMain__add-remove-button-container'>
           <button className='button' onClick={this.removeBitPanel}>-</button>
           <button className='button' onClick={this.addBitPanel}>+</button>
