@@ -16,11 +16,13 @@ class BinaryCountingMain extends Component {
         Map({angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(2)})
       ]),
       numberValue: 0,
-      inReset: false
+      inReset: false,
+      calculatePower: true
     };
     this.resetAllPanels = this.resetAllPanels.bind(this);
     this.addBitPanel = this.addBitPanel.bind(this);
     this.removeBitPanel = this.removeBitPanel.bind(this);
+    this.toggleCalculatedPower = this.toggleCalculatedPower.bind(this);
   }
 
   newBitPanelObject() {
@@ -194,6 +196,14 @@ class BinaryCountingMain extends Component {
     }
   }
 
+  toggleCalculatedPower() {
+    this.setState((previousState) => {
+      return {
+        calculatePower: !previousState.calculatePower
+      }
+    });
+  }
+
   componentDidMount() {
     setInterval(() => {
       // If at least one panel is rotating, call the rotate method
@@ -211,7 +221,7 @@ class BinaryCountingMain extends Component {
     return (
       <div className='BinaryCountingMain'>
         <div className='BinaryCountingMain__unsigned-int'>{this.state.numberValue}</div>
-        <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={false} />
+        <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower}/>
         <button className='button BinaryCountingMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
         <div className='BinaryCountingMain__add-remove-button-container'>
           <button className='button' onClick={this.removeBitPanel}>-</button>
