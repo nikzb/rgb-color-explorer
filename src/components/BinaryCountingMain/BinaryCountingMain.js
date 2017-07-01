@@ -11,9 +11,9 @@ class BinaryCountingMain extends Component {
     super(props);
     this.state = {
       bitList: List([
-        Map({angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(0)}),
-        Map({angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(1)}),
-        Map({angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(2)})
+        Map({index: 0, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(0)}),
+        Map({index: 1, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(1)}),
+        Map({index: 2, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(2)})
       ]),
       numberValue: 0,
       inReset: false,
@@ -25,8 +25,9 @@ class BinaryCountingMain extends Component {
     this.toggleCalculatedPower = this.toggleCalculatedPower.bind(this);
   }
 
-  newBitPanelObject() {
+  newBitPanelObject(index) {
     return Map({
+      index,
       angle: 0,
       isRotating: false,
       extraRotation: false,
@@ -179,7 +180,7 @@ class BinaryCountingMain extends Component {
     if (this.state.bitList.size < 8) {
       this.setState(previousState => {
         return {
-          bitList: previousState.bitList.push(this.newBitPanelObject())
+          bitList: previousState.bitList.push(this.newBitPanelObject(previousState.bitList.size))
         };
       });
     }

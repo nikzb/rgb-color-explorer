@@ -8,12 +8,9 @@ To do:
   * Try using gradients in background?
     * Need to get body to extend all the way to the bottom of the viewport
 
-
 * Look at what happens when there is no internet connection!
   * Either need to include font so it works with offline version, or need to tweak the fallback fonts to avoid ugliness
   * Need to include fonts in files so that they don't need to be fetched separately
-
-* Put up on Souvlaki.io
 
 * Color Coder Game
   * Double check font size for Round Number title
