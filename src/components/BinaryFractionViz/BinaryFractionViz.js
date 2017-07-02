@@ -86,7 +86,6 @@ class BinaryFractionViz extends React.Component {
     const width = this.props.width - 2 * buffer;
     const height = this.props.width * 0.3;
 
-
     return (
       <svg width={this.props.width} height={height}>
         {this.bar({width, height: height * 0.4, xLeft: buffer, value: this.props.value})}

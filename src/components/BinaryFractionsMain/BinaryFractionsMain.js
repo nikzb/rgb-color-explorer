@@ -228,7 +228,7 @@ class BinaryFractionsMain extends Component {
     return (
       <div className='BinaryFractionsMain'>
         <div className='BinaryFractionsMain__value'>{this.state.numberValue}</div>
-        <BinaryFractionViz bitInfoArray={bitInfoArray} value={this.state.numberValue} width={512} height={128}/>
+        <BinaryFractionViz bitInfoArray={bitInfoArray} value={this.state.numberValue} width={800} height={128}/>
         <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} directionClass={'left-to-right'}/>
         <button className='button BinaryFractionsMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
         <div className='BinaryFractionsMain__bits-buttons-label'>Bits</div>
