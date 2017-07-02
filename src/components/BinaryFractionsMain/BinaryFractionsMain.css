@@ -1,0 +1,9 @@
+.BinaryFractionsMain {
+  transform: scale(1, 1);
+  transform-origin: 50% 0%; }
+
+.BinaryFractionsMain__reset-button.button {
+  border-radius: 0.5rem; }
+
+.BinaryFractionsMain__value {
+  font-size: 8em; }

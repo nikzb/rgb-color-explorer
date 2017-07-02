@@ -1,5 +1,7 @@
 .BitPanel {
-  width: 6.5em; }
+  width: 6em;
+  margin-left: 0.25em;
+  margin-right: 0.25em; }
 
 .BitPanel .BitPanel__face {
   border: 1px solid black;

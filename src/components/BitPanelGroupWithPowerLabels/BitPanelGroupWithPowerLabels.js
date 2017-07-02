@@ -7,13 +7,19 @@ import './BitPanelGroupWithPowerLabels.css';
 //  bitInfoArray: array of objects with info for each bit that will be shown, including the click handler
 //  showCalculatedPower: boolean - true if should show calculated power instead of base / exponent
 //  toggleCalculatedPower: function that toggles from calculated power to not
-const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggleCalculatedPower}) => {
+const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggleCalculatedPower, directionClass=''}) => {
   const bitPanelsWithLabels = bitInfoArray.map((bitInfo, index) => {
     let powerDiv;
     if (showCalculatedPower) {
-      powerDiv = <div className="PowerLabel" onClick={toggleCalculatedPower}>{Math.pow(2, bitInfo.index)}</div>
+      let calculatedPower;
+      if (bitInfo.exponent >= 0) {
+        calculatedPower = Math.pow(2, bitInfo.exponent);
+      } else {
+        calculatedPower = <span><sup>{1}</sup>{'\u2044'}<sub>{Math.pow(2, -bitInfo.exponent)}</sub></span>;
+      }
+      powerDiv = <div className="BitPanelWithLabel__power" onClick={toggleCalculatedPower}>{calculatedPower}</div>;
     } else {
-      powerDiv = <div className="PowerLabel" onClick={toggleCalculatedPower}>{2}<sup>{bitInfo.index}</sup></div>;
+      powerDiv = <div className="BitPanelWithLabel__power" onClick={toggleCalculatedPower}>{2}<sup>{bitInfo.exponent}</sup></div>;
     }
     return (
       <div key={index} className='BitPanelWithLabel'>
@@ -23,8 +29,10 @@ const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggle
     );
   });
 
+  const classes = `BitPanelGroupWithLabels BitPanelGroupWithLabels--${directionClass}`;
+
   return (
-    <div className="BitPanelGroupWithLabels">
+    <div className={classes}>
       {bitPanelsWithLabels}
     </div>
   );

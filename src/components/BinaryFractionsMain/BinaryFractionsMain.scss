@@ -1,0 +1,14 @@
+@import '../component-styles/base-styles.scss';
+
+.BinaryFractionsMain {
+  transform: scale(1.0, 1.0);
+  transform-origin: 50% 0%;
+
+  &__reset-button.button {
+    border-radius: $standard-border-radius;
+  }
+
+  &__value {
+    font-size: 8em;
+  }
+}

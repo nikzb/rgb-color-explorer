@@ -5,6 +5,7 @@ import RGBMainSection from '../RGBMainSection/RGBMainSection';
 import ColorCoderMainSection from '../ColorCoderMainSection/ColorCoderMainSection';
 import SouvlakiMainSection from '../SouvlakiMainSection/SouvlakiMainSection';
 import BinaryCountingMain from '../BinaryCountingMain/BinaryCountingMain';
+import BinaryFractionsMain from '../BinaryFractionsMain/BinaryFractionsMain';
 // import {Helmet} from 'react-helmet';
 
 import './App.css';
@@ -26,7 +27,7 @@ class App extends Component {
         <Route exact path='/rgb' component={RGBMainSection} />
         <Route exact path='/color-coder' component={ColorCoderMainSection} />
         {/* <Route exact path='/' component={SouvlakiMainSection} /> */}
-        <Route exact path='/' component={BinaryCountingMain} />
+        <Route exact path='/' component={BinaryFractionsMain} />
       </div>
     );
   }

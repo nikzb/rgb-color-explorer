@@ -4,16 +4,17 @@ import { Map, List } from 'immutable';
 import BitPanelGroup from '../BitPanelGroup/BitPanelGroup';
 import BitPanelGroupWithPowerLabels from '../BitPanelGroupWithPowerLabels/BitPanelGroupWithPowerLabels';
 
-import './BinaryCountingMain.css';
+import './BinaryFractionsMain.css';
 
-class BinaryCountingMain extends Component {
+class BinaryFractionsMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
       bitList: List([
-        Map({exponent: 0, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(0)}),
-        Map({exponent: 1, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(1)}),
-        Map({exponent: 2, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(2)})
+        Map({exponent: -1, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(0)}),
+        Map({exponent: -2, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(1)}),
+        Map({exponent: -3, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(2)}),
+        Map({exponent: -4, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(3)})
       ]),
       numberValue: 0,
       inReset: false,
@@ -25,9 +26,9 @@ class BinaryCountingMain extends Component {
     this.toggleCalculatedPower = this.toggleCalculatedPower.bind(this);
   }
 
-  newBitPanelObject() {
+  newBitPanelObject(index) {
     return Map({
-      exponent: this.state.bitList.size,
+      exponent: -1-this.state.bitList.size,
       angle: 0,
       isRotating: false,
       extraRotation: false,
@@ -167,13 +168,17 @@ class BinaryCountingMain extends Component {
       }
     }
 
-    let binaryString = '';
+    let sum = 0;
 
     for (let index = 0; index < bitList.size; index += 1) {
-      binaryString = getNumberShowing(bitList.get(index).get('angle')) + binaryString;
+      const bit = getNumberShowing(bitList.get(index).get('angle'));
+
+      if (bit === 1) {
+        sum += Math.pow(2, -(index + 1));
+      }
     }
 
-    return parseInt(binaryString, 2);
+    return sum;
   }
 
   addBitPanel() {
@@ -209,7 +214,7 @@ class BinaryCountingMain extends Component {
     setInterval(() => {
       // If at least one panel is rotating, call the rotate method
       if (this.state.bitList.filter(immutObj => immutObj.get('isRotating')).size > 0) {
-        this.rotate({shouldPropagate: true})
+        this.rotate({shouldPropagate: false})
       }
     }, 2);
   }
@@ -220,12 +225,12 @@ class BinaryCountingMain extends Component {
     }).toJS();
 
     return (
-      <div className='BinaryCountingMain'>
-        <div className='BinaryCountingMain__unsigned-int'>{this.state.numberValue}</div>
-        <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} />
-        <button className='button BinaryCountingMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
-        <div className='BinaryCountingMain__bits-buttons-label'>Bits</div>
-        <div className='BinaryCountingMain__add-remove-button-container'>
+      <div className='BinaryFractionsMain'>
+        <div className='BinaryFractionsMain__value'>{this.state.numberValue}</div>
+        <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} directionClass={'left-to-right'}/>
+        <button className='button BinaryFractionsMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
+        <div className='BinaryFractionsMain__bits-buttons-label'>Bits</div>
+        <div className='BinaryFractionsMain__add-remove-button-container'>
           <button className='button' onClick={this.removeBitPanel}>-</button>
           <button className='button' onClick={this.addBitPanel}>+</button>
         </div>
@@ -234,4 +239,4 @@ class BinaryCountingMain extends Component {
   }
 }
 
-export default BinaryCountingMain;
+export default BinaryFractionsMain;
