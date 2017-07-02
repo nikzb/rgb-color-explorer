@@ -18,7 +18,7 @@ class BinaryFractionViz extends React.Component {
         );
         if (denominator <= 16) {
           const textStyle = {
-            fontSize: tickHeight / 2,
+            fontSize: tickHeight * 0.55,
             fontFamily: "monospace",
             fontWeight: "normal"
           }
@@ -29,11 +29,21 @@ class BinaryFractionViz extends React.Component {
       }
     }
 
+    const textStyle = {
+      fontSize: height * 0.55,
+      fontFamily: "monospace",
+      fontWeight: "normal"
+    }
+
     return (
       <g stroke={color}>
-        <line x1={xLeft} y1={yTop} x2={xLeft} y2={yTop + height} strokeWidth={4}/>
-        <line x1={xLeft + width} y1={yTop} x2={xLeft + width} y2={yTop + height} strokeWidth={4} />
+        { /* First two lines are for 0 on the left, 1 on the right */ }
+        <line x1={xLeft} y1={yTop} x2={xLeft} y2={yTop + height * 0.9} strokeWidth={4}/>
+        <line x1={xLeft + width} y1={yTop} x2={xLeft + width} y2={yTop + height * 0.9} strokeWidth={4} />
         {ticks}
+        { /* First two labels are for 0 on the left, 1 on the right */ }
+        <text x={xLeft} y={yTop + height * 1.4} textAnchor="middle" strokeWidth={0} style={textStyle}>0</text>
+        <text x={xLeft + width} y={yTop + height * 1.4} textAnchor="middle" strokeWidth={0} style={textStyle}>1</text>
         {labels}
       </g>
     )
