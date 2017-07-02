@@ -1,3 +1,5 @@
+@import '../component-styles/base-styles.scss';
+
 .BitPanel {
   width: 6em;
   margin-left: 0.25em;
@@ -17,13 +19,13 @@
   }
 
   .BitPanel__face-front {
-    background: #286DA8;
+    background: $main-blue;//#286DA8;
     cursor: pointer;
 
   }
 
   .BitPanel__face-back {
-    background: #CD5360;
+    background: $main-red;
     cursor: pointer;
 
   }

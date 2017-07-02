@@ -6,7 +6,7 @@ class BinaryFractionViz extends React.Component {
     let labels = [];
     for (let outer = 1; outer <= bitInfoArray.length; outer += 1) {
       const denominator = Math.pow(2, outer);
-      const root = Math.sqrt(denominator)
+      const root = Math.sqrt(denominator);
       const tickHeight = 1 / root * height;
       const strokeWidth = 1 / root * maxStrokeWidth;
 
@@ -14,11 +14,18 @@ class BinaryFractionViz extends React.Component {
         const xCoord = inner / denominator * width;
 
         ticks.push(
-          <line x1={xLeft + xCoord} y1={yTop} x2={xLeft + xCoord} y2={yTop + tickHeight} stroke={color} strokeWidth={strokeWidth} />
+          <line key={xCoord + "T"} x1={xLeft + xCoord} y1={yTop} x2={xLeft + xCoord} y2={yTop + tickHeight} stroke={color} strokeWidth={strokeWidth} />
         );
-        // labels.push(
-        //
-        // );
+        if (denominator <= 16) {
+          const textStyle = {
+            fontSize: tickHeight / 2,
+            fontFamily: "monospace",
+            fontWeight: "normal"
+          }
+          labels.push(
+            <text key={xCoord + "L"} x={xLeft + xCoord} y={yTop + tickHeight * 1.6} textAnchor="middle" strokeWidth={0} style={textStyle}>{`${inner}/${denominator}`}</text>
+          );
+        }
       }
     }
 
@@ -27,6 +34,7 @@ class BinaryFractionViz extends React.Component {
         <line x1={xLeft} y1={yTop} x2={xLeft} y2={yTop + height} strokeWidth={4}/>
         <line x1={xLeft + width} y1={yTop} x2={xLeft + width} y2={yTop + height} strokeWidth={4} />
         {ticks}
+        {labels}
       </g>
     )
   }
@@ -50,13 +58,13 @@ class BinaryFractionViz extends React.Component {
     )
   }
 
-  bars({width, height, xLeft, value}) {
+  bar({width, height, xLeft, value}) {
     let rectStyle = {
       transition: 'width 1s'
     }
     return (
       <g>
-        <rect x={xLeft} y={height * 0.2} width={value * width} height={height * 0.2} style={rectStyle}/>
+        <rect x={xLeft} y={height * 0.2} width={value * width} height={height * 0.4} style={rectStyle} stroke="#357AB6" fill="#357AB6"/>
       </g>
     )
   }
@@ -66,13 +74,13 @@ class BinaryFractionViz extends React.Component {
     const bufferPercentage = 0.02;
     const buffer = this.props.width * bufferPercentage;
     const width = this.props.width - 2 * buffer;
-    const height = this.props.height;
+    const height = this.props.width * 0.3;
 
 
     return (
-      <svg width={this.props.width} height={this.props.height}>
-        {this.bars({width, height: height, xLeft: buffer, value: this.props.value})}
-        {this.ruler({yTop: height / 2, xLeft: buffer, width: width, height: height / 2, bitInfoArray: this.props.bitInfoArray})}
+      <svg width={this.props.width} height={height}>
+        {this.bar({width, height: height * 0.4, xLeft: buffer, value: this.props.value})}
+        {this.ruler({yTop: height * 0.32, xLeft: buffer, width: width, height: height * 0.4, bitInfoArray: this.props.bitInfoArray})}
       </svg>
     )
   }

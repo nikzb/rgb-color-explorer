@@ -4,29 +4,34 @@
   margin-left: 0.9rem;
   margin-right: 0.95rem;
   margin-bottom: 0.1em; }
-  .ColorComponentViewToggle__container .hidden {
-    visibility: hidden; }
+
+.ColorComponentViewToggle__container .hidden {
+  visibility: hidden; }
+
+.ColorComponentViewToggle__container .button {
+  background: transparent;
+  color: darkgrey;
+  border: 1px solid darkgrey;
+  border-radius: 50%;
+  margin: 0;
+  padding: .4em;
+  width: 4em;
+  height: 4em;
+  font-size: .8em; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorComponentViewToggle__container .button {
-    background: transparent;
-    color: darkgrey;
-    border: 1px solid darkgrey;
-    border-radius: 50%;
-    margin: 0;
-    padding: .4em;
+    margin-left: 0.6rem;
     width: 4em;
     height: 4em;
-    font-size: .8em; }
-    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-      .ColorComponentViewToggle__container .button {
-        margin-left: 0.6rem;
-        width: 4em;
-        height: 4em;
-        font-size: .9em; } }
-    .ColorComponentViewToggle__container .button:hover, .ColorComponentViewToggle__container .button:focus {
-      background: #333;
-      color: darkgrey;
-      outline: 0; }
-    .ColorComponentViewToggle__container .button:active {
-      background: dimgrey;
-      color: darkgrey;
-      outline: 0; }
+    font-size: .9em; } }
+
+.ColorComponentViewToggle__container .button:hover, .ColorComponentViewToggle__container .button:focus {
+  background: #333;
+  color: darkgrey;
+  outline: 0; }
+
+.ColorComponentViewToggle__container .button:active {
+  background: dimgrey;
+  color: darkgrey;
+  outline: 0; }
