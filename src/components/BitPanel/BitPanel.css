@@ -14,9 +14,9 @@
   position: absolute; }
 
 .BitPanel .BitPanel__face-front {
-  background: #286DA8;
+  background: #357AB6;
   cursor: pointer; }
 
 .BitPanel .BitPanel__face-back {
-  background: #CD5360;
+  background: #D45350;
   cursor: pointer; }

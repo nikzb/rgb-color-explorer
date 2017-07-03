@@ -11,6 +11,7 @@
     "react-helmet": "^5.0.3",
     "react-router-dom": "^4.1.1",
     "snapsvg": "^0.5.1",
+    "svg.js": "^2.6.2",
     "tether-shepherd": "^1.8.1"
   },
   "devDependencies": {
