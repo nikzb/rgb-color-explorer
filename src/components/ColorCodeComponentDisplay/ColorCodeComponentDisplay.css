@@ -4,14 +4,19 @@
   line-height: 1.1;
   font-family: 'Open Sans', monospace;
   margin: 0 0.04em; }
-  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-    .ColorCodeComponentDisplay {
-      font-size: 2.5em; } }
-  .ColorCodeComponentDisplay--red {
-    color: #C00; }
-  .ColorCodeComponentDisplay--green {
-    color: #080; }
-  .ColorCodeComponentDisplay--blue {
-    color: #06F; }
-  .ColorCodeComponentDisplay--placeholder {
-    color: #A0A0A0; }
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  .ColorCodeComponentDisplay {
+    font-size: 2.5em; } }
+
+.ColorCodeComponentDisplay--red {
+  color: #C00; }
+
+.ColorCodeComponentDisplay--green {
+  color: #080; }
+
+.ColorCodeComponentDisplay--blue {
+  color: #06F; }
+
+.ColorCodeComponentDisplay--placeholder {
+  color: #A0A0A0; }
