@@ -6,6 +6,7 @@ import ColorCoderMainSection from '../ColorCoderMainSection/ColorCoderMainSectio
 import SouvlakiMainSection from '../SouvlakiMainSection/SouvlakiMainSection';
 import BinaryCountingMain from '../BinaryCountingMain/BinaryCountingMain';
 import BinaryFractionsMain from '../BinaryFractionsMain/BinaryFractionsMain';
+import PrecisionGameMain from '../PrecisionGameMain/PrecisionGameMain';
 // import {Helmet} from 'react-helmet';
 
 import './App.css';
@@ -27,7 +28,7 @@ class App extends Component {
         <Route exact path='/rgb' component={RGBMainSection} />
         <Route exact path='/color-coder' component={ColorCoderMainSection} />
         {/* <Route exact path='/' component={SouvlakiMainSection} /> */}
-        <Route exact path='/' component={BinaryFractionsMain} />
+        <Route exact path='/' component={PrecisionGameMain} />
       </div>
     );
   }
