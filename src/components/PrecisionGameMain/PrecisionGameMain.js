@@ -26,23 +26,23 @@ class PrecisionGameMain extends Component {
   initialBitList(level) {
     if (level === 'beginner') {
       return List([
-        Map({exponent: -1, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(0)}),
-        Map({exponent: -2, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(1)}),
-        Map({exponent: -3, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(2)}),
-        Map({exponent: -4, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(3)}),
-        Map({exponent: -5, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(4)}),
-        Map({exponent: -6, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(5)})
+        Map({exponent: -1, angle: 0, isRotating: false, onClick: this.getClickHandler(0)}),
+        Map({exponent: -2, angle: 0, isRotating: false, onClick: this.getClickHandler(1)}),
+        Map({exponent: -3, angle: 0, isRotating: false, onClick: this.getClickHandler(2)}),
+        Map({exponent: -4, angle: 0, isRotating: false, onClick: this.getClickHandler(3)}),
+        Map({exponent: -5, angle: 0, isRotating: false, onClick: this.getClickHandler(4)}),
+        Map({exponent: -6, angle: 0, isRotating: false, onClick: this.getClickHandler(5)})
       ])
     } else if (level === 'expert') {
       List([
-        Map({exponent: -1, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(0)}),
-        Map({exponent: -2, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(1)}),
-        Map({exponent: -3, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(2)}),
-        Map({exponent: -4, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(3)}),
-        Map({exponent: -5, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(4)}),
-        Map({exponent: -6, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(5)}),
-        Map({exponent: -7, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(6)}),
-        Map({exponent: -8, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(7)})
+        Map({exponent: -1, angle: 0, isRotating: false, onClick: this.getClickHandler(0)}),
+        Map({exponent: -2, angle: 0, isRotating: false, onClick: this.getClickHandler(1)}),
+        Map({exponent: -3, angle: 0, isRotating: false, onClick: this.getClickHandler(2)}),
+        Map({exponent: -4, angle: 0, isRotating: false, onClick: this.getClickHandler(3)}),
+        Map({exponent: -5, angle: 0, isRotating: false, onClick: this.getClickHandler(4)}),
+        Map({exponent: -6, angle: 0, isRotating: false, onClick: this.getClickHandler(5)}),
+        Map({exponent: -7, angle: 0, isRotating: false, onClick: this.getClickHandler(6)}),
+        Map({exponent: -8, angle: 0, isRotating: false, onClick: this.getClickHandler(7)})
       ])
     } else {
       throw new Error('Invalid level specified when getting initial bit list');
@@ -63,8 +63,6 @@ class PrecisionGameMain extends Component {
 
   // @param shouldPropagate: boolean value signifying if a panel being flipped to 0 should cause the next panel to its left to flip
   rotate({shouldPropagate}) {
-    let initiateNextBit = false;
-
     let tempBitArray = [];
 
     for (let index = 0; index < this.state.bitList.size; index += 1) {
@@ -72,7 +70,6 @@ class PrecisionGameMain extends Component {
       let immutObj = this.state.bitList.get(index);
 
       if (this.isResetting()) {
-        immutObj = immutObj.set('extraRotation', false);
         if (immutObj.get('angle') !== 0) {
           immutObj = immutObj.set('angle', (immutObj.get('angle') + 1) % 360);
           if (immutObj.get('angle') === 0) {
@@ -83,31 +80,11 @@ class PrecisionGameMain extends Component {
         continue;
       }
 
-      // Check if this bit is supposed to start flipping because of the previous bit going from 1 to 0
-      if (initiateNextBit) {
-        if (immutObj.get('isRotating')) {
-          immutObj = immutObj.set('extraRotation', true);
-        } else {
-          immutObj = immutObj.set('isRotating', true);
-        }
-        initiateNextBit = false;
-      }
-
-      // Check if next bit should start flipping due to flipping this bit from 1 to 0
-      if (immutObj.get('isRotating') && immutObj.get('angle') === 180 && index < this.state.bitList.size - 1 && shouldPropagate) {
-          initiateNextBit = true;
-      }
-
       // Rotate one degree and check if rotation is complete
       if (immutObj.get('isRotating')) {
         immutObj = immutObj.set('angle', (immutObj.get('angle') + 1) % 360);
         if (immutObj.get('angle') === 0 || immutObj.get('angle') === 180) {
-          if (immutObj.get('extraRotation')) {
-            immutObj = immutObj.set('extraRotation', false);
-          }
-          else {
-            immutObj = immutObj.set('isRotating', false);
-          }
+          immutObj = immutObj.set('isRotating', false);
         }
       }
 
@@ -156,19 +133,11 @@ class PrecisionGameMain extends Component {
   initiateFlip(index) {
     if (index < this.state.bitList.size) {
       const immutObj = this.state.bitList.get(index);
-      if (immutObj.get('isRotating')) {
-        this.setState(previousState => {
-          return {
-            bitList: previousState.bitList.update(index, immutObj => immutObj.set('extraRotation', true))
-          };
-        });
-      } else {
-        this.setState(previousState => {
-          return {
-            bitList: previousState.bitList.update(index, immutObj => immutObj.set('isRotating', true))
-          };
-        });
-      }
+      this.setState(previousState => {
+        return {
+          bitList: previousState.bitList.update(index, immutObj => immutObj.set('isRotating', true))
+        };
+      });
     }
   }
 
