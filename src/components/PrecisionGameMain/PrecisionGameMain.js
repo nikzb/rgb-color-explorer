@@ -3,9 +3,9 @@ import { Map, List } from 'immutable';
 
 import BitPanelGroup from '../BitPanelGroup/BitPanelGroup';
 import BitPanelGroupWithPowerLabels from '../BitPanelGroupWithPowerLabels/BitPanelGroupWithPowerLabels';
-import BinaryFractionViz from '../BinaryFractionViz/BinaryFractionViz';
+import PrecisionGameViz from '../PrecisionGameViz/PrecisionGameViz';
 
-import { newGame, currentPuzzle, getGameScore, goToNextRound, makeGuess } from '../../classes/PrecisionGame/PrecisionGame';
+import { newGame, currentPuzzle, getGameScore, goToNextRound, makeGuess, getCurrentValueToGuess, getRoundStatus } from '../../classes/PrecisionGame/PrecisionGame';
 
 
 import './PrecisionGameMain.css';
@@ -65,6 +65,8 @@ class PrecisionGameMain extends Component {
   rotate({shouldPropagate}) {
     let tempBitArray = [];
 
+    let isNewValue = false;
+
     for (let index = 0; index < this.state.bitList.size; index += 1) {
 
       let immutObj = this.state.bitList.get(index);
@@ -85,6 +87,8 @@ class PrecisionGameMain extends Component {
         immutObj = immutObj.set('angle', (immutObj.get('angle') + 1) % 360);
         if (immutObj.get('angle') === 0 || immutObj.get('angle') === 180) {
           immutObj = immutObj.set('isRotating', false);
+          isNewValue = true;
+
         }
       }
 
@@ -102,11 +106,22 @@ class PrecisionGameMain extends Component {
       newResetValue = false;
     }
 
-    this.setState({
-      bitList: newBitList,
-      numberValue: newNumberValue,
-      inReset: newResetValue
-    });
+    // If the rotation has resulted in a new guess (compared to before the rotation), make the guess and update the game
+    if (isNewValue) {
+      const updatedGame = makeGuess(this.state.game, this.getCurrentAnswer(newBitList), allPanelsHaveAngleOfZero);
+      this.setState({
+        game: updatedGame,
+        bitList: newBitList,
+        numberValue: newNumberValue,
+        inReset: newResetValue
+      })
+    } else {
+      this.setState({
+        bitList: newBitList,
+        numberValue: newNumberValue,
+        inReset: newResetValue
+      });
+    }
   }
 
   // Get all the panels to rotate to show 0
@@ -132,7 +147,6 @@ class PrecisionGameMain extends Component {
   // @param index: the index of the bit panel to be flipped
   initiateFlip(index) {
     if (index < this.state.bitList.size) {
-      const immutObj = this.state.bitList.get(index);
       this.setState(previousState => {
         return {
           bitList: previousState.bitList.update(index, immutObj => immutObj.set('isRotating', true))
@@ -141,19 +155,25 @@ class PrecisionGameMain extends Component {
     }
   }
 
-  getNumberValue(bitList) {
-    const getNumberShowing = (angle) => {
-      if (angle < 90 || angle >= 270) {
-        return 0;
-      } else {
-        return 1;
-      }
-    }
+  // Return the current answer as an immutable list of 0's and 1's
+  getCurrentAnswer(bitList) {
+    return bitList.map(bitInfo => this.getNumberShowing(bitInfo.get('angle')));
+  }
 
+  // Given the angle of the panel, return the number that is showing (0 or 1)
+  getNumberShowing(angle) {
+    if (angle < 90 || angle >= 270) {
+      return 0;
+    } else {
+      return 1;
+    }
+  }
+
+  getNumberValue(bitList) {
     let sum = 0;
 
     for (let index = 0; index < bitList.size; index += 1) {
-      const bit = getNumberShowing(bitList.get(index).get('angle'));
+      const bit = this.getNumberShowing(bitList.get(index).get('angle'));
 
       if (bit === 1) {
         sum += Math.pow(2, -(index + 1));
@@ -172,17 +192,24 @@ class PrecisionGameMain extends Component {
     }, 2);
   }
 
+  getRoundMessage() {
+    return getRoundStatus(this.state.game);
+  }
+
   render() {
     const bitInfoArray = this.state.bitList.map((immutObj) => {
       return immutObj.toJS();
     }).toJS();
 
+    const puzzleValueToGuess = getCurrentValueToGuess(this.state.game);
+
     return (
       <div className='BinaryFractionsMain'>
-        <div className='BinaryFractionsMain__value'>{this.state.numberValue}</div>
-        <BinaryFractionViz numberOfBits={0} value={this.state.numberValue} width={800} height={128}/>
+        {/* <div className='BinaryFractionsMain__value'>{this.state.numberValue}</div> */}
+        <PrecisionGameViz numberOfBits={0} guessValue={this.state.numberValue} puzzleValue={puzzleValueToGuess} width={800}/>
         <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={() => {}} directionClass={'left-to-right'}/>
-        <button className='button BinaryFractionsMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
+        <button className='button PrecisionGameMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
+        <div className='PrecisionGameMain__round-message'>{this.getRoundMessage()}</div>
       </div>
     )
   }

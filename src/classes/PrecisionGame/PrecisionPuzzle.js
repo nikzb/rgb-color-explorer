@@ -2,19 +2,23 @@
 
 // The state of a puzzle will be stored in an immutable Map (from Immutable.js)
 // The contents of ths object are:
-//  -answer: The answer to the puzzle as a String containing 1s and 0s
+//  -answer: The answer to the puzzle as an immutable list containing 1s and 0s
 //  -numberValue: The number value that must correctly be approximated to solve the puzzle
 //  -guesses: A list of the guesses made on this puzzle. No additional guesses allowed if solved is true
 //  -solved: A boolean. True iff most recent guess matches the answer.
 
 import { Map, List } from 'immutable';
 
+export const getPuzzleValue = puzzle => {
+  return puzzle.get('numberValue');
+}
+
 // Takes a puzzle and returns the score earned
 export const getPuzzleScore = puzzle => {
   let ones = 0;
   const answer = puzzle.get('answer');
   for (let index = 0; index < answer.length; index += 1) {
-    if (answer.slice(index, index + 1) === '1') {
+    if (answer.get('index') === 1) {
       ones += 1;
     }
   }
@@ -22,6 +26,7 @@ export const getPuzzleScore = puzzle => {
   return puzzle.get('flips') - ones;
 }
 
+// Return the best possible answer for the given number value as an immutable list of 1s and 0s
 const bestPossibleAnswer = (difficulty, numberValue) => {
   let smallestPower;
   if (difficulty === 'beginner') {
@@ -34,19 +39,19 @@ const bestPossibleAnswer = (difficulty, numberValue) => {
 
   let power = 0.5;
   let amountLeft = numberValue;
-  let bitString = '';
+  let bitArray = [];
 
   while (power >= smallestPower) {
     if (amountLeft > power - smallestPower / 2) {
-      bitString += '1';
+      bitArray.push(1)
       amountLeft -= power;
     } else {
-      bitString += '0';
+      bitArray.push(0);
     }
     power /= 2;
   }
 
-  return bitString;
+  return List(bitArray);
 }
 
 // Takes a difficulty level and return a randomized puzzle
@@ -74,15 +79,28 @@ export const newPuzzle = difficulty => {
   }
 }
 
-// Take a puzzle and a guess and return a new puzzle with that guess included as the most recent guess
-export const addGuess = (puzzle, guess) => {
+// Take a puzzle, a guess (immut list of 1s and 0s), and a boolean specifying whether are the panels are stable (not flipping) and return a new puzzle with that guess included as the most recent guess
+export const addGuess = (puzzle, guess, stable) => {
   if (puzzle.get('solved')) {
     return puzzle;
   }
+
   let updatedPuzzle = puzzle.set('guesses', puzzle.get('guesses').push(guess));
 
-  if (guess === puzzle.get('answer')) {
-    updatedPuzzle = puzzle.set('solved', true);
+  let listsMatch = true;
+
+  if (guess.size !== puzzle.size) {
+    listsMatch = false;
+  } else {
+    for (let index = 0; index < puzzle.size; index += 1) {
+      if (guess.get('index') !== puzzle.get('index')) {
+        listsMatch = false;
+      }
+    }
+  }
+
+  if (listsMatch && stable) {
+    updatedPuzzle = updatedPuzzle.set('solved', true);
   }
 
   return updatedPuzzle;
