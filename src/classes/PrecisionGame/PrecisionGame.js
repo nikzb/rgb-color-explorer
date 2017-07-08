@@ -22,25 +22,30 @@ export const newGame = (difficulty) => {
   });
 }
 
-export const getCurrentValueToGuess = game => {
+export const currentPuzzle = (game) => {
   const round = game.get('round');
-  return getPuzzleValue(game.get('puzzles').get(round));
+  return game.get('puzzles').get(round - 1);
+}
+
+export const updateCurrentPuzzle = (game, puzzle) => {
+  const round = game.get('round');
+  return game.get('puzzles').set(round - 1, puzzle);
+}
+
+export const getCurrentValueToGuess = game => {
+  console.log(game);
+  return getPuzzleValue(currentPuzzle(game));
 }
 
 export const getRoundStatus = game => {
-  const round = game.get('round');
+  const puzzle = currentPuzzle(game);
+  const solved = puzzle.get('solved');
 
-  if (game.get('puzzles').get(round).get('solved')) {
+  if (solved) {
     return 'solved';
   } else {
     return 'keep trying';
   }
-}
-
-export const currentPuzzle = (game) => {
-  const round = game.get('round');
-
-  return game.get('puzzles').get(round);
 }
 
 export const getGameScore = (game) => {
@@ -54,15 +59,14 @@ export const goToNextRound = (game) => {
 }
 
 export const makeGuess = (game, guess, stable) => {
-  const currentRound = game.get('round');
-  const puzzle = addGuess(game.get('puzzles').get(currentRound), guess, stable);
+  const puzzle = addGuess(currentPuzzle(game), guess, stable);
 
-  const puzzles = game.get('puzzles').set(game.get('round'), puzzle);
+  const puzzles = game.get('puzzles').set(game.get('round') - 1, puzzle);
 
   let updatedGame = game;
 
   if (puzzle.get('solved')) {
-    updatedGame = this.goToNextRound(updatedGame);
+    updatedGame = goToNextRound(updatedGame);
   }
 
   return updatedGame.set('puzzles', puzzles);

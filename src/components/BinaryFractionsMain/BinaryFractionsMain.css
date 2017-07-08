@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Averia+Sans+Libre:700");
 .BinaryFractionsMain {
   transform: scale(1, 1);
   transform-origin: 50% 0%; }
@@ -6,4 +7,16 @@
   border-radius: 0.5rem; }
 
 .BinaryFractionsMain__value {
-  font-size: 8em; }
+  font-size: 8em;
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  font-size: 6em; }
+
+.BinaryFractionsMain__bit-display {
+  display: flex;
+  justify-content: center; }
+
+.BinaryFractionsMain__dot {
+  font-size: 8em;
+  color: #333;
+  width: .3em; }

@@ -4,6 +4,7 @@ import { Map, List } from 'immutable';
 import BitPanelGroup from '../BitPanelGroup/BitPanelGroup';
 import BitPanelGroupWithPowerLabels from '../BitPanelGroupWithPowerLabels/BitPanelGroupWithPowerLabels';
 import BinaryFractionViz from '../BinaryFractionViz/BinaryFractionViz';
+import SouvlakiTitle from '../SouvlakiTitle/SouvlakiTitle';
 
 import './BinaryFractionsMain.css';
 
@@ -161,6 +162,7 @@ class BinaryFractionsMain extends Component {
   }
 
   getNumberValue(bitList) {
+
     const getNumberShowing = (angle) => {
       if (angle < 90 || angle >= 270) {
         return 0;
@@ -179,7 +181,11 @@ class BinaryFractionsMain extends Component {
       }
     }
 
-    return sum;
+    if (sum === 0) {
+      return 0;
+    }
+
+    return sum.toString().substring(1);
   }
 
   addBitPanel() {
@@ -227,9 +233,14 @@ class BinaryFractionsMain extends Component {
 
     return (
       <div className='BinaryFractionsMain'>
+        <SouvlakiTitle title='Binary Fractions' />
         <div className='BinaryFractionsMain__value'>{this.state.numberValue}</div>
         <BinaryFractionViz numberOfBits={bitInfoArray.length} value={this.state.numberValue} width={800} height={128}/>
-        <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} directionClass={'left-to-right'}/>
+        <div className='BinaryFractionsMain__bit-display'>
+          <div className='BinaryFractionsMain__dot'>.</div>
+          <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} directionClass={'left-to-right'}/>
+          <div className='BinaryFractionsMain__dot'></div>
+        </div>
         <button className='button BinaryFractionsMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
         <div className='BinaryFractionsMain__bits-buttons-label'>Bits</div>
         <div className='BinaryFractionsMain__add-remove-button-container'>

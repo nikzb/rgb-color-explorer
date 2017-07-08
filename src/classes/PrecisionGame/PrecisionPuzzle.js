@@ -10,6 +10,7 @@
 import { Map, List } from 'immutable';
 
 export const getPuzzleValue = puzzle => {
+  console.log(puzzle);
   return puzzle.get('numberValue');
 }
 
@@ -86,15 +87,16 @@ export const addGuess = (puzzle, guess, stable) => {
   }
 
   let updatedPuzzle = puzzle.set('guesses', puzzle.get('guesses').push(guess));
-
   let listsMatch = true;
+  const answer = puzzle.get('answer');
 
-  if (guess.size !== puzzle.size) {
+  if (guess.size !== answer.size) {
     listsMatch = false;
   } else {
-    for (let index = 0; index < puzzle.size; index += 1) {
-      if (guess.get('index') !== puzzle.get('index')) {
+    for (let index = 0; index < answer.size; index += 1) {
+      if (guess.get(index) !== answer.get(index)) {
         listsMatch = false;
+        break;
       }
     }
   }

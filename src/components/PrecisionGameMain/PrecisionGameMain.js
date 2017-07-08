@@ -88,7 +88,6 @@ class PrecisionGameMain extends Component {
         if (immutObj.get('angle') === 0 || immutObj.get('angle') === 180) {
           immutObj = immutObj.set('isRotating', false);
           isNewValue = true;
-
         }
       }
 
@@ -96,11 +95,13 @@ class PrecisionGameMain extends Component {
     }
 
     const newBitList = List(tempBitArray);
+
     const newNumberValue = this.getNumberValue(newBitList);
 
     let newResetValue = this.isResetting();
 
     const allPanelsHaveAngleOfZero = newBitList.filter(immutObj => immutObj.get('angle') !== 0).size === 0;
+    const noPanelsFlipping = newBitList.filter(immutObj => immutObj.get('angle') !== 0 && immutObj.get('angle') !== 180).size === 0;
 
     if (this.isResetting && allPanelsHaveAngleOfZero) {
       newResetValue = false;
@@ -108,7 +109,7 @@ class PrecisionGameMain extends Component {
 
     // If the rotation has resulted in a new guess (compared to before the rotation), make the guess and update the game
     if (isNewValue) {
-      const updatedGame = makeGuess(this.state.game, this.getCurrentAnswer(newBitList), allPanelsHaveAngleOfZero);
+      const updatedGame = makeGuess(this.state.game, this.getCurrentAnswer(newBitList), noPanelsFlipping);
       this.setState({
         game: updatedGame,
         bitList: newBitList,

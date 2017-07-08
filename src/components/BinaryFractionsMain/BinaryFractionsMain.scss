@@ -1,4 +1,5 @@
 @import '../component-styles/base-styles.scss';
+@import '../component-styles/fonts.scss';
 
 .BinaryFractionsMain {
   transform: scale(1.0, 1.0);
@@ -10,5 +11,21 @@
 
   &__value {
     font-size: 8em;
+    font-family: 'Open Sans', sans-serif;
+    color: $grey-0a;
+    font-size: 6em;
   }
+
+  &__bit-display {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__dot {
+    font-size: 8em;
+    color: $grey-0a;
+    width: .3em;
+  }
+
+
 }

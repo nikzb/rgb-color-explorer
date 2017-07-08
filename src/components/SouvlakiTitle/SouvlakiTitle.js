@@ -23,6 +23,10 @@ const SouvlakiTitle = ({size, title, bg}) => {
         <span className="SouvlakiTitle--colors"> Colors</span>
       </h1>
     );
+  } else {
+    return (
+      <h1 className={`SouvlakiTitle SouvlakiTitle--${size}`}>{title}</h1>
+    );
   }
 };
 
