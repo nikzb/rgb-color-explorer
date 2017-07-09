@@ -6,7 +6,7 @@
   margin-right: 0.25em;
 
   .BitPanel__face {
-    border: 1px solid black;
+    // border: 1px solid black;
     border-radius: 0.1em;
     font-size: 5.0em;
     padding: 0.1em 0.3em;
@@ -19,13 +19,13 @@
   }
 
   .BitPanel__face-front {
-    background: $main-blue;//#286DA8;
+    background: $bit-panel-blue;//#286DA8;
     cursor: pointer;
 
   }
 
   .BitPanel__face-back {
-    background: $main-red;
+    background: $bit-panel-red;
     cursor: pointer;
 
   }

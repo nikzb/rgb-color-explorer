@@ -75,6 +75,11 @@ $rgb-letter-colors: $grey-3;
     text-shadow: $text-shadow-size $text-shadow-size $grey-4; //#B72616;//#3F88C5;//#B72616;
   }
 
+  &--bit-panel-colors {
+    color: $grey-1;
+    text-shadow: $text-shadow-size $text-shadow-size $bit-panel-blue;
+  }
+
   // title used for main page (at least for temporary main page created early on)
   &--med-large {
     font-size: 2.4em;

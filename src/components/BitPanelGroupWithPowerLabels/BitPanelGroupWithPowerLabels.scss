@@ -1,3 +1,5 @@
+@import '../component-styles/base-styles.scss';
+
 .BitPanelGroupWithLabels {
   display: flex;
   justify-content: center;
@@ -22,5 +24,6 @@
   &__power {
     font-size: 1.7em;
     padding: 0.15em;
+    color: $grey-0a;
   }
 }

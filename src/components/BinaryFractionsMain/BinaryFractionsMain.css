@@ -26,7 +26,7 @@
   margin-top: 0.1em;
   font-size: 7em;
   font-family: 'Open Sans', sans-serif;
-  color: #333; }
+  color: #555; }
 
 .BinaryFractionsMain__bit-display {
   display: flex;
@@ -35,7 +35,7 @@
 .BinaryFractionsMain__dot {
   font-size: 6em;
   padding-top: 0.5em;
-  color: #333;
+  color: #555;
   width: .3em; }
 
 .BinaryFractionsMain__bits-buttons-label {

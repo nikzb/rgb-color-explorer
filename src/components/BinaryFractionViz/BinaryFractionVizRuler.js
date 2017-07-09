@@ -20,10 +20,10 @@ class BinaryFractionVizRuler extends React.PureComponent {
           const textStyle = {
             fontSize: tickHeight * 0.55,
             fontFamily: "monospace",
-            fontWeight: "normal"
+            fontWeight: "normal",
           }
           labels.push(
-            <text key={xCoord + "L"} x={xLeft + xCoord} y={yTop + tickHeight * 1.6} textAnchor="middle" strokeWidth={0} style={textStyle}>{`${inner}/${denominator}`}</text>
+            <text key={xCoord + "L"} x={xLeft + xCoord} y={yTop + tickHeight * 1.6} textAnchor="middle" stroke="none" fill={color} strokeWidth={0} style={textStyle}>{`${inner}/${denominator}`}</text>
           );
         }
       }
@@ -32,29 +32,30 @@ class BinaryFractionVizRuler extends React.PureComponent {
     const textStyle = {
       fontSize: height * 0.55,
       fontFamily: "monospace",
-      fontWeight: "normal"
+      fontWeight: "normal",
+      color: color
     }
 
     return (
       <g stroke={color}>
         { /* First two lines are for 0 on the left, 1 on the right */ }
-        <line x1={xLeft} y1={yTop} x2={xLeft} y2={yTop + height * 0.9} strokeWidth={4}/>
-        <line x1={xLeft + width} y1={yTop} x2={xLeft + width} y2={yTop + height * 0.9} strokeWidth={4} />
+        <line x1={xLeft} y1={yTop} x2={xLeft} y2={yTop + height * 0.9} stroke={color} strokeWidth={4}/>
+        <line x1={xLeft + width} y1={yTop} x2={xLeft + width} y2={yTop + height * 0.9} stroke={color} strokeWidth={4} />
         {ticks}
         { /* First two labels are for 0 on the left, 1 on the right */ }
-        <text x={xLeft} y={yTop + height * 1.4} textAnchor="middle" strokeWidth={0} style={textStyle}>0</text>
-        <text x={xLeft + width} y={yTop + height * 1.4} textAnchor="middle" strokeWidth={0} style={textStyle}>1</text>
+        <text x={xLeft} y={yTop + height * 1.4} textAnchor="middle" stroke="none" fill={color} strokeWidth={0} style={textStyle}>0</text>
+        <text x={xLeft + width} y={yTop + height * 1.4} textAnchor="middle" stroke="none" fill={color} strokeWidth={0} style={textStyle}>1</text>
         {labels}
       </g>
     )
   }
 
   ruler({yTop, xLeft, width, height, numberOfBits}) {
-    const color = "black";
+    const color = '#555';
     const strokeWidth = 4;
     return (
       <g>
-        <line x1={xLeft - strokeWidth / 2} y1={yTop} x2={xLeft + width + strokeWidth / 2} y2={yTop} stroke={"black"} strokeWidth={4}/>
+        <line x1={xLeft - strokeWidth / 2} y1={yTop} x2={xLeft + width + strokeWidth / 2} y2={yTop} stroke={color} strokeWidth={4}/>
         {this.tickMarks({
           xLeft,
           width,

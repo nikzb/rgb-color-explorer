@@ -3,7 +3,7 @@ import React from 'react';
 
 import './SouvlakiTitle.css';
 
-const SouvlakiTitle = ({size, title, bg}) => {
+const SouvlakiTitle = ({size='med', title, bg}) => {
   if (!title) {
     return <h1 className={`SouvlakiTitle SouvlakiTitle--${size} SouvlakiTitle--${bg}`}>souvlaki<span className="SouvlakiTitle--dot">.</span><span className="SouvlakiTitle--io">io</span></h1>;
   } else if (title === 'ColorCoder') {
@@ -22,6 +22,10 @@ const SouvlakiTitle = ({size, title, bg}) => {
         <span className="SouvlakiTitle--B">B</span>
         <span className="SouvlakiTitle--colors"> Colors</span>
       </h1>
+    );
+  } else if (title === 'Binary Fractions') {
+    return (
+      <h1 className={`SouvlakiTitle SouvlakiTitle--${size} SouvlakiTitle--bit-panel-colors`}>{title}</h1>
     );
   } else {
     return (
