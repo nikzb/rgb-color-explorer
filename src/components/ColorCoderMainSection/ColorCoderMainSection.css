@@ -1,31 +1,26 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Averia+Sans+Libre:700");
 .ColorCoderMainSection__container {
   width: 100%; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
-  .ColorCoderMainSection__container {
-    flex: 0 0 30em; } }
-
-@media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
-  .ColorCoderMainSection__container {
-    flex: 0 0 27em; } }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+    .ColorCoderMainSection__container {
+      flex: 0 0 30em; } }
+  @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+    .ColorCoderMainSection__container {
+      flex: 0 0 27em; } }
 
 .ColorCoder__demo-container {
   font-size: 0.85em;
   color: darkgrey;
   margin-bottom: 1em; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .ColorCoder__demo-container {
-    font-size: 1em; } }
-
-.ColorCoder__demo-container .ColorCoder__demo-link {
-  cursor: pointer;
-  text-decoration: underline;
-  color: #B72616; }
-
-.ColorCoder__demo-container .ColorCoder__demo-link:active {
-  color: #73180E; }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    .ColorCoder__demo-container {
+      font-size: 1em; } }
+  .ColorCoder__demo-container .ColorCoder__demo-link {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #B72616; }
+    .ColorCoder__demo-container .ColorCoder__demo-link:active {
+      color: #73180E; }
 
 .ColorCoder__demo-button.button {
   background: transparent;
@@ -37,101 +32,85 @@
   width: 6em;
   height: 3em;
   font-size: .8em; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .ColorCoder__demo-button.button {
-    margin-left: 0.6rem;
-    padding: 0.8em;
-    width: 8em;
-    height: 3em;
-    font-size: .9em; } }
-
-.ColorCoder__demo-button.button:hover, .ColorCoder__demo-button.button:focus {
-  background: #333;
-  color: darkgrey;
-  outline: 0; }
-
-.ColorCoder__demo-button.button:active {
-  background: dimgrey;
-  color: darkgrey;
-  outline: 0; }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    .ColorCoder__demo-button.button {
+      margin-left: 0.6rem;
+      padding: 0.8em;
+      width: 8em;
+      height: 3em;
+      font-size: .9em; } }
+  .ColorCoder__demo-button.button:hover, .ColorCoder__demo-button.button:focus {
+    background: #333;
+    color: darkgrey;
+    outline: 0; }
+  .ColorCoder__demo-button.button:active {
+    background: dimgrey;
+    color: darkgrey;
+    outline: 0; }
 
 .ColorCoderMainSection__title {
   margin-top: 1em;
   margin-bottom: -1em; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .ColorCoderMainSection__title {
-    margin-bottom: -1.5em; } }
-
-.ColorCoderMainSection__title .ColorCoderMainSection__presents {
-  font-family: 'Averia Sans Libre', sans-serif;
-  margin-top: -1em;
-  color: darkgrey;
-  font-size: 0.9em; }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    .ColorCoderMainSection__title {
+      margin-bottom: -1.5em; } }
+  .ColorCoderMainSection__title .ColorCoderMainSection__presents {
+    font-family: 'Averia Sans Libre', sans-serif;
+    margin-top: -1em;
+    color: darkgrey;
+    font-size: 0.9em; }
 
 .ColorCoder__score-message {
   margin-bottom: 0.5em;
   color: #909090;
   font-family: 'Averia Sans Libre', sans-serif; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .ColorCoder__score-message {
-    font-size: 1.3em; } }
-
-.ColorCoder__score-message .ColorCoder__score {
-  font-size: 3.4em;
-  text-shadow: 0.02em 0.02em silver;
-  margin-top: -0.2em; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    .ColorCoder__score-message {
+      font-size: 1.3em; } }
   .ColorCoder__score-message .ColorCoder__score {
-    font-size: 4.0em; } }
-
-.ColorCoder__score-message .ColorCoder__score-label {
-  font-size: 1.3em; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    font-size: 3.4em;
+    text-shadow: 0.02em 0.02em silver;
+    margin-top: -0.2em; }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+      .ColorCoder__score-message .ColorCoder__score {
+        font-size: 4.0em; } }
   .ColorCoder__score-message .ColorCoder__score-label {
-    font-size: 1.5em; } }
+    font-size: 1.3em; }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+      .ColorCoder__score-message .ColorCoder__score-label {
+        font-size: 1.5em; } }
 
 .ColorCoder__action-buttons {
   display: flex;
   justify-content: space-around; }
-
-.ColorCoder__action-buttons .button {
-  flex: 0 0 40%;
-  background: black;
-  color: darkgrey;
-  margin-bottom: 0;
-  font-size: 0.9em;
-  padding: 0.7em;
-  margin: 2%;
-  border: 1px solid darkgrey;
-  border-radius: 0.5rem; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCoder__action-buttons .button {
-    font-size: 1.05em;
-    padding: 0.8em;
-    margin: 0.1em 0; } }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
-  .ColorCoder__action-buttons .button {
-    font-size: 1.3em; } }
-
-@media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
-  .ColorCoder__action-buttons .button {
-    font-size: 1.0em;
-    padding: 0.9em;
-    margin: 0.1em 0; } }
-
-.ColorCoder__action-buttons .button:hover, .ColorCoder__action-buttons .button:focus {
-  background: #333;
-  color: darkgrey;
-  outline: 0; }
-
-.ColorCoder__action-buttons .button:active {
-  background: dimgrey;
-  color: darkgrey;
-  outline: 0; }
+    flex: 0 0 40%;
+    background: black;
+    color: darkgrey;
+    margin-bottom: 0;
+    font-size: 0.9em;
+    padding: 0.7em;
+    margin: 2%;
+    border: 1px solid darkgrey;
+    border-radius: 0.5rem; }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+      .ColorCoder__action-buttons .button {
+        font-size: 1.05em;
+        padding: 0.8em;
+        margin: 0.1em 0; } }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+      .ColorCoder__action-buttons .button {
+        font-size: 1.3em; } }
+    @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+      .ColorCoder__action-buttons .button {
+        font-size: 1.0em;
+        padding: 0.9em;
+        margin: 0.1em 0; } }
+    .ColorCoder__action-buttons .button:hover, .ColorCoder__action-buttons .button:focus {
+      background: #333;
+      color: darkgrey;
+      outline: 0; }
+    .ColorCoder__action-buttons .button:active {
+      background: dimgrey;
+      color: darkgrey;
+      outline: 0; }

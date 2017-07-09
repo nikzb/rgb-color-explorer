@@ -1,13 +1,13 @@
 .BitPanelGroupWithLabels {
   display: flex;
   justify-content: center;
-  border: 1px solid green;
   perspective: 100em;
   transform-style: preserve-3d;
   flex-direction: row-reverse;
   height: 12em; }
-  .BitPanelGroupWithLabels--left-to-right {
-    flex-direction: row; }
+
+.BitPanelGroupWithLabels--left-to-right {
+  flex-direction: row; }
 
 .BitPanelWithLabel {
   display: flex;
@@ -15,5 +15,7 @@
   align-items: center;
   z-index: -1;
   cursor: pointer; }
-  .BitPanelWithLabel__power {
-    font-size: 1.7em; }
+
+.BitPanelWithLabel__power {
+  font-size: 1.7em;
+  padding: 0.15em; }

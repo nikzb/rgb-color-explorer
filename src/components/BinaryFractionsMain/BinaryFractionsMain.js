@@ -244,8 +244,8 @@ class BinaryFractionsMain extends Component {
         <button className='button BinaryFractionsMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
         <div className='BinaryFractionsMain__bits-buttons-label'>Bits</div>
         <div className='BinaryFractionsMain__add-remove-button-container'>
-          <button className='button' onClick={this.removeBitPanel}>-</button>
-          <button className='button' onClick={this.addBitPanel}>+</button>
+          <button className='button BinaryFractionsMain__add-remove-button' onClick={this.removeBitPanel}>-</button>
+          <button className='button BinaryFractionsMain__add-remove-button' onClick={this.addBitPanel}>+</button>
         </div>
       </div>
     )

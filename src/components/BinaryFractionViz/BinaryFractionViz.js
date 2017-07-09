@@ -2,6 +2,9 @@ import React from 'react';
 
 import BinaryFractionVizRuler from './BinaryFractionVizRuler';
 
+// Colors: 438496 - greenish color
+//         357AB6 - main blue
+
 class BinaryFractionViz extends React.Component {
   bar({width, height, xLeft, value}) {
     let rectStyle = {
@@ -9,7 +12,7 @@ class BinaryFractionViz extends React.Component {
     }
     return (
       <g>
-        <rect x={xLeft} y={height * 0.2} width={value * width} height={height * 0.4} style={rectStyle} stroke="#357AB6" fill="#357AB6"/>
+        <rect x={xLeft} y={height * 0.2} width={value * width} height={height * 0.4} style={rectStyle} stroke="#438496" fill="#438496"/>
       </g>
     )
   }

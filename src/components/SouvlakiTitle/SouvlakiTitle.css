@@ -4,84 +4,62 @@
   color: dimgrey;
   margin-bottom: 0;
   font-size: 1.8em; }
-
-.SouvlakiTitle--dark {
-  color: #909090; }
-
-@media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
-  .SouvlakiTitle {
-    font-size: 2.4em; } }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .SouvlakiTitle {
-    font-size: 2.2em; } }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
-  .SouvlakiTitle {
-    font-size: 3.0em; } }
-
-.SouvlakiTitle--dot {
-  color: #707070; }
-
-.SouvlakiTitle--io {
-  color: #B72616; }
-
-.SouvlakiTitle--color {
-  color: dimgrey;
-  text-shadow: 1px 1px black; }
-
-.SouvlakiTitle--color-dark {
-  color: dimgrey; }
-
-.SouvlakiTitle--coder {
-  color: #909090;
-  text-shadow: 1px 1px black; }
-
-.SouvlakiTitle--coder-dark {
-  color: darkgrey; }
-
-.SouvlakiTitle--R {
-  color: #909090;
-  text-shadow: 1px 1px #C00; }
-
-.SouvlakiTitle--G {
-  color: #909090;
-  text-shadow: 1px 1px #080; }
-
-.SouvlakiTitle--B {
-  color: #909090;
-  text-shadow: 1px 1px #06F; }
-
-.SouvlakiTitle--colors {
-  color: #A0A0A0;
-  text-shadow: 1px 1px #A0A0A0; }
-
-.SouvlakiTitle--med-large {
-  font-size: 2.4em; }
-
-@media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+  .SouvlakiTitle--dark {
+    color: #909090; }
+  @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+    .SouvlakiTitle {
+      font-size: 2.4em; } }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    .SouvlakiTitle {
+      font-size: 2.2em; } }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+    .SouvlakiTitle {
+      font-size: 3.0em; } }
+  .SouvlakiTitle--dot {
+    color: #707070; }
+  .SouvlakiTitle--io {
+    color: #B72616; }
+  .SouvlakiTitle--color {
+    color: dimgrey;
+    text-shadow: 1px 1px black; }
+  .SouvlakiTitle--color-dark {
+    color: dimgrey; }
+  .SouvlakiTitle--coder {
+    color: #909090;
+    text-shadow: 1px 1px black; }
+  .SouvlakiTitle--coder-dark {
+    color: darkgrey; }
+  .SouvlakiTitle--R {
+    color: #909090;
+    text-shadow: 1px 1px #C00; }
+  .SouvlakiTitle--G {
+    color: #909090;
+    text-shadow: 1px 1px #080; }
+  .SouvlakiTitle--B {
+    color: #909090;
+    text-shadow: 1px 1px #06F; }
+  .SouvlakiTitle--colors {
+    color: #A0A0A0;
+    text-shadow: 1px 1px #A0A0A0; }
   .SouvlakiTitle--med-large {
-    font-size: 3.5em; } }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .SouvlakiTitle--med-large {
-    font-size: 3.3em; } }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
-  .SouvlakiTitle--med-large {
-    font-size: 4.8em; } }
-
-.SouvlakiTitle--large {
-  font-size: 3em; }
-
-@media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+    font-size: 2.4em; }
+    @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+      .SouvlakiTitle--med-large {
+        font-size: 3.5em; } }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+      .SouvlakiTitle--med-large {
+        font-size: 3.3em; } }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+      .SouvlakiTitle--med-large {
+        font-size: 4.8em; } }
   .SouvlakiTitle--large {
-    font-size: 4em; } }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .SouvlakiTitle--large {
-    font-size: 3.8em; } }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
-  .SouvlakiTitle--large {
-    font-size: 5.5em; } }
+    font-size: 3em; }
+    @media (-webkit-max-device-pixel-ratio: 1.99), (max-resolution: 191dpi) {
+      .SouvlakiTitle--large {
+        font-size: 4em; } }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+      .SouvlakiTitle--large {
+        font-size: 3.8em; } }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-resolution: 192dpi) and (min-width: 37.5em) {
+      .SouvlakiTitle--large {
+        font-size: 5.5em; } }

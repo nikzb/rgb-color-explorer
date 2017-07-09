@@ -1,7 +1,7 @@
 .BitPanelGroupWithLabels {
   display: flex;
   justify-content: center;
-  border: 1px solid green;
+  // border: 1px solid green;
   perspective: 100em;
   transform-style: preserve-3d;
   flex-direction: row-reverse;
@@ -21,5 +21,6 @@
 
   &__power {
     font-size: 1.7em;
+    padding: 0.15em;
   }
 }
