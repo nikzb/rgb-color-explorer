@@ -5,6 +5,7 @@ import BitPanelGroup from '../BitPanelGroup/BitPanelGroup';
 import BitPanelGroupWithPowerLabels from '../BitPanelGroupWithPowerLabels/BitPanelGroupWithPowerLabels';
 import BinaryFractionViz from '../BinaryFractionViz/BinaryFractionViz';
 import SouvlakiTitle from '../SouvlakiTitle/SouvlakiTitle';
+import MediaQueries from '../../classes/MediaQueries/MediaQueries';
 
 import './BinaryFractionsMain.css';
 
@@ -231,18 +232,58 @@ class BinaryFractionsMain extends Component {
       return immutObj.toJS();
     }).toJS();
 
+
+    const lowResMediaQuery = MediaQueries.lowResQuery();
+    const phoneMediumQuery = MediaQueries.phoneMediumQuery();
+    const phoneLargeQuery = MediaQueries.phoneLargeQuery();
+    const tablePortraitQuery = MediaQueries.tabletPortraitQuery();
+    const tableLandscapeQuery = MediaQueries.tabletLandscapeQuery();
+    const desktopQuery = MediaQueries.desktopQuery();
+    const desktopWideQuery = MediaQueries.desktopWideQuery();
+
+
+    let sizeMultiplier = 1;
+
+    if (phoneMediumQuery.matches) {
+      sizeMultiplier = 1.1;
+    } else if (phoneLargeQuery.matches) {
+      sizeMultiplier = 1.2;
+    } else if (tablePortraitQuery.matches) {
+      sizeMultiplier = 1.5;
+    }
+
+    const width = 300 * sizeMultiplier;
+    console.log(width);
+
+    const decimalValueStyle = {
+        fontSize: '3em'
+    }
+
+    const dotStyle = {
+      fontSize: '2.3em',
+      width: '0.6em'
+    }
+
+    const resetButtonStyle = {
+      fontSize: '1em'
+    }
+
+    const bitsButtonsLabelStyle = {
+      fontSize: '1.1em'
+    }
+
     return (
       <div className='BinaryFractionsMain'>
         <SouvlakiTitle title='Binary Fractions' />
-        <div className='BinaryFractionsMain__decimal-value'>{this.state.numberValue}</div>
-        <BinaryFractionViz numberOfBits={bitInfoArray.length} value={this.state.numberValue} width={800} height={128}/>
+        <div style={decimalValueStyle} className='BinaryFractionsMain__decimal-value'>{this.state.numberValue}</div>
+        <BinaryFractionViz numberOfBits={bitInfoArray.length} value={this.state.numberValue} width={width} />
         <div className='BinaryFractionsMain__bit-display'>
-          <div className='BinaryFractionsMain__dot'>.</div>
-          <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} directionClass={'left-to-right'}/>
-          <div className='BinaryFractionsMain__dot'></div>
+          <div style={dotStyle} className='BinaryFractionsMain__dot'>.</div>
+          <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} directionClass={'left-to-right'} sizeMultiplier={sizeMultiplier}/>
+          <div style={dotStyle} className='BinaryFractionsMain__dot'></div>
         </div>
-        <button className='button BinaryFractionsMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
-        <div className='BinaryFractionsMain__bits-buttons-label'>Bits</div>
+        <button style={resetButtonStyle} className='button BinaryFractionsMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
+        <div style={bitsButtonsLabelStyle} className='BinaryFractionsMain__bits-buttons-label'>Bits</div>
         <div className='BinaryFractionsMain__add-remove-button-container'>
           <button className='button BinaryFractionsMain__add-remove-button' onClick={this.removeBitPanel}>-</button>
           <button className='button BinaryFractionsMain__add-remove-button' onClick={this.addBitPanel}>+</button>

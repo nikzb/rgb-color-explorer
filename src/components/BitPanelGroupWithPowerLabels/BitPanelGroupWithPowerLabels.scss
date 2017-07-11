@@ -7,7 +7,8 @@
   perspective: 100em;
   transform-style: preserve-3d;
   flex-direction: row-reverse;
-  height: 12em;
+  // height: 12em;
+  border: 1px solid red;
 
   &--left-to-right {
     flex-direction: row;
@@ -22,7 +23,7 @@
   cursor: pointer;
 
   &__power {
-    font-size: 1.7em;
+    // font-size: 1.7em;
     padding: 0.15em;
     color: $grey-0a;
   }

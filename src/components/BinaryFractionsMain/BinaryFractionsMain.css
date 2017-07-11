@@ -7,7 +7,6 @@
 .BinaryFractionsMain__reset-button.button {
   margin: 0.75em;
   padding: 0.75em 1.4em;
-  font-size: 1.2em;
   border-radius: 0.5rem;
   border: 1px solid dimgrey;
   background: transparent;
@@ -26,18 +25,15 @@
 .BinaryFractionsMain__decimal-value {
   margin-top: 0.1em;
   font-family: 'Open Sans', sans-serif;
-  color: #555;
-  font-size: 6em; }
+  color: #555; }
 
 .BinaryFractionsMain__bit-display {
   display: flex;
   justify-content: center; }
 
 .BinaryFractionsMain__dot {
-  font-size: 6em;
   padding-top: 0.5em;
-  color: #555;
-  width: .3em; }
+  color: #555; }
 
 .BinaryFractionsMain__bits-buttons-label {
   font-size: 1.5em;

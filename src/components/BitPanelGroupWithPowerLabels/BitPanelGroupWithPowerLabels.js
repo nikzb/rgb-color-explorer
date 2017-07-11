@@ -9,6 +9,13 @@ import './BitPanelGroupWithPowerLabels.css';
 //  toggleCalculatedPower: function that toggles from calculated power to not
 const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggleCalculatedPower, directionClass=''}) => {
   const bitPanelsWithLabels = bitInfoArray.map((bitInfo, index) => {
+    const powerDivStyle = {
+      fontSize: '0.5em'
+    }
+    // const bitPanelWithLabelStyle = {
+    //   width:
+    // }
+
     let powerDiv;
     if (showCalculatedPower) {
       let calculatedPower;
@@ -17,9 +24,9 @@ const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggle
       } else {
         calculatedPower = <span><sup>{1}</sup>{'\u2044'}<sub>{Math.pow(2, -bitInfo.exponent)}</sub></span>;
       }
-      powerDiv = <div className="BitPanelWithLabel__power" onClick={toggleCalculatedPower}>{calculatedPower}</div>;
+      powerDiv = <div style={powerDivStyle} className="BitPanelWithLabel__power" onClick={toggleCalculatedPower}>{calculatedPower}</div>;
     } else {
-      powerDiv = <div className="BitPanelWithLabel__power" onClick={toggleCalculatedPower}>{2}<sup>{bitInfo.exponent}</sup></div>;
+      powerDiv = <div style={powerDivStyle} className="BitPanelWithLabel__power" onClick={toggleCalculatedPower}>{2}<sup>{bitInfo.exponent}</sup></div>;
     }
     return (
       <div key={index} className='BitPanelWithLabel'>
@@ -31,8 +38,12 @@ const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggle
 
   const classes = `BitPanelGroupWithLabels BitPanelGroupWithLabels--${directionClass}`;
 
+  const BitPanelGroupStyle = {
+    height: '4.5em'
+  }
+
   return (
-    <div className={classes}>
+    <div style={BitPanelGroupStyle} className={classes}>
       {bitPanelsWithLabels}
     </div>
   );
