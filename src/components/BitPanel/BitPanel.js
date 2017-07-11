@@ -2,10 +2,10 @@ import React from 'react';
 
 import './BitPanel.css';
 
-const BitPanel = ({angle, onClick}) => {
+const BitPanel = ({angle, onClick, sizeMultiplier}) => {
   const bitPanelStyleFront = {
     transform: `rotateX(${angle}deg`,
-    fontSize: '1.8em'
+    fontSize: `${1.8*sizeMultiplier}em`
   };
 
   let backAngle;
@@ -18,11 +18,11 @@ const BitPanel = ({angle, onClick}) => {
 
   const bitPanelStyleBack = {
     transform: `rotateX(${backAngle}deg`,
-    fontSize: '1.8em'
+    fontSize: `${1.8*sizeMultiplier}em`
   };
 
   const BitPanelStyle = {
-    width: '1.8em'
+    width: `${1.8*sizeMultiplier}em`
   }
 
   return (

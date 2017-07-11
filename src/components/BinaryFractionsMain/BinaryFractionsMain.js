@@ -236,8 +236,8 @@ class BinaryFractionsMain extends Component {
     const lowResMediaQuery = MediaQueries.lowResQuery();
     const phoneMediumQuery = MediaQueries.phoneMediumQuery();
     const phoneLargeQuery = MediaQueries.phoneLargeQuery();
-    const tablePortraitQuery = MediaQueries.tabletPortraitQuery();
-    const tableLandscapeQuery = MediaQueries.tabletLandscapeQuery();
+    const tabletPortraitQuery = MediaQueries.tabletPortraitQuery();
+    const tabletLandscapeQuery = MediaQueries.tabletLandscapeQuery();
     const desktopQuery = MediaQueries.desktopQuery();
     const desktopWideQuery = MediaQueries.desktopWideQuery();
 
@@ -246,9 +246,11 @@ class BinaryFractionsMain extends Component {
 
     if (phoneMediumQuery.matches) {
       sizeMultiplier = 1.1;
-    } else if (phoneLargeQuery.matches) {
+    }
+    if (phoneLargeQuery.matches) {
       sizeMultiplier = 1.2;
-    } else if (tablePortraitQuery.matches) {
+    }
+    if (tabletPortraitQuery.matches) {
       sizeMultiplier = 1.5;
     }
 
@@ -256,12 +258,12 @@ class BinaryFractionsMain extends Component {
     console.log(width);
 
     const decimalValueStyle = {
-        fontSize: '3em'
+        fontSize: `${3*sizeMultiplier}em`//'3em'
     }
 
     const dotStyle = {
-      fontSize: '2.3em',
-      width: '0.6em'
+      fontSize: `${2.3*sizeMultiplier}em`,
+      width: `${0.6*sizeMultiplier}em`
     }
 
     const resetButtonStyle = {
