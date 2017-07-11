@@ -5,38 +5,31 @@
   border-radius: 0.5rem;
   overflow: hidden;
   margin-bottom: 0; }
-
-.ButtonGroupMenu .button {
-  background: transparent;
-  color: darkgrey;
-  margin-bottom: 0;
-  flex: 1 0 0;
-  font-size: 1.1em;
-  padding: .35em; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ButtonGroupMenu .button {
-    padding: .5em; } }
-
-.ButtonGroupMenu .button:nth-child(1n + 1) {
-  border-left: 1px solid darkgrey; }
-
-.ButtonGroupMenu .button:nth-child(1) {
-  border-left: none; }
-
-.ButtonGroupMenu .button:hover, .ButtonGroupMenu .button:focus {
-  background: #333;
-  color: darkgrey;
-  outline: 0; }
-
-.ButtonGroupMenu .button:active {
-  background: dimgrey;
-  color: white;
-  outline: 0; }
-
-.ButtonGroupMenu .button.is-active {
-  background: darkgrey;
-  color: black; }
+    background: transparent;
+    color: darkgrey;
+    margin-bottom: 0;
+    flex: 1 0 0;
+    font-size: 1.1em;
+    padding: .35em; }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+      .ButtonGroupMenu .button {
+        padding: .5em; } }
+    .ButtonGroupMenu .button:nth-child(1n + 1) {
+      border-left: 1px solid darkgrey; }
+    .ButtonGroupMenu .button:nth-child(1) {
+      border-left: none; }
+    .ButtonGroupMenu .button:hover, .ButtonGroupMenu .button:focus {
+      background: #333;
+      color: darkgrey;
+      outline: 0; }
+    .ButtonGroupMenu .button:active {
+      background: dimgrey;
+      color: white;
+      outline: 0; }
+    .ButtonGroupMenu .button.is-active {
+      background: darkgrey;
+      color: black; }
 
 .ButtonGroupMenu--plus-minus {
   display: flex;
@@ -45,25 +38,21 @@
   overflow: hidden;
   margin-bottom: 0;
   align-items: flex-start; }
-
-.ButtonGroupMenu--plus-minus .button {
-  background: transparent;
-  color: darkgrey;
-  margin-bottom: 0;
-  flex: 1 0 0;
-  font-size: 1.8em;
-  padding: 0 .5rem .2rem .5rem; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ButtonGroupMenu--plus-minus .button {
-    padding-bottom: .3rem; } }
-
-.ButtonGroupMenu--plus-minus .button:hover, .ButtonGroupMenu--plus-minus .button:focus {
-  background: #333;
-  color: darkgrey;
-  outline: 0; }
-
-.ButtonGroupMenu--plus-minus .button:active {
-  background: dimgrey;
-  color: darkgrey;
-  outline: 0; }
+    background: transparent;
+    color: darkgrey;
+    margin-bottom: 0;
+    flex: 1 0 0;
+    font-size: 1.8em;
+    padding: 0 .5rem .2rem .5rem; }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+      .ButtonGroupMenu--plus-minus .button {
+        padding-bottom: .3rem; } }
+    .ButtonGroupMenu--plus-minus .button:hover, .ButtonGroupMenu--plus-minus .button:focus {
+      background: #333;
+      color: darkgrey;
+      outline: 0; }
+    .ButtonGroupMenu--plus-minus .button:active {
+      background: dimgrey;
+      color: darkgrey;
+      outline: 0; }

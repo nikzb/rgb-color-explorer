@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Averia+Sans+Libre:700");
 .BinaryFractionsMain {
   transform: scale(1, 1);
-  transform-origin: 50% 0%; }
+  transform-origin: 50% 0%;
+  margin-bottom: 2em; }
 
 .BinaryFractionsMain__reset-button.button {
   margin: 0.75em;
@@ -22,11 +23,11 @@
   color: dimgrey;
   outline: 0; }
 
-.BinaryFractionsMain__value {
+.BinaryFractionsMain__decimal-value {
   margin-top: 0.1em;
-  font-size: 7em;
   font-family: 'Open Sans', sans-serif;
-  color: #555; }
+  color: #555;
+  font-size: 6em; }
 
 .BinaryFractionsMain__bit-display {
   display: flex;

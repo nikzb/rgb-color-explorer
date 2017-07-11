@@ -234,7 +234,7 @@ class BinaryFractionsMain extends Component {
     return (
       <div className='BinaryFractionsMain'>
         <SouvlakiTitle title='Binary Fractions' />
-        <div className='BinaryFractionsMain__value'>{this.state.numberValue}</div>
+        <div className='BinaryFractionsMain__decimal-value'>{this.state.numberValue}</div>
         <BinaryFractionViz numberOfBits={bitInfoArray.length} value={this.state.numberValue} width={800} height={128}/>
         <div className='BinaryFractionsMain__bit-display'>
           <div className='BinaryFractionsMain__dot'>.</div>

@@ -4,9 +4,7 @@
 
 To do:
 
-* Finish fixing colors for dark background
-  * Try using gradients in background?
-    * Need to get body to extend all the way to the bottom of the viewport
+* Delete button icon does not show up sometimes - figure out why
 
 * Look at what happens when there is no internet connection!
   * Either need to include font so it works with offline version, or need to tweak the fallback fonts to avoid ugliness

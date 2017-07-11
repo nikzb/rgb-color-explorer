@@ -8,6 +8,7 @@ $button-active-color: $grey-7;
 .BinaryFractionsMain {
   transform: scale(1.0, 1.0);
   transform-origin: 50% 0%;
+  margin-bottom: 2em;
 
   &__reset-button.button {
     margin: 0.75em;
@@ -31,11 +32,11 @@ $button-active-color: $grey-7;
     }
   }
 
-  &__value {
+  &__decimal-value {
     margin-top: 0.1em;
-    font-size: 7em;
     font-family: 'Open Sans', sans-serif;
     color: $grey-0b;
+    font-size: 6em;
   }
 
   &__bit-display {

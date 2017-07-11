@@ -4,55 +4,45 @@
   align-items: center;
   height: 6em;
   margin-top: 0.5em; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .ColorCoderGuessPanel__container {
-    margin-top: 1em; } }
-
-.ColorCoderGuessPanel__container--empty {
-  justify-content: center; }
-
-.ColorCoderGuessPanel__container--empty .ColorCoderGuessPanel__round-number {
-  font-family: 'Averia Sans Libre';
-  font-size: 2.0em;
-  color: #A0A0A0; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
-  .ColorCoderGuessPanel__container--empty .ColorCoderGuessPanel__round-number {
-    font-size: 2.5em; } }
-
-.ColorCoderGuessPanel__container .ColorCoderGuessPanel__points-earned {
-  font-family: 'Averia Sans Libre';
-  font-size: 2.8em;
-  color: #A0A0A0;
-  text-shadow: 0.02em 0.02em #333;
-  flex: 0 0 43.75%;
-  position: relative;
-  left: -0.15em; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    .ColorCoderGuessPanel__container {
+      margin-top: 1em; } }
+  .ColorCoderGuessPanel__container--empty {
+    justify-content: center; }
+    .ColorCoderGuessPanel__container--empty .ColorCoderGuessPanel__round-number {
+      font-family: 'Averia Sans Libre';
+      font-size: 2.0em;
+      color: #A0A0A0; }
+      @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+        .ColorCoderGuessPanel__container--empty .ColorCoderGuessPanel__round-number {
+          font-size: 2.5em; } }
   .ColorCoderGuessPanel__container .ColorCoderGuessPanel__points-earned {
-    font-size: 3.6em; } }
+    font-family: 'Averia Sans Libre';
+    font-size: 2.8em;
+    color: #A0A0A0;
+    text-shadow: 0.02em 0.02em #333;
+    flex: 0 0 43.75%;
+    position: relative;
+    left: -0.15em; }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+      .ColorCoderGuessPanel__container .ColorCoderGuessPanel__points-earned {
+        font-size: 3.6em; } }
 
 .ColorCoderGuessCountDisplay {
   flex: 0 0 28.125%; }
-
-.ColorCoderGuessCountDisplay__label {
-  color: #A0A0A0;
-  font-size: 1.2em; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
   .ColorCoderGuessCountDisplay__label {
-    font-size: 1.5em; } }
-
-.ColorCoderGuessCountDisplay__count {
-  color: #A0A0A0;
-  font-size: 1.8em;
-  margin-top: -0.2em; }
-
-@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+    color: #A0A0A0;
+    font-size: 1.2em; }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+      .ColorCoderGuessCountDisplay__label {
+        font-size: 1.5em; } }
   .ColorCoderGuessCountDisplay__count {
-    font-size: 2.2em; } }
+    color: #A0A0A0;
+    font-size: 1.8em;
+    margin-top: -0.2em; }
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 25em), (min-resolution: 192dpi) and (min-width: 25em) {
+      .ColorCoderGuessCountDisplay__count {
+        font-size: 2.2em; } }
 
 .ColorCoderComponentsAndFeedbackDisplay {
   flex: 0 0 43.75%; }

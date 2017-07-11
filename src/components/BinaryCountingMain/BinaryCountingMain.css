@@ -1,9 +1,7 @@
 .BinaryCountingMain {
   transform: scale(1, 1);
   transform-origin: 50% 0%; }
-
-.BinaryCountingMain__reset-button.button {
-  border-radius: 0.5rem; }
-
-.BinaryCountingMain__unsigned-int {
-  font-size: 8em; }
+  .BinaryCountingMain__reset-button.button {
+    border-radius: 0.5rem; }
+  .BinaryCountingMain__unsigned-int {
+    font-size: 8em; }
