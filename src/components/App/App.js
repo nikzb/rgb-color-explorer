@@ -27,8 +27,9 @@ class App extends Component {
         {/* <Header /> */}
         <Route exact path='/rgb' component={RGBMainSection} />
         <Route exact path='/color-coder' component={ColorCoderMainSection} />
+        <Route exact path='/fractions' component={BinaryFractionsMain} />
         {/* <Route exact path='/' component={SouvlakiMainSection} /> */}
-        <Route exact path='/' component={BinaryFractionsMain} />
+        <Route exact path='/' component={SouvlakiMainSection} />
       </div>
     );
   }
