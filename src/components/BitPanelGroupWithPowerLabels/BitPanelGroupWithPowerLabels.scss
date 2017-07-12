@@ -3,12 +3,10 @@
 .BitPanelGroupWithLabels {
   display: flex;
   justify-content: center;
-  // border: 1px solid green;
   perspective: 100em;
   transform-style: preserve-3d;
   flex-direction: row-reverse;
   // height: 12em;
-  border: 1px solid red;
 
   &--left-to-right {
     flex-direction: row;

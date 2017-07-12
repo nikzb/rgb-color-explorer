@@ -21,8 +21,15 @@ const BitPanel = ({angle, onClick, sizeMultiplier}) => {
     fontSize: `${1.8*sizeMultiplier}em`
   };
 
-  const BitPanelStyle = {
+  let BitPanelStyle = {
     width: `${1.8*sizeMultiplier}em`
+  }
+
+  if (sizeMultiplier > 1.2) {
+    BitPanelStyle = {
+      width: `${1.8*sizeMultiplier}em`,
+      left: `${-0.1*sizeMultiplier}em`
+    }
   }
 
   return (

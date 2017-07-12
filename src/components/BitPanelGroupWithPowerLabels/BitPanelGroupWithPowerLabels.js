@@ -8,13 +8,17 @@ import './BitPanelGroupWithPowerLabels.css';
 //  showCalculatedPower: boolean - true if should show calculated power instead of base / exponent
 //  toggleCalculatedPower: function that toggles from calculated power to not
 const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggleCalculatedPower, directionClass='', sizeMultiplier}) => {
+  if (sizeMultiplier > 1.2) {
+    sizeMultiplier *= 1.5;
+  }
   const bitPanelsWithLabels = bitInfoArray.map((bitInfo, index) => {
+
     const powerDivStyle = {
       fontSize: `${0.5*sizeMultiplier}em`
     }
-    // const bitPanelWithLabelStyle = {
-    //   width:
-    // }
+    const bitPanelWithLabelStyle = {
+      width: `${2.3*sizeMultiplier}em`
+    }
 
     let powerDiv;
     if (showCalculatedPower) {
@@ -29,7 +33,7 @@ const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggle
       powerDiv = <div style={powerDivStyle} className="BitPanelWithLabel__power" onClick={toggleCalculatedPower}>{2}<sup>{bitInfo.exponent}</sup></div>;
     }
     return (
-      <div key={index} className='BitPanelWithLabel'>
+      <div key={index} style={bitPanelWithLabelStyle} className='BitPanelWithLabel'>
         {powerDiv}
         <BitPanel angle={bitInfo.angle} onClick={bitInfo.onClick} sizeMultiplier={sizeMultiplier}/>
       </div>

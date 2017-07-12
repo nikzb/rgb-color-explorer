@@ -245,25 +245,43 @@ class BinaryFractionsMain extends Component {
     let sizeMultiplier = 1;
 
     if (phoneMediumQuery.matches) {
-      sizeMultiplier = 1.1;
+      sizeMultiplier = 1.06;
     }
     if (phoneLargeQuery.matches) {
-      sizeMultiplier = 1.2;
+      sizeMultiplier = 1.12;
     }
     if (tabletPortraitQuery.matches) {
-      sizeMultiplier = 1.5;
+      sizeMultiplier = 1.4;
+    }
+    if (desktopQuery.matches) {
+      sizeMultiplier = 1.6;
+    }
+    if (desktopWideQuery.matches) {
+      sizeMultiplier = 1.8;
     }
 
     const width = 300 * sizeMultiplier;
-    console.log(width);
 
-    const decimalValueStyle = {
+    let decimalValueStyle = {
         fontSize: `${3*sizeMultiplier}em`//'3em'
     }
 
-    const dotStyle = {
-      fontSize: `${2.3*sizeMultiplier}em`,
-      width: `${0.6*sizeMultiplier}em`
+    if (sizeMultiplier > 1.2) {
+      decimalValueStyle = {
+          fontSize: `${4*sizeMultiplier}em`//'3em'
+      }
+    }
+
+    let dotStyle = {
+      fontSize: `${2.15*sizeMultiplier}em`,
+      width: `${0.2*sizeMultiplier}em`
+    }
+
+    if (sizeMultiplier > 1.2) {
+      dotStyle = {
+        fontSize: `${2.3*sizeMultiplier * 1.3}em`,
+        width: `${0.11*sizeMultiplier * 1.3}em`
+      }
     }
 
     const resetButtonStyle = {
@@ -278,7 +296,7 @@ class BinaryFractionsMain extends Component {
       <div className='BinaryFractionsMain'>
         <SouvlakiTitle title='Binary Fractions' />
         <div style={decimalValueStyle} className='BinaryFractionsMain__decimal-value'>{this.state.numberValue}</div>
-        <BinaryFractionViz numberOfBits={bitInfoArray.length} value={this.state.numberValue} width={width} />
+        <BinaryFractionViz numberOfBits={bitInfoArray.length} value={this.state.numberValue} width={width * sizeMultiplier} />
         <div className='BinaryFractionsMain__bit-display'>
           <div style={dotStyle} className='BinaryFractionsMain__dot'>.</div>
           <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} directionClass={'left-to-right'} sizeMultiplier={sizeMultiplier}/>
