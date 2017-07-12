@@ -219,19 +219,30 @@ class BinaryFractionsMain extends Component {
   }
 
   componentDidMount() {
-    setInterval(() => {
-      // If at least one panel is rotating, call the rotate method
-      if (this.state.bitList.filter(immutObj => immutObj.get('isRotating')).size > 0) {
-        this.rotate({shouldPropagate: false})
-      }
-    }, 2);
+    this.setState({
+      rotateInterval: setInterval(() => {
+        // If at least one panel is rotating, call the rotate method
+        if (this.state.bitList.filter(immutObj => immutObj.get('isRotating')).size > 0) {
+          this.rotate({shouldPropagate: false})
+        }
+      }, 2)
+    });
+    window.addEventListener('resize', this.handleResize);
   }
+
+  componentWillUnmount(){
+    window.removeEventListener('resize', this.handleResize);
+    clearInterval(this.state.rotateInterval);
+  }
+
+  handleResize = () => {
+    this.forceUpdate();
+  };
 
   render() {
     const bitInfoArray = this.state.bitList.map((immutObj) => {
       return immutObj.toJS();
     }).toJS();
-
 
     const lowResMediaQuery = MediaQueries.lowResQuery();
     const phoneMediumQuery = MediaQueries.phoneMediumQuery();
@@ -240,7 +251,6 @@ class BinaryFractionsMain extends Component {
     const tabletLandscapeQuery = MediaQueries.tabletLandscapeQuery();
     const desktopQuery = MediaQueries.desktopQuery();
     const desktopWideQuery = MediaQueries.desktopWideQuery();
-
 
     let sizeMultiplier = 1;
 
@@ -252,6 +262,9 @@ class BinaryFractionsMain extends Component {
     }
     if (tabletPortraitQuery.matches) {
       sizeMultiplier = 1.4;
+    }
+    if (tabletLandscapeQuery.matches) {
+      sizeMultiplier = 1.5;
     }
     if (desktopQuery.matches) {
       sizeMultiplier = 1.6;
