@@ -25,8 +25,6 @@ const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggle
       width: `${2.3*sizeMultiplier}em`
     }
 
-
-
     let powerDiv;
     if (showCalculatedPower) {
       let calculatedPower;

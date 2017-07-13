@@ -18,13 +18,14 @@
   flex-direction: column;
   align-items: center;
   z-index: -1;
-  cursor: pointer;
+  // cursor: pointer;
 
   &__power {
     // font-size: 1.7em;
     padding: 0.15em;
     color: $grey-0a;
     position: relative;
-    
+    cursor: pointer;
+
   }
 }

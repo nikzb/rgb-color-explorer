@@ -292,7 +292,7 @@ class BinaryFractionsMain extends Component {
 
     if (sizeMultiplier > 1.2) {
       dotStyle = {
-        fontSize: `${2.3*sizeMultiplier * 1.3}em`,
+        fontSize: `${2.5*sizeMultiplier * 1.3}em`,
         width: `${0.11*sizeMultiplier * 1.3}em`
       }
     }
