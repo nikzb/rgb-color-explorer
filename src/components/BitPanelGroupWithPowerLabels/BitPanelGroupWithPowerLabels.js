@@ -14,11 +14,18 @@ const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggle
   const bitPanelsWithLabels = bitInfoArray.map((bitInfo, index) => {
 
     const powerDivStyle = {
-      fontSize: `${0.5*sizeMultiplier}em`
+      fontSize: `${0.7*sizeMultiplier}em`,
     }
+
+    if (sizeMultiplier > 1.2) {
+      powerDivStyle.left = `${0.05 * sizeMultiplier}em`;
+    }
+
     const bitPanelWithLabelStyle = {
       width: `${2.3*sizeMultiplier}em`
     }
+
+
 
     let powerDiv;
     if (showCalculatedPower) {
