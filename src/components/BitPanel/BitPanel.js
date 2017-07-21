@@ -4,7 +4,7 @@ import './BitPanel.css';
 
 const BitPanel = ({angle, onClick, sizeMultiplier}) => {
   const bitPanelStyleFront = {
-    transform: `rotateX(${angle}deg`,
+    transform: `rotateX(${angle}deg)`,
     fontSize: `${1.8*sizeMultiplier}em`
   };
 
@@ -17,13 +17,13 @@ const BitPanel = ({angle, onClick, sizeMultiplier}) => {
   }
 
   const bitPanelStyleBack = {
-    transform: `rotateX(${backAngle}deg`,
+    transform: `rotateX(${backAngle}deg)`,
     fontSize: `${1.8*sizeMultiplier}em`
   };
 
   let BitPanelStyle = {
     width: `${1.8*sizeMultiplier}em`
-  }
+  };
 
   if (sizeMultiplier > 1.2) {
     BitPanelStyle = {

@@ -254,6 +254,9 @@ class BinaryFractionsMain extends Component {
 
     let sizeMultiplier = 1;
 
+    if (lowResMediaQuery.matches) {
+      sizeMultiplier = 1.4;
+    }
     if (phoneMediumQuery.matches) {
       sizeMultiplier = 1.06;
     }
