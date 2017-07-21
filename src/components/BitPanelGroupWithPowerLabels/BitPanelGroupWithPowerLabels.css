@@ -4,18 +4,15 @@
   perspective: 100em;
   transform-style: preserve-3d;
   flex-direction: row-reverse; }
-
-.BitPanelGroupWithLabels--left-to-right {
-  flex-direction: row; }
+  .BitPanelGroupWithLabels--left-to-right {
+    flex-direction: row; }
 
 .BitPanelWithLabel {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  z-index: -1; }
-
-.BitPanelWithLabel__power {
-  padding: 0.15em;
-  color: #333;
-  position: relative;
-  cursor: pointer; }
+  align-items: center; }
+  .BitPanelWithLabel__power {
+    padding: 0.15em;
+    color: #333;
+    position: relative;
+    cursor: pointer; }

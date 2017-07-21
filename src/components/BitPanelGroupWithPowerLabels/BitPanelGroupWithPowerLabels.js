@@ -1,4 +1,5 @@
 import React from 'react';
+import browser from 'detect-browser';
 
 import BitPanel from '../BitPanel/BitPanel';
 import './BitPanelGroupWithPowerLabels.css';
@@ -21,8 +22,15 @@ const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggle
       powerDivStyle.left = `${0.05 * sizeMultiplier}em`;
     }
 
-    const bitPanelWithLabelStyle = {
+    let bitPanelWithLabelStyle = {
       width: `${2.3*sizeMultiplier}em`
+    }
+
+    if (browser && (browser.name === 'chrome' || browser.name === 'safari')) {
+      bitPanelWithLabelStyle = {
+        width: `${2.3*sizeMultiplier}em`,
+        zIndex: '-1'
+      }
     }
 
     let powerDiv;

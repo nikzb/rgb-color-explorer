@@ -5,6 +5,7 @@ import './BitPanel.css';
 const BitPanel = ({angle, onClick, sizeMultiplier}) => {
   const bitPanelStyleFront = {
     transform: `rotateX(${angle}deg)`,
+    // MozTransform: `rotateX(${angle}deg)`,
     fontSize: `${1.8*sizeMultiplier}em`
   };
 
@@ -18,6 +19,7 @@ const BitPanel = ({angle, onClick, sizeMultiplier}) => {
 
   const bitPanelStyleBack = {
     transform: `rotateX(${backAngle}deg)`,
+    // MozTransform: `rotateX(${backAngle}deg)`,
     fontSize: `${1.8*sizeMultiplier}em`
   };
 
