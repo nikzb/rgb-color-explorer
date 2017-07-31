@@ -18,6 +18,7 @@ $button-active-color: $grey-7;
     border: 1px solid $button-color;
     background: transparent;
     color: $button-color;
+    font-size: 1em;
 
     &:hover, &:focus {
       background: $button-focus-color;
@@ -31,6 +32,13 @@ $button-active-color: $grey-7;
       outline: 0;
     }
   }
+
+  .button.BinaryFractionsMain__reset-button--active {
+    background: $button-active-color;
+    color: $button-color;
+    outline: 0;
+  }
+
 
   &__decimal-value {
     margin-top: 0.1em;
@@ -81,5 +89,11 @@ $button-active-color: $grey-7;
       color: $button-color;
       outline: 0;
     }
+  }
+
+  .button.BinaryFractionsMain__add-remove-button--active {
+    background: $button-active-color;
+    color: $button-color;
+    outline: 0;
   }
 }

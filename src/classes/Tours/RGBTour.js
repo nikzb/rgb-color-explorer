@@ -42,7 +42,8 @@ class RGBTour {
     setCodeEditMode,
     addSymbolToCode,
     activateSymbolButtonInPanel,
-    updateToFullCode}) {
+    updateToFullCode
+  }) {
 
     // Take a color code object and return a function that calls updateColor with fromTour equal to true, so it
     // will work even when the controls are disabled
@@ -89,7 +90,7 @@ class RGBTour {
 
         initSequence = _.map(initSequence, (sequenceObject) => {
           return {...sequenceObject, tourStepItBelongsTo: this.currentTourStep};
-        })
+        });
 
         let colorSequence = [];
         if (colorArray) {

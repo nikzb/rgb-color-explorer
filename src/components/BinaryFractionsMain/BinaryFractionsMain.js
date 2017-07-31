@@ -6,12 +6,21 @@ import BitPanelGroupWithPowerLabels from '../BitPanelGroupWithPowerLabels/BitPan
 import BinaryFractionViz from '../BinaryFractionViz/BinaryFractionViz';
 import SouvlakiTitle from '../SouvlakiTitle/SouvlakiTitle';
 import MediaQueries from '../../classes/MediaQueries/MediaQueries';
+import FractionsTour from '../../classes/Tours/FractionsTour';
 
 import './BinaryFractionsMain.css';
 
 class BinaryFractionsMain extends Component {
   constructor(props) {
     super(props);
+
+    this.toggleCalculatedPower = this.toggleCalculatedPower.bind(this);
+    this.initiateFlip = this.initiateFlip.bind(this);
+    this.resetAllPanels = this.resetAllPanels.bind(this);
+    this.addBitPanel = this.addBitPanel.bind(this);
+    this.removeBitPanel = this.removeBitPanel.bind(this);
+    this.activateButton = this.activateButton.bind(this);
+
     this.state = {
       bitList: List([
         Map({exponent: -1, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(0)}),
@@ -21,12 +30,22 @@ class BinaryFractionsMain extends Component {
       ]),
       numberValue: 0,
       inReset: false,
-      calculatePower: true
+      calculatePower: true,
+      toggleCalculatedPowerActive: false,
+      resetButtonActive: false,
+      addBitPanelButtonActive: false,
+      removeBitPanelActive: false,
+      tour: (new FractionsTour({
+        toggleCalculatedPower: this.toggleCalculatedPower,
+        initiateFlip: this.initiateFlip,
+        addBitPanel: this.addBitPanel,
+        removeBitPanel: this.removeBitPanel,
+        resetAllPanels: this.resetAllPanels,
+        activateButton: this.activateButton
+      })).getTour()
     };
-    this.resetAllPanels = this.resetAllPanels.bind(this);
-    this.addBitPanel = this.addBitPanel.bind(this);
-    this.removeBitPanel = this.removeBitPanel.bind(this);
-    this.toggleCalculatedPower = this.toggleCalculatedPower.bind(this);
+
+
   }
 
   newBitPanelObject(index) {
@@ -218,6 +237,19 @@ class BinaryFractionsMain extends Component {
     });
   }
 
+  activateButton(buttonName) {
+    if (buttonName === 'resetButton') {
+      this.setState({
+        resetButtonActive: true
+      });
+      setTimeout(() => {
+        this.setState({
+          resetButtonActive: false
+        });
+      }, 100);
+    }
+  }
+
   componentDidMount() {
     this.setState({
       rotateInterval: setInterval(() => {
@@ -228,11 +260,13 @@ class BinaryFractionsMain extends Component {
       }, 2)
     });
     window.addEventListener('resize', this.handleResize);
+    this.state.tour.start();
   }
 
   componentWillUnmount(){
     window.removeEventListener('resize', this.handleResize);
     clearInterval(this.state.rotateInterval);
+    this.state.tour.hide();
   }
 
   handleResize = () => {
@@ -300,12 +334,14 @@ class BinaryFractionsMain extends Component {
       }
     }
 
-    const resetButtonStyle = {
-      fontSize: '1em'
-    }
+    // const bitsButtonsLabelStyle = {
+    //   fontSize: '1.1em'
+    // }
 
-    const bitsButtonsLabelStyle = {
-      fontSize: '1.1em'
+    let resetButtonClasses = 'button BinaryFractionsMain__reset-button';
+    if (this.state.resetButtonActive) {
+      resetButtonClasses += ' BinaryFractionsMain__reset-button--active'
+      console.log('added active modifier');
     }
 
     return (
@@ -318,8 +354,8 @@ class BinaryFractionsMain extends Component {
           <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} directionClass={'left-to-right'} sizeMultiplier={sizeMultiplier}/>
           <div style={dotStyle} className='BinaryFractionsMain__dot'></div>
         </div>
-        <button style={resetButtonStyle} className='button BinaryFractionsMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
-        <div style={bitsButtonsLabelStyle} className='BinaryFractionsMain__bits-buttons-label'>Bits</div>
+        <button /*style={resetButtonStyle}*/ className={resetButtonClasses} onClick={this.resetAllPanels}>Reset</button>
+        <div /*style={bitsButtonsLabelStyle}*/ className='BinaryFractionsMain__bits-buttons-label'>Bits</div>
         <div className='BinaryFractionsMain__add-remove-button-container'>
           <button className='button BinaryFractionsMain__add-remove-button' onClick={this.removeBitPanel}>-</button>
           <button className='button BinaryFractionsMain__add-remove-button' onClick={this.addBitPanel}>+</button>
