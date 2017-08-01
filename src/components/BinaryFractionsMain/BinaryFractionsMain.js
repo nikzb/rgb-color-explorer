@@ -34,7 +34,7 @@ class BinaryFractionsMain extends Component {
       toggleCalculatedPowerActive: false,
       resetButtonActive: false,
       addBitPanelButtonActive: false,
-      removeBitPanelActive: false,
+      removeBitPanelButtonActive: false,
       tour: (new FractionsTour({
         toggleCalculatedPower: this.toggleCalculatedPower,
         initiateFlip: this.initiateFlip,
@@ -246,7 +246,34 @@ class BinaryFractionsMain extends Component {
         this.setState({
           resetButtonActive: false
         });
-      }, 100);
+      }, 150);
+    } else if (buttonName === 'addBitPanel') {
+      this.setState({
+        addBitPanelButtonActive: true
+      });
+      setTimeout(() => {
+        this.setState({
+          addBitPanelButtonActive: false
+        });
+      }, 150);
+    } else if (buttonName === 'removeBitPanel') {
+      this.setState({
+        removeBitPanelButtonActive: true
+      });
+      setTimeout(() => {
+        this.setState({
+          removeBitPanelButtonActive: false
+        });
+      }, 150);
+    } else if (buttonName === 'bitPanelLabels') {
+      this.setState({
+        toggleCalculatedPowerActive: true
+      });
+      setTimeout(() => {
+        this.setState({
+          toggleCalculatedPowerActive: false
+        });
+      }, 150);
     }
   }
 
@@ -341,7 +368,11 @@ class BinaryFractionsMain extends Component {
     let resetButtonClasses = 'button BinaryFractionsMain__reset-button';
     if (this.state.resetButtonActive) {
       resetButtonClasses += ' BinaryFractionsMain__reset-button--active'
-      console.log('added active modifier');
+    }
+
+    let addBitPanelButtonClasses = 'button BinaryFractionsMain__add-remove-button';
+    if (this.state.addBitPanelButtonActive) {
+      addBitPanelButtonClasses += ' BinaryFractionsMain__add-bit-panel-button--active'
     }
 
     return (
@@ -351,14 +382,14 @@ class BinaryFractionsMain extends Component {
         <BinaryFractionViz numberOfBits={bitInfoArray.length} value={this.state.numberValue} width={width * sizeMultiplier} />
         <div className='BinaryFractionsMain__bit-display'>
           <div style={dotStyle} className='BinaryFractionsMain__dot'>.</div>
-          <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} directionClass={'left-to-right'} sizeMultiplier={sizeMultiplier}/>
+          <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} directionClass={'left-to-right'} sizeMultiplier={sizeMultiplier} toggleCalculatedPowerActive={this.state.toggleCalculatedPowerActive}/>
           <div style={dotStyle} className='BinaryFractionsMain__dot'></div>
         </div>
         <button /*style={resetButtonStyle}*/ className={resetButtonClasses} onClick={this.resetAllPanels}>Reset</button>
         <div /*style={bitsButtonsLabelStyle}*/ className='BinaryFractionsMain__bits-buttons-label'>Bits</div>
         <div className='BinaryFractionsMain__add-remove-button-container'>
           <button className='button BinaryFractionsMain__add-remove-button' onClick={this.removeBitPanel}>-</button>
-          <button className='button BinaryFractionsMain__add-remove-button' onClick={this.addBitPanel}>+</button>
+          <button className={addBitPanelButtonClasses} onClick={this.addBitPanel}>+</button>
         </div>
       </div>
     )

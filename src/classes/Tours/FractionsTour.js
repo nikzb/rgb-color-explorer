@@ -100,12 +100,18 @@ class FractionsTour {
         show: getShowFunction({
           initSequence: [
             {
-              callback: toggleCalculatedPower,
+              callback: () => {
+                activateButton('bitPanelLabels');
+                toggleCalculatedPower();
+              },
               waitTime: 4000,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: toggleCalculatedPower,
+              callback: () => {
+                activateButton('bitPanelLabels');
+                toggleCalculatedPower();
+              },
               waitTime: 3000,
               tourStepItBelongsTo: this.currentTourStep
             },
@@ -171,13 +177,27 @@ class FractionsTour {
         show: getShowFunction({
           initSequence: [
             {
-              callback: addBitPanel,
+              callback: () => {
+                activateButton('addBitPanel');
+                addBitPanel();
+              },
               waitTime: 3000,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: addBitPanel,
-              waitTime: 1000,
+              callback: () => {
+                activateButton('addBitPanel');
+                addBitPanel();
+              },
+              waitTime: 500,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => {
+                activateButton('addBitPanel');
+                addBitPanel();
+              },
+              waitTime: 500,
               tourStepItBelongsTo: this.currentTourStep
             }
           ]
@@ -185,7 +205,7 @@ class FractionsTour {
       }
     })
     .addStep('resetPanels', {
-      text: 'To start fresh with 0, click the Reset button.',
+      text: 'To start from 0 again, click the Reset button.',
       attachTo: '.BinaryFractionsMain__reset-button bottom',
       buttons: standardButtons,
       when: {
@@ -205,7 +225,7 @@ class FractionsTour {
       }
     })
     .addStep('explore', {
-      text: 'Now it is your turn to explore. What types of fractions can you create?',
+      text: 'Now it is your turn to explore. Try creating different fractions to see what you can make and what you cannot!',
       showCancelLink: false,
       buttons: [
         {
