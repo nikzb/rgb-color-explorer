@@ -65,3 +65,14 @@
   background: lightgrey;
   color: dimgrey;
   outline: 0; }
+
+.BinaryCountingMain__switch-label {
+  margin: 0.8em 0 0.3em 0;
+  color: dimgrey;
+  font-size: 1.1em; }
+
+.BinaryCountingMain .switch-paddle {
+  background: #909090; }
+
+.BinaryCountingMain input:checked ~ .switch-paddle {
+  background: #357AB6; }

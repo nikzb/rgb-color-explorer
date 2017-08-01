@@ -83,4 +83,18 @@ $button-active-color: $grey-7;
     color: $button-color;
     outline: 0;
   }
+
+  &__switch-label {
+    margin: 0.8em 0 0.3em 0;
+    color: $button-color;
+    font-size: 1.1em;
+  }
+
+  .switch-paddle {
+    background: $grey-3;
+  }
+
+  input:checked~.switch-paddle {
+    background: $bit-panel-blue;
+  }
 }

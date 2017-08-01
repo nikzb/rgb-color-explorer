@@ -246,6 +246,13 @@ class BinaryCountingMain extends Component {
           <button className='button BinaryCountingMain__add-remove-button' onClick={this.removeBitPanel}>﹣</button>
           <button className='button BinaryCountingMain__add-remove-button' onClick={this.addBitPanel}>+</button>
         </div>
+        <div className='BinaryCountingMain__switch-label'>Signed Value</div>
+        <div className="switch small">
+          <input className="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch" />
+          <label className="switch-paddle" htmlFor="exampleSwitch">
+            <span className="show-for-sr">Show Signed Value</span>
+          </label>
+        </div>
       </div>
     )
   }
