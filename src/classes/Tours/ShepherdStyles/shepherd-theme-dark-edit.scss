@@ -6,6 +6,7 @@ $background-color: $grey-0b;
 $el-bg-color: $grey-1b;
 //original element bg color?: #303030;
 $btn-bg-color: #888;
+$btn-bg-color-bright: red;
 //original button color? #3288e6;
 $text-color: #E0E0E0;
 
@@ -44,6 +45,7 @@ $dark-text-color: $grey-5;
       font-size: 1.1em;
     }
   }
+
     .shepherd-element.shepherd-theme-dark .shepherd-content:before {
       content: "";
       display: block;
@@ -239,8 +241,15 @@ $dark-text-color: $grey-5;
             padding: .75em 2em;
             background: $btn-bg-color;
             color: $text-color; }
+          .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li .shepherd-button--bright {
+            background: green;
+            color: $text-color;
+          }
             .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary {
               background: $el-bg-color;//#eee;
+              color: $text-color; }
+            .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary--bright {
+              background: red;//#eee;
               color: $text-color; }
           .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li:last-child .shepherd-button {
             margin-right: 0; }

@@ -279,8 +279,16 @@
   background: #888;
   color: #E0E0E0; }
 
+.shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li .shepherd-button--bright {
+  background: green;
+  color: #E0E0E0; }
+
 .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary {
   background: #707070;
+  color: #E0E0E0; }
+
+.shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li .shepherd-button.shepherd-button-secondary--bright {
+  background: red;
   color: #E0E0E0; }
 
 .shepherd-element.shepherd-theme-dark .shepherd-content footer .shepherd-buttons li:last-child .shepherd-button {

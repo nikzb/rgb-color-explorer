@@ -2,13 +2,13 @@ import Shepherd from 'tether-shepherd';
 
 import TimedFunctionCallSequence from '../TimedFunctionCallSequence/TimedFunctionCallSequence';
 
-import './ShepherdStyles/shepherd-theme-dark-edit.css';
+import './ShepherdStyles/shepherd-theme-bright.css';
 
 class FractionsTour {
   constructor(functions) {
     this.tour = new Shepherd.Tour({
       defaults: {
-        classes: 'shepherd-theme-dark',
+        classes: 'shepherd-theme-bright',
         showCancelLink: true,
       },
     });
@@ -49,7 +49,8 @@ class FractionsTour {
       },
       {
         text: 'Next',
-        action: this.tour.next
+        action: this.tour.next,
+        // classes: 'shepherd-button--bright'
       }
     ];
 
@@ -92,6 +93,7 @@ class FractionsTour {
       }
     })
     .addStep('powers', {
+      title: 'Powers of 2',
       text: 'Binary uses powers of two. Clicking the powers shows you what the exponents are.',
       attachTo: '.BinaryFractionsMain__bit-display top',
       buttons: standardButtons,
@@ -120,6 +122,7 @@ class FractionsTour {
       }
     })
     .addStep('flipPanel', {
+      title: 'Flip It',
       text: 'Clicking a bit panel flips it from 0 to 1, adding the labeled amount to your fraction.',
       attachTo: '.BinaryFractionsMain__bit-display bottom',
       buttons: standardButtons,
@@ -137,6 +140,7 @@ class FractionsTour {
       }
     })
     .addStep('flipMorePanels', {
+      title: 'Add More',
       text: 'Clicking more panels will allow you to create different fractions.',
       attachTo: '.BinaryFractionsMain__bit-display bottom',
       buttons: standardButtons,
@@ -169,6 +173,7 @@ class FractionsTour {
       }
     })
     .addStep('moreBits', {
+      title: 'More Bits',
       text: 'Clicking the + button increases the number of bits available. (The max is 8)',
       attachTo: '.BinaryFractionsMain__add-remove-button-container bottom',
       buttons: standardButtons,
@@ -205,6 +210,7 @@ class FractionsTour {
       }
     })
     .addStep('resetPanels', {
+      title: 'Start Fresh',
       text: 'To start from 0 again, click the Reset button.',
       attachTo: '.BinaryFractionsMain__reset-button bottom',
       buttons: standardButtons,
