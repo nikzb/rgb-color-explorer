@@ -1,14 +1,86 @@
 @import '../component-styles/base-styles.scss';
+@import '../component-styles/fonts.scss';
+
+$button-color: $grey-1;
+$button-focus-color: $grey-9;
+$button-active-color: $grey-7;
 
 .BinaryCountingMain {
   transform: scale(1.0, 1.0);
   transform-origin: 50% 0%;
+  margin-bottom: 2em;
 
   &__reset-button.button {
+    margin: 0.75em;
+    padding: 0.75em 1.4em;
+    // font-size: 1.2em;
     border-radius: $standard-border-radius;
+    border: 1px solid $button-color;
+    background: transparent;
+    color: $button-color;
+    font-size: 1em;
+
+    &:hover, &:focus {
+      background: $button-focus-color;
+      color: $button-color;
+      outline: 0;
+    }
+
+    &:active {
+      background: $button-active-color;
+      color: $button-color;
+      outline: 0;
+    }
+  }
+
+  .button.BinaryFractionsMain__reset-button--active {
+    background: $button-active-color;
+    color: $button-color;
+    outline: 0;
   }
 
   &__unsigned-int {
-    font-size: 8em;
+    margin-top: 0.1em;
+    font-family: 'Open Sans', sans-serif;
+    color: $grey-0b;
+  }
+
+  &__bit-display {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__bits-buttons-label {
+    font-size: 1.5em;
+    color: $button-color;
+  }
+
+  &__add-remove-button.button {
+    width: 1.6em;
+    margin: 0 0.1em;
+    padding: 0.15em 0.25em;
+    font-size: 1.6em;
+    border-radius: $standard-border-radius;
+    border: 1px solid $button-color;
+    background: transparent;
+    color: $button-color;
+
+    &:hover, &:focus {
+      background: $button-focus-color;
+      color: $button-color;
+      outline: 0;
+    }
+
+    &:active {
+      background: $button-active-color;
+      color: $button-color;
+      outline: 0;
+    }
+  }
+
+  .button.BinaryFractionsMain__add-bit-panel-button--active {
+    background: $button-active-color;
+    color: $button-color;
+    outline: 0;
   }
 }

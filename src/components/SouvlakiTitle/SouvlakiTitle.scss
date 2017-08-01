@@ -76,8 +76,8 @@ $rgb-letter-colors: $grey-3;
   }
 
   &--bit-panel-colors {
-    color: $grey-1;
-    text-shadow: $text-shadow-size $text-shadow-size $bit-panel-blue;
+    color: $grey-1b;//$bit-panel-green;
+    text-shadow: $text-shadow-size $text-shadow-size $grey-1;
   }
 
   // title used for main page (at least for temporary main page created early on)

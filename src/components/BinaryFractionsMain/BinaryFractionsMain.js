@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Map, List } from 'immutable';
 
-import BitPanelGroup from '../BitPanelGroup/BitPanelGroup';
 import BitPanelGroupWithPowerLabels from '../BitPanelGroupWithPowerLabels/BitPanelGroupWithPowerLabels';
 import BinaryFractionViz from '../BinaryFractionViz/BinaryFractionViz';
 import SouvlakiTitle from '../SouvlakiTitle/SouvlakiTitle';
@@ -305,37 +304,7 @@ class BinaryFractionsMain extends Component {
       return immutObj.toJS();
     }).toJS();
 
-    const lowResMediaQuery = MediaQueries.lowResQuery();
-    const phoneMediumQuery = MediaQueries.phoneMediumQuery();
-    const phoneLargeQuery = MediaQueries.phoneLargeQuery();
-    const tabletPortraitQuery = MediaQueries.tabletPortraitQuery();
-    const tabletLandscapeQuery = MediaQueries.tabletLandscapeQuery();
-    const desktopQuery = MediaQueries.desktopQuery();
-    const desktopWideQuery = MediaQueries.desktopWideQuery();
-
-    let sizeMultiplier = 1;
-
-    if (lowResMediaQuery.matches) {
-      sizeMultiplier = 1.4;
-    }
-    if (phoneMediumQuery.matches) {
-      sizeMultiplier = 1.06;
-    }
-    if (phoneLargeQuery.matches) {
-      sizeMultiplier = 1.12;
-    }
-    if (tabletPortraitQuery.matches) {
-      sizeMultiplier = 1.4;
-    }
-    if (tabletLandscapeQuery.matches) {
-      sizeMultiplier = 1.5;
-    }
-    if (desktopQuery.matches) {
-      sizeMultiplier = 1.6;
-    }
-    if (desktopWideQuery.matches) {
-      sizeMultiplier = 1.8;
-    }
+    const sizeMultiplier = MediaQueries.bitPanelSizeMultiplier();
 
     const width = 300 * sizeMultiplier;
 
@@ -388,7 +357,7 @@ class BinaryFractionsMain extends Component {
         <button /*style={resetButtonStyle}*/ className={resetButtonClasses} onClick={this.resetAllPanels}>Reset</button>
         <div /*style={bitsButtonsLabelStyle}*/ className='BinaryFractionsMain__bits-buttons-label'>Bits</div>
         <div className='BinaryFractionsMain__add-remove-button-container'>
-          <button className='button BinaryFractionsMain__add-remove-button' onClick={this.removeBitPanel}>-</button>
+          <button className='button BinaryFractionsMain__add-remove-button' onClick={this.removeBitPanel}>﹣</button>
           <button className={addBitPanelButtonClasses} onClick={this.addBitPanel}>+</button>
         </div>
       </div>

@@ -3,6 +3,8 @@ import { Map, List } from 'immutable';
 
 import BitPanelGroup from '../BitPanelGroup/BitPanelGroup';
 import BitPanelGroupWithPowerLabels from '../BitPanelGroupWithPowerLabels/BitPanelGroupWithPowerLabels';
+import SouvlakiTitle from '../SouvlakiTitle/SouvlakiTitle';
+import MediaQueries from '../../classes/MediaQueries/MediaQueries';
 
 import './BinaryCountingMain.css';
 
@@ -219,15 +221,30 @@ class BinaryCountingMain extends Component {
       return immutObj.toJS();
     }).toJS();
 
+    const sizeMultiplier = MediaQueries.bitPanelSizeMultiplier();
+
+    const width = 300 * sizeMultiplier;
+
+    let valueStyle = {
+        fontSize: `${3*sizeMultiplier}em`//'3em'
+    }
+
+    if (sizeMultiplier > 1.2) {
+      valueStyle = {
+          fontSize: `${4*sizeMultiplier}em`//'3em'
+      }
+    }
+
     return (
       <div className='BinaryCountingMain'>
-        <div className='BinaryCountingMain__unsigned-int'>{this.state.numberValue}</div>
-        <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} />
+        <SouvlakiTitle title='Count in Binary' />
+        <div style={valueStyle} className='BinaryCountingMain__unsigned-int'>{this.state.numberValue}</div>
+        <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} sizeMultiplier={sizeMultiplier}/>
         <button className='button BinaryCountingMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
         <div className='BinaryCountingMain__bits-buttons-label'>Bits</div>
         <div className='BinaryCountingMain__add-remove-button-container'>
-          <button className='button' onClick={this.removeBitPanel}>-</button>
-          <button className='button' onClick={this.addBitPanel}>+</button>
+          <button className='button BinaryCountingMain__add-remove-button' onClick={this.removeBitPanel}>﹣</button>
+          <button className='button BinaryCountingMain__add-remove-button' onClick={this.addBitPanel}>+</button>
         </div>
       </div>
     )

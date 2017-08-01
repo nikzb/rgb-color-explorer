@@ -1,7 +1,67 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Averia+Sans+Libre:700");
 .BinaryCountingMain {
   transform: scale(1, 1);
-  transform-origin: 50% 0%; }
-  .BinaryCountingMain__reset-button.button {
-    border-radius: 0.5rem; }
-  .BinaryCountingMain__unsigned-int {
-    font-size: 8em; }
+  transform-origin: 50% 0%;
+  margin-bottom: 2em; }
+
+.BinaryCountingMain__reset-button.button {
+  margin: 0.75em;
+  padding: 0.75em 1.4em;
+  border-radius: 0.5rem;
+  border: 1px solid dimgrey;
+  background: transparent;
+  color: dimgrey;
+  font-size: 1em; }
+
+.BinaryCountingMain__reset-button.button:hover, .BinaryCountingMain__reset-button.button:focus {
+  background: #E9E9E9;
+  color: dimgrey;
+  outline: 0; }
+
+.BinaryCountingMain__reset-button.button:active {
+  background: lightgrey;
+  color: dimgrey;
+  outline: 0; }
+
+.BinaryCountingMain .button.BinaryFractionsMain__reset-button--active {
+  background: lightgrey;
+  color: dimgrey;
+  outline: 0; }
+
+.BinaryCountingMain__unsigned-int {
+  margin-top: 0.1em;
+  font-family: 'Open Sans', sans-serif;
+  color: #555; }
+
+.BinaryCountingMain__bit-display {
+  display: flex;
+  justify-content: center; }
+
+.BinaryCountingMain__bits-buttons-label {
+  font-size: 1.5em;
+  color: dimgrey; }
+
+.BinaryCountingMain__add-remove-button.button {
+  width: 1.6em;
+  margin: 0 0.1em;
+  padding: 0.15em 0.25em;
+  font-size: 1.6em;
+  border-radius: 0.5rem;
+  border: 1px solid dimgrey;
+  background: transparent;
+  color: dimgrey; }
+
+.BinaryCountingMain__add-remove-button.button:hover, .BinaryCountingMain__add-remove-button.button:focus {
+  background: #E9E9E9;
+  color: dimgrey;
+  outline: 0; }
+
+.BinaryCountingMain__add-remove-button.button:active {
+  background: lightgrey;
+  color: dimgrey;
+  outline: 0; }
+
+.BinaryCountingMain .button.BinaryFractionsMain__add-bit-panel-button--active {
+  background: lightgrey;
+  color: dimgrey;
+  outline: 0; }

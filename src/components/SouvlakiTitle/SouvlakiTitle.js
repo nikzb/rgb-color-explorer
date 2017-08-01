@@ -23,7 +23,7 @@ const SouvlakiTitle = ({size='med', title, bg}) => {
         <span className="SouvlakiTitle--colors"> Colors</span>
       </h1>
     );
-  } else if (title === 'Binary Fractions') {
+  } else if (title === 'Binary Fractions' || title === 'Count in Binary') {
     return (
       <h1 className={`SouvlakiTitle SouvlakiTitle--${size} SouvlakiTitle--bit-panel-colors`}>{title}</h1>
     );
