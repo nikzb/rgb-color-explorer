@@ -38,7 +38,7 @@ $button-active-color: $grey-7;
     }
   }
 
-  .button.BinaryFractionsMain__reset-button--active {
+  .button.BinaryCountingMain__reset-button--active {
     background: $button-active-color;
     color: $button-color;
     outline: 0;
@@ -83,7 +83,13 @@ $button-active-color: $grey-7;
     }
   }
 
-  .button.BinaryFractionsMain__add-bit-panel-button--active {
+  .button.BinaryCountingMain__add-bit-panel-button--active {
+    background: $button-active-color;
+    color: $button-color;
+    outline: 0;
+  }
+
+  .button.BinaryCountingMain__remove-bit-panel-button--active {
     background: $button-active-color;
     color: $button-color;
     outline: 0;

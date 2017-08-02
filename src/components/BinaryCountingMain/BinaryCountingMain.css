@@ -27,7 +27,7 @@
   color: dimgrey;
   outline: 0; }
 
-.BinaryCountingMain .button.BinaryFractionsMain__reset-button--active {
+.BinaryCountingMain .button.BinaryCountingMain__reset-button--active {
   background: lightgrey;
   color: dimgrey;
   outline: 0; }
@@ -65,7 +65,12 @@
   color: dimgrey;
   outline: 0; }
 
-.BinaryCountingMain .button.BinaryFractionsMain__add-bit-panel-button--active {
+.BinaryCountingMain .button.BinaryCountingMain__add-bit-panel-button--active {
+  background: lightgrey;
+  color: dimgrey;
+  outline: 0; }
+
+.BinaryCountingMain .button.BinaryCountingMain__remove-bit-panel-button--active {
   background: lightgrey;
   color: dimgrey;
   outline: 0; }

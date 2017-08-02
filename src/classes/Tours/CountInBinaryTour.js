@@ -4,7 +4,7 @@ import TimedFunctionCallSequence from '../TimedFunctionCallSequence/TimedFunctio
 
 import './ShepherdStyles/shepherd-theme-bright.css';
 
-class FractionsTour {
+class CountInBinaryTour {
   constructor(functions) {
     this.tour = new Shepherd.Tour({
       defaults: {
@@ -39,7 +39,8 @@ class FractionsTour {
     addBitPanel,
     removeBitPanel,
     resetAllPanels,
-    activateButton
+    activateButton,
+    toggleShowSigned
   }) {
     const standardButtons = [
       {
@@ -71,7 +72,7 @@ class FractionsTour {
     }
 
     this.tour.addStep('welcome', {
-      text: 'Welcome to the Binary Fractions Explorer!<br><br>We will learn how to use 0\'s and 1\'s to represent fractional numbers.',
+      text: "Let's learn how to count in binary!",
       showCancelLink: false,
       buttons: [
         {
@@ -93,8 +94,8 @@ class FractionsTour {
     })
     .addStep('powers', {
       title: 'Powers of 2',
-      text: 'Binary uses powers of two. Clicking the powers shows you what the exponents are.',
-      attachTo: '.BinaryFractionsMain__bit-display top',
+      text: 'Binary numbers use powers of two. Clicking the powers shows you what the exponents are.',
+      attachTo: '.BinaryCountingMain__bit-display top',
       buttons: standardButtons,
       when: {
         hide: this.onHide,
@@ -122,8 +123,8 @@ class FractionsTour {
     })
     .addStep('flipPanel', {
       title: 'Flip It',
-      text: 'Clicking a bit panel flips it from 0 to 1, adding the labeled amount to your fraction.',
-      attachTo: '.BinaryFractionsMain__bit-display bottom',
+      text: 'Clicking a bit panel flips it from 0 to 1, adding the labeled amount to your number.',
+      attachTo: '.BinaryCountingMain__bit-display bottom',
       buttons: standardButtons,
       when: {
         hide: this.onHide,
@@ -138,33 +139,28 @@ class FractionsTour {
         })
       }
     })
-    .addStep('flipMorePanels', {
-      title: 'Add More',
-      text: 'Clicking more panels will allow you to create different fractions.',
-      attachTo: '.BinaryFractionsMain__bit-display bottom',
+    .addStep('flipPanelAgain', {
+      title: 'Flip It Again',
+      text: 'Clicking the same bit panel again flips it from 1 to 0, and then causes the next bit to the left to flip too.',
+      attachTo: '.BinaryCountingMain__bit-display bottom',
       buttons: standardButtons,
       when: {
         hide: this.onHide,
         show: getShowFunction({
           initSequence: [
             {
-              callback: () => { initiateFlip(1); },
+              callback: () => { initiateFlip(0); },
               waitTime: 3000,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { initiateFlip(3); },
-              waitTime: 1500,
+              callback: () => { initiateFlip(0); },
+              waitTime: 1200,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
               callback: () => { initiateFlip(0); },
-              waitTime: 1500,
-              tourStepItBelongsTo: this.currentTourStep
-            },
-            {
-              callback: () => { initiateFlip(2); },
-              waitTime: 1500,
+              waitTime: 1200,
               tourStepItBelongsTo: this.currentTourStep
             }
           ]
@@ -174,7 +170,7 @@ class FractionsTour {
     .addStep('moreBits', {
       title: 'More Bits',
       text: 'Clicking the + button increases the number of bits available. (The max is 8)',
-      attachTo: '.BinaryFractionsMain__add-remove-button-container bottom',
+      attachTo: '.BinaryCountingMain__add-remove-button-container bottom',
       buttons: standardButtons,
       when: {
         hide: this.onHide,
@@ -203,6 +199,48 @@ class FractionsTour {
               },
               waitTime: 500,
               tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => {
+                activateButton('removeBitPanel');
+                removeBitPanel();
+              },
+              waitTime: 1000,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => {
+                activateButton('removeBitPanel');
+                removeBitPanel();
+              },
+              waitTime: 500,
+              tourStepItBelongsTo: this.currentTourStep
+            },
+            {
+              callback: () => {
+                activateButton('removeBitPanel');
+                removeBitPanel();
+              },
+              waitTime: 500,
+              tourStepItBelongsTo: this.currentTourStep
+            }
+          ]
+        })
+      }
+    })
+    .addStep('signedValues', {
+      title: 'Negative Values',
+      text: 'So far all the values have been positive or zero. To include negative values, we can turn on the Signed Values option.',
+      attachTo: '.BinaryCountingMain__switch bottom',
+      buttons: standardButtons,
+      when: {
+        hide: this.onHide,
+        show: getShowFunction({
+          initSequence: [
+            {
+              callback: toggleShowSigned,
+              waitTime: 4000,
+              tourStepItBelongsTo: this.currentTourStep
             }
           ]
         })
@@ -211,7 +249,7 @@ class FractionsTour {
     .addStep('resetPanels', {
       title: 'Start Fresh',
       text: 'To start from 0 again, click the Reset button.',
-      attachTo: '.BinaryFractionsMain__reset-button bottom',
+      attachTo: '.BinaryCountingMain__reset-button bottom',
       buttons: standardButtons,
       when: {
         hide: this.onHide,
@@ -230,7 +268,7 @@ class FractionsTour {
       }
     })
     .addStep('explore', {
-      text: 'Now it is your turn to explore. Try creating different fractions to see what you can make and what you cannot!',
+      text: 'Now it is your turn to explore. Keep clicking the right most bit to see the pattern for counting in binary.<br><br>You can also click other bits to count by larger amounts.',
       showCancelLink: false,
       buttons: [
         {
@@ -254,4 +292,4 @@ class FractionsTour {
   }
 }
 
-export default FractionsTour;
+export default CountInBinaryTour;

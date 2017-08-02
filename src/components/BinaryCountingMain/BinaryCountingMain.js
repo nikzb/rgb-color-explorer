@@ -5,12 +5,21 @@ import BitPanelGroupWithPowerLabels from '../BitPanelGroupWithPowerLabels/BitPan
 import SouvlakiTitle from '../SouvlakiTitle/SouvlakiTitle';
 import NumberValueDisplay from '../NumberValueDisplay/NumberValueDisplay';
 import MediaQueries from '../../classes/MediaQueries/MediaQueries';
+import CountInBinaryTour from '../../classes/Tours/CountInBinaryTour';
 
 import './BinaryCountingMain.css';
 
 class BinaryCountingMain extends Component {
   constructor(props) {
     super(props);
+    this.initiateFlip = this.initiateFlip.bind(this);
+    this.resetAllPanels = this.resetAllPanels.bind(this);
+    this.addBitPanel = this.addBitPanel.bind(this);
+    this.removeBitPanel = this.removeBitPanel.bind(this);
+    this.toggleCalculatedPower = this.toggleCalculatedPower.bind(this);
+    this.activateButton = this.activateButton.bind(this);
+    this.toggleShowSigned = this.toggleShowSigned.bind(this);
+
     this.state = {
       bitList: List([
         Map({exponent: 0, angle: 0, isRotating: false, extraRotation: false, onClick: this.getClickHandler(0)}),
@@ -20,12 +29,20 @@ class BinaryCountingMain extends Component {
       numberValue: 0,
       inReset: false,
       calculatePower: true,
-      showSigned: false
+      toggleCalculatedPowerActive: false,
+      showSigned: false,
+      addBitPanelButtonActive: false,
+      removeBitPanelButtonActive: false,
+      tour: (new CountInBinaryTour({
+        toggleCalculatedPower: this.toggleCalculatedPower,
+        initiateFlip: this.initiateFlip,
+        addBitPanel: this.addBitPanel,
+        removeBitPanel: this.removeBitPanel,
+        resetAllPanels: this.resetAllPanels,
+        activateButton: this.activateButton,
+        toggleShowSigned: this.toggleShowSigned
+      })).getTour()
     };
-    this.resetAllPanels = this.resetAllPanels.bind(this);
-    this.addBitPanel = this.addBitPanel.bind(this);
-    this.removeBitPanel = this.removeBitPanel.bind(this);
-    this.toggleCalculatedPower = this.toggleCalculatedPower.bind(this);
   }
 
   newBitPanelObject() {
@@ -141,6 +158,16 @@ class BinaryCountingMain extends Component {
     });
   }
 
+  // This is used by the tour to demonstrate what happens when the show signed switch is toggled
+  toggleShowSigned() {
+    // Need to changed the checked value for the switch (which is really a checkbox)
+    // ...
+
+    this.setState({
+      showSigned: !this.state.showSigned
+    });
+  }
+
   // @param index: the index of the bit panel to be flipped
   initiateFlip(index) {
     if (index < this.state.bitList.size) {
@@ -218,14 +245,68 @@ class BinaryCountingMain extends Component {
     });
   }
 
-  componentDidMount() {
-    setInterval(() => {
-      // If at least one panel is rotating, call the rotate method
-      if (this.state.bitList.filter(immutObj => immutObj.get('isRotating')).size > 0) {
-        this.rotate({shouldPropagate: true})
-      }
-    }, 2);
+  activateButton(buttonName) {
+    if (buttonName === 'resetButton') {
+      this.setState({
+        resetButtonActive: true
+      });
+      setTimeout(() => {
+        this.setState({
+          resetButtonActive: false
+        });
+      }, 150);
+    } else if (buttonName === 'addBitPanel') {
+      this.setState({
+        addBitPanelButtonActive: true
+      });
+      setTimeout(() => {
+        this.setState({
+          addBitPanelButtonActive: false
+        });
+      }, 150);
+    } else if (buttonName === 'removeBitPanel') {
+      this.setState({
+        removeBitPanelButtonActive: true
+      });
+      setTimeout(() => {
+        this.setState({
+          removeBitPanelButtonActive: false
+        });
+      }, 150);
+    } else if (buttonName === 'bitPanelLabels') {
+      this.setState({
+        toggleCalculatedPowerActive: true
+      });
+      setTimeout(() => {
+        this.setState({
+          toggleCalculatedPowerActive: false
+        });
+      }, 150);
+    }
   }
+
+  componentDidMount() {
+    this.setState({
+      rotateInterval: setInterval(() => {
+        // If at least one panel is rotating, call the rotate method
+        if (this.state.bitList.filter(immutObj => immutObj.get('isRotating')).size > 0) {
+          this.rotate({shouldPropagate: true})
+        }
+      }, 2)
+    });
+    window.addEventListener('resize', this.handleResize);
+    this.state.tour.start();
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener('resize', this.handleResize);
+    clearInterval(this.state.rotateInterval);
+    this.state.tour.hide();
+  }
+
+  handleResize = () => {
+    this.forceUpdate();
+  };
 
   render() {
     const bitInfoArray = this.state.bitList.map((immutObj) => {
@@ -233,18 +314,6 @@ class BinaryCountingMain extends Component {
     }).toJS();
 
     const sizeMultiplier = MediaQueries.bitPanelSizeMultiplier();
-
-    const width = 300 * sizeMultiplier;
-
-    let valueStyle = {
-        fontSize: `${3*sizeMultiplier}em`//'3em'
-    }
-
-    if (sizeMultiplier > 1.2) {
-      valueStyle = {
-          fontSize: `${4*sizeMultiplier}em`//'3em'
-      }
-    }
 
     const numberValue = this.state.numberValue;
     let valueDiv;
@@ -274,19 +343,36 @@ class BinaryCountingMain extends Component {
       );
     }
 
+    let resetButtonClasses = 'button BinaryCountingMain__reset-button';
+    if (this.state.resetButtonActive) {
+      resetButtonClasses += ' BinaryCountingMain__reset-button--active'
+    }
+
+    let addBitPanelButtonClasses = 'button BinaryCountingMain__add-remove-button';
+    if (this.state.addBitPanelButtonActive) {
+      addBitPanelButtonClasses += ' BinaryCountingMain__add-bit-panel-button--active'
+    }
+
+    let removeBitPanelButtonClasses = 'button BinaryCountingMain__add-remove-button';
+    if (this.state.removeBitPanelButtonActive) {
+      removeBitPanelButtonClasses += ' BinaryCountingMain__remove-bit-panel-button--active'
+    }
+
     return (
       <div className='BinaryCountingMain'>
         <SouvlakiTitle title='Count in Binary' />
         {valueDiv}
-        <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} sizeMultiplier={sizeMultiplier}/>
-        <button className='button BinaryCountingMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
+        <div className='BinaryCountingMain__bit-display'>
+          <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} sizeMultiplier={sizeMultiplier} toggleCalculatedPowerActive={this.state.toggleCalculatedPowerActive}/>
+        </div>
+        <button className={resetButtonClasses} onClick={this.resetAllPanels}>Reset</button>
         <div className='BinaryCountingMain__bits-buttons-label'>Bits</div>
         <div className='BinaryCountingMain__add-remove-button-container'>
-          <button className='button BinaryCountingMain__add-remove-button' onClick={this.removeBitPanel}>﹣</button>
-          <button className='button BinaryCountingMain__add-remove-button' onClick={this.addBitPanel}>+</button>
+          <button className={removeBitPanelButtonClasses} onClick={this.removeBitPanel}>﹣</button>
+          <button className={addBitPanelButtonClasses} onClick={this.addBitPanel}>+</button>
         </div>
         <div className='BinaryCountingMain__switch-label'>Signed Value</div>
-        <div className="switch small">
+        <div className="BinaryCountingMain__switch switch small">
           <input className="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch" />
           <label className="switch-paddle" htmlFor="exampleSwitch" onClick={() => { this.setState({showSigned: !this.state.showSigned});}}>
             <span className="show-for-sr">Show Signed Value</span>

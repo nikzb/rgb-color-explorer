@@ -43,8 +43,6 @@ class BinaryFractionsMain extends Component {
         activateButton: this.activateButton
       })).getTour()
     };
-
-
   }
 
   newBitPanelObject(index) {
