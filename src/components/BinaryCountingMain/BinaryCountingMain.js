@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Map, List } from 'immutable';
 
-import BitPanelGroup from '../BitPanelGroup/BitPanelGroup';
 import BitPanelGroupWithPowerLabels from '../BitPanelGroupWithPowerLabels/BitPanelGroupWithPowerLabels';
 import SouvlakiTitle from '../SouvlakiTitle/SouvlakiTitle';
+import NumberValueDisplay from '../NumberValueDisplay/NumberValueDisplay';
 import MediaQueries from '../../classes/MediaQueries/MediaQueries';
 
 import './BinaryCountingMain.css';
@@ -19,7 +19,8 @@ class BinaryCountingMain extends Component {
       ]),
       numberValue: 0,
       inReset: false,
-      calculatePower: true
+      calculatePower: true,
+      showSigned: false
     };
     this.resetAllPanels = this.resetAllPanels.bind(this);
     this.addBitPanel = this.addBitPanel.bind(this);
@@ -160,19 +161,29 @@ class BinaryCountingMain extends Component {
     }
   }
 
-  getNumberValue(bitList) {
-    const getNumberShowing = (angle) => {
-      if (angle < 90 || angle >= 270) {
-        return 0;
-      } else {
-        return 1;
-      }
+  // Returns either 0 or 1 based on the angle of the bit panel
+  getNumberShowing(angle) {
+    if (angle < 90 || angle >= 270) {
+      return 0;
+    } else {
+      return 1;
     }
+  }
+
+
+  getNumberValue(bitList) {
+    // const getNumberShowing = (angle) => {
+    //   if (angle < 90 || angle >= 270) {
+    //     return 0;
+    //   } else {
+    //     return 1;
+    //   }
+    // }
 
     let binaryString = '';
 
     for (let index = 0; index < bitList.size; index += 1) {
-      binaryString = getNumberShowing(bitList.get(index).get('angle')) + binaryString;
+      binaryString = this.getNumberShowing(bitList.get(index).get('angle')) + binaryString;
     }
 
     return parseInt(binaryString, 2);
@@ -235,10 +246,38 @@ class BinaryCountingMain extends Component {
       }
     }
 
+    const numberValue = this.state.numberValue;
+    let valueDiv;
+    // If show signed switch is checked, need to show signed values next to unsigned
+
+    let twosComplementValue;
+    // If the leading bit is a 0, then the twosComplementValue is identical to the unsigned value, otherwise need to calculate
+    if (this.getNumberShowing(this.state.bitList.get(-1).get('angle')) === 0) {
+      twosComplementValue = numberValue;
+    } else {
+      twosComplementValue = numberValue - Math.pow(2, this.state.bitList.size);
+    }
+
+    if (this.state.showSigned) {
+      valueDiv = (
+        <div className='BinaryCountingMain__values'>
+          <NumberValueDisplay title={'Unsigned'} value={numberValue} sizeMultiplier={sizeMultiplier} />
+          <NumberValueDisplay title={'Signed'} value={twosComplementValue} sizeMultiplier={sizeMultiplier} />
+        </div>
+      );
+    } else {
+      valueDiv = (
+        <div className='BinaryCountingMain__values'>
+          <NumberValueDisplay title={'Base 10 Value'} value={numberValue} sizeMultiplier={sizeMultiplier} />
+          <NumberValueDisplay styleToUse={{display: 'none'}} title={''} value={twosComplementValue} sizeMultiplier={sizeMultiplier} />
+        </div>
+      );
+    }
+
     return (
       <div className='BinaryCountingMain'>
         <SouvlakiTitle title='Count in Binary' />
-        <div style={valueStyle} className='BinaryCountingMain__unsigned-int'>{this.state.numberValue}</div>
+        {valueDiv}
         <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} sizeMultiplier={sizeMultiplier}/>
         <button className='button BinaryCountingMain__reset-button' onClick={this.resetAllPanels}>Reset</button>
         <div className='BinaryCountingMain__bits-buttons-label'>Bits</div>
@@ -249,7 +288,7 @@ class BinaryCountingMain extends Component {
         <div className='BinaryCountingMain__switch-label'>Signed Value</div>
         <div className="switch small">
           <input className="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch" />
-          <label className="switch-paddle" htmlFor="exampleSwitch">
+          <label className="switch-paddle" htmlFor="exampleSwitch" onClick={() => { this.setState({showSigned: !this.state.showSigned});}}>
             <span className="show-for-sr">Show Signed Value</span>
           </label>
         </div>

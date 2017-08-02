@@ -4,6 +4,10 @@
   transform-origin: 50% 0%;
   margin-bottom: 2em; }
 
+.BinaryCountingMain__values {
+  display: flex;
+  justify-content: center; }
+
 .BinaryCountingMain__reset-button.button {
   margin: 0.75em;
   padding: 0.75em 1.4em;
