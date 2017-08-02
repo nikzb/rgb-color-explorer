@@ -76,7 +76,11 @@
   font-size: 1.1em; }
 
 .BinaryCountingMain .switch-paddle {
-  background: #909090; }
+  background: #909090;
+  border-radius: 1em; }
+
+.BinaryCountingMain .switch-paddle:after {
+  border-radius: 0.8em; }
 
 .BinaryCountingMain input:checked ~ .switch-paddle {
   background: #357AB6; }

@@ -97,9 +97,16 @@ $button-active-color: $grey-7;
 
   .switch-paddle {
     background: $grey-3;
+    border-radius: 1em;
+  }
+
+  .switch-paddle:after {
+    border-radius: 0.8em;
   }
 
   input:checked~.switch-paddle {
     background: $bit-panel-blue;
   }
+
+
 }
