@@ -58,11 +58,6 @@ class SouvlakiMainSection extends Component {
             </div>
           </div>
         </div>
-        <div>
-          <Link to='/fractions'>Fractions Preview</Link>
-        </div>
-
-
       </div>
     )
   }
