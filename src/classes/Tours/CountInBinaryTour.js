@@ -40,7 +40,8 @@ class CountInBinaryTour {
     removeBitPanel,
     resetAllPanels,
     activateButton,
-    toggleShowSigned
+    toggleShowSigned,
+    activateBitPanelByIndex,
   }) {
     const standardButtons = [
       {
@@ -131,7 +132,12 @@ class CountInBinaryTour {
         show: getShowFunction({
           initSequence: [
             {
-              callback: () => { initiateFlip(0); },
+              callback: () => {
+                activateBitPanelByIndex(0);
+                setTimeout(() => {
+                  initiateFlip(0);
+                }, 100);
+              },
               waitTime: 3000,
               tourStepItBelongsTo: this.currentTourStep
             }
@@ -149,17 +155,32 @@ class CountInBinaryTour {
         show: getShowFunction({
           initSequence: [
             {
-              callback: () => { initiateFlip(0); },
+              callback: () => {
+                activateBitPanelByIndex(0);
+                setTimeout(() => {
+                  initiateFlip(0);
+                }, 100);
+              },
               waitTime: 3000,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { initiateFlip(0); },
+              callback: () => {
+                activateBitPanelByIndex(0);
+                setTimeout(() => {
+                  initiateFlip(0);
+                }, 100);
+              },
               waitTime: 1500,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
-              callback: () => { initiateFlip(0); },
+              callback: () => {
+                activateBitPanelByIndex(0);
+                setTimeout(() => {
+                  initiateFlip(0);
+                }, 100);
+              },
               waitTime: 1500,
               tourStepItBelongsTo: this.currentTourStep
             }
@@ -205,7 +226,7 @@ class CountInBinaryTour {
                 activateButton('removeBitPanel');
                 removeBitPanel();
               },
-              waitTime: 1000,
+              waitTime: 2000,
               tourStepItBelongsTo: this.currentTourStep
             },
             {

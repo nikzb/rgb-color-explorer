@@ -19,6 +19,7 @@ class BinaryCountingMain extends Component {
     this.toggleCalculatedPower = this.toggleCalculatedPower.bind(this);
     this.activateButton = this.activateButton.bind(this);
     this.toggleShowSigned = this.toggleShowSigned.bind(this);
+    this.activateBitPanelByIndex = this.activateBitPanelByIndex.bind(this);
 
     this.state = {
       bitList: List([
@@ -42,7 +43,8 @@ class BinaryCountingMain extends Component {
         removeBitPanel: this.removeBitPanel,
         resetAllPanels: this.resetAllPanels,
         activateButton: this.activateButton,
-        toggleShowSigned: this.toggleShowSigned
+        toggleShowSigned: this.toggleShowSigned,
+        activateBitPanelByIndex: this.activateBitPanelByIndex
       })).getTour()
     };
   }
@@ -284,6 +286,24 @@ class BinaryCountingMain extends Component {
           toggleCalculatedPowerActive: false
         });
       }, 150);
+    }
+  }
+
+  activateBitPanelByIndex(index) {
+    if (!this.state.activeBitPanelsByIndex.has(index)) {
+      this.setState(previousState => {
+        return {
+          activeBitPanelsByIndex: previousState.activeBitPanelsByIndex.push(index)
+        };
+      });
+      setTimeout(() => {
+        this.setState(previousState => {
+          return {
+            activeBitPanelsByIndex: previousState.activeBitPanelsByIndex.delete(previousState.activeBitPanelsByIndex.indexOf(index))
+          };
+        });
+        console.log('done');
+      }, 100)
     }
   }
 
