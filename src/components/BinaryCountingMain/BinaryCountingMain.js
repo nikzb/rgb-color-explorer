@@ -33,6 +33,8 @@ class BinaryCountingMain extends Component {
       showSigned: false,
       addBitPanelButtonActive: false,
       removeBitPanelButtonActive: false,
+      signedSwitch: null,
+      activeBitPanelsByIndex: List(),
       tour: (new CountInBinaryTour({
         toggleCalculatedPower: this.toggleCalculatedPower,
         initiateFlip: this.initiateFlip,
@@ -161,7 +163,7 @@ class BinaryCountingMain extends Component {
   // This is used by the tour to demonstrate what happens when the show signed switch is toggled
   toggleShowSigned() {
     // Need to changed the checked value for the switch (which is really a checkbox)
-    // ...
+    this.signedSwitch.checked = !this.signedSwitch.checked;
 
     this.setState({
       showSigned: !this.state.showSigned
@@ -363,7 +365,7 @@ class BinaryCountingMain extends Component {
         <SouvlakiTitle title='Count in Binary' />
         {valueDiv}
         <div className='BinaryCountingMain__bit-display'>
-          <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} sizeMultiplier={sizeMultiplier} toggleCalculatedPowerActive={this.state.toggleCalculatedPowerActive}/>
+          <BitPanelGroupWithPowerLabels bitInfoArray={bitInfoArray} showCalculatedPower={this.state.calculatePower} toggleCalculatedPower={this.toggleCalculatedPower} sizeMultiplier={sizeMultiplier} toggleCalculatedPowerActive={this.state.toggleCalculatedPowerActive} activeBitPanelsByIndex={this.state.activeBitPanelsByIndex}/>
         </div>
         <button className={resetButtonClasses} onClick={this.resetAllPanels}>Reset</button>
         <div className='BinaryCountingMain__bits-buttons-label'>Bits</div>
@@ -373,8 +375,8 @@ class BinaryCountingMain extends Component {
         </div>
         <div className='BinaryCountingMain__switch-label'>Signed Value</div>
         <div className="BinaryCountingMain__switch switch small">
-          <input className="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch" />
-          <label className="switch-paddle" htmlFor="exampleSwitch" onClick={() => { this.setState({showSigned: !this.state.showSigned});}}>
+          <input className="switch-input" id="signedValueSwitch" type="checkbox" name="signedValueSwitch" ref={(input) => { this.signedSwitch = input; }} />
+          <label className="switch-paddle" htmlFor="signedValueSwitch" onClick={() => { this.setState({showSigned: !this.state.showSigned});}}>
             <span className="show-for-sr">Show Signed Value</span>
           </label>
         </div>

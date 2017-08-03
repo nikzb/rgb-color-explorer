@@ -155,12 +155,12 @@ class CountInBinaryTour {
             },
             {
               callback: () => { initiateFlip(0); },
-              waitTime: 1200,
+              waitTime: 1500,
               tourStepItBelongsTo: this.currentTourStep
             },
             {
               callback: () => { initiateFlip(0); },
-              waitTime: 1200,
+              waitTime: 1500,
               tourStepItBelongsTo: this.currentTourStep
             }
           ]
@@ -169,7 +169,7 @@ class CountInBinaryTour {
     })
     .addStep('moreBits', {
       title: 'More Bits',
-      text: 'Clicking the + button increases the number of bits available. (The max is 8)',
+      text: 'Clicking the + button increases the number of bits available. The maximum allowed is 8.',
       attachTo: '.BinaryCountingMain__add-remove-button-container bottom',
       buttons: standardButtons,
       when: {
@@ -241,14 +241,19 @@ class CountInBinaryTour {
               callback: toggleShowSigned,
               waitTime: 4000,
               tourStepItBelongsTo: this.currentTourStep
-            }
+            },
+            {
+              callback: toggleShowSigned,
+              waitTime: 3000,
+              tourStepItBelongsTo: this.currentTourStep
+            },
           ]
         })
       }
     })
     .addStep('resetPanels', {
       title: 'Start Fresh',
-      text: 'To start from 0 again, click the Reset button.',
+      text: 'Clicking the Reset button will start you back at 0.',
       attachTo: '.BinaryCountingMain__reset-button bottom',
       buttons: standardButtons,
       when: {

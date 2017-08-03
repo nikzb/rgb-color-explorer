@@ -22,10 +22,26 @@
   .BitPanel__face-front {
     background: $bit-panel-blue;//#286DA8;
     cursor: pointer;
+
+    &:active {
+      background: $bit-panel-blue - 20;
+    }
+
+    &--active {
+      background: $bit-panel-blue - 20;
+    }
   }
 
   .BitPanel__face-back {
     background: $bit-panel-red;
     cursor: pointer;
+
+    &:active {
+      background: $bit-panel-red - 20;
+    }
+
+    &--active {
+      background: $bit-panel-red - 20;
+    }
   }
 }
