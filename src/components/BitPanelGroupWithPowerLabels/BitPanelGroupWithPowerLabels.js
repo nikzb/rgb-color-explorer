@@ -1,5 +1,6 @@
 import React from 'react';
 import browser from 'detect-browser';
+import { List } from 'immutable';
 
 import BitPanel from '../BitPanel/BitPanel';
 import './BitPanelGroupWithPowerLabels.css';
@@ -8,7 +9,8 @@ import './BitPanelGroupWithPowerLabels.css';
 //  bitInfoArray: array of objects with info for each bit that will be shown, including the click handler
 //  showCalculatedPower: boolean - true if should show calculated power instead of base / exponent
 //  toggleCalculatedPower: function that toggles from calculated power to not
-const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggleCalculatedPower, directionClass='', sizeMultiplier, toggleCalculatedPowerActive=false, activeBitPanelsByIndex}) => {
+//  activeBitPanelsByIndex: an immutable.js List of the bit panels that are currently "active" meaning showing that they are being clicked (or in a simulated click for a tour)
+const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggleCalculatedPower, directionClass='', sizeMultiplier, toggleCalculatedPowerActive=false, activeBitPanelsByIndex=List()}) => {
   if (sizeMultiplier > 1.2) {
     sizeMultiplier *= 1.5;
   }
@@ -17,7 +19,7 @@ const BitPanelGroupWithPowerLabels = ({bitInfoArray, showCalculatedPower, toggle
     let powerDivStyle = {
       fontSize: `${0.7*sizeMultiplier}em`,
     }
-    
+
     if (toggleCalculatedPowerActive) {
       powerDivStyle.color = '#EEE';
       powerDivStyle.background = '#AAA';
