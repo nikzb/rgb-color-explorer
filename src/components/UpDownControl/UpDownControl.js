@@ -10,6 +10,7 @@ class UpDownControl extends Component {
       interval: null
     }
   }
+  
   // Return a function that will change a given value by a specified amount
   onButtonClick(amountToChangeBy) {
     return () => {
@@ -18,21 +19,25 @@ class UpDownControl extends Component {
   }
 
   onMouseDown(amountToChangeBy) {
-    return () => {
-      this.setState({
-        interval: setInterval(() => {
-          this.props.onClick(amountToChangeBy);
-        }, 120)
-      });
+    return (event) => {
+      if (event.button === 0) {
+        this.setState({
+          interval: setInterval(() => {
+            this.props.onClick(amountToChangeBy);
+          }, 120)
+        });
+      }
     }
   }
 
   onMouseUp() {
-    return () => {
-      clearInterval(this.state.interval);
-      this.setState({
-        interval: null
-      });
+    return (event) => {
+      if (event.button === 0) {
+        clearInterval(this.state.interval);
+        this.setState({
+          interval: null
+        });
+      }
     }
   }
 
