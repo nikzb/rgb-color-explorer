@@ -1,39 +1,12 @@
 # RGB Color Explorer
 
-## Version 0 - Work in Progress
+This is currently the repository for souvlaki.io
 
-To do:
-
-* Delete button icon does not show up sometimes - figure out why
-
-* Look at what happens when there is no internet connection!
-  * Either need to include font so it works with offline version, or need to tweak the fallback fonts to avoid ugliness
-  * Need to include fonts in files so that they don't need to be fetched separately
-
-* Color Coder Game
-  * Double check font size for Round Number title
-  * Need to figure out feedback arrow spacing - is it different in different browsers? Use svg icons instead?
-  * Prevent backspace from navigating so it can function only as a way to delete characters with the keyboard
-  * Add transitions between
-    * level screen / game screen
-    * game screen / end screen ?
-    * end screen / game screen (via play again button - could me same as level screen / game screen)
-    * end screen / level screen ?
-
-* Tours
-  * Add the button for resuming the tour later, once it has been exited from
-
-* General styling
-  * Clean up code for sizing of ColorViz?
-
+This includes the following tools and games:
+* Counting in Binary
+* Fractions in Binary
 * RGB Color Explorer
-  * Prevent enabling button panel by selecting input via actual keyboard
-
-* Share button(s) -- don't really need these till later
-
-
-Super awesome version ideas:
-* Make it so you can add multiple colors. When you add a new color, the existing colors get moved (or can be moved) off to other locations, and will show their code below them (hex codes will start with #). In this case, do we need a reset button? Maybe not, person could just refresh the page. But would need a "new color" button? Probably yes.
+* ColorCoder 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
